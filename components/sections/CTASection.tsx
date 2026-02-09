@@ -29,6 +29,7 @@ const CTASection: React.FC = () => {
                         <div className="flex justify-center w-full">
                             <Button
                                 size="lg"
+                                href="/register"
                                 className="!bg-white !text-brand-green hover:!bg-white/90 border-none rounded-2xl shadow-[0_15px_30px_-10px_rgba(255,255,255,0.3)] hover:scale-105 transition-all duration-300 px-10 py-5"
                             >
                                 Take the First Step

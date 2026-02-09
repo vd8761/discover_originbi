@@ -19,6 +19,7 @@ const Hero: React.FC = () => {
                     </p>
                     <Button
                         size="lg"
+                        href="/register"
                         className="rounded-2xl shadow-[0_20px_40px_-10px_rgba(30,211,106,0.3)] hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(30,211,106,0.4)] transition-all duration-300 text-[14px] lg:text-[16px] px-8 py-4"
                     >
                         Take the First Step
