@@ -39,22 +39,40 @@ export default function RegisterPage() {
     return "";
   };
 
+  const validateForm = () => {
+    const errors: Record<string, string> = {};
+
+    if (!formData.name.trim()) errors.name = "Required";
+    if (!formData.email.trim()) errors.email = "Required";
+    if (!formData.mobile.trim()) errors.mobile = "Mobile number required";
+    if (!formData.schoolLevel) errors.schoolLevel = "Required";
+
+    if (formData.schoolLevel === "HSC") {
+      if (!formData.stream) errors.stream = "Required";
+      if (!formData.currentYear) errors.currentYear = "Required";
+      else if (formData.currentYear !== "1" && formData.currentYear !== "2") {
+        errors.currentYear = "Must be 1 or 2";
+      }
+    }
+
+    const passwordError = validatePassword(formData.password);
+    if (passwordError) errors.password = passwordError;
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Real-time validation for password
-    if (name === "password") {
-      const error = validatePassword(value);
-      setFormErrors(prev => ({ ...prev, password: error }));
-    } else {
-      if (formErrors[name]) {
-        setFormErrors(prev => {
-          const newErrors = { ...prev };
-          delete newErrors[name];
-          return newErrors;
-        });
-      }
+    // Clear error when user types (match admin behavior)
+    if (formErrors[name]) {
+      setFormErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
     }
   };
 
@@ -64,6 +82,7 @@ export default function RegisterPage() {
       [name]: value,
       ...(name === 'schoolLevel' && value !== 'HSC' ? { stream: '', currentYear: '' } : {})
     }));
+    // Clear error when user selects
     if (formErrors[name]) {
       setFormErrors(prev => {
         const newErrors = { ...prev };
@@ -93,22 +112,7 @@ export default function RegisterPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const passwordError = validatePassword(formData.password);
-
-    let currentYearError = "";
-    if (formData.schoolLevel === "HSC") {
-      if (!formData.currentYear) currentYearError = "Required";
-      else if (formData.currentYear !== "1" && formData.currentYear !== "2") currentYearError = "Must be 1 or 2";
-    }
-
-    if (passwordError || currentYearError) {
-      setFormErrors(prev => ({
-        ...prev,
-        password: passwordError,
-        currentYear: currentYearError
-      }));
-      return;
-    }
+    if (!validateForm()) return;
     // Proceed with registration
   };
 
@@ -268,9 +272,8 @@ export default function RegisterPage() {
 
                           setFormData(prev => ({ ...prev, currentYear: val }));
 
-                          if (val && val !== "1" && val !== "2") {
-                            setFormErrors(prev => ({ ...prev, currentYear: "Must be 1 or 2" }));
-                          } else {
+                          // Clear error when user types
+                          if (formErrors.currentYear) {
                             setFormErrors(prev => {
                               const newErrors = { ...prev };
                               delete newErrors.currentYear;
