@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SVGProps } from "react";
 
 export const LightModeIcon: React.FC<{ className?: string }> = ({
     className = "w-5 h-5",
@@ -67,5 +67,38 @@ export const QuoteIcon: React.FC<{ className?: string }> = ({ className = "w-8 h
     <svg className={className} viewBox="0 0 59 38" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M45.8674 37.1955C53.102 37.1955 58.9998 31.2388 58.9998 23.9255C58.9998 18.9517 56.3065 14.489 52.0404 12.2086C52.2566 9.88875 53.2199 4.95426 57.1715 3.873C58.1151 3.61743 58.7245 2.7131 58.6066 1.7498C58.4886 0.786491 57.7023 0.0394363 56.7193 0.0197754H56.4244C54.4978 0.0197754 43.9211 0.452282 37.0796 9.63318C32.6366 15.59 31.3195 22.0579 33.3444 27.7591C35.0351 33.4013 40.0679 37.1955 45.8674 37.1955Z" fill="currentColor" />
         <path d="M0.926245 27.7395C2.61695 33.3818 7.64973 37.176 13.4492 37.176C20.6839 37.176 26.5817 31.2192 26.5817 23.906C26.5817 18.9322 23.8883 14.4695 19.6223 12.189C19.8385 9.86922 20.8018 4.93473 24.7533 3.85347C25.697 3.5979 26.3064 2.69357 26.1885 1.73027C26.0705 0.76696 25.2841 0.0199051 24.3012 0.000244141H24.0063C22.0797 0.000244141 11.503 0.432751 4.66152 9.61365C0.218513 15.5704 -1.09867 22.0383 0.926245 27.7395Z" fill="currentColor" />
+    </svg>
+);
+
+export const EyeIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        {...props}
+    >
+        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z" />
+        <circle cx="12" cy="12" r="3" />
+    </svg>
+);
+
+export const EyeOffIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        {...props}
+    >
+        <path d="M3 3l18 18" />
+        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z" />
+        <circle cx="12" cy="12" r="3" />
     </svg>
 );

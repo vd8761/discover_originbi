@@ -17,9 +17,9 @@ const Header: React.FC<HeaderProps> = ({
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 w-full backdrop-blur-xl bg-white/70 dark:bg-brand-dark-primary/70 border-b border-brand-dark-primary/5 dark:border-white/5 transition-all duration-300">
-            <div className={`max-w-[1920px] mx-auto flex items-center justify-between ${horizontalPadding} py-3 lg:py-4`}>
+            <div className={`max-w-[1920px] mx-auto flex items-center justify-between ${horizontalPadding} py-4 sm:py-5 lg:py-4`}>
                 <div className="flex items-center gap-4 lg:gap-12">
-                    <Logo className="h-5 lg:h-6 w-auto" />
+                    <Logo className="h-6 sm:h-7 lg:h-6 w-auto" />
                     <div className="hidden xl:flex items-center gap-8">
                         <a href="#problem" className="font-sans font-medium text-[11px] 2xl:text-xs text-brand-text-light-primary dark:text-brand-text-primary hover:text-brand-green dark:hover:text-brand-green transition-colors uppercase tracking-wider">Problem</a>
                         <a href="#solution" className="font-sans font-medium text-[11px] 2xl:text-xs text-brand-text-light-primary dark:text-brand-text-primary hover:text-brand-green dark:hover:text-brand-green transition-colors uppercase tracking-wider">Solution</a>
@@ -53,7 +53,7 @@ const Header: React.FC<HeaderProps> = ({
                     )}
                     <div className="flex items-center gap-2 lg:gap-5">
                         <a href="https://mind.originbi.com/student/login" className="hidden lg:block font-sans font-medium text-[11px] 2xl:text-xs text-brand-text-light-primary dark:text-brand-text-primary hover:text-brand-green dark:hover:text-brand-green transition-colors uppercase tracking-wider mr-2">Login</a>
-                        <Button href="/register" size="sm" className="shadow-lg shadow-brand-green/20 text-[11px] px-5 py-2.5 min-w-[100px]">Register now</Button>
+                        <Button href="/register" size="sm" className="shadow-lg shadow-brand-green/20 text-[12px] sm:text-[13px] lg:text-[11px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px]">Register now</Button>
                     </div>
                 </div>
             </div>
