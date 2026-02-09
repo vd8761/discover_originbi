@@ -53,7 +53,7 @@ const Header: React.FC<HeaderProps> = ({
                     )}
                     <div className="flex items-center gap-4">
                         <a href="/login" className="hidden lg:block font-sans font-medium text-[11px] 2xl:text-xs text-brand-text-light-primary dark:text-brand-text-primary hover:text-brand-green dark:hover:text-brand-green transition-colors uppercase tracking-wider mr-2">Login</a>
-                        <Button className="px-6 py-2 2xl:px-8 2xl:py-3 text-[10px] 2xl:text-[11px] uppercase tracking-widest shadow-xl shadow-brand-green/20">Register now</Button>
+                        <Button size="md" className="shadow-xl shadow-brand-green/20">Register now</Button>
                     </div>
                 </div>
             </div>
