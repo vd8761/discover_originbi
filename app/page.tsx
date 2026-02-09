@@ -6,6 +6,7 @@ import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
 import WhyThisMatters from "@/components/sections/WhyThisMatters";
 import Testimonials from "@/components/sections/Testimonials";
+import CTASection from "@/components/sections/CTASection";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <Problem />
       <WhyThisMatters />
       <Testimonials />
+      <CTASection />
 
       <Footer />
     </div>

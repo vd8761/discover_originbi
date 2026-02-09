@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { CheckIcon } from '@/components/icons';
 
 const WhyThisMatters: React.FC = () => {
     return (
@@ -11,18 +12,20 @@ const WhyThisMatters: React.FC = () => {
                         <h2 className="text-[clamp(28px,3.4vw,54px)] font-sans font-semibold text-brand-dark-primary dark:text-white leading-tight mb-6 lg:mb-8 transition-colors duration-300">
                             Why This Matters
                         </h2>
-                        <ul className="space-y-7">
+                        <ul className="space-y-8">
                             <li className="flex items-start gap-4">
-                                <span className="mt-2 block h-6 w-6 rounded-full border-[3px] border-brand-green" />
-                                <p className="text-[clamp(18px,1.45vw,34px)] leading-[1.4] text-brand-dark-primary dark:text-brand-text-primary font-medium transition-colors duration-300">
-                                    Education is changing.
-                                    <br className="hidden sm:block" />
-                                    Students live on WhatsApp.
+                                <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-xl bg-brand-green/10 dark:bg-brand-green/20 flex items-center justify-center">
+                                    <CheckIcon className="w-5 h-5 text-brand-green" />
+                                </div>
+                                <p className="text-[clamp(18px,1.45vw,34px)] leading-[1.4] text-brand-dark-primary dark:text-brand-text-primary font-medium transition-colors duration-300 pt-0.5">
+                                    Identify your natural strengths.
                                 </p>
                             </li>
                             <li className="flex items-start gap-4">
-                                <span className="mt-2 block h-6 w-6 rounded-full border-[3px] border-brand-green" />
-                                <p className="text-[clamp(18px,1.45vw,34px)] leading-[1.4] text-brand-dark-primary dark:text-brand-text-primary font-medium transition-colors duration-300">
+                                <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-xl bg-brand-green/10 dark:bg-brand-green/20 flex items-center justify-center">
+                                    <CheckIcon className="w-5 h-5 text-brand-green" />
+                                </div>
+                                <p className="text-[clamp(18px,1.45vw,34px)] leading-[1.4] text-brand-dark-primary dark:text-brand-text-primary font-medium transition-colors duration-300 pt-0.5">
                                     This is not about marks. It is about
                                     <br className="hidden sm:block" />
                                     understanding who you are.
