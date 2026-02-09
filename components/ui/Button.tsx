@@ -1,20 +1,32 @@
 import React from 'react';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface BaseButtonProps {
     variant?: 'primary' | 'secondary' | 'outline';
     size?: 'sm' | 'md' | 'lg' | 'xl';
     fullWidth?: boolean;
+    className?: string;
+    children?: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({
-    children,
-    variant = 'primary',
-    size = 'md',
-    fullWidth = false,
-    className = '',
-    ...props
-}) => {
-    const baseStyles = "inline-flex items-center justify-center font-sans font-bold rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed leading-none uppercase tracking-[0.05em]";
+type ButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    href?: undefined;
+};
+
+type LinkProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    href: string;
+};
+
+const Button: React.FC<ButtonProps | LinkProps> = (props) => {
+    const {
+        children,
+        variant = 'primary',
+        size = 'md',
+        fullWidth = false,
+        className = '',
+        ...rest
+    } = props;
+
+    const baseStyles = "inline-flex items-center justify-center font-sans font-bold rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed leading-none tracking-[0.05em]";
 
     const variants = {
         primary: "bg-brand-green text-white hover:bg-brand-green/90 shadow-lg shadow-brand-green/20",
@@ -30,12 +42,20 @@ const Button: React.FC<ButtonProps> = ({
     };
 
     const widthStyle = fullWidth ? "w-full" : "";
+    const composedClassName = `${baseStyles} ${variants[variant]} ${sizes[size]} ${widthStyle} ${className}`;
 
+    if ('href' in props) {
+        const anchorProps = rest as React.AnchorHTMLAttributes<HTMLAnchorElement>;
+        return (
+            <a className={composedClassName} {...anchorProps}>
+                {children}
+            </a>
+        );
+    }
+
+    const buttonProps = rest as React.ButtonHTMLAttributes<HTMLButtonElement>;
     return (
-        <button
-            className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${widthStyle} ${className}`}
-            {...props}
-        >
+        <button className={composedClassName} {...buttonProps}>
             {children}
         </button>
     );
