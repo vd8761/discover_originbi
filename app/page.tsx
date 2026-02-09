@@ -4,10 +4,9 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
+import WhyThisMatters from "@/components/sections/WhyThisMatters";
 
 export default function Home() {
-  const horizontalPadding = "px-[clamp(24px,8.33vw,160px)]";
-
   return (
     <div className="relative w-full overflow-x-hidden flex flex-col min-h-screen bg-mesh transition-colors duration-500">
       {/* Background Glows Concept */}
@@ -16,10 +15,11 @@ export default function Home() {
         <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-500/10 rounded-full blur-[140px]" />
       </div>
 
-      <Header horizontalPadding={horizontalPadding} />
+      <Header />
 
       <Hero />
       <Problem />
+      <WhyThisMatters />
 
       <Footer />
     </div>

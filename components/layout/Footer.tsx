@@ -5,7 +5,7 @@ import Logo from "@/components/ui/Logo";
 import { LinkedInIcon, InstagramIcon, XIcon } from "@/components/icons";
 
 const Footer: React.FC = () => {
-    const horizontalPadding = "px-[clamp(24px,8.33vw,160px)]";
+    const horizontalPadding = "px-6 lg:px-[clamp(24px,8.33vw,160px)]";
 
     return (
         <footer className="relative z-10 w-full border-t border-brand-dark-primary/5 dark:border-white/5 bg-white dark:bg-brand-dark-primary transition-all duration-500">
