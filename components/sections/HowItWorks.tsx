@@ -55,12 +55,13 @@ const HowItWorks: React.FC = () => {
 
     return (
         <section
+            id="how-it-works"
             ref={containerRef}
             className="relative w-full bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500"
             style={{ height: `${steps.length * 100}vh` }} // Gives enough scroll room
         >
             {/* STICKY WRAPPER */}
-            <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center">
+            <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center py-10 lg:py-0">
                 <div className="max-w-[1920px] mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] w-full">
 
                     {/* Header */}

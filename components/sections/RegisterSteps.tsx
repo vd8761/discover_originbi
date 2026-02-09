@@ -19,7 +19,7 @@ const RegisterSteps: React.FC = () => {
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand-green to-transparent opacity-30 animate-pulse" />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-y-12 gap-x-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-y-12 gap-x-8">
                         {[
                             { title: "Fill the Registration Form", desc: "Name, Email, Age, Education, etc.", step: "1" },
                             { title: "Make Payment", desc: "via UPI, Card, or NetBanking", step: "2" },

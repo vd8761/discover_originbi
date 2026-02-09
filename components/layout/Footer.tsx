@@ -11,7 +11,9 @@ const Footer: React.FC = () => {
         <footer className="relative z-10 w-full border-t border-brand-dark-primary/5 dark:border-white/5 bg-white dark:bg-brand-dark-primary transition-all duration-500">
             <div className={`max-w-[1920px] mx-auto flex flex-col md:flex-row justify-between items-center ${horizontalPadding} py-14 gap-8`}>
                 <div className="flex flex-col items-center md:items-start gap-4 text-center md:text-left">
-                    <Logo className="h-5 2xl:h-6 w-auto mb-2" />
+                    <a href="/" className="hover:opacity-80 transition-opacity">
+                        <Logo className="h-5 2xl:h-6 w-auto mb-2" />
+                    </a>
                     <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 text-[11px] 2xl:text-xs font-medium">
                         <span className="text-brand-text-light-primary dark:text-brand-text-primary transition-colors duration-300">&copy; {new Date().getFullYear()} OriginBI mindworks</span>
                         <a href="#" className="text-brand-text-light-secondary dark:text-brand-text-secondary hover:text-brand-green transition-colors duration-300">Privacy Policy</a>

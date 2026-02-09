@@ -66,7 +66,6 @@ export default function RegisterPage() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Clear error when user types (match admin behavior)
     if (formErrors[name]) {
       setFormErrors(prev => {
         const newErrors = { ...prev };
@@ -82,7 +81,6 @@ export default function RegisterPage() {
       [name]: value,
       ...(name === 'schoolLevel' && value !== 'HSC' ? { stream: '', currentYear: '' } : {})
     }));
-    // Clear error when user selects
     if (formErrors[name]) {
       setFormErrors(prev => {
         const newErrors = { ...prev };
@@ -113,7 +111,6 @@ export default function RegisterPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
-    // Proceed with registration
   };
 
   return (
@@ -268,13 +265,13 @@ export default function RegisterPage() {
                         error={formErrors.currentYear}
                         onChange={(e) => {
                           const val = e.target.value.replace(/\D/g, "");
-                          if (val.length > 1) return; // Only allow 1 digit
+                          if (val.length > 1) return;
                           setFormData(prev => ({ ...prev, currentYear: val }));
 
                           if (val && val !== "1" && val !== "2") {
                             setFormErrors(prev => ({ ...prev, currentYear: "Must be 1 or 2" }));
                           } else {
-                            // Clear error when user types valid input
+
                             if (formErrors.currentYear) {
                               setFormErrors(prev => {
                                 const newErrors = { ...prev };
@@ -318,10 +315,10 @@ export default function RegisterPage() {
                   <img
                     src="/Slider.png"
                     alt="Student Dashboard"
-                    className="absolute inset-0 w-full h-full object-cover object-top select-none pointer-events-none transition-all duration-[3s] group-hover:scale-105"
+                    className="absolute inset-0 w-full h-full object-contain object-center select-none pointer-events-none transition-all duration-[3s] group-hover:scale-[1.02]"
                   />
-                  {/* Darker overlay to ensure card legibility */}
-                  <div className="absolute inset-0 bg-brand-dark-primary/10 dark:bg-brand-dark-primary/30" />
+                  {/* Bottom gradient to blend with the background */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA] via-transparent to-transparent dark:from-brand-dark-primary dark:via-transparent" />
                 </div>
               </div>
             </div>
