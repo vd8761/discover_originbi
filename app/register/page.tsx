@@ -9,6 +9,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 export default function RegisterPage() {
   const { theme } = useTheme();
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     gender: "male",
@@ -38,14 +39,13 @@ export default function RegisterPage() {
 
       <main className="relative z-10 w-full flex-1">
         {/* Top Section: Form & Visual */}
-        <div className="min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-center pt-32 pb-12">
+        <div className="min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-center pt-24 lg:pt-32 pb-12">
           <div className="max-w-[1920px] mx-auto px-4 lg:px-[clamp(24px,8.33vw,160px)] grid xl:grid-cols-[1.1fr_1fr] gap-12 lg:gap-20 items-stretch w-full">
 
             {/* Left Column: Form Section */}
             <div className="flex flex-col relative z-10 min-h-full">
               <div className="text-left w-full mb-8 lg:mb-10">
                 <p className="text-[11px] lg:text-[12px] tracking-[0.2em] text-brand-green font-bold mb-3 flex items-center gap-2">
-                  <span className="w-8 h-[1px] bg-brand-green"></span>
                   Student Registration
                 </p>
                 <h1 className="font-sans font-semibold text-black dark:text-white tracking-tight leading-[1.1] mb-3 text-[clamp(24px,2.5vw,40px)]">
@@ -59,8 +59,8 @@ export default function RegisterPage() {
               <form className="flex flex-col gap-5 lg:gap-6 max-w-[580px]">
                 <div className="grid sm:grid-cols-[1.2fr_1fr] gap-5">
                   <div className="space-y-2">
-                    <label className="block text-[12px] font-bold tracking-widest text-black/60 dark:text-white/60 ml-1">
-                      Full Name *
+                    <label className="block text-[12px] font-bold tracking-widest text-black dark:text-white ml-1">
+                      Full Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -74,8 +74,8 @@ export default function RegisterPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-[12px] font-bold tracking-widest text-black/60 dark:text-white/60 ml-1">
-                      Gender *
+                    <label className="block text-[12px] font-bold tracking-widest text-black dark:text-white ml-1">
+                      Gender <span className="text-red-500">*</span>
                     </label>
                     <div className="relative w-full bg-white dark:bg-brand-dark-tertiary rounded-full p-1.5 border border-brand-light-tertiary dark:border-white/5 h-[clamp(54px,3.5vw,62px)] flex items-center shadow-sm">
                       {/* Sliding Indicator */}
@@ -102,8 +102,8 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-[12px] font-bold tracking-widest text-black/60 dark:text-white/60 ml-1">
-                    Email Address *
+                  <label className="block text-[12px] font-bold tracking-widest text-black dark:text-white ml-1">
+                    Email Address <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
@@ -118,8 +118,8 @@ export default function RegisterPage() {
 
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div className="space-y-2">
-                    <label className="block text-[12px] font-bold tracking-widest text-black/60 dark:text-white/60 ml-1">
-                      Mobile Number *
+                    <label className="block text-[12px] font-bold tracking-widest text-black dark:text-white ml-1">
+                      Mobile Number <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="tel"
@@ -132,24 +132,42 @@ export default function RegisterPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="block text-[12px] font-bold tracking-widest text-black/60 dark:text-white/60 ml-1">
-                      Password *
+                    <label className="block text-[12px] font-bold tracking-widest text-black dark:text-white ml-1">
+                      Password <span className="text-red-500">*</span>
                     </label>
-                    <input
-                      type="password"
-                      name="password"
-                      required
-                      placeholder="Minimum 8 characters"
-                      value={formData.password}
-                      onChange={handleChange}
-                      className="bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 text-black dark:text-white placeholder:text-black/30 dark:placeholder:text-white/30 font-sans text-[clamp(14px,0.83vw,16px)] rounded-full block w-full px-7 py-[clamp(14px,1vw,18px)] focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-all shadow-sm"
-                    />
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        required
+                        placeholder="Minimum 8 characters"
+                        value={formData.password}
+                        onChange={handleChange}
+                        className="bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 text-black dark:text-white placeholder:text-black/30 dark:placeholder:text-white/30 font-sans text-[clamp(14px,0.83vw,16px)] rounded-full block w-full px-7 py-[clamp(14px,1vw,18px)] pr-12 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-all shadow-sm"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-6 top-1/2 -translate-y-1/2 text-black/30 dark:text-white/30 hover:text-brand-green transition-colors"
+                      >
+                        {showPassword ? (
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          </svg>
+                        ) : (
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" />
+                          </svg>
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-[12px] font-bold tracking-widest text-black/60 dark:text-white/60 ml-1">
-                    School Level *
+                  <label className="block text-[12px] font-bold tracking-widest text-black dark:text-white ml-1">
+                    School Level <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
                     <select
