@@ -7,26 +7,110 @@ import Footer from "@/components/layout/Footer";
 import Button from "@/components/ui/Button";
 import { useTheme } from "@/contexts/ThemeContext";
 import { EyeIcon, EyeOffIcon } from "@/components/icons";
+import Input from "@/components/ui/Input";
+import CustomSelect from "@/components/ui/CustomSelect";
+import MobileInput from "@/components/ui/MobileInput";
+import RegisterSteps from "@/components/sections/RegisterSteps";
 
 export default function RegisterPage() {
   const { theme } = useTheme();
   const [showPassword, setShowPassword] = useState(false);
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState({
     name: "",
-    gender: "male",
+    gender: "MALE",
     email: "",
+    countryCode: "+91",
     mobile: "",
     password: "",
     schoolLevel: "",
+    currentYear: "",
+    groupName: "",
+    stream: "",
   });
+
+  const validatePassword = (pwd: string) => {
+    if (!pwd) return "Password is required";
+    if (pwd.length < 8) return "Minimum 8 characters";
+    if (!/[A-Z]/.test(pwd)) return "Must contain at least 1 uppercase letter";
+    if (!/[a-z]/.test(pwd)) return "Must contain at least 1 lowercase letter";
+    if (!/[0-9]/.test(pwd)) return "Must contain at least 1 number";
+    if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(pwd)) return "Must contain at least 1 special character";
+    return "";
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // Real-time validation for password
+    if (name === "password") {
+      const error = validatePassword(value);
+      setFormErrors(prev => ({ ...prev, password: error }));
+    } else {
+      if (formErrors[name]) {
+        setFormErrors(prev => {
+          const newErrors = { ...prev };
+          delete newErrors[name];
+          return newErrors;
+        });
+      }
+    }
   };
 
-  const genderOptions = ["male", "female", "other"];
-  const activeIndex = genderOptions.indexOf(formData.gender);
+  const handleSelectChange = (name: string, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+      ...(name === 'schoolLevel' && value !== 'HSC' ? { stream: '', currentYear: '' } : {})
+    }));
+    if (formErrors[name]) {
+      setFormErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
+  };
+
+  const genderOptions = [
+    { value: "MALE", label: "Male" },
+    { value: "FEMALE", label: "Female" },
+    { value: "OTHER", label: "Other" }
+  ];
+  const activeIndex = genderOptions.findIndex(opt => opt.value === formData.gender);
+
+  const schoolLevelOptions = [
+    { value: "SSLC", label: "SSLC" },
+    { value: "HSC", label: "HSC" },
+  ];
+
+  const streamOptions = [
+    { value: "SCIENCE", label: "Science" },
+    { value: "COMMERCE", label: "Commerce" },
+    { value: "HUMANITIES", label: "Humanities" },
+  ];
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const passwordError = validatePassword(formData.password);
+
+    let currentYearError = "";
+    if (formData.schoolLevel === "HSC") {
+      if (!formData.currentYear) currentYearError = "Required";
+      else if (formData.currentYear !== "1" && formData.currentYear !== "2") currentYearError = "Must be 1 or 2";
+    }
+
+    if (passwordError || currentYearError) {
+      setFormErrors(prev => ({
+        ...prev,
+        password: passwordError,
+        currentYear: currentYearError
+      }));
+      return;
+    }
+    // Proceed with registration
+  };
 
   return (
     <div className="relative w-full min-h-screen flex flex-col bg-[#FAFAFA] dark:bg-brand-dark-primary transition-colors duration-500 font-sans">
@@ -57,25 +141,19 @@ export default function RegisterPage() {
                 </p>
               </div>
 
-              <form className="flex flex-col gap-5 lg:gap-6 max-w-[580px]">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5 lg:gap-6 max-w-[580px]">
                 <div className="grid sm:grid-cols-[1.2fr_1fr] gap-5">
-                  <div className="space-y-2">
-                    <label className="block text-[12px] font-bold tracking-widest text-black dark:text-white ml-1">
-                      Full Name <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      placeholder="E.g. John Doe"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 text-brand-dark-primary dark:text-brand-text-primary placeholder:text-brand-dark-primary/30 dark:placeholder:text-brand-text-secondary/30 font-sans text-[clamp(14px,0.83vw,16px)] rounded-full block w-full px-7 py-[clamp(14px,1vw,18px)] focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-all shadow-sm"
-                    />
-                  </div>
+                  <Input
+                    label="Full Name"
+                    name="name"
+                    required
+                    placeholder="E.g. John Doe"
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
 
                   <div className="space-y-2">
-                    <label className="block text-[12px] font-bold tracking-widest text-black dark:text-white ml-1">
+                    <label className="block text-[12px] font-bold tracking-[0.05em] text-black dark:text-white ml-1">
                       Gender <span className="text-red-500">*</span>
                     </label>
                     <div className="relative w-full bg-white dark:bg-brand-dark-tertiary rounded-full p-1.5 border border-brand-light-tertiary dark:border-white/5 h-[clamp(54px,3.5vw,62px)] flex items-center shadow-sm">
@@ -90,66 +168,52 @@ export default function RegisterPage() {
 
                       {genderOptions.map((g) => (
                         <button
-                          key={g}
+                          key={g.value}
                           type="button"
-                          onClick={() => setFormData((prev) => ({ ...prev, gender: g }))}
-                          className={`relative z-10 flex-1 text-[11px] tracking-widest transition-colors duration-300 font-bold ${formData.gender === g ? "text-white" : "text-brand-text-light-secondary dark:text-brand-text-secondary hover:text-black dark:hover:text-white"}`}
+                          onClick={() => setFormData((prev) => ({ ...prev, gender: g.value }))}
+                          className={`relative z-10 flex-1 text-[11px] tracking-widest transition-colors duration-300 font-bold uppercase ${formData.gender === g.value ? "text-white" : "text-brand-text-light-secondary dark:text-brand-text-secondary hover:text-black dark:hover:text-white"}`}
                         >
-                          {g}
+                          {g.label}
                         </button>
                       ))}
                     </div>
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="block text-[12px] font-bold tracking-widest text-black dark:text-white ml-1">
-                    Email Address <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="name@example.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 text-black dark:text-white placeholder:text-black/30 dark:placeholder:text-white/30 font-sans text-[clamp(14px,0.83vw,16px)] rounded-full block w-full px-7 py-[clamp(14px,1vw,18px)] focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-all shadow-sm"
-                  />
-                </div>
+                <Input
+                  type="email"
+                  label="Email Address"
+                  name="email"
+                  required
+                  placeholder="name@example.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
 
                 <div className="grid sm:grid-cols-2 gap-5">
-                  <div className="space-y-2">
-                    <label className="block text-[12px] font-bold tracking-widest text-black dark:text-white ml-1">
-                      Mobile Number <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="tel"
-                      name="mobile"
-                      required
-                      placeholder="+91 98765-43210"
-                      value={formData.mobile}
-                      onChange={handleChange}
-                      className="bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 text-black dark:text-white placeholder:text-black/30 dark:placeholder:text-white/30 font-sans text-[clamp(14px,0.83vw,16px)] rounded-full block w-full px-7 py-[clamp(14px,1vw,18px)] focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-all shadow-sm"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="block text-[12px] font-bold tracking-widest text-black dark:text-white ml-1">
-                      Password <span className="text-red-500">*</span>
-                    </label>
-                    <div className="relative">
-                      <input
-                        type={showPassword ? "text" : "password"}
-                        name="password"
-                        required
-                        placeholder="Minimum 8 characters"
-                        value={formData.password}
-                        onChange={handleChange}
-                        className="bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 text-black dark:text-white placeholder:text-black/30 dark:placeholder:text-white/30 font-sans text-[clamp(14px,0.83vw,16px)] rounded-full block w-full px-7 py-[clamp(14px,1vw,18px)] pr-12 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-all shadow-sm"
-                      />
+                  <MobileInput
+                    label="Mobile Number"
+                    required
+                    countryCode={formData.countryCode}
+                    phoneNumber={formData.mobile}
+                    onCountryChange={(code) => setFormData(prev => ({ ...prev, countryCode: code }))}
+                    onPhoneChange={(num) => setFormData(prev => ({ ...prev, mobile: num }))}
+                    error={formErrors.mobile}
+                  />
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    label="Password"
+                    name="password"
+                    required
+                    placeholder="Minimum 8 characters"
+                    value={formData.password}
+                    onChange={handleChange}
+                    error={formErrors.password}
+                    suffix={
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-6 top-1/2 -translate-y-1/2 cursor-pointer flex items-center transition-colors"
+                        className="cursor-pointer flex items-center transition-colors"
                       >
                         {showPassword ? (
                           <EyeIcon className="h-5 w-5 text-brand-green" />
@@ -157,32 +221,67 @@ export default function RegisterPage() {
                           <EyeOffIcon className="h-5 w-5 text-brand-green" />
                         )}
                       </button>
-                    </div>
-                  </div>
+                    }
+                  />
                 </div>
 
-                <div className="space-y-2">
-                  <label className="block text-[12px] font-bold tracking-widest text-black dark:text-white ml-1">
-                    School Level <span className="text-red-500">*</span>
-                  </label>
-                  <div className="relative">
-                    <select
-                      name="schoolLevel"
-                      required
-                      value={formData.schoolLevel}
-                      onChange={handleChange}
-                      className="appearance-none bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 text-black dark:text-white font-sans text-[clamp(14px,0.83vw,16px)] rounded-full block w-full px-7 py-[clamp(14px,1vw,18px)] pr-12 focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-all shadow-sm"
-                    >
-                      <option value="" disabled>Select your current grade</option>
-                      <option value="sslc">SSLC (Class 10)</option>
-                      <option value="hsc">HSC (Class 12)</option>
-                    </select>
-                    <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none opacity-30">
-                      <svg className="w-5 h-5 text-brand-dark-primary dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </div>
-                  </div>
+                <Input
+                  label="Group Name"
+                  name="groupName"
+                  placeholder="Enter the Group Name"
+                  value={formData.groupName}
+                  onChange={handleChange}
+                />
+
+                <div className={`grid gap-5 ${formData.schoolLevel === 'HSC' ? 'sm:grid-cols-3' : 'sm:grid-cols-1'}`}>
+                  <CustomSelect
+                    label="School Level"
+                    required
+                    options={schoolLevelOptions}
+                    value={formData.schoolLevel}
+                    onChange={(val) => handleSelectChange("schoolLevel", val)}
+                    placeholder="Select Grade"
+                  />
+
+                  {formData.schoolLevel === 'HSC' && (
+                    <>
+                      <CustomSelect
+                        label="Stream"
+                        required
+                        options={streamOptions}
+                        value={formData.stream}
+                        onChange={(val) => handleSelectChange("stream", val)}
+                        placeholder="Select Stream"
+                        className="animate-fade-in"
+                      />
+                      <Input
+                        type="text"
+                        label="Current Level"
+                        name="currentYear"
+                        required
+                        placeholder="1 or 2"
+                        value={formData.currentYear}
+                        error={formErrors.currentYear}
+                        onChange={(e) => {
+                          const val = e.target.value.replace(/\D/g, "");
+                          if (val.length > 1) return; // Only allow 1 digit
+
+                          setFormData(prev => ({ ...prev, currentYear: val }));
+
+                          if (val && val !== "1" && val !== "2") {
+                            setFormErrors(prev => ({ ...prev, currentYear: "Must be 1 or 2" }));
+                          } else {
+                            setFormErrors(prev => {
+                              const newErrors = { ...prev };
+                              delete newErrors.currentYear;
+                              return newErrors;
+                            });
+                          }
+                        }}
+                        className="animate-fade-in"
+                      />
+                    </>
+                  )}
                 </div>
 
                 <div className="pt-4 flex flex-col gap-4">
@@ -223,54 +322,7 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        {/* How It Works Section */}
-        <section className="w-full bg-white dark:bg-brand-dark-secondary transition-colors duration-500 py-24 lg:py-32 border-y border-brand-dark-primary/5 dark:border-white/5">
-          <div className="max-w-[1920px] mx-auto px-4 lg:px-[clamp(24px,8.33vw,160px)]">
-            <div className="text-center max-w-[800px] mx-auto mb-20 lg:mb-24">
-              <h2 className="text-[clamp(28px,3vw,48px)] font-bold text-brand-dark-primary dark:text-white mb-6">How it works</h2>
-              <p className="text-[clamp(15px,1vw,18px)] text-brand-text-light-secondary dark:text-brand-text-secondary leading-relaxed">
-                Your journey to career clarity is simple, digital, and designed for results. Follow these six steps to unlock your potential.
-              </p>
-            </div>
-
-            <div className="relative">
-              {/* Connector Line (Desktop) */}
-              <div className="hidden lg:block absolute top-[40px] left-[5%] right-[5%] h-[2px] bg-brand-green/10 dark:bg-white/5 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand-green to-transparent opacity-30 animate-pulse" />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-y-12 gap-x-8">
-                {[
-                  { title: "Fill the Registration Form", desc: "Name, Email, Age, Education, etc.", step: "1" },
-                  { title: "Make Payment", desc: "via UPI, Card, or NetBanking", step: "2" },
-                  { title: "Receive Confirmation Email", desc: "with WhatsApp number & instructions", step: "3" },
-                  { title: "Login and Start Assessment", desc: "Access your dashboard to begin the test", step: "4" },
-                  { title: "Finish Test & Receive Report", desc: "Instant digital results", step: "5" },
-                  { title: "Choose the right path in your career", desc: "Get expert guidance and clarity", step: "6" },
-                ].map((item, index) => (
-                  <div key={index} className="relative group flex flex-col items-center lg:items-center text-center">
-                    {/* Circle Indicator */}
-                    <div className="relative z-10 w-20 h-20 rounded-full bg-brand-light-primary dark:bg-brand-dark-tertiary flex items-center justify-center border-2 border-brand-green mb-8 transition-all duration-500 group-hover:scale-110 group-hover:bg-brand-green group-hover:shadow-[0_0_30px_rgba(30,211,106,0.3)]">
-                      <span className="text-2xl font-bold text-brand-green group-hover:text-white transition-colors duration-500">{item.step}</span>
-
-                      {/* Mobile Connector (Below circle) */}
-                      <div className="lg:hidden absolute top-full left-1/2 w-[2px] h-12 bg-brand-green/20 -translate-x-1/2 last:hidden" />
-                    </div>
-
-                    <div className="space-y-3 px-2">
-                      <h4 className="text-[15px] lg:text-[16px] font-bold text-black dark:text-white leading-tight tracking-tight group-hover:text-brand-green transition-colors duration-300">
-                        {item.title}
-                      </h4>
-                      <p className="text-[13px] text-brand-text-light-secondary dark:text-brand-text-secondary leading-normal opacity-80">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        <RegisterSteps />
       </main>
 
       <Footer />

@@ -3,26 +3,33 @@ import React from 'react';
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     label?: string;
     error?: string;
+    suffix?: React.ReactNode;
 }
 
-const Input: React.FC<InputProps> = ({ label, error, className = '', ...props }) => {
+const Input: React.FC<InputProps> = ({ label, error, suffix, className = '', ...props }) => {
     const isInvalid = !!error;
 
     return (
-        <div className="w-full">
+        <div className="w-full space-y-2">
             {label && (
-                <label className="block font-sans text-[clamp(13px,0.9vw,16px)] font-semibold text-brand-text-light-secondary dark:text-white mb-2 ml-1">
-                    {label}
+                <label className="block text-[12px] font-bold tracking-[0.05em] text-black dark:text-white ml-1">
+                    {label} {props.required && <span className="text-red-500">*</span>}
                 </label>
             )}
-            <input
-                className={`bg-brand-light-secondary dark:bg-brand-dark-tertiary border text-brand-text-light-primary dark:text-brand-text-primary placeholder:text-brand-text-light-secondary dark:placeholder:text-brand-text-secondary font-sans text-[clamp(14px,0.83vw,16px)] font-normal rounded-full block w-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-green/20 ${isInvalid
-                        ? "border-red-500 focus:border-red-500"
-                        : "border-brand-light-tertiary dark:border-brand-dark-tertiary focus:border-brand-green"
-                    } ${className}`}
-                style={{ padding: 'clamp(12px,1vw,18px)' }}
-                {...props}
-            />
+            <div className="relative">
+                <input
+                    className={`bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 text-brand-dark-primary dark:text-brand-text-primary placeholder:text-brand-dark-primary/30 dark:placeholder:text-brand-text-secondary/30 font-sans text-[clamp(14px,0.83vw,16px)] rounded-full block w-full px-7 py-[clamp(14px,1vw,18px)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-green/20 ${suffix ? 'pr-14' : ''} ${isInvalid
+                        ? "border-red-500 focus:border-red-500 shadow-sm shadow-red-500/10"
+                        : "focus:border-brand-green shadow-sm"
+                        } ${className}`}
+                    {...props}
+                />
+                {suffix && (
+                    <div className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center">
+                        {suffix}
+                    </div>
+                )}
+            </div>
             {error && (
                 <p className="mt-1.5 ml-1 text-xs font-medium text-red-500 animate-fade-in flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
