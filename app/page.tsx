@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
 import WhyThisMatters from "@/components/sections/WhyThisMatters";
+import Testimonials from "@/components/sections/Testimonials";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Hero />
       <Problem />
       <WhyThisMatters />
+      <Testimonials />
 
       <Footer />
     </div>
