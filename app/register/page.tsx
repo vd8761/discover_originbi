@@ -269,16 +269,19 @@ export default function RegisterPage() {
                         onChange={(e) => {
                           const val = e.target.value.replace(/\D/g, "");
                           if (val.length > 1) return; // Only allow 1 digit
-
                           setFormData(prev => ({ ...prev, currentYear: val }));
 
-                          // Clear error when user types
-                          if (formErrors.currentYear) {
-                            setFormErrors(prev => {
-                              const newErrors = { ...prev };
-                              delete newErrors.currentYear;
-                              return newErrors;
-                            });
+                          if (val && val !== "1" && val !== "2") {
+                            setFormErrors(prev => ({ ...prev, currentYear: "Must be 1 or 2" }));
+                          } else {
+                            // Clear error when user types valid input
+                            if (formErrors.currentYear) {
+                              setFormErrors(prev => {
+                                const newErrors = { ...prev };
+                                delete newErrors.currentYear;
+                                return newErrors;
+                              });
+                            }
                           }
                         }}
                         className="animate-fade-in"

@@ -156,15 +156,15 @@ const MobileInput: React.FC<MobileInputProps> = ({
                 </div>
 
                 {/* Phone Input */}
-                <div className="relative flex-1 h-full">
+                <div className="relative flex-1 h-full min-w-0">
                     <input
                         type="text"
                         value={phoneNumber}
                         onChange={handlePhoneInput}
                         placeholder={"0".repeat(maxLen)}
-                        className={`w-full h-full bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 rounded-full pl-7 pr-20 text-[clamp(14px,0.83vw,16px)] text-brand-dark-primary dark:text-brand-text-primary placeholder:text-brand-dark-primary/30 dark:placeholder:text-brand-text-secondary/30 focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20 transition-all shadow-sm ${error ? "border-red-500/50" : ""}`}
+                        className={`w-full h-full bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 rounded-full pl-7 pr-14 text-[clamp(14px,0.83vw,16px)] text-brand-dark-primary dark:text-brand-text-primary placeholder:text-brand-dark-primary/30 dark:placeholder:text-brand-text-secondary/30 focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20 transition-all shadow-sm ${error ? "border-red-500/50" : ""}`}
                     />
-                    <div className="absolute right-6 top-1/2 -translate-y-1/2 text-[10px] text-brand-dark-primary/30 dark:text-brand-text-secondary/30 pointer-events-none font-mono">
+                    <div className="absolute right-5 top-1/2 -translate-y-1/2 text-[10px] text-brand-dark-primary/30 dark:text-brand-text-secondary/30 pointer-events-none font-mono">
                         {phoneNumber.length}/{maxLen}
                     </div>
                 </div>
