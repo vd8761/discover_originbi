@@ -1,99 +1,43 @@
 "use client";
 
-import React from "react";
+import React from 'react';
 import { QuoteIcon } from "@/components/icons";
-
-type Testimonial = {
-    name: string;
-    text: string;
-};
-
-const rowOne: Testimonial[] = [
-    {
-        name: "Sangeetha R",
-        text: "The report helped me understand my natural strengths clearly. It gave me confidence to choose a direction that fits me instead of following pressure.",
-    },
-    {
-        name: "Srikrishna R",
-        text: "I thought being detail-focused was a weakness, but now I know it is one of my biggest strengths in projects and team settings.",
-    },
-    {
-        name: "Mahalakshmi M",
-        text: "The session gave me real clarity. I now have a path I can explain to my family and move forward with confidence.",
-    },
-    {
-        name: "Ananya P",
-        text: "This assessment made career planning feel practical. I can now connect my interests with options that make sense for my future.",
-    },
-];
-
-const rowTwo: Testimonial[] = [
-    {
-        name: "Dilip Kumar S",
-        text: "I could finally see where my personality and strengths align. It helped me make better choices for college and internships.",
-    },
-    {
-        name: "Manoj",
-        text: "I used to stay quiet in groups. After understanding my profile, I started contributing more and I feel more involved in team work.",
-    },
-    {
-        name: "Dheeraj A P",
-        text: "The clarity from this process is useful for both home and school decisions. I now have a focused plan, not confusion.",
-    },
-    {
-        name: "Pavithra N",
-        text: "As a parent, this gave us a shared language to support our child without forcing a path based only on marks.",
-    },
-];
-
-const TestimonialCard: React.FC<Testimonial> = ({ name, text }) => (
-    <article className="w-[260px] sm:w-[280px] lg:w-[360px] shrink-0 rounded-2xl border border-brand-light-tertiary dark:border-white/10 bg-brand-light-primary dark:bg-brand-dark-secondary/90 overflow-hidden transition-colors duration-300">
-        <div className="px-4 sm:px-5 lg:px-6 py-5 lg:py-6 min-h-[180px] sm:min-h-[200px] lg:min-h-[220px]">
-            <QuoteIcon className="w-7 sm:w-8 h-auto text-brand-green mb-3 sm:mb-4" />
-            <p className="text-[13px] sm:text-sm lg:text-[15px] leading-relaxed text-brand-text-light-primary dark:text-brand-text-primary">
-                {text}
-            </p>
-        </div>
-        <div className="border-t border-brand-light-tertiary dark:border-white/10 px-4 sm:px-5 lg:px-6 py-3 sm:py-4 text-[13px] sm:text-sm lg:text-base font-semibold text-brand-dark-primary dark:text-white bg-brand-light-secondary/70 dark:bg-brand-dark-primary/40">
-            {name}
-        </div>
-    </article>
-);
-
-const TestimonialRow: React.FC<{ items: Testimonial[]; direction: "left" | "right" }> = ({ items, direction }) => {
-    const loopItems = [...items, ...items];
-    const motionClass = direction === "right" ? "testimonial-track-right" : "testimonial-track-left";
-
-    return (
-        <div className="testimonial-row relative overflow-hidden">
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 sm:w-8 lg:w-14 bg-gradient-to-r from-brand-light-secondary/90 to-transparent dark:from-brand-dark-primary/90 backdrop-blur-[1px]" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-6 sm:w-8 lg:w-14 bg-gradient-to-l from-brand-light-secondary/90 to-transparent dark:from-brand-dark-primary/90 backdrop-blur-[1px]" />
-            <div className={`testimonial-track ${motionClass} flex w-max gap-3 sm:gap-4 lg:gap-6 py-2 px-2`}>
-                {loopItems.map((item, index) => (
-                    <TestimonialCard key={`${item.name}-${index}`} name={item.name} text={item.text} />
-                ))}
-            </div>
-        </div>
-    );
-};
 
 const Testimonials: React.FC = () => {
     return (
-        <section id="testimonials" className="relative z-10 w-full py-12 sm:py-16 lg:py-28">
-            <div className="max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]">
-                <div className="[border-radius:1.5rem_0_1.5rem_0] sm:[border-radius:2rem_0_2rem_0] lg:[border-radius:2.8rem_0_2.8rem_0] border border-brand-light-tertiary dark:border-white/10 bg-brand-light-secondary/90 dark:bg-brand-dark-primary/85 p-4 sm:p-6 lg:p-10 xl:p-12 transition-colors duration-300">
-                    <div className="text-center mb-6 sm:mb-8 lg:mb-10">
-                        <p className="text-xs lg:text-sm font-bold tracking-[0.2em] uppercase text-brand-green mb-2 sm:mb-3">
-                            Testimonials
-                        </p>
-                        <h2 className="text-[clamp(22px,5vw,52px)] sm:text-[clamp(28px,3.2vw,52px)] font-bold leading-[1.15] text-brand-dark-primary dark:text-white">
-                            Words of trust from students<span className="hidden sm:inline"> </span><br className="sm:hidden" />and families
-                        </h2>
-                    </div>
+        <section className="relative py-32 flex items-center justify-center bg-gray-900 overflow-hidden">
+            {/* Background Image with Parallax-like feel */}
+            <div className="absolute inset-0 z-0">
+                <img
+                    src="/images/problem2.png"
+                    alt="Background"
+                    className="w-full h-full object-cover opacity-50 scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-gray-900/60" />
+            </div>
 
-                    <div className="space-y-4 sm:space-y-5 lg:space-y-6">
-                        <TestimonialRow items={rowOne} direction="right" />
-                        <TestimonialRow items={rowTwo} direction="left" />
+            <div className="relative z-10 max-w-[1440px] mx-auto px-6 w-full">
+                <div className="max-w-5xl mx-auto">
+                    {/* Glass Card Container */}
+                    <div className="relative backdrop-blur-md bg-white/5 border border-white/10 rounded-[3rem] p-12 md:p-20 text-center shadow-2xl overflow-hidden">
+
+                        {/* Decorative Quote Mark Background */}
+                        <div className="absolute top-10 left-10 text-white/5 pointer-events-none select-none">
+                            <QuoteIcon className="w-32 h-32" />
+                        </div>
+
+                        <div className="relative z-10 space-y-10">
+                            <div className="w-20 h-20 mx-auto bg-brand-green/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-brand-green/30 text-brand-green mb-6">
+                                <QuoteIcon className="w-8 h-8" />
+                            </div>
+
+                            <h2 className="text-3xl md:text-5xl font-sans font-light leading-snug text-white tracking-wide">
+                                "We consider the Origin BI personal profile as an extension to our training programs in personal growth and development for our students."
+                            </h2>
+
+
+                        </div>
+
                     </div>
                 </div>
             </div>

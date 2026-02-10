@@ -13,19 +13,19 @@ const WhyThisMatters: React.FC = () => {
                             Why This Matters
                         </h2>
                         <ul className="space-y-8">
-                            <li className="flex items-start gap-4">
-                                <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-xl bg-brand-green/10 dark:bg-brand-green/20 flex items-center justify-center">
+                            <li className="flex items-start gap-4 group cursor-default">
+                                <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-xl bg-brand-green/10 dark:bg-brand-green/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <CheckIcon className="w-5 h-5 text-brand-green" />
                                 </div>
-                                <p className="text-[clamp(18px,1.45vw,34px)] leading-[1.4] text-brand-dark-primary dark:text-brand-text-primary font-medium transition-colors duration-300 pt-0.5">
+                                <p className="text-[clamp(18px,1.45vw,34px)] leading-[1.4] text-brand-dark-primary dark:text-brand-text-primary font-medium transition-colors duration-300 pt-0.5 group-hover:text-brand-green dark:group-hover:text-brand-green/90">
                                     Identify your natural strengths.
                                 </p>
                             </li>
-                            <li className="flex items-start gap-4">
-                                <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-xl bg-brand-green/10 dark:bg-brand-green/20 flex items-center justify-center">
+                            <li className="flex items-start gap-4 group cursor-default">
+                                <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-xl bg-brand-green/10 dark:bg-brand-green/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <CheckIcon className="w-5 h-5 text-brand-green" />
                                 </div>
-                                <p className="text-[clamp(18px,1.45vw,34px)] leading-[1.4] text-brand-dark-primary dark:text-brand-text-primary font-medium transition-colors duration-300 pt-0.5">
+                                <p className="text-[clamp(18px,1.45vw,34px)] leading-[1.4] text-brand-dark-primary dark:text-brand-text-primary font-medium transition-colors duration-300 pt-0.5 group-hover:text-brand-green dark:group-hover:text-brand-green/90">
                                     This is not about marks. It is about
                                     <br className="hidden sm:block" />
                                     understanding who you are.
@@ -34,7 +34,7 @@ const WhyThisMatters: React.FC = () => {
                         </ul>
                     </div>
 
-                    <div className="relative [border-radius:2.3rem_0_2.3rem_0] bg-brand-green px-8 py-10 lg:px-14 lg:py-14 text-center shadow-[0_18px_48px_-22px_rgba(30,211,106,0.7)]">
+                    <div className="relative [border-radius:2.3rem_0_2.3rem_0] bg-brand-green px-8 py-10 lg:px-14 lg:py-14 text-center shadow-[0_18px_48px_-22px_rgba(30,211,106,0.7)] transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_-20px_rgba(30,211,106,0.9)]">
                         <img
                             src="/quote-symbol.svg"
                             alt=""

@@ -3,51 +3,48 @@
 import React from "react";
 
 const RegisterSteps: React.FC = () => {
+    const steps = [
+        { title: "Fill the Registration Form", desc: "Name, Email, Age, Education, etc." },
+        { title: "Make Payment", desc: "via UPI, Card, or NetBanking" },
+        { title: "Receive Confirmation Email", desc: "with WhatsApp number & instructions" },
+        { title: "Login and Start Assessment", desc: "Access your dashboard to begin the test" },
+        { title: "Finish Test & Receive Report", desc: "Instant digital results" },
+        { title: "Choose the right path in your career", desc: "Get expert guidance and clarity" },
+    ];
+
     return (
-        <section className="w-full bg-white dark:bg-brand-dark-secondary transition-colors duration-500 py-24 lg:py-32 border-y border-brand-dark-primary/5 dark:border-white/5">
-            <div className="max-w-[1920px] mx-auto px-4 lg:px-[clamp(24px,8.33vw,160px)]">
-                <div className="text-center max-w-[800px] mx-auto mb-20 lg:mb-24">
-                    <h2 className="text-[clamp(28px,3vw,48px)] font-bold text-brand-dark-primary dark:text-white mb-6">How it works</h2>
-                    <p className="text-[clamp(15px,1vw,18px)] text-brand-text-light-secondary dark:text-brand-text-secondary leading-relaxed">
-                        Your journey to career clarity is simple, digital, and designed for results. Follow these six steps to unlock your potential.
-                    </p>
-                </div>
+        <section className="py-20 bg-white dark:bg-brand-dark-primary relative overflow-hidden">
+            {/* Background decorative elements */}
+            <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+                <div className="absolute -top-24 -left-24 w-96 h-96 bg-brand-green/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+            </div>
 
-                <div className="relative">
-                    {/* Connector Line (Desktop) */}
-                    <div className="hidden lg:block absolute top-[40px] left-[5%] right-[5%] h-[2px] bg-brand-green/10 dark:bg-white/5 overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand-green to-transparent opacity-30 animate-pulse" />
-                    </div>
+            <div className="max-w-[1440px] mx-auto px-6 relative z-10 text-center">
+                <h2 className="text-3xl lg:text-4xl font-sans font-bold text-brand-dark-primary dark:text-white mb-4">
+                    How it works
+                </h2>
+                <p className="text-gray-500 max-w-2xl mx-auto mb-16 text-lg font-light">
+                    Your journey to career clarity is simple, digital, and designed for results. Follow these six steps to unlock your potential.
+                </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-y-12 gap-x-8">
-                        {[
-                            { title: "Fill the Registration Form", desc: "Name, Email, Age, Education, etc.", step: "1" },
-                            { title: "Make Payment", desc: "via UPI, Card, or NetBanking", step: "2" },
-                            { title: "Receive Confirmation Email", desc: "with WhatsApp number & instructions", step: "3" },
-                            { title: "Login and Start Assessment", desc: "Access your dashboard to begin the test", step: "4" },
-                            { title: "Finish Test & Receive Report", desc: "Instant digital results", step: "5" },
-                            { title: "Choose the right path in your career", desc: "Get expert guidance and clarity", step: "6" },
-                        ].map((item, index) => (
-                            <div key={index} className="relative group flex flex-col items-center lg:items-center text-center">
-                                {/* Circle Indicator */}
-                                <div className="relative z-10 w-20 h-20 rounded-full bg-brand-light-primary dark:bg-brand-dark-tertiary flex items-center justify-center border-2 border-brand-green mb-8 transition-all duration-500 group-hover:scale-110 group-hover:bg-brand-green group-hover:shadow-[0_0_30px_rgba(30,211,106,0.3)]">
-                                    <span className="text-2xl font-bold text-brand-green group-hover:text-white transition-colors duration-500">{item.step}</span>
+                <div className="flex flex-wrap justify-center gap-8 relative">
+                    {/* Connecting Line (Desktop) */}
+                    <div className="hidden lg:block absolute top-[40px] left-[10%] right-[10%] h-[2px] bg-brand-green/20 -z-10" />
 
-                                    {/* Mobile Connector (Below circle) */}
-                                    <div className="lg:hidden absolute top-full left-1/2 w-[2px] h-12 bg-brand-green/20 -translate-x-1/2 last:hidden" />
-                                </div>
-
-                                <div className="space-y-3 px-2">
-                                    <h4 className="text-[15px] lg:text-[16px] font-bold text-black dark:text-white leading-tight tracking-tight group-hover:text-brand-green transition-colors duration-300">
-                                        {item.title}
-                                    </h4>
-                                    <p className="text-[13px] text-brand-text-light-secondary dark:text-brand-text-secondary leading-normal opacity-80">
-                                        {item.desc}
-                                    </p>
-                                </div>
+                    {steps.map((step, index) => (
+                        <div key={index} className="flex-1 min-w-[150px] max-w-[200px] flex flex-col items-center group relative">
+                            <div className="w-20 h-20 bg-white dark:bg-brand-dark-secondary border-2 border-brand-green rounded-full flex items-center justify-center text-2xl font-bold text-brand-green mb-6 z-10 transition-transform group-hover:scale-110 shadow-lg group-hover:bg-brand-green group-hover:text-white">
+                                {index + 1}
                             </div>
-                        ))}
-                    </div>
+                            <h3 className="text-lg font-bold text-brand-dark-primary dark:text-white mb-2 leading-tight min-h-[44px]">
+                                {step.title}
+                            </h3>
+                            <p className="text-brand-text-light-secondary dark:text-brand-text-secondary text-sm">
+                                {step.desc}
+                            </p>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

@@ -48,7 +48,7 @@ const Problem: React.FC = () => {
                     {problems.map((item, index) => (
                         <div
                             key={index}
-                            className={`relative flex flex-col h-[300px] lg:h-[380px] 2xl:h-[450px] rounded-tl-[2.5rem] rounded-br-[2.5rem] overflow-hidden border ${item.borderColor} ${item.bgColor} animate-fade-in shadow-sm`}
+                            className={`group relative flex flex-col h-[300px] lg:h-[380px] 2xl:h-[450px] rounded-tl-[2.5rem] rounded-br-[2.5rem] overflow-hidden border ${item.borderColor} ${item.bgColor} animate-fade-in shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-brand-green/30`}
                             style={{ animationDelay: `${index * 150}ms` }}
                         >
                             {/* Text content */}
@@ -62,15 +62,15 @@ const Problem: React.FC = () => {
                             {/* Image container - aligned bottom and centered */}
                             <div className="mt-auto relative w-full flex-1 flex items-end justify-center overflow-hidden">
                                 {/* Enhanced Ripple Effect (Concentric Circles) */}
-                                <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[68%] aspect-square rounded-full bg-brand-green/[0.05] dark:bg-brand-green/[0.03] z-0 scale-[1.22]" />
-                                <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[68%] aspect-square rounded-full bg-brand-green/[0.1] dark:bg-brand-green/[0.07] z-0 scale-[1.04]" />
-                                <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[68%] aspect-square rounded-full bg-brand-green/[0.18] dark:bg-brand-green/[0.14] z-0 scale-[0.88] shadow-[0_0_70px_rgba(30,211,106,0.3)]" />
+                                <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[68%] aspect-square rounded-full bg-brand-green/[0.05] dark:bg-brand-green/[0.03] z-0 scale-[1.22] transition-transform duration-700 group-hover:scale-[1.3]" />
+                                <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[68%] aspect-square rounded-full bg-brand-green/[0.1] dark:bg-brand-green/[0.07] z-0 scale-[1.04] transition-transform duration-700 group-hover:scale-[1.1]" />
+                                <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[68%] aspect-square rounded-full bg-brand-green/[0.18] dark:bg-brand-green/[0.14] z-0 scale-[0.88] shadow-[0_0_70px_rgba(30,211,106,0.3)] transition-transform duration-700 group-hover:scale-[0.95]" />
                                 <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[24%] aspect-square rounded-full bg-gradient-to-b from-brand-green/80 via-brand-green/60 to-brand-green/30 blur-sm z-0" />
 
                                 <img
                                     src={item.image}
                                     alt={item.title}
-                                    className="relative z-10 w-full h-auto max-h-[90%] object-contain select-none pointer-events-none drop-shadow-lg"
+                                    className="relative z-10 w-full h-auto max-h-[90%] object-contain select-none pointer-events-none drop-shadow-lg transition-transform duration-500 group-hover:scale-105"
                                 />
 
                                 {/* Bottom masking gradient */}
