@@ -15,7 +15,8 @@ interface CustomSelectProps {
     placeholder?: string;
     label?: string;
     required?: boolean;
-    className?: string;
+    className?: string; // Container class
+    buttonClassName?: string; // Button class
 }
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
@@ -25,7 +26,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     placeholder = "Select",
     label,
     required,
-    className = ""
+    className = "",
+    buttonClassName = ""
 }) => {
     const [isOpen, setIsOpen] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -58,7 +60,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
                 <button
                     type="button"
                     onClick={() => setIsOpen(!isOpen)}
-                    className={`w-full flex items-center justify-between bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 rounded-full px-7 py-[clamp(14px,1vw,18px)] text-[clamp(14px,0.83vw,16px)] transition-all duration-200 focus:outline-none shadow-sm ${isOpen ? 'border-brand-green ring-2 ring-brand-green/20' : ''}`}
+                    className={`w-full flex items-center justify-between bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 rounded-full px-7 py-[clamp(14px,1vw,18px)] text-[clamp(14px,0.83vw,16px)] transition-all duration-200 focus:outline-none shadow-sm ${isOpen ? 'border-brand-green ring-2 ring-brand-green/20' : ''} ${buttonClassName}`}
                 >
                     <span className={selectedOption ? "text-brand-dark-primary dark:text-white font-medium" : "text-brand-dark-primary/30 dark:text-brand-text-secondary/30"}>
                         {selectedOption ? selectedOption.label : placeholder}

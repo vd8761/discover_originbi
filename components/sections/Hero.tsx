@@ -1,41 +1,70 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import Button from "@/components/ui/Button";
 
 const Hero: React.FC = () => {
     return (
-        <main className="relative z-10 w-full mt-16 lg:mt-20 min-h-[calc(100dvh-64px)] lg:h-[calc(100dvh-80px)] flex flex-col overflow-hidden bg-transparent">
-            {/* Content Wrapper */}
-            <div className="flex-1 flex flex-col items-center max-w-[1920px] mx-auto w-full px-4 sm:px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] pt-16 sm:pt-12 lg:pt-8">
+        <section className="relative w-full min-h-screen flex items-center bg-white dark:bg-brand-dark-primary overflow-hidden pt-28 pb-20 bg-mesh">
+            {/* Dynamic Background Elements */}
 
-                {/* Top Section: Text Content */}
-                <div className="w-full flex flex-col items-center text-center animate-fade-in z-30 flex-shrink-0">
-                    <h1 className="text-[clamp(28px,4vw,60px)] font-sans font-bold leading-[1.1] mb-2 tracking-tight text-brand-dark-primary dark:text-white transition-colors duration-300">
+            <div className="max-w-[1440px] mx-auto px-6 lg:px-20 w-full relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+                {/* Text Content */}
+                <div className="space-y-8 order-2 lg:order-1 text-center lg:text-left">
+
+
+                    <h1 className="text-5xl lg:text-7xl font-sans font-bold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight">
                         What should I do <span className="text-brand-green">Next?</span>
                     </h1>
-                    <p className="text-[clamp(14px,1vw,18px)] text-brand-text-light-secondary dark:text-brand-text-secondary font-sans font-medium mb-4 leading-relaxed max-w-lg mx-auto transition-colors duration-300 px-2 lg:px-0">
-                        Let your strengths answer that. Discover the path that fits you, not what others expect.
+
+                    <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-lg leading-relaxed font-light mx-auto lg:mx-0">
+                        Let your strengths answer that.
                     </p>
-                    <Button
-                        size="lg"
-                        href="/register"
-                        className="rounded-2xl shadow-[0_20px_40px_-10px_rgba(30,211,106,0.3)] hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(30,211,106,0.4)] transition-all duration-300 text-[14px] lg:text-[16px] px-8 py-4"
-                    >
-                        Take the First Step
-                    </Button>
+
+                    <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <div className="flex flex-col sm:flex-row gap-4 animate-fade-in [animation-delay:400ms] opacity-0 fill-mode-forwards">
+                            <Button href="/register" size="lg" className="transform hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-brand-green/20 rounded-full px-10 py-4 text-lg font-bold">
+                                Take the First Step
+                            </Button>
+                            <Button href="#how-it-works" variant="outline" size="lg" className="border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/5">
+                                Learn More
+                            </Button>
+                        </div>
+                    </div>
+
+                    <div className="pt-8 flex items-center justify-center lg:justify-start gap-6 text-gray-400 text-sm font-medium">
+                        <div className="flex -space-x-3">
+                            {[1, 2, 3, 4].map(i => (
+                                <div key={i} className="w-10 h-10 rounded-full border-2 border-white dark:border-brand-dark-primary bg-gray-200 flex items-center justify-center overflow-hidden">
+                                    <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" />
+                                </div>
+                            ))}
+                        </div>
+                        <p>Trusted by 50+ Institutions</p>
+                    </div>
                 </div>
 
-                {/* Bottom Section: Hero Illustration - responsive sizing */}
-                <div className="relative w-full flex-1 flex items-end justify-center min-h-[250px] lg:min-h-0 mt-4 lg:mt-0 overflow-visible">
-                    <img
-                        src="/images/hero.png"
-                        alt="Student Illustration"
-                        className="w-auto h-auto max-h-[40vh] sm:max-h-[45vh] lg:max-h-[55vh] xl:max-h-[60vh] object-contain object-bottom mask-gradient select-none pointer-events-none drop-shadow-2xl transition-all duration-500 scale-110 lg:scale-100 origin-bottom"
-                    />
+                {/* Hero Visual */}
+                <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
+                    <div className="relative z-10 w-full max-w-[600px] lg:scale-125 origin-center lg:origin-bottom-right">
+                        {/* Main Image - Removed card, increased size */}
+                        <div className="relative">
+                            <img
+                                src="/hero-new.png"
+                                alt="Origin BI Discovery"
+                                className="w-full h-auto object-cover"
+                            />
+
+                        </div>
+                    </div>
+
+                    {/* Background Decorative Blobs */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-r from-brand-green/20 to-blue-500/20 rounded-full blur-[100px] -z-10" />
                 </div>
             </div>
-        </main>
+        </section>
     );
 };
 

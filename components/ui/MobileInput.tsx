@@ -13,6 +13,7 @@ interface MobileInputProps {
     error?: string;
     label?: string;
     required?: boolean;
+    className?: string; // Input class override
 }
 
 const MobileInput: React.FC<MobileInputProps> = ({
@@ -23,6 +24,7 @@ const MobileInput: React.FC<MobileInputProps> = ({
     error,
     label,
     required,
+    className = "",
 }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
@@ -83,13 +85,13 @@ const MobileInput: React.FC<MobileInputProps> = ({
                 </label>
             )}
 
-            <div className="flex gap-2 h-[clamp(54px,3.5vw,62px)]">
+            <div className="flex gap-2 h-12">
                 {/* Country Dropdown */}
                 <div className="relative w-[100px] shrink-0 h-full" ref={dropdownRef}>
                     <button
                         type="button"
                         onClick={() => setIsDropdownOpen((p) => !p)}
-                        className="w-full h-full flex items-center justify-between bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 rounded-full px-4 text-sm text-brand-dark-primary dark:text-white transition-all shadow-sm hover:border-brand-green/50"
+                        className={`w-full h-full flex items-center justify-between bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 rounded-full px-4 text-sm text-brand-dark-primary dark:text-white transition-all shadow-sm hover:border-brand-green/50 ${className}`}
                     >
                         <span className="flex items-center gap-1.5 truncate">
                             <ReactCountryFlag
@@ -162,7 +164,7 @@ const MobileInput: React.FC<MobileInputProps> = ({
                         value={phoneNumber}
                         onChange={handlePhoneInput}
                         placeholder={"0".repeat(maxLen)}
-                        className={`w-full h-full bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 rounded-full pl-7 pr-14 text-[clamp(14px,0.83vw,16px)] text-brand-dark-primary dark:text-brand-text-primary placeholder:text-brand-dark-primary/30 dark:placeholder:text-brand-text-secondary/30 focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20 transition-all shadow-sm ${error ? "border-red-500/50" : ""}`}
+                        className={`w-full h-full bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 rounded-full pl-7 pr-14 text-[clamp(14px,0.83vw,16px)] text-brand-dark-primary dark:text-brand-text-primary placeholder:text-brand-dark-primary/30 dark:placeholder:text-brand-text-secondary/30 focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20 transition-all shadow-sm ${error ? "border-red-500/50" : ""} ${className}`}
                     />
                     <div className="absolute right-5 top-1/2 -translate-y-1/2 text-[10px] text-brand-dark-primary/30 dark:text-brand-text-secondary/30 pointer-events-none font-mono">
                         {phoneNumber.length}/{maxLen}

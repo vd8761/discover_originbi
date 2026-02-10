@@ -4,26 +4,37 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
+import WhatIsIt from "@/components/sections/WhatIsIt";
 import WhyThisMatters from "@/components/sections/WhyThisMatters";
+import DiscoverYourself from "@/components/sections/DiscoverYourself";
+
+import HowItWorks from "@/components/sections/HowItWorks";
+import WhereCanItLead from "@/components/sections/WhereCanItLead";
+import Outcomes from "@/components/sections/Outcomes";
+import WhoIsItFor from "@/components/sections/WhoIsItFor";
+import Impact from "@/components/sections/Impact";
+import SchoolIntegration from "@/components/sections/SchoolIntegration";
 import Testimonials from "@/components/sections/Testimonials";
-import CTASection from "@/components/sections/CTASection";
+
 
 export default function Home() {
   return (
-    <div className="relative w-full overflow-x-hidden flex flex-col min-h-screen bg-mesh transition-colors duration-500">
-      {/* Background Glows Concept */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-brand-green/15 rounded-full blur-[140px] animate-pulse" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-500/10 rounded-full blur-[140px]" />
-      </div>
-
+    <div className="relative w-full overflow-x-hidden flex flex-col min-h-screen bg-white dark:bg-brand-dark-primary transition-colors duration-500">
       <Header />
 
       <Hero />
       <Problem />
+      <WhatIsIt />
       <WhyThisMatters />
+      <DiscoverYourself />
+      <HowItWorks />
+      <WhereCanItLead />
+      <Outcomes />
+      <WhoIsItFor />
+      <Impact />
+      <SchoolIntegration />
       <Testimonials />
-      <CTASection />
+
 
       <Footer />
     </div>

@@ -18,190 +18,69 @@ const steps: Step[] = [
 ];
 
 const HowItWorks: React.FC = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (!containerRef.current) return;
-            const container = containerRef.current;
-            const rect = container.getBoundingClientRect();
-
-            // Total height of the scroll track
-            const totalHeight = rect.height;
-            // How much is already scrolled past the top of the viewport
-            const scrolled = Math.max(0, -rect.top);
-            // Window height
-            const winHeight = window.innerHeight;
-
-            // The actual scrollable range for the animation
-            const scrollRange = totalHeight - winHeight;
-
-            if (scrollRange <= 0) return;
-
-            const progress = Math.min(Math.max(scrolled / scrollRange, 0), 0.99);
-            const index = Math.floor(progress * steps.length);
-
-            if (index !== activeIndex) {
-                setActiveIndex(index);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        // Initial check
-        handleScroll();
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [activeIndex]);
-
     return (
-        <section
-            id="how-it-works"
-            ref={containerRef}
-            className="relative w-full bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500"
-            style={{ height: `${steps.length * 100}vh` }} // Gives enough scroll room
-        >
-            {/* STICKY WRAPPER */}
-            <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center py-10 lg:py-0">
-                <div className="max-w-[1920px] mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] w-full">
+        <section id="how-it-works" className="relative w-full py-16 lg:py-24 bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500 overflow-hidden">
+            <div className="max-w-[1440px] mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]">
 
-                    {/* Header */}
-                    <div className="mb-12 lg:mb-16">
-                        <span className="text-[clamp(10px,0.8vw,14px)] font-bold uppercase tracking-[0.2em] text-brand-green mb-3 block">
-                            Process
-                        </span>
-                        <h2 className="text-[clamp(26px,3.2vw,48px)] font-sans font-bold leading-[1.2] lg:leading-[1.1] text-brand-dark-primary dark:text-white max-w-2xl transition-colors duration-300">
-                            How it works
-                        </h2>
-                    </div>
+                {/* Header */}
+                <div className="text-center mb-16 lg:mb-24">
+                    <span className="text-[clamp(10px,0.8vw,14px)] font-bold uppercase tracking-[0.2em] text-brand-green mb-3 block">
+                        Process
+                    </span>
+                    <h2 className="text-[clamp(26px,3.2vw,48px)] font-sans font-bold leading-[1.2] lg:leading-[1.1] text-brand-dark-primary dark:text-white transition-colors duration-300">
+                        How it works
+                    </h2>
+                </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                {/* Vertical Timeline Layout */}
+                <div className="relative">
+                    {/* Central Vertical Line (hidden on mobile, visible on lg) */}
+                    <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-green/0 via-brand-green/30 to-brand-green/0 hidden lg:block" />
 
-                        {/* LEFT COLUMN: Premium Mockup Visual (The Nice Version) */}
-                        <div className="hidden lg:flex items-center justify-center relative">
-                            <div className="relative w-[380px] h-[380px] xl:w-[480px] xl:h-[480px]">
-                                {/* Glowing Background Effect */}
-                                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-brand-green/20 via-brand-green/10 to-transparent blur-3xl scale-110" />
+                    <div className="space-y-12 lg:space-y-24">
+                        {steps.map((step, index) => (
+                            <div key={step.id} className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-16 ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
 
-                                {/* Decorative Rings */}
-                                <div className="absolute inset-4 rounded-full border border-brand-green/5 dark:border-brand-green/10" />
-                                <div className="absolute inset-12 rounded-full border border-brand-green/10 dark:border-brand-green/15" />
-                                <div className="absolute inset-20 rounded-full border border-brand-green/15 dark:border-white/5" />
-
-                                {/* Central Visual Element */}
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="relative w-56 h-56 xl:w-72 xl:h-72">
-                                        {/* Main Circle */}
-                                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-brand-green via-brand-green/90 to-brand-green/70 shadow-[0_25px_60px_-15px_rgba(30,211,106,0.5)] flex flex-col items-center justify-center text-center p-8">
-                                            {/* Content inside the green circle */}
-                                            <div className="absolute inset-2.5 rounded-full bg-brand-dark-primary border-[6px] border-brand-green/20 flex flex-col items-center justify-center shadow-inner">
-                                                <span className="text-brand-green text-5xl xl:text-6xl font-bold tracking-tighter">BI</span>
-                                                <span className="text-white/80 text-[10px] xl:text-xs font-bold uppercase tracking-[0.2em] mt-2">Assessment</span>
-                                                <div className="mt-4 flex items-center gap-1.5 bg-brand-green/10 px-3 py-1 rounded-full">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse" />
-                                                    <span className="text-brand-green text-[10px] xl:text-[11px] font-bold">ACTIVE</span>
-                                                </div>
-                                            </div>
+                                {/* Content Side */}
+                                <div className="flex-1 text-center lg:text-left">
+                                    <div className={`flex flex-col gap-4 ${index % 2 === 0 ? 'lg:items-end lg:text-right' : 'lg:items-start lg:text-left'}`}>
+                                        <div className="inline-block px-4 py-1 rounded-full bg-brand-green/10 text-brand-green font-bold text-sm tracking-widest uppercase mb-2">
+                                            Step {step.id}
                                         </div>
+                                        <h3 className="text-2xl lg:text-4xl font-bold text-brand-dark-primary dark:text-white">
+                                            {step.title}
+                                        </h3>
+                                        <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-md">
+                                            {step.desc}
+                                        </p>
+                                    </div>
+                                </div>
 
-                                        {/* Floating Indicators */}
-                                        <div className="absolute -top-4 -right-4 w-14 h-14 xl:w-16 xl:h-16 rounded-2xl bg-white dark:bg-brand-dark-secondary shadow-2xl flex items-center justify-center border border-brand-light-tertiary dark:border-white/10 transform -rotate-12 hover:rotate-0 transition-transform duration-500">
-                                            <svg className="w-7 h-7 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                            </svg>
-                                        </div>
+                                {/* Center Marker */}
+                                <div className="relative z-10 flex-shrink-0 w-16 h-16 rounded-full bg-white dark:bg-brand-dark-tertiary border-4 border-brand-green flex items-center justify-center shadow-[0_0_30px_rgba(30,211,106,0.4)] group hover:scale-110 transition-transform duration-300">
+                                    <div className="w-3 h-3 rounded-full bg-brand-green" />
+                                </div>
 
-                                        <div className="absolute -bottom-6 -left-6 w-14 h-14 xl:w-16 xl:h-16 rounded-2xl bg-white dark:bg-brand-dark-secondary shadow-2xl flex items-center justify-center border border-brand-light-tertiary dark:border-white/10 transform rotate-12 hover:rotate-0 transition-transform duration-500">
-                                            <svg className="w-7 h-7 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                            </svg>
+                                {/* Visual Side (Placeholder or Decorative) */}
+                                <div className="flex-1 hidden lg:block">
+                                    <div className={`relative h-64 w-full rounded-3xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl p-8 flex items-center justify-center group hover:-translate-y-2 transition-transform duration-500 ${index % 2 === 0 ? 'origin-right' : 'origin-left'}`}>
+                                        {/* Decorative Gradients based on step */}
+                                        <div className={`absolute inset-0 opacity-20 bg-gradient-to-br ${index % 2 === 0 ? 'from-brand-green/30 to-transparent' : 'from-blue-500/30 to-transparent'}`} />
+
+                                        <div className="text-9xl font-bold text-brand-dark-primary/5 dark:text-white/5 select-none scale-150 group-hover:scale-125 transition-transform duration-700">
+                                            {step.id}
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-                        </div>
-
-                        {/* RIGHT COLUMN: Scrolling Cards Animation (Bottom to Top) */}
-                        <div className="relative h-[400px] lg:h-[450px] w-full flex items-center pr-4">
-                            {steps.map((step, index) => {
-                                const isPast = index < activeIndex;
-                                const isActive = index === activeIndex;
-                                const isFuture = index > activeIndex;
-
-                                // Animation logic
-                                let translateY = "100%";
-                                let opacity = 0;
-                                let scale = 0.9;
-                                let zIndex = steps.length - index;
-
-                                if (isActive) {
-                                    translateY = "0%";
-                                    opacity = 1;
-                                    scale = 1;
-                                } else if (isPast) {
-                                    translateY = "-120%"; // Moves it out to the top
-                                    opacity = 0;
-                                    scale = 0.95;
-                                } else if (isFuture) {
-                                    // Stacked below
-                                    translateY = `${15 * (index - activeIndex)}%`;
-                                    opacity = Math.max(0, 0.4 - (index - activeIndex) * 0.1);
-                                    scale = 1 - (index - activeIndex) * 0.05;
-                                }
-
-                                return (
-                                    <div
-                                        key={step.id}
-                                        className="absolute inset-0 flex items-center transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]"
-                                        style={{
-                                            transform: `translateY(${translateY}) scale(${scale})`,
-                                            opacity: opacity,
-                                            zIndex: zIndex,
-                                            pointerEvents: isActive ? 'auto' : 'none'
-                                        }}
-                                    >
-                                        <div className={`w-full p-8 lg:p-10 rounded-[2.5rem] border transition-all duration-500 ${isActive
-                                            ? 'bg-white dark:bg-brand-dark-tertiary border-brand-green/20 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_80px_-20px_rgba(30,211,106,0.15)]'
-                                            : 'bg-white/50 dark:bg-brand-dark-secondary/50 border-transparent'
-                                            }`}>
-                                            {/* Number Bubble */}
-                                            <div className="w-12 h-12 rounded-2xl bg-brand-green flex items-center justify-center text-white font-bold text-xl mb-6 shadow-lg shadow-brand-green/30">
-                                                {step.id}
-                                            </div>
-
-                                            <h3 className="text-[clamp(20px,1.8vw,32px)] font-bold text-brand-dark-primary dark:text-white mb-4 leading-tight">
-                                                {step.title}
-                                            </h3>
-
-                                            <p className="text-[clamp(14px,1vw,18px)] text-brand-text-light-secondary dark:text-brand-text-secondary leading-relaxed max-w-md">
-                                                {step.desc}
-                                            </p>
-
-                                            {/* Progress indicator at bottom of card */}
-                                            <div className="mt-8 flex items-center gap-2">
-                                                {steps.map((_, dotIndex) => (
-                                                    <div
-                                                        key={dotIndex}
-                                                        className={`h-1.5 rounded-full transition-all duration-500 ${dotIndex === index
-                                                            ? 'w-8 bg-brand-green'
-                                                            : 'w-2 bg-brand-light-tertiary dark:bg-white/10'
-                                                            }`}
-                                                    />
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-
+                        ))}
                     </div>
                 </div>
 
-                {/* Optional: Scroll indicator at the very bottom of the sticky section */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-brand-dark-primary dark:text-white">Keep Scrolling</span>
-                    <div className="w-px h-12 bg-gradient-to-b from-brand-green to-transparent" />
-                </div>
+                {/* Mobile version connector line adjust */}
+                <div className="lg:hidden w-0.5 bg-gradient-to-b from-transparent via-brand-green/20 to-transparent absolute left-1/2 top-32 bottom-32 -z-10" />
+
             </div>
         </section>
     );
