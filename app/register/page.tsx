@@ -172,7 +172,7 @@ export default function RegisterPage() {
               gender: formData.gender,
               program_code: 'SCHOOL_STUDENT',
               school_level: formData.schoolLevel,
-              school_stream: formData.schoolLevel === 'HSC' ? formData.stream : null,
+              school_stream: formData.schoolLevel === 'HSC' ? formData.stream : undefined,
             });
 
             if (registerResponse.success) {
