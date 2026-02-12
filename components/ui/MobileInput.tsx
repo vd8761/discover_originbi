@@ -14,6 +14,7 @@ interface MobileInputProps {
     label?: string;
     required?: boolean;
     className?: string; // Input class override
+    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 const MobileInput: React.FC<MobileInputProps> = ({
@@ -25,6 +26,7 @@ const MobileInput: React.FC<MobileInputProps> = ({
     label,
     required,
     className = "",
+    onBlur,
 }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
@@ -163,6 +165,7 @@ const MobileInput: React.FC<MobileInputProps> = ({
                         type="text"
                         value={phoneNumber}
                         onChange={handlePhoneInput}
+                        onBlur={onBlur}
                         placeholder={"0".repeat(maxLen)}
                         className={`w-full h-full bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 rounded-full pl-7 pr-14 text-[clamp(14px,0.83vw,16px)] text-brand-dark-primary dark:text-brand-text-primary placeholder:text-brand-dark-primary/30 dark:placeholder:text-brand-text-secondary/30 focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20 transition-all shadow-sm ${error ? "border-red-500/50" : ""} ${className}`}
                     />
