@@ -72,6 +72,34 @@ export default function RegisterPage() {
     return Object.keys(errors).length === 0;
   };
 
+  const handleBlur = async () => {
+    // Only validate if we have at least one field filled to avoid unnecessary calls
+    if (!formData.email && !formData.mobile) return;
+
+    try {
+      // Clear previous API error before validating
+      setFormErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors.apiError;
+        return newErrors;
+      });
+
+      const result = await validateStudent({
+        email: formData.email,
+        mobile_number: formData.mobile,
+        country_code: formData.countryCode,
+      });
+
+      if (result && !result.isValid) {
+        setFormErrors(prev => ({ ...prev, apiError: result.message }));
+      }
+
+    } catch (error: any) {
+      console.error("Validation Error:", error);
+      setFormErrors(prev => ({ ...prev, apiError: error.message || "User validation failed." }));
+    }
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -137,13 +165,18 @@ export default function RegisterPage() {
 
     try {
       // 1. Validate User First
-      await validateStudent({
+      const validationResult = await validateStudent({
         email: formData.email,
         mobile_number: formData.mobile,
         country_code: formData.countryCode,
       });
 
-      // 2. Load Razorpay
+      if (validationResult && !validationResult.isValid) {
+        setFormErrors(prev => ({ ...prev, apiError: validationResult.message || "User validation failed." }));
+        setIsLoading(false);
+        return;
+      }
+
       // 2. Load Razorpay
       const res = await loadRazorpay();
 
@@ -172,7 +205,7 @@ export default function RegisterPage() {
               gender: formData.gender,
               program_code: 'SCHOOL_STUDENT',
               school_level: formData.schoolLevel,
-              school_stream: formData.schoolLevel === 'HSC' ? formData.stream : null,
+              school_stream: formData.schoolLevel === 'HSC' ? formData.stream : undefined,
             });
 
             if (registerResponse.success) {
@@ -312,6 +345,7 @@ export default function RegisterPage() {
                     placeholder="name@example.com"
                     value={formData.email}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all h-12"
                   />
 
@@ -324,6 +358,7 @@ export default function RegisterPage() {
                     onCountryChange={(code) => setFormData(prev => ({ ...prev, countryCode: code }))}
                     onPhoneChange={(num) => setFormData(prev => ({ ...prev, mobile: num }))}
                     error={formErrors.mobile}
+                    onBlur={handleBlur}
                     className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full transition-all h-12"
                   />
 
@@ -428,7 +463,7 @@ export default function RegisterPage() {
                     type="submit"
                     size="lg"
                     fullWidth
-                    disabled={isLoading}
+                    disabled={isLoading || Object.keys(formErrors).length > 0}
                     className="h-14 text-lg font-bold shadow-xl shadow-brand-green/20 hover:shadow-brand-green/40 transition-all transform hover:-translate-y-0.5 rounded-full mt-6"
                   >
                     {isLoading ? "Processing..." : "Register and Pay"}
