@@ -73,7 +73,7 @@ export default function RegisterPage() {
   };
 
   const handleBlur = async () => {
-    // Only validate if we have at least one field filled to avoid unnecessary calls
+    // Only validate if we have at least one field filled to avoid unnecessary calls.
     if (!formData.email && !formData.mobile) return;
 
     try {
