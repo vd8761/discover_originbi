@@ -11,8 +11,8 @@ import Input from "@/components/ui/Input";
 import CustomSelect from "@/components/ui/CustomSelect";
 import MobileInput from "@/components/ui/MobileInput";
 import RegisterSteps from "@/components/sections/RegisterSteps";
-import { registerStudent, validateStudent } from "@/lib/api";
-import { useRouter } from "next/navigation";
+import { registerStudent, validateStudent, validateReferralCode } from "@/lib/api";
+import { useRouter, useSearchParams } from "next/navigation";
 
 declare global {
   interface Window {
@@ -20,9 +20,11 @@ declare global {
   }
 }
 
-export default function RegisterPage() {
+function RegisterPageContent() {
   const { theme } = useTheme();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const [referralValidationStatus, setReferralValidationStatus] = useState<'valid' | 'invalid' | 'checking' | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -37,6 +39,7 @@ export default function RegisterPage() {
     schoolLevel: "",
     currentYear: "",
     stream: "",
+    referralCode: "",
   });
 
   const validatePassword = (pwd: string) => {
@@ -128,12 +131,32 @@ export default function RegisterPage() {
     }
   };
 
+  React.useEffect(() => {
+    const refCode = searchParams.get('ref');
+    if (refCode) {
+      setReferralValidationStatus('checking');
+      validateReferralCode(refCode)
+        .then(() => {
+          setReferralValidationStatus('valid');
+          setFormData(prev => ({ ...prev, referralCode: refCode }));
+        })
+        .catch((err) => {
+          console.error("Invalid referral code:", err);
+          setReferralValidationStatus('invalid');
+        });
+    }
+  }, [searchParams, router]);
+
+  const handleClearInvalidReferral = () => {
+    router.replace('/register');
+    setReferralValidationStatus(null);
+  };
+
   const genderOptions = [
     { value: "MALE", label: "Male" },
     { value: "FEMALE", label: "Female" },
     { value: "OTHER", label: "Other" }
   ];
-  const activeIndex = genderOptions.findIndex(opt => opt.value === formData.gender);
 
   const schoolLevelOptions = [
     { value: "SSLC", label: "SSLC" },
@@ -206,6 +229,7 @@ export default function RegisterPage() {
               program_code: 'SCHOOL_STUDENT',
               school_level: formData.schoolLevel,
               school_stream: formData.schoolLevel === 'HSC' ? formData.stream : undefined,
+              referral_code: formData.referralCode || undefined,
             });
 
             if (registerResponse.success) {
@@ -274,7 +298,32 @@ export default function RegisterPage() {
             {/* Decorative Top Line */}
             <div className="w-16 h-1 bg-brand-green mb-6 rounded-full"></div>
 
-            {isSuccess ? (
+            {referralValidationStatus === 'checking' ? (
+              <div className="w-full max-w-lg flex flex-col items-center justify-center text-center animate-fade-in py-10">
+                <div className="w-16 h-16 border-4 border-brand-green/20 border-t-brand-green rounded-full animate-spin mb-6"></div>
+                <h2 className="text-2xl font-bold text-brand-dark-primary dark:text-white mb-2">Validating URL...</h2>
+                <p className="text-gray-500 dark:text-gray-400">Please wait while we check the URL.</p>
+              </div>
+            ) : referralValidationStatus === 'invalid' ? (
+              <div className="w-full max-w-lg flex flex-col items-center justify-center text-center animate-fade-in py-10">
+                <div className="w-20 h-20 bg-red-500/10 rounded-full flex items-center justify-center mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                </div>
+                <h2 className="text-3xl font-bold text-brand-dark-primary dark:text-white mb-4">Invalid URL</h2>
+                <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-sm">
+                  The URL you are using is invalid or has expired. You can still proceed with a standard registration below.
+                </p>
+                <Button
+                  onClick={handleClearInvalidReferral}
+                  size="lg"
+                  className="rounded-full px-10 h-14 text-lg font-bold shadow-lg"
+                >
+                  Continue to Register
+                </Button>
+              </div>
+            ) : isSuccess ? (
               <div className="w-full max-w-lg flex flex-col items-center justify-center text-center animate-fade-in py-10">
                 <div className="w-20 h-20 bg-brand-green/10 rounded-full flex items-center justify-center mb-6">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -517,6 +566,14 @@ export default function RegisterPage() {
 
       <Footer />
     </div>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <RegisterPageContent />
+    </React.Suspense>
   );
 }
 
