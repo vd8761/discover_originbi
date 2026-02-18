@@ -10,6 +10,7 @@ export interface RegistrationFormData {
     school_level?: string;
     school_stream?: string;
     student_board?: string;
+    referral_code?: string;
 }
 
 export const registerStudent = async (formData: RegistrationFormData) => {
@@ -29,6 +30,7 @@ export const registerStudent = async (formData: RegistrationFormData) => {
             school_level: formData.school_level,
             school_stream: formData.school_stream,
             student_board: formData.student_board,
+            referral_code: formData.referral_code,
         };
 
         const response = await fetch(`${API_URL}/student/register`, {
@@ -79,6 +81,38 @@ export const validateStudent = async (data: { email: string; mobile_number: stri
         return result;
     } catch (error) {
         console.error('Validation Error:', error);
+        throw error;
+    }
+};
+
+export const validateReferralCode = async (code: string) => {
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    if (!API_URL) throw new Error('API_URL is not defined');
+
+    try {
+        const response = await fetch(`${API_URL}/student/affiliate/validate`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code }),
+        });
+
+        const contentType = response.headers.get("content-type");
+        let result;
+        if (contentType && contentType.includes("application/json")) {
+            result = await response.json();
+        } else {
+            // Handle non-JSON responses (like 404/500 text)
+            const text = await response.text();
+            throw new Error(text || 'Invalid URL');
+        }
+
+        if (!response.ok) {
+            throw new Error(result?.message || 'Invalid URL');
+        }
+
+        return result;
+    } catch (error) {
+        console.error('Referral Validation Error:', error);
         throw error;
     }
 };
