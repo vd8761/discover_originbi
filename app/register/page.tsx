@@ -133,12 +133,19 @@ function RegisterPageContent() {
 
   React.useEffect(() => {
     const refCode = searchParams.get('ref');
-    if (refCode) {
+
+    // If ?ref= param exists but is empty/whitespace, redirect to base register URL
+    if (searchParams.has('ref') && (!refCode || !refCode.trim())) {
+      router.replace('/register');
+      return;
+    }
+
+    if (refCode && refCode.trim()) {
       setReferralValidationStatus('checking');
-      validateReferralCode(refCode)
+      validateReferralCode(refCode.trim())
         .then(() => {
           setReferralValidationStatus('valid');
-          setFormData(prev => ({ ...prev, referralCode: refCode }));
+          setFormData(prev => ({ ...prev, referralCode: refCode.trim() }));
         })
         .catch((err) => {
           console.error("Invalid referral code:", err);
