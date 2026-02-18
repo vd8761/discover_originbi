@@ -9,6 +9,7 @@ export interface RegistrationFormData {
     program_code?: string;
     school_level?: string;
     school_stream?: string;
+    student_board?: string;
 }
 
 export const registerStudent = async (formData: RegistrationFormData) => {
@@ -27,6 +28,7 @@ export const registerStudent = async (formData: RegistrationFormData) => {
             program_code: 'SCHOOL_STUDENT',
             school_level: formData.school_level,
             school_stream: formData.school_stream,
+            student_board: formData.student_board,
         };
 
         const response = await fetch(`${API_URL}/student/register`, {

@@ -13,6 +13,7 @@ import MobileInput from "@/components/ui/MobileInput";
 import RegisterSteps from "@/components/sections/RegisterSteps";
 import { registerStudent, validateStudent } from "@/lib/api";
 import { useRouter } from "next/navigation";
+import { getEnabledBoards } from "@/lib/constants";
 
 declare global {
   interface Window {
@@ -37,6 +38,7 @@ export default function RegisterPage() {
     schoolLevel: "",
     currentYear: "",
     stream: "",
+    studentBoard: "",
   });
 
   const validatePassword = (pwd: string) => {
@@ -55,6 +57,7 @@ export default function RegisterPage() {
     if (!formData.name.trim()) errors.name = "Required";
     if (!formData.email.trim()) errors.email = "Required";
     if (!formData.mobile.trim()) errors.mobile = "Mobile number required";
+    if (!formData.studentBoard) errors.studentBoard = "Required";
     if (!formData.schoolLevel) errors.schoolLevel = "Required";
 
     if (formData.schoolLevel === "HSC") {
@@ -206,6 +209,7 @@ export default function RegisterPage() {
               program_code: 'SCHOOL_STUDENT',
               school_level: formData.schoolLevel,
               school_stream: formData.schoolLevel === 'HSC' ? formData.stream : undefined,
+              student_board: formData.studentBoard,
             });
 
             if (registerResponse.success) {
@@ -397,6 +401,16 @@ export default function RegisterPage() {
                     </div>
 
                     <div className={`grid gap-5 ${formData.schoolLevel === 'HSC' ? 'sm:grid-cols-3' : 'sm:grid-cols-1'}`}>
+                      <CustomSelect
+                        label="Student Board"
+                        required
+                        options={getEnabledBoards()}
+                        value={formData.studentBoard}
+                        onChange={(val) => handleSelectChange("studentBoard", val)}
+                        placeholder="Select Board"
+                        buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
+                      />
+
                       <CustomSelect
                         label="School Level"
                         required
