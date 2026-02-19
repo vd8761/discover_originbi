@@ -6,11 +6,13 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Button from "@/components/ui/Button";
 import { useTheme } from "@/contexts/ThemeContext";
-import { EyeIcon, EyeOffIcon } from "@/components/icons";
+import { EyeIcon, EyeOffIcon, PlayIcon } from "@/components/icons";
 import Input from "@/components/ui/Input";
 import CustomSelect from "@/components/ui/CustomSelect";
 import MobileInput from "@/components/ui/MobileInput";
 import RegisterSteps from "@/components/sections/RegisterSteps";
+import RegistrationInfo from "@/components/sections/RegistrationInfo";
+import MobileHowItWorksCarousel from "@/components/sections/MobileHowItWorksCarousel";
 import { registerStudent, validateStudent, validateReferralCode } from "@/lib/api";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getEnabledBoards } from "@/lib/constants";
@@ -293,20 +295,61 @@ function RegisterPageContent() {
   }, [isSuccess, router]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-brand-dark-primary font-sans text-brand-dark-primary dark:text-white transition-colors duration-300">
-      <Header />
+    <div className="h-full bg-white dark:bg-brand-dark-primary font-sans text-brand-dark-primary dark:text-white transition-colors duration-300">
+      <Header showRegisterButton={false} />
 
       <main className="flex-1 w-full relative">
-        <div className="min-h-screen flex flex-col lg:flex-row">
+        <div className="h-full flex flex-col lg:flex-row">
 
           {/* Left Side - Form Section (White Background for clean look) */}
-          <div className="w-full lg:w-1/2 min-h-screen flex flex-col justify-center px-4 sm:px-10 lg:px-12 pt-20 pb-12 bg-white dark:bg-brand-dark-primary relative z-10 transition-colors duration-300">
+          <div className="w-full h-full lg:w-1/2 flex flex-col justify-center px-4 sm:px-10 lg:px-12 pt-24 pb-12 bg-white dark:bg-brand-dark-primary relative z-10 transition-colors duration-300">
 
             {/* Background Pattern for Form Area */}
             <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-gray-50 to-transparent dark:from-white/5 dark:to-transparent pointer-events-none" />
 
             {/* Decorative Top Line */}
-            <div className="w-16 h-1 bg-brand-green mb-6 rounded-full"></div>
+            <div className="hidden lg:block w-16 h-1 bg-brand-green mb-6 rounded-full"></div>
+
+            {/* Mobile View Info Section (Top of Page) */}
+            <div className="block lg:hidden mb-8 border-b border-gray-100 dark:border-white/10 pb-8">
+              {/* Student Photo */}
+              <div className="w-full max-w-[280px] mx-auto mb-8 relative">
+                <div className="absolute inset-0 bg-brand-green/20 rounded-full blur-3xl opacity-50"></div>
+                <img
+                  src="/hero-new.png"
+                  alt="Student"
+                  className="relative z-10 w-full h-auto object-contain drop-shadow-xl"
+                />
+              </div>
+
+              {/* Watch Video Links (Mobile Only) */}
+              <div className="flex gap-3 justify-center mb-8 px-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5"
+                  onClick={() => window.open('https://www.youtube.com/watch?v=4luQSZLsZUk', '_blank')}
+                >
+                  <PlayIcon className="w-4 h-4 text-brand-green" />
+                  Watch in Tamil
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5"
+                  onClick={() => window.open('https://www.youtube.com/watch?v=Z2ZkryASFi0', '_blank')}
+                >
+                  <PlayIcon className="w-4 h-4 text-brand-green" />
+                  Watch in English
+                </Button>
+              </div>
+
+              <RegistrationInfo className="" />
+
+              <div className="mt-8 pt-8 border-t border-gray-100 dark:border-white/10">
+                <MobileHowItWorksCarousel />
+              </div>
+            </div>
 
             {referralValidationStatus === 'checking' ? (
               <div className="w-full max-w-lg flex flex-col items-center justify-center text-center animate-fade-in py-10">
@@ -456,15 +499,27 @@ function RegisterPageContent() {
                     </div>
 
                     <div className={`grid gap-5 ${formData.schoolLevel === 'HSC' ? 'sm:grid-cols-3' : 'sm:grid-cols-1'}`}>
-                      <CustomSelect
-                        label="Student Board"
-                        required
-                        options={getEnabledBoards()}
-                        value={formData.studentBoard}
-                        onChange={(val) => handleSelectChange("studentBoard", val)}
-                        placeholder="Select Board"
-                        buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
-                      />
+                      <div className="space-y-1.5">
+                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-4">
+                          Student Board <span className="text-brand-red">*</span>
+                        </label>
+                        <div className="grid grid-cols-2 gap-2">
+                          {getEnabledBoards().map((b) => (
+                            <button
+                              key={b.value}
+                              type="button"
+                              onClick={() => handleSelectChange("studentBoard", b.value)}
+                              className={`h-12 text-xs md:text-sm font-bold uppercase tracking-wide rounded-full transition-all duration-300 border ${formData.studentBoard === b.value
+                                ? "bg-brand-green text-white border-brand-green shadow-md"
+                                : "bg-white dark:bg-brand-dark-secondary text-gray-500 dark:text-gray-400 border-gray-200 dark:border-brand-dark-tertiary hover:border-brand-green hover:text-brand-green"
+                                }`}
+                            >
+                              {b.label}
+                            </button>
+                          ))}
+                        </div>
+                        {formErrors.studentBoard && <p className="text-red-500 text-xs ml-4 mt-1">{formErrors.studentBoard}</p>}
+                      </div>
 
                       <CustomSelect
                         label="School Level"
@@ -550,38 +605,55 @@ function RegisterPageContent() {
                 </form>
               </>
             )}
+
+
+
           </div>
 
           {/* Right Side - Visual Section (Sticky Wrapper) */}
           <div className="hidden lg:block w-1/2 bg-gray-50 dark:bg-[#1E1E1E] relative h-full">
-            <div className="sticky top-0 h-screen flex flex-col items-center justify-center pt-24 px-12 overflow-hidden">
-
-              {/* Abstract Background Shapes */}
-              <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-green/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
-              <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4"></div>
-
-              <div className="relative z-10 max-w-xl text-center">
-                <div className="mb-8 relative">
-                  <div className="absolute inset-0 bg-brand-green/20 rounded-full blur-2xl transform scale-90"></div>
-                  <img
-                    src="/images/hero.png"
-                    alt="Student Success"
-                    className="relative w-full h-auto max-h-[60vh] object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                </div>
-
-                <h2 className="text-3xl font-bold mb-4 text-brand-dark-primary dark:text-white drop-shadow-sm">
-                  Unlock Your Full Potential
-                </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 italic">
-                  "Insights Discovery transforms your performance using the power of awareness."
-                </p>
+            <div className="sticky top-0 overflow-y-auto overflow-x-hidden flex flex-col pt-28 pb-12 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+              {/* Student Photo Desktop */}
+              <div className="w-full max-w-[320px] mx-auto mb-6 relative px-6 shrink-0">
+                <div className="absolute inset-0 bg-brand-green/20 rounded-full blur-3xl opacity-40"></div>
+                <img
+                  src="/hero-new.png"
+                  alt="Student"
+                  className="relative z-10 w-full h-auto object-contain drop-shadow-2xl"
+                />
               </div>
+
+              {/* Watch Video Links (Desktop) */}
+              <div className="flex gap-3 justify-center mb-8 px-12">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 bg-white dark:bg-brand-dark-secondary"
+                  onClick={() => window.open('https://www.youtube.com/watch?v=4luQSZLsZUk', '_blank')}
+                >
+                  <PlayIcon className="w-4 h-4 text-brand-green" />
+                  Watch in Tamil
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 bg-white dark:bg-brand-dark-secondary"
+                  onClick={() => window.open('https://www.youtube.com/watch?v=Z2ZkryASFi0', '_blank')}
+                >
+                  <PlayIcon className="w-4 h-4 text-brand-green" />
+                  Watch in English
+                </Button>
+              </div>
+              <RegistrationInfo className="!pt-0 !pb-10 shrink-0" />
             </div>
           </div>
 
         </div>
-        <RegisterSteps />
+
+        {/* Hide original steps on mobile since we have the carousel at the top */}
+        <div className="hidden lg:block">
+          <RegisterSteps />
+        </div>
       </main>
 
       <Footer />
