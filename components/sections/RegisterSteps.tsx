@@ -6,7 +6,7 @@ const RegisterSteps: React.FC = () => {
     const steps = [
         { title: "Fill the Registration Form", desc: "Name, Email, Age, Education, etc." },
         { title: "Make Payment", desc: "via UPI, Card, or NetBanking" },
-        { title: "Receive Confirmation Email", desc: "with WhatsApp number & instructions" },
+        { title: "Receive Confirmation Email", desc: "with instructions" },
         { title: "Login and Start Assessment", desc: "Access your dashboard to begin the test" },
         { title: "Finish Test & Receive Report", desc: "Instant digital results" },
         { title: "Choose the right path in your career", desc: "Get expert guidance and clarity" },

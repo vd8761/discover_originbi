@@ -8,10 +8,12 @@ import { LightModeIcon, DarkModeIcon } from "@/components/icons";
 
 interface HeaderProps {
     horizontalPadding?: string;
+    showRegisterButton?: boolean;
 }
 
 const Header: React.FC<HeaderProps> = ({
-    horizontalPadding = "px-4 lg:px-[clamp(24px,8.33vw,160px)]"
+    horizontalPadding = "px-4 lg:px-[clamp(24px,8.33vw,160px)]",
+    showRegisterButton = true
 }) => {
     const { theme, toggleTheme, isInitialized } = useTheme();
 
@@ -22,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({
                     <a href="/" className="hover:opacity-80 transition-opacity">
                         <Logo className="h-6 sm:h-7 lg:h-6 w-auto" />
                     </a>
-                    <div className="hidden xl:flex items-center gap-8">
+                    <div className="hidden xl:hidden items-center gap-8">
                         <a href="#problem" className="font-sans font-medium text-[11px] 2xl:text-xs text-brand-text-light-primary dark:text-brand-text-primary hover:text-brand-green dark:hover:text-brand-green transition-colors uppercase tracking-wider">Problem</a>
                         <a href="#why-this-matters" className="font-sans font-medium text-[11px] 2xl:text-xs text-brand-text-light-primary dark:text-brand-text-primary hover:text-brand-green dark:hover:text-brand-green transition-colors uppercase tracking-wider">Why This Matters</a>
                     </div>
@@ -52,8 +54,10 @@ const Header: React.FC<HeaderProps> = ({
                         </button>
                     )}
                     <div className="flex items-center gap-2 lg:gap-5">
-                        <a href="https://mind.originbi.com/student/login" className="hidden lg:block font-sans font-medium text-[11px] 2xl:text-xs text-brand-text-light-primary dark:text-brand-text-primary hover:text-brand-green dark:hover:text-brand-green transition-colors uppercase tracking-wider mr-2">Login</a>
-                        <Button href="/register" size="sm" className="shadow-lg shadow-brand-green/20 text-[12px] sm:text-[13px] lg:text-[11px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px]">Register now</Button>
+                        <a href="https://mind.originbi.com/student/login" className="hidden font-sans font-medium text-[11px] 2xl:text-xs text-brand-text-light-primary dark:text-brand-text-primary hover:text-brand-green dark:hover:text-brand-green transition-colors uppercase tracking-wider mr-2">Login</a>
+                        {showRegisterButton && (
+                            <Button href="/register" size="sm" className="shadow-lg shadow-brand-green/20 text-[12px] sm:text-[13px] lg:text-[11px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px]">Register now</Button>
+                        )}
                     </div>
                 </div>
             </div>
