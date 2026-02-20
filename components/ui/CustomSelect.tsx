@@ -50,7 +50,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     };
 
     return (
-        <div className={`space-y-2 w-full ${className}`} ref={containerRef}>
+        <div className={`space-y-2 w-full ${className} ${isOpen ? 'relative z-[60]' : ''}`} ref={containerRef}>
             {label && (
                 <label className="block text-[12px] font-bold tracking-[0.05em] text-black dark:text-white ml-1">
                     {label} {required && <span className="text-red-500">*</span>}
