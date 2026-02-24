@@ -1,67 +1,77 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
 import Button from "@/components/ui/Button";
 
 const Hero: React.FC = () => {
     return (
-        <section className="relative w-full min-h-screen flex items-center bg-white dark:bg-brand-dark-primary overflow-hidden pt-28 pb-20 bg-mesh">
-            {/* Dynamic Background Elements */}
+        <section className="relative w-full bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500">
 
-            <div className="max-w-[1440px] mx-auto px-6 lg:px-20 w-full relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* ── Green Hero Block ── responsive height ── */}
+            <div className="relative w-full min-h-[80vh] sm:min-h-[100vh] lg:min-h-[140vh] flex flex-col items-center justify-center bg-brand-green overflow-visible">
 
-                {/* Text Content */}
-                <div className="space-y-8 order-2 lg:order-1 text-center lg:text-left">
+                {/* Grid + Dot Pattern at Intersections */}
+                <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(to right, rgba(255,255,255,0.15) 1px, transparent 1px),
+                            linear-gradient(to bottom, rgba(255,255,255,0.15) 1px, transparent 1px),
+                            radial-gradient(circle at 1px 1px, rgba(255,255,255,0.2) 2px, transparent 2px)
+                        `,
+                        backgroundSize: '48px 48px',
+                    }}
+                />
 
+                {/* Glow at the bottom center */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-white/30 blur-[140px] rounded-full pointer-events-none" />
 
-                    <h1 className="text-5xl lg:text-7xl font-sans font-bold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight">
-                        What should I do <span className="text-brand-green">Next?</span>
+                {/* ── Text Content ── responsive positioning ── */}
+                <div className="relative z-10 w-full max-w-4xl mx-auto px-6 text-center flex flex-col items-center -mt-[15vh] sm:mt-0 sm:-mb-20 lg:-mt-[60vh]">
+                    <h1 className="text-[clamp(42px,6vw,84px)] font-sans font-extrabold text-white leading-[1.05] tracking-tight mb-5 drop-shadow-sm">
+                        What should I do Next?
                     </h1>
 
-                    <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-lg leading-relaxed font-light mx-auto lg:mx-0">
-                        Let your strengths answer that.
+                    <p className="text-[clamp(18px,1.5vw,22px)] text-white/90 font-medium max-w-2xl leading-relaxed mb-10 drop-shadow-sm">
+                        Most students pick a career path based on pressure, not potential. We built something that helps you see yourself — clearly, completely, honestly.
                     </p>
 
-                    <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <div className="flex flex-col sm:flex-row gap-4 animate-fade-in [animation-delay:400ms] opacity-0 fill-mode-forwards">
-                            <Button href="/register" size="lg" className="transform hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-brand-green/20 rounded-full px-10 py-4 text-lg font-bold">
-                                Take the First Step
-                            </Button>
-                            <Button href="#how-it-works" variant="outline" size="lg" className="border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/5">
-                                Learn More
-                            </Button>
-                        </div>
-                    </div>
-
-                    <div className="pt-8 flex items-center justify-center lg:justify-start gap-6 text-gray-400 text-sm font-medium">
-                        <div className="flex -space-x-3">
-                            {[1, 2, 3, 4].map(i => (
-                                <div key={i} className="w-10 h-10 rounded-full border-2 border-white dark:border-brand-dark-primary bg-gray-200 flex items-center justify-center overflow-hidden">
-                                    <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" />
-                                </div>
-                            ))}
-                        </div>
-                        <p>Trusted by 50+ Institutions</p>
-                    </div>
+                    <Button
+                        href="/register"
+                        size="lg"
+                        className="group bg-white !text-brand-dark-green hover:bg-gray-50 border-none shadow-xl shadow-brand-dark-green/20 rounded-full px-8 py-3.5 sm:px-10 sm:py-4 text-lg font-bold transition-transform duration-300 hover:scale-105"
+                    >
+                        Discover who you are
+                        <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                    </Button>
                 </div>
 
-                {/* Hero Visual */}
-                <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-                    <div className="relative z-10 w-full max-w-[600px] lg:scale-125 origin-center lg:origin-bottom-right">
-                        {/* Main Image - Removed card, increased size */}
-                        <div className="relative">
-                            <img
-                                src="/hero-new.png"
-                                alt="Origin BI Discovery"
-                                className="w-full h-auto object-cover"
-                            />
+                {/* ── Dome Curve ── green curves DOWNWARD ── */}
+                <div className="absolute bottom-0 left-0 w-full z-[1] pointer-events-none translate-y-[1px]">
+                    <svg
+                        className="block w-full"
+                        viewBox="0 0 1440 180"
+                        preserveAspectRatio="none"
+                        style={{ height: 'clamp(60px, 10vw, 220px)' }}
+                    >
+                        <path
+                            d="M0,0 Q720,360 1440,0 L1440,180 L0,180 Z"
+                            className="fill-brand-light-primary dark:fill-brand-dark-primary"
+                        />
+                    </svg>
+                </div>
+            </div>
 
-                        </div>
+            {/* ── Product Card ── responsive overlap ── */}
+            <div className="relative z-20 w-full max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 -mt-[20vh] sm:-mt-[20vh] lg:-mt-[60vh] pb-24 lg:pb-32">
+                <div className="w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] dark:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.7)] border border-gray-200 dark:border-white/10 bg-white dark:bg-brand-dark-secondary">
+                    <div className="relative w-full aspect-[16/9] md:aspect-[16/10] lg:aspect-[16/9]">
+                        <img
+                            src="/hero-new.png"
+                            alt="Origin BI Assessment Platform"
+                            className="absolute inset-0 w-full h-full object-cover object-top"
+                        />
                     </div>
-
-                    {/* Background Decorative Blobs */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-r from-brand-green/20 to-blue-500/20 rounded-full blur-[100px] -z-10" />
                 </div>
             </div>
         </section>
