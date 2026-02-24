@@ -3,7 +3,7 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
-import Problem from "@/components/sections/Problem";
+import SoundFamiliar from "@/components/sections/SoundFamiliar";
 import WhatIsIt from "@/components/sections/WhatIsIt";
 import WhyThisMatters from "@/components/sections/WhyThisMatters";
 import DiscoverYourself from "@/components/sections/DiscoverYourself";
@@ -23,7 +23,7 @@ export default function Home() {
       <Header />
 
       <Hero />
-      <Problem />
+      <SoundFamiliar />
       <WhatIsIt />
       <WhyThisMatters />
       <DiscoverYourself />

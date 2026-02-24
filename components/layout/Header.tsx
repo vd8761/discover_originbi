@@ -42,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({
             }`}>
             <div className={`max-w-[1920px] mx-auto flex items-center justify-between ${horizontalPadding}`}>
                 <div className="flex items-center gap-4 lg:gap-12">
-                    <a href="/" className={`hover:opacity-90 transition-opacity ${!isWhiteHeader ? 'drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]' : ''}`}>
+                    <a href="/" className="hover:opacity-90 transition-opacity">
                         <Logo
                             className="h-6 sm:h-7 lg:h-6 w-auto"
                             forceWhite={!isScrolled || theme === 'dark'}
