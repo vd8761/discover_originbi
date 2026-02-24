@@ -4,7 +4,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import SoundFamiliar from "@/components/sections/SoundFamiliar";
-import WhatIsIt from "@/components/sections/WhatIsIt";
+import Solution from "@/components/sections/Solution";
+import DimensionQuote from "@/components/sections/DimensionQuote";
 import WhyThisMatters from "@/components/sections/WhyThisMatters";
 import DiscoverYourself from "@/components/sections/DiscoverYourself";
 
@@ -24,7 +25,8 @@ export default function Home() {
 
       <Hero />
       <SoundFamiliar />
-      <WhatIsIt />
+      <Solution />
+      <DimensionQuote />
       <WhyThisMatters />
       <DiscoverYourself />
       <HowItWorks />

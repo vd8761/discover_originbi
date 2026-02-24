@@ -28,7 +28,7 @@ const SoundFamiliar: React.FC = () => {
                 {/* Headline */}
                 <div className="mb-20 text-center">
                     <h2 className="text-[clamp(32px,4vw,64px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-tight tracking-tight">
-                        Sound <span className="text-brand-green italic font-serif decoration-brand-green/30 underline-offset-8">familiar?</span>
+                        Sound <span className="text-brand-green">familiar?</span>
                     </h2>
                 </div>
 

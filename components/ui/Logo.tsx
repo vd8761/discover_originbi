@@ -10,7 +10,7 @@ const Logo: React.FC<{ className?: string, forceWhite?: boolean, forceDark?: boo
     const showWhite = forceWhite || (!forceDark && typeof window !== 'undefined' && document.documentElement.classList.contains('dark'));
 
     const outlineStyle = showWhite
-        ? { filter: 'drop-shadow(1px 1px 0px rgba(255,255,255,0.1) drop-shadow(-1px -1px 0px rgba(255,255,255,0.1)) drop-shadow(1px -1px 0px rgba(255,255,255,0.1)) drop-shadow(-1px 1px 0px rgba(255,255,255,0.1))' }
+        ? { filter: 'drop-shadow(1px 1px 0px rgba(255,255,255,0.1) drop-shadow(-1px -1px 0px rgba(255,255,255,0.)) drop-shadow(1px -1px 0px rgba(255,255,255,0.1)) drop-shadow(-1px 1px 0px rgba(255,255,255,0.1))' }
         : { filter: 'drop-shadow(1px 1px 0px rgba(0,0,0,0.1)) drop-shadow(-1px -1px 0px rgba(0,0,0,0.1)) drop-shadow(1px -1px 0px rgba(0,0,0,0.1)) drop-shadow(-1px 1px 0px rgba(0,0,0,0.1))' };
 
     return (
