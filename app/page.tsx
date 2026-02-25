@@ -6,6 +6,7 @@ import Hero from "@/components/sections/Hero";
 import SoundFamiliar from "@/components/sections/SoundFamiliar";
 import JourneySteps from "@/components/sections/JourneySteps";
 import WhyOriginBI from "@/components/sections/WhyOriginBI";
+import IndustryExperts from "@/components/sections/IndustryExperts";
 import CareerValueCard from "@/components/sections/CareerValueCard";
 import FAQSection from "@/components/sections/FAQSection";
 import Testimonials from "@/components/sections/Testimonials";
@@ -22,6 +23,7 @@ export default function Home() {
       <SoundFamiliar />
       <JourneySteps />
       <WhyOriginBI />
+      <IndustryExperts />
       <CareerValueCard />
       <Testimonials />
       <FAQSection />
