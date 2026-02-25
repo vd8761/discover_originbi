@@ -39,7 +39,7 @@ const SoundFamiliar: React.FC = () => {
                 {/* Header Sequence */}
                 <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
                     <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight mb-6 transition-colors">
-                        Is This Your Current <span className="text-brand-green">Situation?</span>
+                        Is This Your <span className="text-brand-green">Current Situation</span> ?
                     </h2>
                     <p className="text-lg sm:text-xl text-brand-text-light-secondary dark:text-white/70 font-medium">
                         Check if you (or your child) are at one of these career crossroads:

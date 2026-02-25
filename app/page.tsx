@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import SoundFamiliar from "@/components/sections/SoundFamiliar";
+import JourneySteps from "@/components/sections/JourneySteps";
 import Solution from "@/components/sections/Solution";
 import DimensionQuote from "@/components/sections/DimensionQuote";
 import WhyThisMatters from "@/components/sections/WhyThisMatters";
@@ -20,11 +21,12 @@ import Testimonials from "@/components/sections/Testimonials";
 
 export default function Home() {
   return (
-    <div className="relative w-full overflow-x-hidden flex flex-col min-h-screen bg-white dark:bg-brand-dark-primary transition-colors duration-500">
+    <div className="relative w-full overflow-x-clip flex flex-col min-h-screen bg-white dark:bg-brand-dark-primary transition-colors duration-500">
       <Header />
 
       <Hero />
       <SoundFamiliar />
+      <JourneySteps />
       <Solution />
       <DimensionQuote />
       <WhyThisMatters />
