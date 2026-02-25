@@ -241,7 +241,7 @@ const JourneySteps: React.FC = () => {
                 style={{ minHeight: `${(steps.length + 1) * 100}vh` }}
             >
                 <div className="sticky top-0 h-screen flex items-stretch">
-                    <div className="max-w-[1440px] mx-auto w-full flex items-center px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]">
+                    <div className="max-w-[1920px] mx-auto w-full flex items-center px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]">
                         {/* ─── LEFT COLUMN: Sticky Sidebar ─── */}
                         <div className="w-[42%] flex flex-col justify-center pr-16 relative">
                             {/* Header */}
@@ -304,74 +304,66 @@ const JourneySteps: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* ─── RIGHT COLUMN: Morphing Card Area ─── */}
+                        {/* ─── RIGHT COLUMN: Stacked Cards Area ─── */}
                         <div className="w-[58%] relative flex items-center justify-center">
-                            {/* Section acts purely on math progression, eliminating DOM collision issues. */}
+                            <div className="relative w-full max-w-4xl min-h-[450px] flex items-center overflow-visible">
+                                {steps.map((step, idx) => (
+                                    <div
+                                        key={idx}
+                                        className={`absolute w-full rounded-[1.8rem] bg-white dark:bg-brand-dark-secondary border border-gray-100 dark:border-white/8 shadow-[0px_20px_40px_-10px_rgba(0,0,0,0.05)] dark:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.4)] p-8 sm:p-10 flex flex-col transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] ${activeStep === idx
+                                            ? "opacity-100 translate-y-0 pointer-events-auto z-10"
+                                            : activeStep > idx
+                                                ? "opacity-0 -translate-y-full pointer-events-none z-0"
+                                                : "opacity-0 translate-y-full pointer-events-none z-0"
+                                            }`}
+                                    >
+                                        <div className="absolute inset-0 bg-grid opacity-[0.03] dark:opacity-[0.05] pointer-events-none rounded-[1.8rem]"></div>
 
-                            {/* The single static morphing card */}
-                            <div className="w-full max-w-4xl rounded-[1.8rem] bg-white dark:bg-brand-dark-secondary border border-gray-100 dark:border-white/8 shadow-[0px_20px_40px_-10px_rgba(0,0,0,0.05)] dark:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.4)] p-8 sm:p-10 relative overflow-hidden flex flex-col min-h-[300px]">
-                                <div className="absolute inset-0 bg-grid opacity-[0.03] dark:opacity-[0.05] pointer-events-none"></div>
-                                {/* Ambient corner glow */}
+                                        <div className="relative z-10 mb-8 shrink-0 text-left">
+                                            <p className="text-journey-quote text-brand-dark-primary dark:text-white">
+                                                &ldquo;{step.feeling}&rdquo;
+                                            </p>
+                                        </div>
 
-                                {/* Content Grid (allows stacking without fixed height constraints) */}
-                                <div className="grid grid-cols-1 grid-rows-1 flex-1 relative mt-2">
-                                    {steps.map((step, idx) => (
-                                        <div
-                                            key={idx}
-                                            className={`col-start-1 row-start-1 flex flex-col items-start h-full transition-all duration-700 ease-in-out ${activeStep === idx
-                                                ? "opacity-100 translate-y-0 pointer-events-auto z-10"
-                                                : activeStep > idx
-                                                    ? "opacity-0 -translate-y-8 pointer-events-none z-0"
-                                                    : "opacity-0 translate-y-8 pointer-events-none z-0"
-                                                }`}
-                                        >
-                                            {/* Step Feeling Quote */}
-                                            <div className="relative mb-8 shrink-0 text-left">
-                                                <p className="text-journey-quote text-brand-dark-primary dark:text-white">
-                                                    &ldquo;{step.feeling}&rdquo;
+                                        <div className="relative z-10 flex-1 flex flex-col gap-6 bg-gray-50/80 dark:bg-white/[0.03] rounded-2xl p-6 sm:p-8 border border-gray-100/50 dark:border-white/5 w-full">
+                                            <div className="relative text-left">
+                                                <h5 className="text-journey-subheading text-brand-green">
+                                                    <span
+                                                        className="material-symbols-outlined text-brand-green"
+                                                        style={{
+                                                            fontSize: "28px",
+                                                            fontVariationSettings: "'FILL' 1",
+                                                        }}
+                                                    >
+                                                        psychology
+                                                    </span>
+                                                    What Happens
+                                                </h5>
+                                                <p className="text-journey-body">
+                                                    {step.whatHappens}
                                                 </p>
                                             </div>
 
-                                            <div className="flex-1 flex flex-col gap-6 bg-gray-50/80 dark:bg-white/[0.03] rounded-2xl p-6 sm:p-8 border border-gray-100/50 dark:border-white/5 w-full">
-                                                <div className="relative text-left">
-                                                    <h5 className="text-journey-subheading text-brand-green">
-                                                        <span
-                                                            className="material-symbols-outlined text-brand-green"
-                                                            style={{
-                                                                fontSize: "28px",
-                                                                fontVariationSettings: "'FILL' 1",
-                                                            }}
-                                                        >
-                                                            psychology
-                                                        </span>
-                                                        What Happens
-                                                    </h5>
-                                                    <p className="text-journey-body">
-                                                        {step.whatHappens}
-                                                    </p>
-                                                </div>
+                                            <div className="w-full h-px bg-gray-200 dark:bg-white/10 opacity-60"></div>
 
-                                                <div className="w-full h-px bg-gray-200 dark:bg-white/10 opacity-60"></div>
-
-                                                <div className="relative text-left">
-                                                    <h5 className="text-journey-subheading text-brand-green">
-                                                        <span
-                                                            className="material-symbols-outlined text-brand-green"
-                                                            style={{
-                                                                fontSize: "28px",
-                                                                fontVariationSettings: "'FILL' 1",
-                                                            }}
-                                                        >
-                                                            insights
-                                                        </span>
-                                                        The Result
-                                                    </h5>
-                                                    <p className="text-journey-body">{step.result}</p>
-                                                </div>
+                                            <div className="relative text-left">
+                                                <h5 className="text-journey-subheading text-brand-green">
+                                                    <span
+                                                        className="material-symbols-outlined text-brand-green"
+                                                        style={{
+                                                            fontSize: "28px",
+                                                            fontVariationSettings: "'FILL' 1",
+                                                        }}
+                                                    >
+                                                        insights
+                                                    </span>
+                                                    The Result
+                                                </h5>
+                                                <p className="text-journey-body">{step.result}</p>
                                             </div>
                                         </div>
-                                    ))}
-                                </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -380,7 +372,7 @@ const JourneySteps: React.FC = () => {
 
             {/* WHY SCIENCE CALLOUT — Outside the sticky container */}
             <div className="hidden lg:block w-full py-20 lg:py-28">
-                <div className="container mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]">
+                <div className="max-w-[1920px] mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]">
                     <div className="max-w-5xl mx-auto relative [border-radius:1.8rem_0_1.8rem_0] bg-brand-green px-12 py-16 lg:px-20 lg:py-20 text-center shadow-lg overflow-hidden">
                         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
                         <img

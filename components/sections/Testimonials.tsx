@@ -129,7 +129,7 @@ const Testimonials: React.FC = () => {
                         What Our <span className="text-brand-green">Students</span> Say
                     </h2>
                     <p className="text-[clamp(16px,1.3vw,22px)] text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                        Real experiences from students who discovered their perfect career path. Click on a card to read more.
+                        Real experiences from students who discovered their perfect career path.
                     </p>
                 </div>
             </div>

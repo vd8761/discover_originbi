@@ -303,7 +303,7 @@ function RegisterPageContent() {
           <div className="flex flex-col lg:flex-row">
 
             {/* Left Side - Form Section (scrolls with page) */}
-            <div className="w-full lg:w-1/2 px-4 sm:px-10 lg:px-[clamp(24px,6vw,120px)] pt-28 lg:pt-36 pb-12 bg-white dark:bg-brand-dark-primary relative z-10 transition-colors duration-300">
+            <div className="w-full lg:w-1/2 px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] pt-28 lg:pt-36 pb-12 bg-white dark:bg-brand-dark-primary relative z-10 transition-colors duration-300">
 
               {/* Decorative Top Line */}
               <div className="hidden lg:block w-16 h-1 bg-brand-green mb-6 rounded-full"></div>
@@ -608,7 +608,7 @@ function RegisterPageContent() {
             </div>
 
             {/* Right Side - Visual Section (Normal flow) */}
-            <div className="hidden lg:block w-1/2 bg-gray-50 dark:bg-[#1E1E1E] transition-colors duration-300 border-l border-gray-100 dark:border-white/5">
+            <div className="hidden lg:block w-1/2 px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] bg-gray-50 dark:bg-[#1E1E1E] transition-colors duration-300 border-l border-gray-100 dark:border-white/5">
               <div className="flex flex-col justify-center items-center pb-12 pt-[100px]">
                 {/* Student Photo Desktop */}
                 <div className="w-full max-w-[500px] mx-auto mb-8 relative px-10">
