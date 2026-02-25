@@ -9,7 +9,6 @@ import WhyOriginBI from "@/components/sections/WhyOriginBI";
 import CareerValueCard from "@/components/sections/CareerValueCard";
 import FAQSection from "@/components/sections/FAQSection";
 import FinalCTASection from "@/components/sections/FinalCTASection";
-import DimensionQuote from "@/components/sections/DimensionQuote";
 
 
 
@@ -24,7 +23,6 @@ export default function Home() {
       <WhyOriginBI />
       <CareerValueCard />
       <FAQSection />
-      <DimensionQuote />
 
       <FinalCTASection />
 

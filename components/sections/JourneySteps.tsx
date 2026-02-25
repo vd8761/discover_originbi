@@ -162,13 +162,13 @@ const JourneySteps: React.FC = () => {
 
                 {/* Mobile Callout */}
                 <div className="mt-16 w-full px-6">
-                    <div className="relative [border-radius:2.3rem_0_2.3rem_0] bg-brand-green p-10 text-center shadow-lg overflow-hidden">
+                    <div className="relative [border-radius:1.8rem_0_1.8rem_0] bg-brand-green p-8 md:p-10 text-center shadow-lg overflow-hidden">
                         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
-                        <img src="/quote-symbol.svg" alt="" aria-hidden="true" className="absolute top-4 left-5 w-8 h-auto opacity-90 pointer-events-none select-none brightness-0 invert" />
-                        <h3 className="relative z-10 text-2xl font-extrabold text-white mb-4">
+                        <img src="/quote-symbol.svg" alt="" aria-hidden="true" className="absolute top-4 left-4 w-7 h-auto opacity-70 pointer-events-none select-none brightness-0 invert" />
+                        <h3 className="relative z-10 text-2xl font-extrabold text-white mb-4 px-4">
                             Why Behavioral Intelligence?
                         </h3>
-                        <p className="relative z-10 text-base text-white opacity-90 leading-relaxed font-semibold mb-6">
+                        <p className="relative z-10 text-base text-white opacity-90 leading-relaxed font-semibold mb-6 px-4">
                             Traditional counseling asks a student what they like. We show you what they are built for.
                         </p>
                         <div className="relative z-10 inline-block bg-white px-4 py-2 rounded-full shadow-sm">
@@ -176,7 +176,7 @@ const JourneySteps: React.FC = () => {
                                 Interest is temporary; potential is permanent.
                             </p>
                         </div>
-                        <img src="/quote-symbol.svg" alt="" aria-hidden="true" className="absolute bottom-4 right-5 w-8 h-auto rotate-180 opacity-90 pointer-events-none select-none brightness-0 invert" />
+                        <img src="/quote-symbol.svg" alt="" aria-hidden="true" className="absolute bottom-4 right-4 w-7 h-auto rotate-180 opacity-70 pointer-events-none select-none brightness-0 invert" />
                     </div>
                 </div>
             </div>
@@ -243,7 +243,7 @@ const JourneySteps: React.FC = () => {
                             {/* Section acts purely on math progression, eliminating DOM collision issues. */}
 
                             {/* The single static morphing card */}
-                            <div className="w-full max-w-4xl rounded-[2rem] bg-white dark:bg-brand-dark-secondary border border-gray-100 dark:border-white/8 shadow-[0px_20px_40px_-10px_rgba(0,0,0,0.05)] dark:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.4)] p-8 sm:p-10 relative overflow-hidden flex flex-col min-h-[300px]">
+                            <div className="w-full max-w-4xl rounded-[1.8rem] bg-white dark:bg-brand-dark-secondary border border-gray-100 dark:border-white/8 shadow-[0px_20px_40px_-10px_rgba(0,0,0,0.05)] dark:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.4)] p-8 sm:p-10 relative overflow-hidden flex flex-col min-h-[300px]">
                                 <div className="absolute inset-0 bg-grid opacity-[0.03] dark:opacity-[0.05] pointer-events-none"></div>
                                 {/* Ambient corner glow */}
 
@@ -306,7 +306,7 @@ const JourneySteps: React.FC = () => {
             {/* WHY SCIENCE CALLOUT — Outside the sticky container */}
             <div className="hidden lg:block w-full py-20 lg:py-28">
                 <div className="container mx-auto px-6 lg:px-[clamp(24px,6vw,120px)]">
-                    <div className="max-w-5xl mx-auto relative [border-radius:2.3rem_0_2.3rem_0] bg-brand-green px-12 py-16 lg:px-20 lg:py-20 text-center shadow-lg overflow-hidden">
+                    <div className="max-w-5xl mx-auto relative [border-radius:1.8rem_0_1.8rem_0] bg-brand-green px-12 py-16 lg:px-20 lg:py-20 text-center shadow-lg overflow-hidden">
                         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
                         <img src="/quote-symbol.svg" alt="" aria-hidden="true" className="absolute top-6 left-8 w-11 h-auto opacity-90 pointer-events-none select-none brightness-0 invert" />
 

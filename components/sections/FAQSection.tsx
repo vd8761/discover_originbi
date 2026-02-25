@@ -117,7 +117,7 @@ const FAQSection: React.FC = () => {
                 </div>
 
                 <div className="mt-16 lg:mt-24 text-center max-w-4xl mx-auto">
-                    <div className="relative [border-radius:3.5rem_0_3.5rem_0] bg-brand-green shadow-[0_24px_64px_-20px_rgba(30,211,106,0.6)] overflow-hidden px-8 py-12 lg:px-14 lg:py-16">
+                    <div className="relative [border-radius:1.8rem_0_1.8rem_0] bg-brand-green shadow-2xl overflow-hidden px-6 py-12 lg:px-14 lg:py-16">
 
                         {/* Background Elements */}
                         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
@@ -127,20 +127,20 @@ const FAQSection: React.FC = () => {
                             src="/quote-symbol.svg"
                             alt=""
                             aria-hidden="true"
-                            className="absolute top-8 left-8 w-12 h-auto opacity-90 pointer-events-none select-none brightness-0 invert"
+                            className="absolute top-4 left-4 lg:top-8 lg:left-8 w-8 lg:w-12 h-auto opacity-70 pointer-events-none select-none brightness-0 invert"
                         />
                         <img
                             src="/quote-symbol.svg"
                             alt=""
                             aria-hidden="true"
-                            className="absolute bottom-8 right-10 w-12 h-auto rotate-180 opacity-90 pointer-events-none select-none brightness-0 invert"
+                            className="absolute bottom-4 right-6 lg:bottom-8 lg:right-10 w-8 lg:w-12 h-auto rotate-180 opacity-70 pointer-events-none select-none brightness-0 invert"
                         />
 
                         <div className="relative z-10 flex flex-col items-center">
-                            <h3 className="text-xl lg:text-3xl font-semibold text-white mb-8 leading-relaxed max-w-3xl">
+                            <h3 className="text-lg lg:text-3xl font-semibold text-white mb-8 px-4 lg:px-0 leading-relaxed max-w-3xl">
                                 "At +2, a wrong choice isn't just a loss of time; it's a loss of confidence."
                             </h3>
-                            <p className="inline-block bg-white text-brand-green px-8 py-3.5 rounded-full text-lg lg:text-xl font-bold tracking-wide shadow-lg">
+                            <p className="inline-block bg-white text-brand-green px-5 py-2.5 lg:px-8 lg:py-3.5 rounded-full text-sm lg:text-xl font-bold tracking-wide shadow-lg">
                                 Spend ₹749 today to ensure they walk into college with a clear purpose.
                             </p>
                         </div>

@@ -77,32 +77,32 @@ const CareerValueCard: React.FC = () => {
                     {/* Right side content - The Card & Philosophy */}
                     <div className="w-full lg:w-[42%] flex flex-col gap-8 order-1 lg:order-2">
                         {/* Premium Price Card Visual - Primary Green Theme */}
-                        <div className="relative rounded-[2.5rem] bg-gradient-to-br from-brand-green via-[#19b359] to-brand-green p-8 lg:p-12 border border-white/20 shadow-xl overflow-hidden group">
+                        <div className="relative rounded-[1.8rem] bg-gradient-to-br from-brand-green via-[#19b359] to-brand-green p-8 lg:p-12 border border-white/20 shadow-xl overflow-hidden group">
                             <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
 
                             {/* Animated reflection effect */}
                             <div className="absolute -inset-[100%] bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-45 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none"></div>
 
                             <div className="relative z-10">
-                                <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-white border border-white/30 text-[10px] font-black tracking-[0.2em] uppercase mb-10 backdrop-blur-md">
+                                <span className="inline-block px-3 py-1 lg:px-4 lg:py-1.5 rounded-full bg-white/20 text-white border border-white/30 text-[9px] lg:text-[10px] font-black tracking-[0.2em] uppercase mb-10 backdrop-blur-md">
                                     Lifetime Value
                                 </span>
                                 <h3 className="text-3xl lg:text-4xl font-extrabold text-white mb-2 leading-tight tracking-tight">
                                     The Career Value Package
                                 </h3>
                                 <div className="flex items-baseline gap-2 mb-10">
-                                    <span className="text-6xl lg:text-8xl font-black text-white tracking-tighter">₹749</span>
-                                    <span className="text-white/60 text-lg font-bold">/ one-time</span>
+                                    <span className="text-5xl lg:text-8xl font-black text-white tracking-tighter">₹749</span>
+                                    <span className="text-white/60 text-base lg:text-lg font-bold">/ one-time</span>
                                 </div>
 
-                                <button className="w-full bg-white text-brand-green text-lg font-black py-4.5 rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-lg flex items-center justify-center gap-2">
+                                <button className="w-full bg-white text-brand-green text-base lg:text-lg font-black py-3.5 lg:py-4.5 rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-lg flex items-center justify-center gap-2">
                                     Get the Blueprint Now
                                 </button>
                             </div>
                         </div>
 
                         {/* Philosophy Quote - Simple & Elegant */}
-                        <div className="relative rounded-[2rem] bg-white dark:bg-brand-dark-secondary border border-gray-100 dark:border-white/5 px-8 py-10 lg:p-12 text-center shadow-[0_15px_30px_-10px_rgba(0,0,0,0.03)] dark:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.2)]">
+                        <div className="relative rounded-[1.8rem] bg-white dark:bg-brand-dark-secondary border border-gray-100 dark:border-white/5 px-8 py-10 lg:p-12 text-center shadow-[0_15px_30px_-10px_rgba(0,0,0,0.03)] dark:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.2)]">
                             <h4 className="text-[11px] font-black tracking-[0.2em] uppercase text-brand-green mb-6">
                                 The OriginBI Philosophy
                             </h4>
