@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import SoundFamiliar from "@/components/sections/SoundFamiliar";
 import JourneySteps from "@/components/sections/JourneySteps";
+import WhyOriginBI from "@/components/sections/WhyOriginBI";
 import Solution from "@/components/sections/Solution";
 import DimensionQuote from "@/components/sections/DimensionQuote";
 import WhyThisMatters from "@/components/sections/WhyThisMatters";
@@ -27,6 +28,7 @@ export default function Home() {
       <Hero />
       <SoundFamiliar />
       <JourneySteps />
+      <WhyOriginBI />
       <Solution />
       <DimensionQuote />
       <WhyThisMatters />
