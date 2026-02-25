@@ -1,67 +1,70 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
 import Button from "@/components/ui/Button";
+import { Check } from "lucide-react";
 
 const Hero: React.FC = () => {
     return (
-        <section className="relative w-full min-h-screen flex items-center bg-white dark:bg-brand-dark-primary overflow-hidden pt-28 pb-20 bg-mesh">
-            {/* Dynamic Background Elements */}
+        <section className="relative w-full flex items-center bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500 pt-24 pb-16 lg:pt-44 lg:pb-8 overflow-hidden">
+            <div className="container mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] relative z-10">
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-12">
 
-            <div className="max-w-[1440px] mx-auto px-6 lg:px-20 w-full relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    {/* Left Content Column */}
+                    <div className="w-full lg:w-[45%] text-left order-2 lg:order-1">
+                        <div className="max-w-xl">
+                            <h1 className="text-[clamp(30px,4vw,52px)] font-sans font-extrabold leading-[1.2] mb-5 tracking-tight text-brand-dark-primary dark:text-white transition-colors">
+                                Discover, Align and Excel <br className="hidden sm:block" />
+                                <span className="text-brand-green">in the Right Career Path</span>
+                            </h1>
 
-                {/* Text Content */}
-                <div className="space-y-8 order-2 lg:order-1 text-center lg:text-left">
+                            <p className="text-base sm:text-lg text-brand-text-light-secondary dark:text-white/60 font-medium mb-8 max-w-md leading-relaxed">
+                                Find Your Edge. Move Beyond the Degree.
+                            </p>
 
+                            {/* Checklist */}
+                            <div className="space-y-3 mb-10">
+                                {[
+                                    "1-on-1 Personalized Cognitive Profile Mapping",
+                                    "Tailored Job-Role Alignment & Career Roadmaps",
+                                    "Precision-Based Decision Making for Your Next Move"
+                                ].map((item, index) => (
+                                    <div key={index} className="flex items-start gap-3">
+                                        <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-green/10 dark:bg-brand-green/20 flex items-center justify-center">
+                                            <Check className="w-3.5 h-3.5 text-brand-green" strokeWidth={3} />
+                                        </div>
+                                        <span className="text-brand-text-light-primary dark:text-white/80 text-sm sm:text-base font-semibold tracking-tight">
+                                            {item}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
 
-                    <h1 className="text-5xl lg:text-7xl font-sans font-bold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight">
-                        What should I do <span className="text-brand-green">Next?</span>
-                    </h1>
-
-                    <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-lg leading-relaxed font-light mx-auto lg:mx-0">
-                        Let your strengths answer that.
-                    </p>
-
-                    <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <div className="flex flex-col sm:flex-row gap-4 animate-fade-in [animation-delay:400ms] opacity-0 fill-mode-forwards">
-                            <Button href="/register" size="lg" className="transform hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-brand-green/20 rounded-full px-10 py-4 text-lg font-bold">
-                                Take the First Step
-                            </Button>
-                            <Button href="#how-it-works" variant="outline" size="lg" className="border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/5">
-                                Learn More
-                            </Button>
+                            {/* CTA Button */}
+                            <div className="flex flex-col sm:flex-row items-start gap-4">
+                                <Button
+                                    href="/register"
+                                    size="lg"
+                                    className="!bg-brand-green !text-white border-none rounded-full px-9 py-3.5 text-base font-extrabold transition-all duration-300 hover:scale-[1.02] hover:brightness-105"
+                                >
+                                    Get Your Career Roadmap Now • ₹749
+                                </Button>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="pt-8 flex items-center justify-center lg:justify-start gap-6 text-gray-400 text-sm font-medium">
-                        <div className="flex -space-x-3">
-                            {[1, 2, 3, 4].map(i => (
-                                <div key={i} className="w-10 h-10 rounded-full border-2 border-white dark:border-brand-dark-primary bg-gray-200 flex items-center justify-center overflow-hidden">
-                                    <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" />
-                                </div>
-                            ))}
-                        </div>
-                        <p>Trusted by 50+ Institutions</p>
-                    </div>
-                </div>
-
-                {/* Hero Visual */}
-                <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-                    <div className="relative z-10 w-full max-w-[600px] lg:scale-125 origin-center lg:origin-bottom-right">
-                        {/* Main Image - Removed card, increased size */}
-                        <div className="relative">
+                    {/* Right Image Column - Plain Image, no container */}
+                    <div className="w-full lg:w-[55%] relative flex justify-center lg:justify-end order-1 lg:order-2">
+                        <div className="w-full max-w-[650px]">
                             <img
                                 src="/hero-new.png"
-                                alt="Origin BI Discovery"
-                                className="w-full h-auto object-cover"
+                                alt="Origin BI Assessment Platform"
+                                className="w-full h-auto object-contain max-w-[360px] sm:max-w-full mx-auto scale-100 lg:scale-110 lg:-translate-y-10"
+                                draggable={false}
                             />
-
                         </div>
                     </div>
 
-                    {/* Background Decorative Blobs */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-r from-brand-green/20 to-blue-500/20 rounded-full blur-[100px] -z-10" />
                 </div>
             </div>
         </section>

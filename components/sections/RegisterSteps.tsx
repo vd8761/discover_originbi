@@ -34,7 +34,7 @@ const RegisterSteps: React.FC = () => {
 
                     {steps.map((step, index) => (
                         <div key={index} className="flex-1 min-w-[150px] max-w-[200px] flex flex-col items-center group relative">
-                            <div className="w-20 h-20 bg-white dark:bg-brand-dark-secondary border-2 border-brand-green rounded-full flex items-center justify-center text-2xl font-bold text-brand-green mb-6 z-10 transition-transform group-hover:scale-110 shadow-lg group-hover:bg-brand-green group-hover:text-white">
+                            <div className="w-20 h-20 bg-brand-green lg:bg-white lg:dark:bg-brand-dark-secondary border-2 border-brand-green rounded-full flex items-center justify-center text-2xl font-bold text-white lg:text-brand-green mb-6 z-10 transition-all duration-300 group-hover:scale-110 shadow-lg shadow-brand-green/20 group-hover:bg-brand-green group-hover:text-white">
                                 {index + 1}
                             </div>
                             <h3 className="text-lg font-bold text-brand-dark-primary dark:text-white mb-2 leading-tight min-h-[44px]">

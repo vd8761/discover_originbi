@@ -26,12 +26,12 @@ const Button: React.FC<ButtonProps | LinkProps> = (props) => {
         ...rest
     } = props;
 
-    const baseStyles = "inline-flex items-center justify-center font-sans font-bold rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed leading-none tracking-[0.05em]";
+    const baseStyles = "inline-flex items-center justify-center font-sans font-bold rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed leading-none tracking-[0.05em] border-2 focus:outline-none focus:ring-0";
 
     const variants = {
-        primary: "bg-brand-green text-white hover:bg-brand-green/90 shadow-lg shadow-brand-green/20",
-        secondary: "bg-brand-dark-secondary text-white hover:bg-brand-dark-tertiary",
-        outline: "border-2 border-brand-green text-brand-green hover:bg-brand-green/10"
+        primary: "bg-brand-green border-brand-green text-white hover:bg-brand-green/90",
+        secondary: "bg-brand-dark-secondary border-brand-dark-secondary text-white hover:bg-brand-dark-tertiary",
+        outline: "border-brand-green text-brand-green hover:bg-brand-green/10"
     };
 
     const sizes = {

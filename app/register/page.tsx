@@ -295,364 +295,361 @@ function RegisterPageContent() {
   }, [isSuccess, router]);
 
   return (
-    <div className="h-full bg-white dark:bg-brand-dark-primary font-sans text-brand-dark-primary dark:text-white transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-brand-dark-primary font-sans text-brand-dark-primary dark:text-white transition-colors duration-300">
       <Header showRegisterButton={false} />
 
       <main className="flex-1 w-full relative">
-        <div className="h-full flex flex-col lg:flex-row">
+        <div className="max-w-[1920px] mx-auto">
+          <div className="flex flex-col lg:flex-row">
 
-          {/* Left Side - Form Section (White Background for clean look) */}
-          <div className="w-full h-full lg:w-1/2 flex flex-col justify-center px-4 sm:px-10 lg:px-12 pt-24 pb-12 bg-white dark:bg-brand-dark-primary relative z-10 transition-colors duration-300">
+            {/* Left Side - Form Section (scrolls with page) */}
+            <div className="w-full lg:w-1/2 px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] pt-28 lg:pt-36 pb-12 bg-white dark:bg-brand-dark-primary relative z-10 transition-colors duration-300">
 
-            {/* Background Pattern for Form Area */}
-            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-gray-50 to-transparent dark:from-white/5 dark:to-transparent pointer-events-none" />
+              {/* Decorative Top Line */}
+              <div className="hidden lg:block w-16 h-1 bg-brand-green mb-6 rounded-full"></div>
 
-            {/* Decorative Top Line */}
-            <div className="hidden lg:block w-16 h-1 bg-brand-green mb-6 rounded-full"></div>
-
-            {/* Mobile View Info Section (Top of Page) */}
-            <div className="block lg:hidden mb-8 border-b border-gray-100 dark:border-white/10 pb-8">
-              {/* Student Photo */}
-              <div className="w-full max-w-[280px] mx-auto mb-8 relative">
-                <div className="absolute inset-0 bg-brand-green/20 rounded-full blur-3xl opacity-50"></div>
-                <img
-                  src="/hero-new.png"
-                  alt="Student"
-                  className="relative z-10 w-full h-auto object-contain drop-shadow-xl"
-                />
-              </div>
-
-              {/* Watch Video Links (Mobile Only) */}
-              <div className="flex gap-3 justify-center mb-8 px-4">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5"
-                  onClick={() => window.open('https://www.youtube.com/watch?v=4luQSZLsZUk', '_blank')}
-                >
-                  <PlayIcon className="w-4 h-4 text-brand-green" />
-                  Watch in Tamil
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5"
-                  onClick={() => window.open('https://www.youtube.com/watch?v=Z2ZkryASFi0', '_blank')}
-                >
-                  <PlayIcon className="w-4 h-4 text-brand-green" />
-                  Watch in English
-                </Button>
-              </div>
-
-              <RegistrationInfo className="" />
-
-              <div className="mt-8 pt-8 border-t border-gray-100 dark:border-white/10">
-                <MobileHowItWorksCarousel />
-              </div>
-            </div>
-
-            {referralValidationStatus === 'checking' ? (
-              <div className="w-full max-w-lg flex flex-col items-center justify-center text-center animate-fade-in py-10">
-                <div className="w-16 h-16 border-4 border-brand-green/20 border-t-brand-green rounded-full animate-spin mb-6"></div>
-                <h2 className="text-2xl font-bold text-brand-dark-primary dark:text-white mb-2">Validating URL...</h2>
-                <p className="text-gray-500 dark:text-gray-400">Please wait while we check the URL.</p>
-              </div>
-            ) : referralValidationStatus === 'invalid' ? (
-              <div className="w-full max-w-lg flex flex-col items-center justify-center text-center animate-fade-in py-10">
-                <div className="w-20 h-20 bg-red-500/10 rounded-full flex items-center justify-center mb-6">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                  </svg>
+              {/* Mobile View Info Section (Top of Page) */}
+              <div className="block lg:hidden mb-8 border-b border-gray-100 dark:border-white/10 pb-8">
+                {/* Student Photo */}
+                <div className="w-full max-w-[380px] mx-auto mb-8 relative">
+                  <img
+                    src="/hero-new.png"
+                    alt="Student"
+                    className="relative z-10 w-full h-auto object-contain drop-shadow-xl"
+                  />
                 </div>
-                <h2 className="text-3xl font-bold text-brand-dark-primary dark:text-white mb-4">Invalid URL</h2>
-                <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-sm">
-                  The URL you are using is invalid or has expired. You can still proceed with a standard registration below.
-                </p>
-                <Button
-                  onClick={handleClearInvalidReferral}
-                  size="lg"
-                  className="rounded-full px-10 h-14 text-lg font-bold shadow-lg"
-                >
-                  Continue to Register
-                </Button>
-              </div>
-            ) : isSuccess ? (
-              <div className="w-full max-w-lg flex flex-col items-center justify-center text-center animate-fade-in py-10">
-                <div className="w-20 h-20 bg-brand-green/10 rounded-full flex items-center justify-center mb-6">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+
+                {/* Watch Video Links (Mobile Only) */}
+                <div className="flex gap-3 justify-center mb-8 px-2 max-w-[420px] mx-auto">
+                  <Button
+                    variant="outline"
+                    size="md"
+                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 rounded-2xl h-12"
+                    onClick={() => window.open('https://www.youtube.com/watch?v=4luQSZLsZUk', '_blank')}
+                  >
+                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">play_circle</span>
+                    Watch in Tamil
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="md"
+                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 rounded-2xl h-12"
+                    onClick={() => window.open('https://www.youtube.com/watch?v=Z2ZkryASFi0', '_blank')}
+                  >
+                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">play_circle</span>
+                    Watch in English
+                  </Button>
                 </div>
-                <h2 className="text-3xl font-bold text-brand-dark-primary dark:text-white mb-4">Registration Successful!</h2>
-                <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-sm">
-                  Your account has been created. Redirecting you to the login page...
-                </p>
-                <div className="w-full max-w-xs bg-gray-100 dark:bg-brand-dark-tertiary h-1.5 rounded-full overflow-hidden">
-                  <div className="h-full bg-brand-green animate-progress origin-left w-full"></div>
+
+                <RegistrationInfo className="" />
+
+                <div className="mt-8 pt-8 border-t border-gray-100 dark:border-white/10">
+                  <MobileHowItWorksCarousel />
                 </div>
               </div>
-            ) : (
-              <>
-                <h1 className="text-3xl lg:text-4xl font-sans font-bold tracking-tight mb-3 text-brand-dark-primary dark:text-white">
-                  Start your <span className="text-brand-green">journey</span>
-                </h1>
 
-                <p className="text-base text-gray-500 dark:text-gray-400 mb-8 font-light leading-relaxed max-w-md">
-                  Create your student profile to unlock exclusive insights and discover your potential.
-                </p>
-
-                <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-5">
-
-
-                  {/* Name & Gender */}
-                  <div className="grid sm:grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-5">
-                    <Input
-                      label="Full Name"
-                      name="name"
-                      required
-                      placeholder="E.g. John Doe"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all h-12"
-                    />
-
-                    <div className="space-y-1.5">
-                      <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-4">
-                        Gender <span className="text-brand-red">*</span>
-                      </label>
-                      <div className="relative w-full bg-gray-100 dark:bg-brand-dark-tertiary rounded-full p-1 flex h-12">
-                        {genderOptions.map((g) => (
-                          <button
-                            key={g.value}
-                            type="button"
-                            onClick={() => setFormData((prev) => ({ ...prev, gender: g.value }))}
-                            className={`flex-1 text-[10px] md:text-xs font-bold uppercase tracking-wide rounded-full transition-all duration-300 ${formData.gender === g.value
-                              ? "bg-brand-green text-white shadow-md"
-                              : "text-gray-500 dark:text-gray-400 hover:text-brand-green"
-                              }`}
-                          >
-                            {g.label}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
+              {referralValidationStatus === 'checking' ? (
+                <div className="w-full max-w-lg flex flex-col items-center justify-center text-center animate-fade-in py-10">
+                  <div className="w-16 h-16 border-4 border-brand-green/20 border-t-brand-green rounded-full animate-spin mb-6"></div>
+                  <h2 className="text-2xl font-bold text-brand-dark-primary dark:text-white mb-2">Validating URL...</h2>
+                  <p className="text-gray-500 dark:text-gray-400">Please wait while we check the URL.</p>
+                </div>
+              ) : referralValidationStatus === 'invalid' ? (
+                <div className="w-full max-w-lg flex flex-col items-center justify-center text-center animate-fade-in py-10">
+                  <div className="w-20 h-20 bg-red-500/10 rounded-full flex items-center justify-center mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
                   </div>
+                  <h2 className="text-3xl font-bold text-brand-dark-primary dark:text-white mb-4">Invalid URL</h2>
+                  <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-sm">
+                    The URL you are using is invalid or has expired. You can still proceed with a standard registration below.
+                  </p>
+                  <Button
+                    onClick={handleClearInvalidReferral}
+                    size="lg"
+                    className="rounded-full px-10 h-14 text-lg font-bold shadow-lg"
+                  >
+                    Continue to Register
+                  </Button>
+                </div>
+              ) : isSuccess ? (
+                <div className="w-full max-w-lg flex flex-col items-center justify-center text-center animate-fade-in py-10">
+                  <div className="w-20 h-20 bg-brand-green/10 rounded-full flex items-center justify-center mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h2 className="text-3xl font-bold text-brand-dark-primary dark:text-white mb-4">Registration Successful!</h2>
+                  <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-sm">
+                    Your account has been created. Redirecting you to the login page...
+                  </p>
+                  <div className="w-full max-w-xs bg-gray-100 dark:bg-brand-dark-tertiary h-1.5 rounded-full overflow-hidden">
+                    <div className="h-full bg-brand-green animate-progress origin-left w-full"></div>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <h1 className="text-3xl lg:text-4xl font-sans font-bold tracking-tight mb-3 text-brand-dark-primary dark:text-white">
+                    Start your <span className="text-brand-green">journey</span>
+                  </h1>
 
-                  {/* Email */}
-                  <Input
-                    type="email"
-                    label="Email Address"
-                    name="email"
-                    required
-                    placeholder="name@example.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all h-12"
-                  />
+                  <p className="text-base text-gray-500 dark:text-gray-400 mb-8 font-light leading-relaxed max-w-md">
+                    Create your student profile to unlock exclusive insights and discover your potential.
+                  </p>
 
-                  {/* Mobile Number */}
-                  <MobileInput
-                    label="Mobile Number"
-                    required
-                    countryCode={formData.countryCode}
-                    phoneNumber={formData.mobile}
-                    onCountryChange={(code) => setFormData(prev => ({ ...prev, countryCode: code }))}
-                    onPhoneChange={(num) => setFormData(prev => ({ ...prev, mobile: num }))}
-                    error={formErrors.mobile}
-                    onBlur={handleBlur}
-                    className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full transition-all h-12"
-                  />
+                  <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-5">
 
-                  {/* Password */}
-                  <Input
-                    type={showPassword ? "text" : "password"}
-                    label="Password"
-                    name="password"
-                    required
-                    placeholder="Min 8 chars"
-                    value={formData.password}
-                    onChange={handleChange}
-                    error={formErrors.password}
-                    className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all h-12"
-                    suffix={
-                      <button
-                        type="button"
-                        onClick={() => setShowPassword(!showPassword)}
-                        className="cursor-pointer flex items-center transition-colors hover:text-brand-green text-gray-400 pr-2"
-                      >
-                        {showPassword ? (
-                          <EyeIcon className="h-5 w-5" />
-                        ) : (
-                          <EyeOffIcon className="h-5 w-5" />
-                        )}
-                      </button>
-                    }
-                  />
 
-                  {/* Academic Details - Simplified */}
-                  <div className="pt-2 space-y-5">
-                    <div className="flex items-center gap-4">
-                      <div className="h-px flex-1 bg-gray-100 dark:bg-white/10"></div>
-                      <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">Academic Details</h3>
-                      <div className="h-px flex-1 bg-gray-100 dark:bg-white/10"></div>
-                    </div>
+                    {/* Name & Gender */}
+                    <div className="grid sm:grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-5">
+                      <Input
+                        label="Full Name"
+                        name="name"
+                        required
+                        placeholder="E.g. John Doe"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all h-12"
+                      />
 
-                    <div className={`grid gap-5 ${formData.schoolLevel === 'HSC' ? 'sm:grid-cols-3' : 'sm:grid-cols-1'}`}>
                       <div className="space-y-1.5">
                         <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-4">
-                          Student Board <span className="text-brand-red">*</span>
+                          Gender <span className="text-brand-red">*</span>
                         </label>
-                        <div className="grid grid-cols-2 gap-2">
-                          {getEnabledBoards().map((b) => (
+                        <div className="relative w-full bg-gray-100 dark:bg-brand-dark-tertiary rounded-full p-1 flex h-12">
+                          {genderOptions.map((g) => (
                             <button
-                              key={b.value}
+                              key={g.value}
                               type="button"
-                              onClick={() => handleSelectChange("studentBoard", b.value)}
-                              className={`h-12 text-xs md:text-sm font-bold uppercase tracking-wide rounded-full transition-all duration-300 border ${formData.studentBoard === b.value
-                                ? "bg-brand-green text-white border-brand-green shadow-md"
-                                : "bg-white dark:bg-brand-dark-secondary text-gray-500 dark:text-gray-400 border-gray-200 dark:border-brand-dark-tertiary hover:border-brand-green hover:text-brand-green"
+                              onClick={() => setFormData((prev) => ({ ...prev, gender: g.value }))}
+                              className={`flex-1 text-[10px] md:text-xs font-bold uppercase tracking-wide rounded-full transition-all duration-300 ${formData.gender === g.value
+                                ? "bg-brand-green text-white shadow-md"
+                                : "text-gray-500 dark:text-gray-400 hover:text-brand-green"
                                 }`}
                             >
-                              {b.label}
+                              {g.label}
                             </button>
                           ))}
                         </div>
-                        {formErrors.studentBoard && <p className="text-red-500 text-xs ml-4 mt-1">{formErrors.studentBoard}</p>}
+                      </div>
+                    </div>
+
+                    {/* Email */}
+                    <Input
+                      type="email"
+                      label="Email Address"
+                      name="email"
+                      required
+                      placeholder="name@example.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all h-12"
+                    />
+
+                    {/* Mobile Number */}
+                    <MobileInput
+                      label="Mobile Number"
+                      required
+                      countryCode={formData.countryCode}
+                      phoneNumber={formData.mobile}
+                      onCountryChange={(code) => setFormData(prev => ({ ...prev, countryCode: code }))}
+                      onPhoneChange={(num) => setFormData(prev => ({ ...prev, mobile: num }))}
+                      error={formErrors.mobile}
+                      onBlur={handleBlur}
+                      className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full transition-all h-12"
+                    />
+
+                    {/* Password */}
+                    <Input
+                      type={showPassword ? "text" : "password"}
+                      label="Password"
+                      name="password"
+                      required
+                      placeholder="Min 8 chars"
+                      value={formData.password}
+                      onChange={handleChange}
+                      error={formErrors.password}
+                      className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all h-12"
+                      suffix={
+                        <button
+                          type="button"
+                          onClick={() => setShowPassword(!showPassword)}
+                          className="cursor-pointer flex items-center transition-colors hover:text-brand-green text-gray-400 pr-2"
+                        >
+                          {showPassword ? (
+                            <EyeIcon className="h-5 w-5" />
+                          ) : (
+                            <EyeOffIcon className="h-5 w-5" />
+                          )}
+                        </button>
+                      }
+                    />
+
+                    {/* Academic Details - Simplified */}
+                    <div className="pt-2 space-y-5">
+                      <div className="flex items-center gap-4">
+                        <div className="h-px flex-1 bg-gray-100 dark:bg-white/10"></div>
+                        <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">Academic Details</h3>
+                        <div className="h-px flex-1 bg-gray-100 dark:bg-white/10"></div>
                       </div>
 
-                      <CustomSelect
-                        label="School Level"
-                        required
-                        options={schoolLevelOptions}
-                        value={formData.schoolLevel}
-                        onChange={(val) => handleSelectChange("schoolLevel", val)}
-                        placeholder="Select Grade"
-                        buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
-                      />
+                      <div className={`grid gap-5 ${formData.schoolLevel === 'HSC' ? 'sm:grid-cols-3' : 'sm:grid-cols-1'}`}>
+                        <div className="space-y-1.5">
+                          <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-4">
+                            Student Board <span className="text-brand-red">*</span>
+                          </label>
+                          <div className="grid grid-cols-2 gap-2">
+                            {getEnabledBoards().map((b) => (
+                              <button
+                                key={b.value}
+                                type="button"
+                                onClick={() => handleSelectChange("studentBoard", b.value)}
+                                className={`h-12 text-xs md:text-sm font-bold uppercase tracking-wide rounded-full transition-all duration-300 border ${formData.studentBoard === b.value
+                                  ? "bg-brand-green text-white border-brand-green shadow-md"
+                                  : "bg-white dark:bg-brand-dark-secondary text-gray-500 dark:text-gray-400 border-gray-200 dark:border-brand-dark-tertiary hover:border-brand-green hover:text-brand-green"
+                                  }`}
+                              >
+                                {b.label}
+                              </button>
+                            ))}
+                          </div>
+                          {formErrors.studentBoard && <p className="text-red-500 text-xs ml-4 mt-1">{formErrors.studentBoard}</p>}
+                        </div>
 
-                      {formData.schoolLevel === 'HSC' && (
-                        <>
-                          <CustomSelect
-                            label="Stream"
-                            required
-                            options={streamOptions}
-                            value={formData.stream}
-                            onChange={(val) => handleSelectChange("stream", val)}
-                            placeholder="Select Stream"
-                            buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
-                            className="animate-fade-in"
-                          />
-                          <Input
-                            type="text"
-                            label="Current Level"
-                            name="currentYear"
-                            required
-                            placeholder="1 or 2"
-                            value={formData.currentYear}
-                            error={formErrors.currentYear}
-                            onChange={(e) => {
-                              const val = e.target.value.replace(/\D/g, "");
-                              if (val.length > 1) return;
-                              setFormData(prev => ({ ...prev, currentYear: val }));
+                        <CustomSelect
+                          label="School Level"
+                          required
+                          options={schoolLevelOptions}
+                          value={formData.schoolLevel}
+                          onChange={(val) => handleSelectChange("schoolLevel", val)}
+                          placeholder="Select Grade"
+                          buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
+                        />
 
-                              if (val && val !== "1" && val !== "2") {
-                                setFormErrors(prev => ({ ...prev, currentYear: "Must be 1 or 2" }));
-                              } else {
+                        {formData.schoolLevel === 'HSC' && (
+                          <>
+                            <CustomSelect
+                              label="Stream"
+                              required
+                              options={streamOptions}
+                              value={formData.stream}
+                              onChange={(val) => handleSelectChange("stream", val)}
+                              placeholder="Select Stream"
+                              buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
+                              className="animate-fade-in"
+                            />
+                            <Input
+                              type="text"
+                              label="Current Level"
+                              name="currentYear"
+                              required
+                              placeholder="1 or 2"
+                              value={formData.currentYear}
+                              error={formErrors.currentYear}
+                              onChange={(e) => {
+                                const val = e.target.value.replace(/\D/g, "");
+                                if (val.length > 1) return;
+                                setFormData(prev => ({ ...prev, currentYear: val }));
 
-                                if (formErrors.currentYear) {
-                                  setFormErrors(prev => {
-                                    const newErrors = { ...prev };
-                                    delete newErrors.currentYear;
-                                    return newErrors;
-                                  });
+                                if (val && val !== "1" && val !== "2") {
+                                  setFormErrors(prev => ({ ...prev, currentYear: "Must be 1 or 2" }));
+                                } else {
+
+                                  if (formErrors.currentYear) {
+                                    setFormErrors(prev => {
+                                      const newErrors = { ...prev };
+                                      delete newErrors.currentYear;
+                                      return newErrors;
+                                    });
+                                  }
                                 }
-                              }
-                            }}
-                            className="animate-fade-in h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
-                          />
-                        </>
-                      )}
+                              }}
+                              className="animate-fade-in h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
+                            />
+                          </>
+                        )}
+                      </div>
                     </div>
-                  </div>
 
-                  {formErrors.apiError && (
-                    <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-2xl text-sm flex items-center gap-3 border border-red-100 dark:border-red-900/30">
-                      <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
-                      {formErrors.apiError}
+                    {formErrors.apiError && (
+                      <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-2xl text-sm flex items-center gap-3 border border-red-100 dark:border-red-900/30">
+                        <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
+                        {formErrors.apiError}
+                      </div>
+                    )}
+
+                    <Button
+                      type="submit"
+                      size="lg"
+                      fullWidth
+                      disabled={isLoading || Object.keys(formErrors).length > 0}
+                      className="h-14 text-lg font-bold shadow-xl shadow-brand-green/20 hover:shadow-brand-green/40 transition-all transform hover:-translate-y-0.5 rounded-full mt-6"
+                    >
+                      {isLoading ? "Processing..." : "Register and Pay"}
+                    </Button>
+
+                    <div className="text-center pt-2">
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        Already have an account?{" "}
+                        <a href={process.env.NEXT_PUBLIC_LOGIN_URL || "#"} className="text-brand-green font-bold hover:underline transition-all">
+                          Log in
+                        </a>
+                      </p>
                     </div>
-                  )}
 
-                  <Button
-                    type="submit"
-                    size="lg"
-                    fullWidth
-                    disabled={isLoading || Object.keys(formErrors).length > 0}
-                    className="h-14 text-lg font-bold shadow-xl shadow-brand-green/20 hover:shadow-brand-green/40 transition-all transform hover:-translate-y-0.5 rounded-full mt-6"
-                  >
-                    {isLoading ? "Processing..." : "Register and Pay"}
-                  </Button>
-
-                  <div className="text-center pt-2">
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      Already have an account?{" "}
-                      <a href={process.env.NEXT_PUBLIC_LOGIN_URL || "#"} className="text-brand-green font-bold hover:underline transition-all">
-                        Log in
-                      </a>
-                    </p>
-                  </div>
-
-                </form>
-              </>
-            )}
+                  </form>
+                </>
+              )}
 
 
 
-          </div>
-
-          {/* Right Side - Visual Section (Sticky Wrapper) */}
-          <div className="hidden lg:block w-1/2 bg-gray-50 dark:bg-[#1E1E1E] relative h-full">
-            <div className="sticky top-0 overflow-y-auto overflow-x-hidden flex flex-col pt-28 pb-12 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
-              {/* Student Photo Desktop */}
-              <div className="w-full max-w-[320px] mx-auto mb-6 relative px-6 shrink-0">
-                <div className="absolute inset-0 bg-brand-green/20 rounded-full blur-3xl opacity-40"></div>
-                <img
-                  src="/hero-new.png"
-                  alt="Student"
-                  className="relative z-10 w-full h-auto object-contain drop-shadow-2xl"
-                />
-              </div>
-
-              {/* Watch Video Links (Desktop) */}
-              <div className="flex gap-3 justify-center mb-8 px-12">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 bg-white dark:bg-brand-dark-secondary"
-                  onClick={() => window.open('https://www.youtube.com/watch?v=4luQSZLsZUk', '_blank')}
-                >
-                  <PlayIcon className="w-4 h-4 text-brand-green" />
-                  Watch in Tamil
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 bg-white dark:bg-brand-dark-secondary"
-                  onClick={() => window.open('https://www.youtube.com/watch?v=Z2ZkryASFi0', '_blank')}
-                >
-                  <PlayIcon className="w-4 h-4 text-brand-green" />
-                  Watch in English
-                </Button>
-              </div>
-              <RegistrationInfo className="!pt-0 !pb-10 shrink-0" />
             </div>
+
+            {/* Right Side - Visual Section (Normal flow) */}
+            <div className="hidden lg:block w-1/2 px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] bg-gray-50 dark:bg-[#1E1E1E] transition-colors duration-300 border-l border-gray-100 dark:border-white/5">
+              <div className="flex flex-col justify-center items-center pb-12 pt-[100px]">
+                {/* Student Photo Desktop */}
+                <div className="w-full max-w-[500px] mx-auto mb-8 relative px-10">
+                  <img
+                    src="/hero-new.png"
+                    alt="Student"
+                    className="relative z-10 w-full h-auto object-contain drop-shadow-2xl"
+                  />
+                </div>
+
+                {/* Watch Video Links (Desktop) */}
+                <div className="flex gap-3 justify-center mb-8 px-8 w-full max-w-[600px] mx-auto">
+                  <Button
+                    variant="outline"
+                    size="md"
+                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 bg-white dark:bg-brand-dark-secondary rounded-2xl h-12"
+                    onClick={() => window.open('https://www.youtube.com/watch?v=4luQSZLsZUk', '_blank')}
+                  >
+                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">play_circle</span>
+                    Watch in Tamil
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="md"
+                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 bg-white dark:bg-brand-dark-secondary rounded-2xl h-12"
+                    onClick={() => window.open('https://www.youtube.com/watch?v=Z2ZkryASFi0', '_blank')}
+                  >
+                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">play_circle</span>
+                    Watch in English
+                  </Button>
+                </div>
+                <RegistrationInfo className="!pt-4 !pb-0 w-full" />
+              </div>
+            </div>
+
           </div>
 
-        </div>
-
-        {/* Hide original steps on mobile since we have the carousel at the top */}
-        <div className="hidden lg:block">
-          <RegisterSteps />
+          {/* Hide original steps on mobile since we have the carousel at the top */}
+          <div className="hidden lg:block">
+            <RegisterSteps />
+          </div>
         </div>
       </main>
 
