@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps | LinkProps> = (props) => {
         ...rest
     } = props;
 
-    const baseStyles = "inline-flex items-center justify-center font-sans font-bold rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed leading-none tracking-[0.05em] border-2";
+    const baseStyles = "inline-flex items-center justify-center font-sans font-bold rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed leading-none tracking-[0.05em] border-2 focus:outline-none focus:ring-0";
 
     const variants = {
         primary: "bg-brand-green border-brand-green text-white hover:bg-brand-green/90",

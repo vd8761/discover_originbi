@@ -50,7 +50,7 @@ const FinalCTASection: React.FC = () => {
                         <div className="flex flex-col items-center gap-4 w-full sm:w-auto">
                             <Button
                                 href="/register"
-                                className="group relative w-full sm:w-auto overflow-hidden rounded-full bg-white px-5 py-3.5 lg:px-8 lg:py-5 shadow-xl transition-all duration-300 active:scale-95 border-none"
+                                className="group relative w-full sm:w-auto overflow-hidden rounded-full bg-white px-5 py-3.5 lg:px-8 lg:py-5 shadow-xl transition-all duration-300 active:scale-95 border-none focus:outline-none focus:ring-0"
                             >
                                 <span className="relative z-10 flex items-center justify-center gap-2 lg:gap-3 text-sm lg:text-lg font-bold text-brand-green tracking-wide">
                                     Download Your Career Roadmap

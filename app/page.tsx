@@ -8,6 +8,7 @@ import JourneySteps from "@/components/sections/JourneySteps";
 import WhyOriginBI from "@/components/sections/WhyOriginBI";
 import CareerValueCard from "@/components/sections/CareerValueCard";
 import FAQSection from "@/components/sections/FAQSection";
+import Testimonials from "@/components/sections/Testimonials";
 import FinalCTASection from "@/components/sections/FinalCTASection";
 
 
@@ -22,6 +23,7 @@ export default function Home() {
       <JourneySteps />
       <WhyOriginBI />
       <CareerValueCard />
+      <Testimonials />
       <FAQSection />
 
       <FinalCTASection />

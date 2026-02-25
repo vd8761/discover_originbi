@@ -88,13 +88,13 @@ const Header: React.FC<HeaderProps> = ({
           <div className="hidden xl:flex items-center gap-8">
             <a
               href="/#product"
-              className={`font-sans font-semibold text-[11px] 2xl:text-xs transition-colors uppercase tracking-[0.15em] ${linkColorClass}`}
+              className={`font-sans font-semibold text-[13px] 2xl:text-sm transition-colors uppercase tracking-[0.15em] ${linkColorClass}`}
             >
               The Journey
             </a>
             <a
               href="/#impact"
-              className={`font-sans font-semibold text-[11px] 2xl:text-xs transition-colors uppercase tracking-[0.15em] ${linkColorClass}`}
+              className={`font-sans font-semibold text-[13px] 2xl:text-sm transition-colors uppercase tracking-[0.15em] ${linkColorClass}`}
             >
               Why Us?
             </a>
@@ -112,7 +112,7 @@ const Header: React.FC<HeaderProps> = ({
                 href="https://mind.originbi.com/student/login"
                 variant="outline"
                 size="sm"
-                className="text-[12px] sm:text-[13px] lg:text-[11px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px]"
+                className="text-[13px] sm:text-[14px] lg:text-[13px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px]"
               >
                 Login
               </Button>
@@ -121,7 +121,7 @@ const Header: React.FC<HeaderProps> = ({
               <Button
                 href="/register"
                 size="sm"
-                className="shadow-lg shadow-brand-green/20 text-[12px] sm:text-[13px] lg:text-[11px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px] border-none"
+                className="shadow-lg shadow-brand-green/20 text-[13px] sm:text-[14px] lg:text-[13px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px] border-none"
               >
                 Register now
               </Button>

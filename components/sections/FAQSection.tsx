@@ -56,12 +56,6 @@ const FAQItem: React.FC<{ faq: FAQ; isOpen: boolean; toggle: () => void }> = ({ 
                 className="w-full text-left px-6 py-5 lg:px-8 lg:py-6 flex items-center justify-between gap-4 focus:outline-none"
             >
                 <div className="flex flex-col gap-2 md:gap-3 pr-4">
-                    <span className={`inline-flex self-start text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${faq.target === 'Parents' ? 'bg-brand-blue text-white' :
-                        faq.target === 'Students' ? 'bg-brand-green text-white' :
-                            'bg-brand-dark-primary text-white dark:bg-white dark:text-brand-dark-primary'
-                        }`}>
-                        For {faq.target}
-                    </span>
                     <h3 className={`text-lg lg:text-xl font-semibold transition-colors duration-300 ${isOpen ? 'text-brand-green' : 'text-brand-dark-primary dark:text-gray-100'}`}>
                         {faq.question}
                     </h3>
@@ -143,7 +137,7 @@ const FAQSection: React.FC = () => {
                             </h3>
                             <Button
                                 href="/register"
-                                className="inline-block bg-white !text-brand-green px-5 py-2.5 lg:px-8 lg:py-3.5 rounded-full text-sm lg:text-xl font-bold tracking-wide shadow-lg border-none hover:scale-105 transition-transform"
+                                className="inline-block bg-white !text-brand-green px-5 py-2.5 lg:px-8 lg:py-3.5 rounded-full text-sm lg:text-xl font-bold tracking-wide shadow-lg border-none cursor-pointer"
                             >
                                 Spend ₹749 today to ensure they walk into college with a clear purpose.
                             </Button>
