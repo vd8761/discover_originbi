@@ -35,7 +35,7 @@ const SoundFamiliar: React.FC = () => {
 
     return (
         <section id="situation" className="relative w-full py-20 lg:py-32 bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500 overflow-hidden">
-            <div className="container mx-auto px-6 lg:px-[clamp(24px,6vw,120px)] relative z-10">
+            <div className="container mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] relative z-10">
                 {/* Header Sequence */}
                 <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
                     <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight mb-6 transition-colors">

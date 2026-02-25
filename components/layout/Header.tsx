@@ -12,7 +12,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({
-  horizontalPadding = "px-4 lg:px-[clamp(24px,6vw,120px)]",
+  horizontalPadding = "px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]",
   showRegisterButton = true,
 }) => {
   const { theme, toggleTheme, isInitialized } = useTheme();

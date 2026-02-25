@@ -7,7 +7,7 @@ import { Check } from "lucide-react";
 const Hero: React.FC = () => {
     return (
         <section className="relative w-full flex items-center bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500 pt-24 pb-16 lg:pt-44 lg:pb-8 overflow-hidden">
-            <div className="container mx-auto px-6 lg:px-[clamp(24px,6vw,120px)] relative z-10">
+            <div className="container mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] relative z-10">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-12">
 
                     {/* Left Content Column */}
@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
                             <img
                                 src="/hero-new.png"
                                 alt="Origin BI Assessment Platform"
-                                className="w-full h-auto object-contain max-w-[360px] sm:max-w-full mx-auto scale-100 lg:scale-110 lg:translate-y-2"
+                                className="w-full h-auto object-contain max-w-[360px] sm:max-w-full mx-auto scale-100 lg:scale-110 lg:-translate-y-10"
                                 draggable={false}
                             />
                         </div>

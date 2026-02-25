@@ -137,7 +137,7 @@ const FAQSection: React.FC = () => {
                             </h3>
                             <Button
                                 href="/register"
-                                className="inline-block bg-white !text-brand-green px-5 py-2.5 lg:px-8 lg:py-3.5 rounded-full text-sm lg:text-xl font-bold tracking-wide shadow-lg border-none cursor-pointer"
+                                className="inline-block bg-white !text-brand-green hover:bg-brand-dark-green hover:!text-white px-5 py-2.5 lg:px-8 lg:py-3.5 rounded-full text-sm lg:text-xl font-bold tracking-wide shadow-lg border-none cursor-pointer"
                             >
                                 Spend ₹749 today to ensure they walk into college with a clear purpose.
                             </Button>

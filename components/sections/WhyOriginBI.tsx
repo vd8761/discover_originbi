@@ -8,12 +8,12 @@ const WhyOriginBI: React.FC = () => {
     {
       feature: "Basis of Choice",
       old: 'Based on "Market Trends" or what relatives/friends suggest.',
-      new: "Based on your child’s Unique Behavioral DNA and natural strengths.",
+      new: "Based on your child’s Unique Behavioral profile and natural strengths.",
     },
     {
       feature: "The Method",
       old: 'General marks in school or "What do you like?" questions.',
-      new: "Proprietary Behavioral Mapping to see how their brain is actually wired.",
+      new: "Proprietary Behavioral Mapping to see how their brain is naturally designed.",
     },
     {
       feature: "The Outcome",
@@ -38,11 +38,11 @@ const WhyOriginBI: React.FC = () => {
       className="relative z-10 w-full py-16 lg:py-24 bg-white dark:bg-brand-dark-primary transition-colors duration-300"
     >
       <div className="max-w-[1920px] mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]">
-        <div className="text-center mb-12 lg:mb-20">
-          <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-tight mb-4 transition-colors duration-300">
+        <div className="text-center mb-8 lg:mb-12">
+          <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-tight mb-2 transition-colors duration-300">
             Why <span className="text-brand-green">OriginBI?</span>
           </h2>
-          <p className="text-lg sm:text-xl text-brand-text-light-secondary dark:text-white/60 font-medium">
+          <p className="text-lg sm:text-xl text-brand-text-light-secondary dark:text-white/60 font-medium mb-1">
             The Difference Between Guessing and Knowing
           </p>
         </div>
@@ -50,10 +50,10 @@ const WhyOriginBI: React.FC = () => {
         <div className="max-w-6xl mx-auto overflow-hidden rounded-[1.5rem] border border-gray-200 dark:border-white/5 shadow-sm bg-white dark:bg-brand-dark-secondary transition-colors duration-300">
           {/* Header Row */}
           <div className="hidden md:grid grid-cols-[1fr_1.5fr_1.5fr] bg-brand-light-secondary dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-800">
-            <div className="p-6 lg:p-8 font-semibold text-xl text-brand-dark-primary dark:text-white flex items-center">
+            <div className="p-5 lg:p-6 font-semibold text-xl text-brand-dark-primary dark:text-white flex items-center">
               Feature
             </div>
-            <div className="p-6 lg:p-8 font-semibold text-xl text-brand-dark-primary dark:text-white flex items-center gap-3">
+            <div className="p-5 lg:p-6 font-semibold text-xl text-brand-dark-primary dark:text-white flex items-center gap-3">
               <span className="w-10 h-10 rounded-full bg-red-100 dark:bg-red-500/10 flex items-center justify-center text-red-500 shrink-0">
                 <span
                   className="material-symbols-outlined"
@@ -69,7 +69,7 @@ const WhyOriginBI: React.FC = () => {
                 </span>
               </span>
             </div>
-            <div className="p-6 lg:p-8 font-semibold text-2xl text-brand-green flex items-center gap-3 bg-brand-green/5 dark:bg-brand-green/10 border-l border-brand-green/20">
+            <div className="p-5 lg:p-6 font-semibold text-2xl text-brand-green flex items-center gap-3 bg-brand-green/5 dark:bg-brand-green/10 border-l border-brand-green/20">
               <span className="w-10 h-10 rounded-full bg-brand-green flex items-center justify-center text-white shrink-0 shadow-sm shadow-brand-green/30">
                 <span
                   className="material-symbols-outlined"
@@ -97,7 +97,7 @@ const WhyOriginBI: React.FC = () => {
                 key={index}
                 className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr_1.5fr] hover:bg-gray-50 dark:hover:bg-gray-800/20 transition-colors duration-300"
               >
-                <div className="p-6 lg:px-8 flex flex-col justify-center bg-gray-50/50 dark:bg-gray-800/10">
+                <div className="p-5 lg:px-6 flex flex-col justify-center bg-gray-50/50 dark:bg-gray-800/10">
                   <span className="md:hidden font-semibold text-[11px] text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 block">
                     Feature
                   </span>
@@ -106,7 +106,7 @@ const WhyOriginBI: React.FC = () => {
                   </span>
                 </div>
 
-                <div className="p-6 lg:p-8 flex flex-col justify-center text-gray-600 dark:text-gray-400 text-[1.1rem] border-t border-gray-100 dark:border-white/5 md:border-t-0">
+                <div className="p-5 lg:p-6 flex flex-col justify-center text-gray-600 dark:text-gray-400 text-[1.1rem] border-t border-gray-100 dark:border-white/5 md:border-t-0">
                   <span className="md:hidden font-semibold text-[11px] text-red-500/80 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
                     <span
                       className="material-symbols-outlined"
@@ -119,7 +119,7 @@ const WhyOriginBI: React.FC = () => {
                   <p className="leading-relaxed">{row.old}</p>
                 </div>
 
-                <div className="p-6 lg:p-8 flex flex-col justify-center text-[1.15rem] text-brand-dark-primary dark:text-white bg-brand-green/[0.03] dark:bg-brand-green/5 border-t border-brand-green/10 md:border-t-0 md:border-l border-brand-green/20">
+                <div className="p-5 lg:p-6 flex flex-col justify-center text-[1.15rem] text-brand-dark-primary dark:text-white bg-brand-green/[0.03] dark:bg-brand-green/5 border-t border-brand-green/10 md:border-t-0 md:border-l border-brand-green/20">
                   <span className="md:hidden font-semibold text-[11px] text-brand-green uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
                     <span
                       className="material-symbols-outlined"

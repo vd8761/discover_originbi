@@ -39,7 +39,7 @@ const CareerValueCard: React.FC = () => {
             className="relative z-10 w-full min-h-screen flex items-center py-20 lg:py-32 bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500 overflow-hidden"
         >
 
-            <div className="container mx-auto px-6 lg:px-[clamp(24px,6vw,120px)] relative z-10">
+            <div className="container mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] relative z-10">
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center justify-between">
 
                     {/* Left side content - Description & List */}
@@ -98,7 +98,7 @@ const CareerValueCard: React.FC = () => {
 
                                 <Button
                                     href="/register"
-                                    className="w-full bg-white !text-brand-green text-base lg:text-lg font-black py-3.5 lg:py-4.5 rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-lg flex items-center justify-center gap-2 border-none"
+                                    className="w-full bg-white !text-brand-green hover:bg-brand-dark-green hover:!text-white text-base lg:text-lg font-black py-3.5 lg:py-4.5 rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-lg flex items-center justify-center gap-2 border-none"
                                 >
                                     Get the Blueprint Now
                                 </Button>

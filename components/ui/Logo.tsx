@@ -1,13 +1,15 @@
 'use client';
 
 import React from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Logo: React.FC<{ className?: string, forceWhite?: boolean, forceDark?: boolean }> = ({
     className = "h-9",
     forceWhite = false,
     forceDark = false
 }) => {
-    const showWhite = forceWhite || (!forceDark && typeof window !== 'undefined' && document.documentElement.classList.contains('dark'));
+    const { theme, isInitialized } = useTheme();
+    const showWhite = forceWhite || (!forceDark && isInitialized && theme === 'dark');
 
     const outlineStyle = {};
 
