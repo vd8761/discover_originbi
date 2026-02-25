@@ -116,6 +116,15 @@
     mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
   }
 
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  }
+
+  .dark .bg-grid {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+
   /* Modular Typography Classes */
   .text-journey-quote {
     @apply text-xl sm:text-2xl italic font-medium leading-[1.6];
