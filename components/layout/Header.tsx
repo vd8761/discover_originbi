@@ -69,11 +69,10 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
-        isScrolled || isMenuOpen
-          ? "bg-white dark:bg-brand-dark-primary shadow-[0_8px_32px_rgba(0,0,0,0.1)] py-2.5"
-          : "bg-transparent py-3 sm:py-4"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-colors duration-400 ${isScrolled || isMenuOpen
+        ? "bg-white dark:bg-brand-dark-primary py-2.5"
+        : "bg-transparent py-4"
+        }`}
     >
       <div
         className={`max-w-[1920px] mx-auto flex items-center justify-between ${horizontalPadding}`}
@@ -88,16 +87,16 @@ const Header: React.FC<HeaderProps> = ({
           </a>
           <div className="hidden xl:flex items-center gap-8">
             <a
-              href="#product"
+              href="/#product"
               className={`font-sans font-semibold text-[11px] 2xl:text-xs transition-colors uppercase tracking-[0.15em] ${linkColorClass}`}
             >
-              Product
+              The Journey
             </a>
             <a
-              href="#impact"
+              href="/#impact"
               className={`font-sans font-semibold text-[11px] 2xl:text-xs transition-colors uppercase tracking-[0.15em] ${linkColorClass}`}
             >
-              Impact
+              Why Us?
             </a>
           </div>
         </div>
@@ -107,14 +106,17 @@ const Header: React.FC<HeaderProps> = ({
           <div className="hidden xl:block">{renderThemeToggle()}</div>
 
           <div className="flex items-center gap-2 lg:gap-5">
-            <Button
-              href="https://mind.originbi.com/student/login"
-              variant="outline"
-              size="sm"
-              className="hidden xl:inline-flex text-[12px] sm:text-[13px] lg:text-[11px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px]"
-            >
-              Login
-            </Button>
+            {/* Login button - Only visible on desktop (xl and above) */}
+            <div className="hidden xl:block">
+              <Button
+                href="https://mind.originbi.com/student/login"
+                variant="outline"
+                size="sm"
+                className="text-[12px] sm:text-[13px] lg:text-[11px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px]"
+              >
+                Login
+              </Button>
+            </div>
             {showRegisterButton && (
               <Button
                 href="/register"
@@ -167,21 +169,21 @@ const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
-        <div className="xl:hidden absolute top-full left-0 right-0 bg-white dark:bg-brand-dark-primary border-t border-gray-100 dark:border-white/5 shadow-xl py-4 flex flex-col transition-all duration-300">
+        <div className="xl:hidden absolute top-full left-0 right-0 bg-white dark:bg-brand-dark-primary border-t border-gray-100 dark:border-white/5 shadow-xl py-4 flex flex-col transition-all duration-300 animate-slide-down">
           <div className={`flex flex-col gap-4 ${horizontalPadding}`}>
             <a
-              href="#product"
+              href="/#product"
               onClick={() => setIsMenuOpen(false)}
-              className={`font-sans font-semibold text-sm transition-colors uppercase tracking-[0.15em] hover:text-brand-green text-gray-900 dark:text-white`}
+              className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-gray-900 transition-colors hover:text-brand-green dark:text-white"
             >
-              Product
+              The Journey
             </a>
             <a
-              href="#impact"
+              href="/#impact"
               onClick={() => setIsMenuOpen(false)}
-              className={`font-sans font-semibold text-sm transition-colors uppercase tracking-[0.15em] hover:text-brand-green text-gray-900 dark:text-white`}
+              className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-gray-900 transition-colors hover:text-brand-green dark:text-white"
             >
-              Impact
+              Why Us?
             </a>
 
             <div className="h-px bg-gray-200 dark:bg-white/10 w-full my-2" />

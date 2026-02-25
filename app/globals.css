@@ -2,102 +2,117 @@
 
 /* Custom Fonts */
 @font-face {
-  font-family: 'Haskoy';
-  src: url('/fonts/Haskoy-Thin.otf') format('opentype');
+  font-family: "Haskoy";
+  src: url("/fonts/Haskoy-Thin.otf") format("opentype");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Haskoy';
-  src: url('/fonts/Haskoy-ExtraLight.otf') format('opentype');
+  font-family: "Haskoy";
+  src: url("/fonts/Haskoy-ExtraLight.otf") format("opentype");
   font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Haskoy';
-  src: url('/fonts/Haskoy-Light.otf') format('opentype');
+  font-family: "Haskoy";
+  src: url("/fonts/Haskoy-Light.otf") format("opentype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Haskoy';
-  src: url('/fonts/Haskoy-Regular.otf') format('opentype');
+  font-family: "Haskoy";
+  src: url("/fonts/Haskoy-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Haskoy';
-  src: url('/fonts/Haskoy-Medium.otf') format('opentype');
+  font-family: "Haskoy";
+  src: url("/fonts/Haskoy-Medium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Haskoy';
-  src: url('/fonts/Haskoy-SemiBold.otf') format('opentype');
+  font-family: "Haskoy";
+  src: url("/fonts/Haskoy-SemiBold.otf") format("opentype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Haskoy';
-  src: url('/fonts/Haskoy-Bold.otf') format('opentype');
+  font-family: "Haskoy";
+  src: url("/fonts/Haskoy-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Haskoy';
-  src: url('/fonts/Haskoy-ExtraBold.otf') format('opentype');
+  font-family: "Haskoy";
+  src: url("/fonts/Haskoy-ExtraBold.otf") format("opentype");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #19211C;
+  --background: #ffffff;
+  --foreground: #19211c;
   --mesh-color-1: rgba(30, 211, 106, 0.08);
   --mesh-color-2: rgba(21, 0, 137, 0.04);
 }
 
 .dark {
-  --background: #19211C;
-  --foreground: #FFFFFF;
+  --background: #19211c;
+  --foreground: #ffffff;
   --mesh-color-1: rgba(30, 211, 106, 0.06);
   --mesh-color-2: rgba(21, 0, 137, 0.06);
 }
 
 @theme {
-  --font-sans: 'Haskoy', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-sans:
+    "Haskoy", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 
-  --color-brand-dark-primary: #19211C;
-  --color-brand-dark-secondary: #24272B;
+  --color-brand-dark-primary: #19211c;
+  --color-brand-dark-secondary: #24272b;
   --color-brand-dark-tertiary: #303438;
-  --color-brand-light-primary: #FFFFFF;
-  --color-brand-light-secondary: #F7FAFC;
-  --color-brand-light-tertiary: #E2E8F0;
-  --color-brand-green: #1ED36A;
-  --color-brand-dark-green: #1A3A2C;
-  --color-brand-red: #C63232;
-  --color-brand-text-primary: #FFFFFF;
-  --color-brand-text-secondary: #A0AEC0;
-  --color-brand-text-light-primary: #2D3748;
+  --color-brand-light-primary: #ffffff;
+  --color-brand-light-secondary: #f7fafc;
+  --color-brand-light-tertiary: #e2e8f0;
+  --color-brand-green: #1ed36a;
+  --color-brand-dark-green: #1a3a2c;
+  --color-brand-red: #c63232;
+  --color-brand-text-primary: #ffffff;
+  --color-brand-text-secondary: #a0aec0;
+  --color-brand-text-light-primary: #2d3748;
   --color-brand-text-light-secondary: #718096;
 
   --color-brand-blue: #150089;
   --animate-fade-in: fade-in 0.8s ease-in-out forwards;
+  --animate-slide-down: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @variant dark (&:where(.dark, .dark *));
@@ -119,11 +134,19 @@
 
   .bg-grid {
     background-size: 40px 40px;
-    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-image: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0.05) 1px,
+      transparent 1px
+    );
   }
 
   .dark .bg-grid {
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    );
   }
 
   /* Modular Typography Classes */
@@ -202,7 +225,9 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  transition: color 300ms, background-color 300ms;
+  transition:
+    color 300ms,
+    background-color 300ms;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -221,7 +246,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1ED36A;
+  background: #1ed36a;
   /* Primary Green */
   border: 3px solid var(--background);
   border-radius: 10px;
@@ -233,11 +258,11 @@ body {
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #1ED36A;
-  border-color: #19211C;
+  background: #1ed36a;
+  border-color: #19211c;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #1ED36A;
+  background: #1ed36a;
   opacity: 0.8;
 }
