@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { ChevronDownIcon } from "@/components/icons";
+import Button from "@/components/ui/Button";
 
 type FAQ = {
     target: "Parents" | "Students" | "Both";
@@ -140,9 +141,12 @@ const FAQSection: React.FC = () => {
                             <h3 className="text-lg lg:text-3xl font-semibold text-white mb-8 px-4 lg:px-0 leading-relaxed max-w-3xl">
                                 "At +2, a wrong choice isn't just a loss of time; it's a loss of confidence."
                             </h3>
-                            <p className="inline-block bg-white text-brand-green px-5 py-2.5 lg:px-8 lg:py-3.5 rounded-full text-sm lg:text-xl font-bold tracking-wide shadow-lg">
+                            <Button
+                                href="/register"
+                                className="inline-block bg-white !text-brand-green px-5 py-2.5 lg:px-8 lg:py-3.5 rounded-full text-sm lg:text-xl font-bold tracking-wide shadow-lg border-none hover:scale-105 transition-transform"
+                            >
                                 Spend ₹749 today to ensure they walk into college with a clear purpose.
-                            </p>
+                            </Button>
                         </div>
                     </div>
                 </div>

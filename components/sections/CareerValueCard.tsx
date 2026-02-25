@@ -2,6 +2,7 @@
 
 import React from "react";
 import { CheckIcon } from "@/components/icons";
+import Button from "@/components/ui/Button";
 
 const features = [
     {
@@ -95,9 +96,12 @@ const CareerValueCard: React.FC = () => {
                                     <span className="text-white/60 text-base lg:text-lg font-bold">/ one-time</span>
                                 </div>
 
-                                <button className="w-full bg-white text-brand-green text-base lg:text-lg font-black py-3.5 lg:py-4.5 rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-lg flex items-center justify-center gap-2">
+                                <Button
+                                    href="/register"
+                                    className="w-full bg-white !text-brand-green text-base lg:text-lg font-black py-3.5 lg:py-4.5 rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-lg flex items-center justify-center gap-2 border-none"
+                                >
                                     Get the Blueprint Now
-                                </button>
+                                </Button>
                             </div>
                         </div>
 

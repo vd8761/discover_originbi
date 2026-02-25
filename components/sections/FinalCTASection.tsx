@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import Button from "@/components/ui/Button";
 
 const FinalCTASection: React.FC = () => {
     return (
@@ -47,14 +48,17 @@ const FinalCTASection: React.FC = () => {
                         </div>
 
                         <div className="flex flex-col items-center gap-4 w-full sm:w-auto">
-                            <button className="group relative w-full sm:w-auto overflow-hidden rounded-full bg-white px-5 py-3.5 lg:px-8 lg:py-5 shadow-xl transition-all duration-300 active:scale-95">
+                            <Button
+                                href="/register"
+                                className="group relative w-full sm:w-auto overflow-hidden rounded-full bg-white px-5 py-3.5 lg:px-8 lg:py-5 shadow-xl transition-all duration-300 active:scale-95 border-none"
+                            >
                                 <span className="relative z-10 flex items-center justify-center gap-2 lg:gap-3 text-sm lg:text-lg font-bold text-brand-green tracking-wide">
                                     Download Your Career Roadmap
                                     <span className="w-1.5 h-1.5 rounded-full bg-brand-green opacity-30 mt-0.5"></span>
                                     <span>₹749</span>
                                     <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
                                 </span>
-                            </button>
+                            </Button>
 
                             <p className="text-white/70 text-[10px] sm:text-sm font-bold mt-1 tracking-widest uppercase mb-4 lg:mb-0">
                                 Start your Behavioral Mapping today.
