@@ -6,6 +6,9 @@ import Hero from "@/components/sections/Hero";
 import SoundFamiliar from "@/components/sections/SoundFamiliar";
 import JourneySteps from "@/components/sections/JourneySteps";
 import WhyOriginBI from "@/components/sections/WhyOriginBI";
+import CareerValueCard from "@/components/sections/CareerValueCard";
+import FAQSection from "@/components/sections/FAQSection";
+import FinalCTASection from "@/components/sections/FinalCTASection";
 import Solution from "@/components/sections/Solution";
 import DimensionQuote from "@/components/sections/DimensionQuote";
 import WhyThisMatters from "@/components/sections/WhyThisMatters";
@@ -29,6 +32,8 @@ export default function Home() {
       <SoundFamiliar />
       <JourneySteps />
       <WhyOriginBI />
+      <CareerValueCard />
+      <FAQSection />
       <Solution />
       <DimensionQuote />
       <WhyThisMatters />
@@ -40,7 +45,7 @@ export default function Home() {
       <Impact />
       <SchoolIntegration />
       <Testimonials />
-
+      <FinalCTASection />
 
       <Footer />
     </div>
