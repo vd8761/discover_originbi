@@ -2,76 +2,69 @@
 
 import React from 'react';
 import Button from "@/components/ui/Button";
+import { Check } from "lucide-react";
 
 const Hero: React.FC = () => {
     return (
-        <section className="relative w-full bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500">
+        <section className="relative w-full min-h-screen flex items-center bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500 pt-8 overflow-hidden">
+            <div className="container mx-auto px-6 lg:px-[clamp(24px,6vw,120px)] relative z-10">
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-12">
 
-            {/* ── Green Hero Block ── responsive height ── */}
-            <div className="relative w-full min-h-[80vh] sm:min-h-[100vh] lg:min-h-[140vh] flex flex-col items-center justify-center bg-brand-green overflow-visible">
+                    {/* Left Content Column */}
+                    <div className="w-full lg:w-[45%] text-left order-2 lg:order-1">
+                        <div className="max-w-xl">
+                            <h1 className="text-[clamp(30px,4vw,52px)] font-sans font-extrabold leading-[1.2] mb-5 tracking-tight text-brand-dark-primary dark:text-white transition-colors">
+                                Discover, Align and Excel <br className="hidden sm:block" />
+                                <span className="text-brand-green">in the Right Career Path</span>
+                            </h1>
 
-                {/* Grid + Dot Pattern at Intersections */}
-                <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                        backgroundImage: `
-                            linear-gradient(to right, rgba(255,255,255,0.15) 1px, transparent 1px),
-                            linear-gradient(to bottom, rgba(255,255,255,0.15) 1px, transparent 1px),
-                            radial-gradient(circle at 1px 1px, rgba(255,255,255,0.2) 2px, transparent 2px)
-                        `,
-                        backgroundSize: '48px 48px',
-                    }}
-                />
+                            <p className="text-base sm:text-lg text-brand-text-light-secondary dark:text-white/60 font-medium mb-8 max-w-md leading-relaxed">
+                                Find Your Edge. Move Beyond the Degree.
+                            </p>
 
-                {/* Glow at the bottom center */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-white/30 blur-[140px] rounded-full pointer-events-none" />
+                            {/* Checklist */}
+                            <div className="space-y-3 mb-10">
+                                {[
+                                    "1-on-1 Personalized Cognitive Profile Mapping",
+                                    "Tailored Job-Role Alignment & Career Roadmaps",
+                                    "Precision-Based Decision Making for Your Next Move"
+                                ].map((item, index) => (
+                                    <div key={index} className="flex items-start gap-3">
+                                        <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-green/10 dark:bg-brand-green/20 flex items-center justify-center">
+                                            <Check className="w-3.5 h-3.5 text-brand-green" strokeWidth={3} />
+                                        </div>
+                                        <span className="text-brand-text-light-primary dark:text-white/80 text-sm sm:text-base font-semibold tracking-tight">
+                                            {item}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
 
-                {/* ── Text Content ── responsive positioning ── */}
-                <div className="relative z-10 w-full max-w-4xl mx-auto px-6 text-center flex flex-col items-center -mt-[15vh] sm:mt-0 sm:-mb-20 lg:-mt-[60vh]">
-                    <h1 className="text-[clamp(42px,6vw,84px)] font-sans font-extrabold text-white leading-[1.05] tracking-tight mb-5 drop-shadow-sm">
-                        What should I do Next?
-                    </h1>
-
-                    <p className="text-[clamp(18px,1.5vw,22px)] text-white/90 font-medium max-w-2xl leading-relaxed mb-10 drop-shadow-sm">
-                        Most students pick a career path based on pressure, not potential. We built something that helps you see yourself — clearly, completely, honestly.
-                    </p>
-
-                    <Button
-                        href="/register"
-                        size="lg"
-                        className="group bg-white !text-brand-dark-green hover:bg-gray-50 border-none shadow-xl shadow-brand-dark-green/20 rounded-full px-8 py-3.5 sm:px-10 sm:py-4 text-lg font-bold transition-transform duration-300 hover:scale-105"
-                    >
-                        Discover who you are
-                        <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                    </Button>
-                </div>
-
-                {/* ── Dome Curve ── green curves DOWNWARD ── */}
-                <div className="absolute bottom-0 left-0 w-full z-[1] pointer-events-none translate-y-[1px]">
-                    <svg
-                        className="block w-full"
-                        viewBox="0 0 1440 180"
-                        preserveAspectRatio="none"
-                        style={{ height: 'clamp(60px, 10vw, 220px)' }}
-                    >
-                        <path
-                            d="M0,0 Q720,360 1440,0 L1440,180 L0,180 Z"
-                            className="fill-brand-light-primary dark:fill-brand-dark-primary"
-                        />
-                    </svg>
-                </div>
-            </div>
-
-            {/* ── Product Card ── responsive overlap ── */}
-            <div className="relative z-20 w-full max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 -mt-[20vh] sm:-mt-[20vh] lg:-mt-[60vh] pb-24 lg:pb-32">
-                <div className="w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] dark:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.7)] border border-gray-200 dark:border-white/10 bg-white dark:bg-brand-dark-secondary">
-                    <div className="relative w-full aspect-[16/9] md:aspect-[16/10] lg:aspect-[16/9]">
-                        <img
-                            src="/hero-new.png"
-                            alt="Origin BI Assessment Platform"
-                            className="absolute inset-0 w-full h-full object-cover object-top"
-                        />
+                            {/* CTA Button */}
+                            <div className="flex flex-col sm:flex-row items-start gap-4">
+                                <Button
+                                    href="/register"
+                                    size="lg"
+                                    className="!bg-brand-green !text-white border-none rounded-full px-9 py-3.5 text-base font-extrabold transition-all duration-300 hover:scale-[1.02] hover:brightness-105"
+                                >
+                                    Get Your Career Roadmap Now • ₹749
+                                </Button>
+                            </div>
+                        </div>
                     </div>
+
+                    {/* Right Image Column - Plain Image, no container */}
+                    <div className="w-full lg:w-[55%] relative flex justify-center lg:justify-end order-1 lg:order-2">
+                        <div className="w-full max-w-[650px]">
+                            <img
+                                src="/hero-new.png"
+                                alt="Origin BI Assessment Platform"
+                                className="w-full h-auto object-contain scale-110 lg:-translate-y-10"
+                                draggable={false}
+                            />
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>

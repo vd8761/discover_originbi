@@ -12,7 +12,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({
-    horizontalPadding = "px-4 lg:px-[clamp(24px,8.33vw,160px)]",
+    horizontalPadding = "px-4 lg:px-[clamp(24px,6vw,120px)]",
     showRegisterButton = true
 }) => {
     const { theme, toggleTheme, isInitialized } = useTheme();
@@ -27,25 +27,21 @@ const Header: React.FC<HeaderProps> = ({
     }, []);
 
     const isWhiteHeader = isScrolled && theme === 'light';
-    const linkColorClass = isWhiteHeader
-        ? 'text-gray-700 hover:text-brand-green'
-        : 'text-white hover:text-white/80';
-
-    const loginButtonClass = isWhiteHeader
-        ? 'text-gray-700 border-gray-200 hover:bg-gray-50'
-        : 'text-white border-white/40 hover:bg-white/10';
+    const linkColorClass = theme === 'light'
+        ? (isScrolled ? 'text-gray-700 hover:text-brand-green' : 'text-gray-900 hover:text-brand-green')
+        : (isScrolled ? 'text-white hover:text-white/80' : 'text-white hover:text-white/80');
 
     return (
         <nav className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${isScrolled
-            ? 'bg-white dark:bg-brand-dark-primary shadow-[0_8px_32px_rgba(0,0,0,0.1)] py-3 border-b border-gray-100 dark:border-white/5'
-            : 'bg-transparent py-4 sm:py-5 lg:py-6'
+            ? 'bg-white dark:bg-brand-dark-primary shadow-[0_8px_32px_rgba(0,0,0,0.1)] py-2.5 border-b border-gray-100 dark:border-white/5'
+            : 'bg-transparent py-3 sm:py-4'
             }`}>
             <div className={`max-w-[1920px] mx-auto flex items-center justify-between ${horizontalPadding}`}>
                 <div className="flex items-center gap-4 lg:gap-12">
                     <a href="/" className="hover:opacity-90 transition-opacity">
                         <Logo
                             className="h-6 sm:h-7 lg:h-6 w-auto"
-                            forceWhite={!isScrolled || theme === 'dark'}
+                            forceWhite={theme === 'dark'}
                             forceDark={isWhiteHeader}
                         />
                     </a>
@@ -79,9 +75,20 @@ const Header: React.FC<HeaderProps> = ({
                         </button>
                     )}
                     <div className="flex items-center gap-2 lg:gap-5">
-                        <a href="https://mind.originbi.com/student/login" className={`hidden xl:inline-block font-sans font-bold text-[11px] 2xl:text-xs transition-all uppercase tracking-[0.15em] px-5 py-2.5 rounded-full border ${loginButtonClass}`}>Login</a>
+                        <Button
+                            href="https://mind.originbi.com/student/login"
+                            variant="outline"
+                            size="sm"
+                            className="hidden xl:inline-flex text-[12px] sm:text-[13px] lg:text-[11px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px]"
+                        >
+                            Login
+                        </Button>
                         {showRegisterButton && (
-                            <Button href="/register" size="sm" className="shadow-lg shadow-brand-green/20 text-[12px] sm:text-[13px] lg:text-[11px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px] !bg-white !text-brand-dark-primary hover:!bg-brand-dark-primary hover:!text-white border-none">
+                            <Button
+                                href="/register"
+                                size="sm"
+                                className="shadow-lg shadow-brand-green/20 text-[12px] sm:text-[13px] lg:text-[11px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px] border-none"
+                            >
                                 Register now
                             </Button>
                         )}

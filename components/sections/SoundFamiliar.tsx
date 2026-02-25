@@ -1,58 +1,70 @@
 "use client";
 
 import React from 'react';
-import { MessageSquare, Users, Fingerprint } from 'lucide-react';
 
 const SoundFamiliar: React.FC = () => {
-    const statements = [
+    const situations = [
         {
-            text: "So what’s the plan after school?",
-            side: "left",
-            icon: MessageSquare
+            title: "Stop the Guesswork",
+            description: (
+                <>
+                    Choosing a degree just because <span className="text-brand-green">"everyone is doing IT/CSE"</span> or because of friend’s choices. You fear that picking the wrong course now will lead to a career they will regret in 4 years.
+                </>
+            ),
+            icon: "help"
         },
         {
-            text: "I honestly don’t know. I’m just following what others think is best.",
-            side: "right",
-            icon: Users
+            title: "Find Your Direction",
+            description: (
+                <>
+                    Your child has the marks, but no clear idea which industry or specific professional role actually fits their natural personality. You are looking for a direction that goes beyond just <span className="text-brand-green">"getting a degree."</span>
+                </>
+            ),
+            icon: "explore"
         },
         {
-            text: "That’s understandable. But your future shouldn’t be built on someone else’s assumptions. It should start with who you are.",
-            side: "left",
-            icon: Fingerprint
+            title: "Correct Your Course Before It Starts",
+            description: (
+                <>
+                    Feeling pressured to pick a college path without knowing if they have the natural <span className="text-brand-green">"Behavioral Fit"</span> for that work. You want to ensure they don't spend lakhs on a course only to realize later it was the wrong fit.
+                </>
+            ),
+            icon: "gpp_maybe"
         }
     ];
 
     return (
-        <section id="sound-familiar" className="relative w-full min-h-screen flex items-center py-24 lg:py-32 bg-white dark:bg-brand-dark-primary overflow-hidden">
-            <div className="w-full max-w-7xl mx-auto px-6 lg:px-12 relative z-10 flex flex-col justify-center">
-                {/* Headline */}
-                <div className="mb-20 text-center">
-                    <h2 className="text-[clamp(32px,4vw,64px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-tight tracking-tight">
-                        Sound <span className="text-brand-green">familiar?</span>
+        <section id="situation" className="relative w-full py-20 lg:py-32 bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500 overflow-hidden">
+            <div className="container mx-auto px-6 lg:px-[clamp(24px,6vw,120px)] relative z-10">
+                {/* Header Sequence */}
+                <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+                    <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight mb-6 transition-colors">
+                        Is This Your Current <span className="text-brand-green">Situation?</span>
                     </h2>
+                    <p className="text-lg sm:text-xl text-brand-text-light-secondary dark:text-white/70 font-medium">
+                        Check if you (or your child) are at one of these career crossroads:
+                    </p>
                 </div>
 
-                {/* Statements Container */}
-                <div className="relative flex flex-col gap-16 lg:gap-24 w-full">
-                    {statements.map((item, index) => {
-                        const Icon = item.icon;
-                        const isRight = item.side === 'right';
-
+                {/* Grid Layout for Situations */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                    {situations.map((item, index) => {
                         return (
                             <div
                                 key={index}
-                                className={`flex flex-col ${isRight ? 'lg:flex-row-reverse self-end text-left lg:text-right' : 'lg:flex-row self-start text-left'} items-start lg:items-center gap-6 lg:gap-10 w-full max-w-3xl lg:max-w-4xl`}
+                                className="group flex flex-col items-center text-center h-full px-2 lg:px-6"
                             >
-                                <div className={`flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 rounded-2xl flex items-center justify-center ${isRight ? 'bg-brand-green/10 border-brand-green/20 text-brand-green' : 'bg-brand-light-secondary dark:bg-brand-dark-secondary border-gray-200 dark:border-white/10 text-brand-dark-primary dark:text-white/80'} border-2`}>
-                                    <Icon className="w-8 h-8 lg:w-10 lg:h-10" />
+                                <div className="flex-shrink-0 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:-translate-y-2 text-brand-green">
+                                    <span className="material-symbols-outlined" style={{ fontSize: '3.5rem' }}>
+                                        {item.icon}
+                                    </span>
                                 </div>
-                                <div className="flex-1">
-                                    <p className={`text-[clamp(20px,2.2vw,38px)] font-bold leading-[1.3] text-brand-dark-primary dark:text-white`}>
-                                        <span className={`${isRight ? 'text-brand-green' : 'text-brand-green/60'} opacity-75 font-serif mr-2`}>"</span>
-                                        {item.text}
-                                        <span className={`${isRight ? 'text-brand-green' : 'text-brand-green/60'} opacity-75 font-serif ml-1`}>"</span>
-                                    </p>
-                                </div>
+                                <h3 className="text-xl sm:text-2xl font-bold text-brand-dark-primary dark:text-white mb-4 leading-tight tracking-tight">
+                                    {item.title}
+                                </h3>
+                                <p className="text-base sm:text-lg text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-medium">
+                                    {item.description}
+                                </p>
                             </div>
                         );
                     })}
