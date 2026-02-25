@@ -5,33 +5,33 @@ const RegistrationInfo: React.FC<{ className?: string }> = ({ className = "" }) 
     const valueProps = [
         {
             title: "The Science of You",
-            icon: "🧬",
+            icon: "biotech",
             description: "Unlock the data behind your daily decisions."
         },
         {
             title: "Beyond Academics",
-            icon: "🌱",
+            icon: "psychology",
             description: "Success is more than just grades."
         },
         {
             title: "Future Ready",
-            icon: "🚀",
+            icon: "rocket_launch",
             description: "Prepare for careers that don't exist yet."
         },
         {
             title: "Relationship Dynamics",
-            icon: "🤝",
+            icon: "diversity_3",
             description: "Master the art of connecting with others."
         }
     ];
 
     const parentOutcomes = [
         {
-            icon: "👨‍👩‍👧‍👦",
+            icon: "family_restroom",
             text: "Bridging the gap between generations with shared understanding."
         },
         {
-            icon: "📚",
+            icon: "menu_book",
             text: "Learning strategies that match your natural cognitive style."
         }
     ];
@@ -53,8 +53,10 @@ const RegistrationInfo: React.FC<{ className?: string }> = ({ className = "" }) 
                 {/* Value Props Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
                     {valueProps.map((item, index) => (
-                        <div key={index} className="bg-white/50 dark:bg-white/5 p-3 rounded-xl border border-gray-100 dark:border-white/10 backdrop-blur-sm">
-                            <div className="text-2xl mb-1">{item.icon}</div>
+                        <div key={index} className="bg-white/50 dark:bg-white/5 p-3 rounded-xl border border-gray-100 dark:border-white/10 backdrop-blur-sm group hover:border-brand-green/30 transition-all">
+                            <div className="text-2xl mb-1 text-brand-green">
+                                <span className="material-symbols-outlined !text-[32px]">{item.icon}</span>
+                            </div>
                             <h3 className="font-bold text-sm text-brand-dark-primary dark:text-white mb-0.5">{item.title}</h3>
                             <p className="text-xs text-gray-600 dark:text-gray-400 leading-snug">{item.description}</p>
                         </div>
@@ -70,7 +72,9 @@ const RegistrationInfo: React.FC<{ className?: string }> = ({ className = "" }) 
                     <div className="space-y-2">
                         {parentOutcomes.map((item, idx) => (
                             <div key={idx} className="flex gap-2 items-start">
-                                <span className="text-lg mt-0.5">{item.icon}</span>
+                                <span className="text-brand-green mt-0.5">
+                                    <span className="material-symbols-outlined !text-[20px]">{item.icon}</span>
+                                </span>
                                 <p className="text-xs text-gray-700 dark:text-gray-300 font-medium">
                                     {item.text}
                                 </p>
@@ -87,10 +91,6 @@ const RegistrationInfo: React.FC<{ className?: string }> = ({ className = "" }) 
                 </div>
 
             </div>
-
-            {/* Background Decoration (Optional, can be removed if specific page background is used) */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-green/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 -z-10 pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 -z-10 pointer-events-none"></div>
 
         </div>
     );

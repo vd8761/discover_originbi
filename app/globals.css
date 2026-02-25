@@ -134,19 +134,15 @@
 
   .bg-grid {
     background-size: 40px 40px;
-    background-image: radial-gradient(
-      circle,
-      rgba(0, 0, 0, 0.05) 1px,
-      transparent 1px
-    );
+    background-image: radial-gradient(circle,
+        rgba(0, 0, 0, 0.05) 1px,
+        transparent 1px);
   }
 
   .dark .bg-grid {
-    background-image: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px
-    );
+    background-image: radial-gradient(circle,
+        rgba(255, 255, 255, 0.05) 1px,
+        transparent 1px);
   }
 
   /* Modular Typography Classes */
@@ -265,4 +261,28 @@ body {
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #1ed36a;
   opacity: 0.8;
+}
+
+/* Thin scrollbar for panels */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(30, 211, 106, 0.3);
+  border-radius: 10px;
+  border: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(30, 211, 106, 0.6);
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(30, 211, 106, 0.3) transparent;
 }

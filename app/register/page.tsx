@@ -295,18 +295,15 @@ function RegisterPageContent() {
   }, [isSuccess, router]);
 
   return (
-    <div className="h-full bg-white dark:bg-brand-dark-primary font-sans text-brand-dark-primary dark:text-white transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-brand-dark-primary font-sans text-brand-dark-primary dark:text-white transition-colors duration-300">
       <Header showRegisterButton={false} />
 
       <main className="flex-1 w-full relative">
         <div className="max-w-[1920px] mx-auto">
-          <div className="h-full flex flex-col lg:flex-row">
+          <div className="flex flex-col lg:flex-row">
 
-            {/* Left Side - Form Section (White Background for clean look) */}
-            <div className="w-full h-full lg:w-1/2 flex flex-col justify-center px-4 sm:px-10 lg:px-[clamp(24px,6vw,120px)] pt-24 pb-12 bg-white dark:bg-brand-dark-primary relative z-10 transition-colors duration-300">
-
-              {/* Background Pattern for Form Area */}
-              <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-gray-50 to-transparent dark:from-white/5 dark:to-transparent pointer-events-none" />
+            {/* Left Side - Form Section (scrolls with page) */}
+            <div className="w-full lg:w-1/2 px-4 sm:px-10 lg:px-[clamp(24px,6vw,120px)] pt-28 lg:pt-36 pb-12 bg-white dark:bg-brand-dark-primary relative z-10 transition-colors duration-300">
 
               {/* Decorative Top Line */}
               <div className="hidden lg:block w-16 h-1 bg-brand-green mb-6 rounded-full"></div>
@@ -314,8 +311,7 @@ function RegisterPageContent() {
               {/* Mobile View Info Section (Top of Page) */}
               <div className="block lg:hidden mb-8 border-b border-gray-100 dark:border-white/10 pb-8">
                 {/* Student Photo */}
-                <div className="w-full max-w-[280px] mx-auto mb-8 relative">
-                  <div className="absolute inset-0 bg-brand-green/20 rounded-full blur-3xl opacity-50"></div>
+                <div className="w-full max-w-[380px] mx-auto mb-8 relative">
                   <img
                     src="/hero-new.png"
                     alt="Student"
@@ -324,23 +320,23 @@ function RegisterPageContent() {
                 </div>
 
                 {/* Watch Video Links (Mobile Only) */}
-                <div className="flex gap-3 justify-center mb-8 px-4">
+                <div className="flex gap-3 justify-center mb-8 px-2 max-w-[420px] mx-auto">
                   <Button
                     variant="outline"
-                    size="sm"
-                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5"
+                    size="md"
+                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 rounded-2xl h-12"
                     onClick={() => window.open('https://www.youtube.com/watch?v=4luQSZLsZUk', '_blank')}
                   >
-                    <PlayIcon className="w-4 h-4 text-brand-green" />
+                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">play_circle</span>
                     Watch in Tamil
                   </Button>
                   <Button
                     variant="outline"
-                    size="sm"
-                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5"
+                    size="md"
+                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 rounded-2xl h-12"
                     onClick={() => window.open('https://www.youtube.com/watch?v=Z2ZkryASFi0', '_blank')}
                   >
-                    <PlayIcon className="w-4 h-4 text-brand-green" />
+                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">play_circle</span>
                     Watch in English
                   </Button>
                 </div>
@@ -611,12 +607,11 @@ function RegisterPageContent() {
 
             </div>
 
-            {/* Right Side - Visual Section (Sticky Wrapper) */}
-            <div className="hidden lg:block w-1/2 bg-gray-50 dark:bg-[#1E1E1E] relative h-full transition-colors duration-300">
-              <div className="sticky top-0 overflow-y-auto overflow-x-hidden flex flex-col pt-28 pb-12 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+            {/* Right Side - Visual Section (Normal flow) */}
+            <div className="hidden lg:block w-1/2 bg-gray-50 dark:bg-[#1E1E1E] transition-colors duration-300 border-l border-gray-100 dark:border-white/5">
+              <div className="flex flex-col justify-center items-center pb-12 pt-[100px]">
                 {/* Student Photo Desktop */}
-                <div className="w-full max-w-[320px] mx-auto mb-6 relative px-6 shrink-0">
-                  <div className="absolute inset-0 bg-brand-green/20 rounded-full blur-3xl opacity-40"></div>
+                <div className="w-full max-w-[500px] mx-auto mb-8 relative px-10">
                   <img
                     src="/hero-new.png"
                     alt="Student"
@@ -625,27 +620,27 @@ function RegisterPageContent() {
                 </div>
 
                 {/* Watch Video Links (Desktop) */}
-                <div className="flex gap-3 justify-center mb-8 px-12">
+                <div className="flex gap-3 justify-center mb-8 px-8 w-full max-w-[600px] mx-auto">
                   <Button
                     variant="outline"
-                    size="sm"
-                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 bg-white dark:bg-brand-dark-secondary"
+                    size="md"
+                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 bg-white dark:bg-brand-dark-secondary rounded-2xl h-12"
                     onClick={() => window.open('https://www.youtube.com/watch?v=4luQSZLsZUk', '_blank')}
                   >
-                    <PlayIcon className="w-4 h-4 text-brand-green" />
+                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">play_circle</span>
                     Watch in Tamil
                   </Button>
                   <Button
                     variant="outline"
-                    size="sm"
-                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 bg-white dark:bg-brand-dark-secondary"
+                    size="md"
+                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 bg-white dark:bg-brand-dark-secondary rounded-2xl h-12"
                     onClick={() => window.open('https://www.youtube.com/watch?v=Z2ZkryASFi0', '_blank')}
                   >
-                    <PlayIcon className="w-4 h-4 text-brand-green" />
+                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">play_circle</span>
                     Watch in English
                   </Button>
                 </div>
-                <RegistrationInfo className="!pt-0 !pb-10 shrink-0" />
+                <RegistrationInfo className="!pt-4 !pb-0 w-full" />
               </div>
             </div>
 
