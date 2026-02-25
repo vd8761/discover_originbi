@@ -49,15 +49,15 @@ const faqs: FAQ[] = [
 
 const FAQItem: React.FC<{ faq: FAQ; isOpen: boolean; toggle: () => void }> = ({ faq, isOpen, toggle }) => {
     return (
-        <div className={`overflow-hidden rounded-2xl border transition-all duration-300 ${isOpen ? 'border-brand-green bg-brand-green/5 dark:bg-brand-green/[0.05] shadow-[0_8px_30px_-12px_rgba(30,211,106,0.15)]' : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-brand-dark-primary hover:border-brand-green/30'}`}>
+        <div className={`overflow-hidden rounded-2xl border transition-all duration-300 ${isOpen ? 'border-brand-green bg-brand-green/5 dark:bg-brand-green/[0.05] shadow-md' : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-brand-dark-primary hover:border-brand-green/30'}`}>
             <button
                 onClick={toggle}
                 className="w-full text-left px-6 py-5 lg:px-8 lg:py-6 flex items-center justify-between gap-4 focus:outline-none"
             >
                 <div className="flex flex-col gap-2 md:gap-3 pr-4">
-                    <span className={`inline-flex self-start text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${faq.target === 'Parents' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300' :
-                            faq.target === 'Students' ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300' :
-                                'bg-brand-green/20 text-brand-dark-green dark:text-brand-green'
+                    <span className={`inline-flex self-start text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${faq.target === 'Parents' ? 'bg-brand-blue text-white' :
+                        faq.target === 'Students' ? 'bg-brand-green text-white' :
+                            'bg-brand-dark-primary text-white dark:bg-white dark:text-brand-dark-primary'
                         }`}>
                         For {faq.target}
                     </span>
@@ -94,8 +94,11 @@ const FAQSection: React.FC = () => {
             <div className="max-w-[1920px] mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]">
 
                 <div className="text-center mb-12 lg:mb-16">
+                    <div className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 dark:bg-brand-green/20 text-brand-green font-bold text-xs tracking-widest uppercase mb-6">
+                        Support Center
+                    </div>
                     <h2 className="text-[clamp(28px,3.4vw,54px)] font-sans font-semibold text-brand-dark-primary dark:text-white leading-tight mb-4 transition-colors duration-300">
-                        6: Frequently Asked Questions
+                        Frequently Asked <span className="text-brand-green">Questions</span>
                     </h2>
                     <p className="text-[clamp(18px,1.5vw,24px)] text-gray-600 dark:text-gray-300">
                         Clearing the Path for Students & Parents
@@ -114,16 +117,30 @@ const FAQSection: React.FC = () => {
                 </div>
 
                 <div className="mt-16 lg:mt-24 text-center max-w-4xl mx-auto">
-                    <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand-dark-primary to-brand-dark-secondary p-8 lg:p-14 shadow-2xl">
-                        {/* Decorative background elements */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-green rounded-full opacity-10 blur-[80px]"></div>
-                        <div className="absolute bottom-0 left-0 w-48 h-48 bg-brand-green rounded-full opacity-10 blur-[60px]"></div>
+                    <div className="relative [border-radius:3.5rem_0_3.5rem_0] bg-brand-green shadow-[0_24px_64px_-20px_rgba(30,211,106,0.6)] overflow-hidden px-8 py-12 lg:px-14 lg:py-16">
 
-                        <div className="relative z-10">
-                            <h3 className="text-xl lg:text-2xl font-semibold text-white/90 mb-6 leading-relaxed">
+                        {/* Background Elements */}
+                        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
+
+                        {/* Quote Symbols */}
+                        <img
+                            src="/quote-symbol.svg"
+                            alt=""
+                            aria-hidden="true"
+                            className="absolute top-8 left-8 w-12 h-auto opacity-90 pointer-events-none select-none brightness-0 invert"
+                        />
+                        <img
+                            src="/quote-symbol.svg"
+                            alt=""
+                            aria-hidden="true"
+                            className="absolute bottom-8 right-10 w-12 h-auto rotate-180 opacity-90 pointer-events-none select-none brightness-0 invert"
+                        />
+
+                        <div className="relative z-10 flex flex-col items-center">
+                            <h3 className="text-xl lg:text-3xl font-semibold text-white mb-8 leading-relaxed max-w-3xl">
                                 "At +2, a wrong choice isn't just a loss of time; it's a loss of confidence."
                             </h3>
-                            <p className="inline-block border border-brand-green/30 bg-brand-green/10 text-brand-green px-6 py-3 rounded-full text-lg lg:text-xl font-bold tracking-wide">
+                            <p className="inline-block bg-white text-brand-green px-8 py-3.5 rounded-full text-lg lg:text-xl font-bold tracking-wide shadow-lg">
                                 Spend ₹749 today to ensure they walk into college with a clear purpose.
                             </p>
                         </div>

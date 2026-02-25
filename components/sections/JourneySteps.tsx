@@ -162,7 +162,7 @@ const JourneySteps: React.FC = () => {
 
                 {/* Mobile Callout */}
                 <div className="mt-16 w-full px-6">
-                    <div className="relative [border-radius:2.3rem_0_2.3rem_0] bg-brand-green p-10 text-center shadow-[0_18px_48px_-22px_rgba(30,211,106,0.7)] overflow-hidden">
+                    <div className="relative [border-radius:2.3rem_0_2.3rem_0] bg-brand-green p-10 text-center shadow-lg overflow-hidden">
                         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
                         <img src="/quote-symbol.svg" alt="" aria-hidden="true" className="absolute top-4 left-5 w-8 h-auto opacity-90 pointer-events-none select-none brightness-0 invert" />
                         <h3 className="relative z-10 text-2xl font-extrabold text-white mb-4">
@@ -247,7 +247,6 @@ const JourneySteps: React.FC = () => {
                                 <div className="absolute inset-0 bg-grid opacity-[0.03] dark:opacity-[0.05] pointer-events-none"></div>
                                 {/* Ambient corner glow */}
 
-                                <div className="absolute -top-20 -right-20 w-56 h-56 bg-brand-green/8 rounded-full blur-[60px] pointer-events-none"></div>
 
                                 {/* Content Grid (allows stacking without fixed height constraints) */}
                                 <div className="grid grid-cols-1 grid-rows-1 flex-1 relative mt-2">
@@ -307,7 +306,7 @@ const JourneySteps: React.FC = () => {
             {/* WHY SCIENCE CALLOUT — Outside the sticky container */}
             <div className="hidden lg:block w-full py-20 lg:py-28">
                 <div className="container mx-auto px-6 lg:px-[clamp(24px,6vw,120px)]">
-                    <div className="max-w-5xl mx-auto relative [border-radius:2.3rem_0_2.3rem_0] bg-brand-green px-12 py-16 lg:px-20 lg:py-20 text-center shadow-[0_18px_48px_-22px_rgba(30,211,106,0.7)] overflow-hidden">
+                    <div className="max-w-5xl mx-auto relative [border-radius:2.3rem_0_2.3rem_0] bg-brand-green px-12 py-16 lg:px-20 lg:py-20 text-center shadow-lg overflow-hidden">
                         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
                         <img src="/quote-symbol.svg" alt="" aria-hidden="true" className="absolute top-6 left-8 w-11 h-auto opacity-90 pointer-events-none select-none brightness-0 invert" />
 

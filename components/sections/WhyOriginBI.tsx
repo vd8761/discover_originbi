@@ -96,7 +96,7 @@ const WhyOriginBI: React.FC = () => {
                 </div>
 
                 <div className="mt-20 lg:mt-28 text-center max-w-5xl mx-auto">
-                    <div className="relative [border-radius:2.3rem_0_2.3rem_0] bg-brand-green px-8 py-12 lg:px-16 lg:py-16 shadow-[0_18px_48px_-22px_rgba(30,211,106,0.7)] overflow-hidden">
+                    <div className="relative [border-radius:2.3rem_0_2.3rem_0] bg-brand-green px-8 py-12 lg:px-16 lg:py-16 shadow-lg overflow-hidden">
                         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
                         <img
                             src="/quote-symbol.svg"
