@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
                             <img
                                 src="/hero-new.png"
                                 alt="Origin BI Assessment Platform"
-                                className="w-full h-auto object-contain scale-110 lg:-translate-y-10"
+                                className="w-full h-auto object-contain max-w-[360px] sm:max-w-full mx-auto scale-100 lg:scale-110 lg:-translate-y-10"
                                 draggable={false}
                             />
                         </div>

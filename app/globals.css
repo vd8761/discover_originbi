@@ -115,6 +115,19 @@
   .mask-gradient {
     mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
   }
+
+  /* Modular Typography Classes */
+  .text-journey-quote {
+    @apply text-xl sm:text-2xl italic font-medium leading-[1.6];
+  }
+
+  .text-journey-subheading {
+    @apply text-[18px] font-black uppercase tracking-[0.2em] mb-4 flex items-center gap-3;
+  }
+
+  .text-journey-body {
+    @apply text-base text-brand-text-light-secondary dark:text-white/80 leading-relaxed font-semibold;
+  }
 }
 
 @keyframes fade-in {

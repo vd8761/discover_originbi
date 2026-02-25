@@ -127,58 +127,55 @@ const JourneySteps: React.FC = () => {
                             </div>
 
                             {/* Card */}
-                            <div className="rounded-2xl bg-white dark:bg-brand-dark-secondary border border-gray-100 dark:border-white/5 p-6 shadow-sm">
+                            <div className="rounded-2xl bg-white dark:bg-brand-dark-secondary border border-gray-100 dark:border-white/5 p-8 shadow-sm">
                                 {/* Quote */}
-                                <p className="text-lg italic text-brand-dark-primary dark:text-white/90 font-medium leading-relaxed mb-6 pl-4 border-l-[3px] border-brand-green">
-                                    &ldquo;{step.feeling}&rdquo;
-                                </p>
+                                <div className="relative mb-8 text-left border-l-[3px] border-brand-green pl-5">
+                                    <p className="text-xl italic text-brand-dark-primary dark:text-white font-medium leading-relaxed">
+                                        &ldquo;{step.feeling}&rdquo;
+                                    </p>
+                                </div>
 
                                 {/* What Happens + Result */}
                                 <div className="flex flex-col gap-6">
                                     <div>
-                                        <h5 className="text-[10px] font-black uppercase tracking-[0.15em] text-brand-green mb-2 flex items-center gap-2">
-                                            <span className="material-symbols-outlined text-brand-green" style={{ fontSize: '16px', fontVariationSettings: "'FILL' 1" }}>psychology</span>
+                                        <h5 className="text-[13px] font-black uppercase tracking-[0.2em] text-brand-green mb-3 flex items-center gap-2">
+                                            <span className="material-symbols-outlined text-brand-green" style={{ fontSize: '20px', fontVariationSettings: "'FILL' 1" }}>psychology</span>
                                             What Happens
                                         </h5>
-                                        <p className="text-sm text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-medium">{step.whatHappens}</p>
+                                        <p className="text-base text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-semibold">{step.whatHappens}</p>
                                     </div>
                                     <div className="w-full h-px bg-gray-200 dark:bg-white/10"></div>
                                     <div>
-                                        <h5 className="text-[10px] font-black uppercase tracking-[0.15em] text-brand-green mb-2 flex items-center gap-2">
-                                            <span className="material-symbols-outlined text-brand-green" style={{ fontSize: '16px', fontVariationSettings: "'FILL' 1" }}>insights</span>
+                                        <h5 className="text-[13px] font-black uppercase tracking-[0.2em] text-brand-green mb-3 flex items-center gap-2">
+                                            <span className="material-symbols-outlined text-brand-green" style={{ fontSize: '20px', fontVariationSettings: "'FILL' 1" }}>insights</span>
                                             The Result
                                         </h5>
-                                        <p className="text-sm text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-medium">{step.result}</p>
+                                        <p className="text-base text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-semibold">{step.result}</p>
                                     </div>
                                 </div>
 
-                                {/* Progress Bar */}
-                                <div className="mt-6 pt-4 border-t border-gray-100 dark:border-white/5 flex items-center justify-between">
-                                    <span className="text-xs font-bold text-brand-text-light-secondary dark:text-white/40 tracking-wide">Step {step.step} of 3</span>
-                                    <div className="w-24 h-1.5 rounded-full bg-gray-200 dark:bg-white/10 overflow-hidden">
-                                        <div className="h-full rounded-full bg-brand-green transition-all" style={{ width: `${(step.step / 3) * 100}%` }}></div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     ))}
                 </div>
 
                 {/* Mobile Callout */}
-                <div className="mt-16 rounded-2xl bg-brand-light-secondary dark:bg-brand-dark-secondary p-8 border border-brand-green/10 dark:border-white/5">
-                    <div className="flex items-start gap-4 mb-4">
-                        <span className="material-symbols-outlined text-brand-green flex-shrink-0" style={{ fontSize: '2rem', fontVariationSettings: "'FILL' 1" }}>science</span>
-                        <h3 className="text-xl font-extrabold text-brand-dark-primary dark:text-white">
-                            Why <span className="text-brand-green">Behavioral Intelligence</span>?
+                <div className="mt-16 w-full px-6">
+                    <div className="relative [border-radius:2rem_0_2rem_0] bg-brand-green p-8 text-center shadow-[0_18px_48px_-22px_rgba(30,211,106,0.7)] overflow-hidden">
+                        <img src="/quote-symbol.svg" alt="" aria-hidden="true" className="absolute top-4 left-4 w-7 h-auto opacity-80 pointer-events-none select-none" />
+                        <h3 className="text-2xl font-extrabold text-brand-dark-green mb-4">
+                            Why Behavioral Intelligence?
                         </h3>
-                    </div>
-                    <p className="text-sm text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-medium mb-4">
-                        Traditional counseling asks a student what they <span className="text-brand-green font-bold">LIKE</span>. We show you what they are <span className="text-brand-green font-bold">BUILT</span> for.
-                    </p>
-                    <div className="inline-block bg-brand-green/10 px-4 py-2 rounded-full">
-                        <p className="text-sm font-bold text-brand-dark-primary dark:text-white">
-                            Interest is temporary; <span className="text-brand-green">potential is permanent</span>.
+                        <p className="text-base text-brand-dark-green/90 leading-relaxed font-semibold mb-6">
+                            Traditional counseling asks a student what they like. We show you what they are built for.
                         </p>
+                        <div className="inline-block bg-brand-dark-green/10 px-5 py-3 rounded-full border border-brand-dark-green/20">
+                            <p className="text-sm font-bold text-brand-dark-green">
+                                Interest is temporary; potential is permanent.
+                            </p>
+                        </div>
+                        <img src="/quote-symbol.svg" alt="" aria-hidden="true" className="absolute bottom-4 right-4 w-7 h-auto rotate-180 opacity-80 pointer-events-none select-none" />
                     </div>
                 </div>
             </div>
@@ -186,8 +183,8 @@ const JourneySteps: React.FC = () => {
 
             {/* DESKTOP LAYOUT — Scrollytelling */}
             <div className="hidden lg:block" style={{ minHeight: `${(steps.length + 1) * 100}vh` }}>
-                <div className="sticky top-0 h-screen flex items-stretch overflow-hidden">
-                    <div className="w-full flex px-[clamp(24px,6vw,120px)]">
+                <div className="sticky top-0 h-screen flex items-stretch">
+                    <div className="max-w-[1440px] mx-auto w-full flex items-center px-6 lg:px-12 2xl:px-[clamp(24px,6vw,120px)]">
 
                         {/* ─── LEFT COLUMN: Sticky Sidebar ─── */}
                         <div className="w-[42%] flex flex-col justify-center pr-16 relative">
@@ -245,7 +242,7 @@ const JourneySteps: React.FC = () => {
                             {/* Section acts purely on math progression, eliminating DOM collision issues. */}
 
                             {/* The single static morphing card */}
-                            <div className="w-full max-w-2xl rounded-[2rem] bg-white dark:bg-brand-dark-secondary border border-gray-100 dark:border-white/8 shadow-[0px_20px_40px_-10px_rgba(0,0,0,0.05)] dark:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.4)] p-10 relative overflow-hidden flex flex-col min-h-[500px]">
+                            <div className="w-full max-w-4xl rounded-[2rem] bg-white dark:bg-brand-dark-secondary border border-gray-100 dark:border-white/8 shadow-[0px_20px_40px_-10px_rgba(0,0,0,0.05)] dark:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.4)] p-8 sm:p-10 relative overflow-hidden flex flex-col min-h-[300px]">
                                 {/* Ambient corner glow */}
                                 <div className="absolute -top-20 -right-20 w-56 h-56 bg-brand-green/8 rounded-full blur-[60px] pointer-events-none"></div>
 
@@ -254,65 +251,50 @@ const JourneySteps: React.FC = () => {
                                     {steps.map((step, idx) => (
                                         <div
                                             key={idx}
-                                            className={`col-start-1 row-start-1 flex flex-col h-full transition-all duration-700 ease-in-out ${activeStep === idx
+                                            className={`col-start-1 row-start-1 flex flex-col items-start h-full transition-all duration-700 ease-in-out ${activeStep === idx
                                                 ? 'opacity-100 translate-y-0 pointer-events-auto z-10'
                                                 : activeStep > idx
                                                     ? 'opacity-0 -translate-y-8 pointer-events-none z-0'
                                                     : 'opacity-0 translate-y-8 pointer-events-none z-0'
                                                 }`}
                                         >
-                                            {/* Quote */}
-                                            <div className="relative mb-8 shrink-0">
-                                                <span className="material-symbols-outlined absolute -top-5 -left-3 text-brand-green/15 select-none pointer-events-none" style={{ fontSize: '4rem' }}>format_quote</span>
-                                                <p className="relative z-10 text-[19px] sm:text-[21px] italic text-brand-dark-primary dark:text-white font-medium leading-[1.5] pl-6 border-l-[3px] border-brand-green">
+                                            {/* Step Feeling Quote */}
+                                            <div className="relative mb-8 shrink-0 text-left">
+                                                <p className="text-journey-quote text-brand-dark-primary dark:text-white">
                                                     &ldquo;{step.feeling}&rdquo;
                                                 </p>
                                             </div>
 
-                                            {/* Content Columns inside the card */}
-                                            <div className="flex-1 grid grid-cols-2 gap-8 bg-gray-50/80 dark:bg-white/[0.03] rounded-2xl p-8 border border-gray-100/50 dark:border-white/5">
-                                                <div>
-                                                    <h5 className="text-[10px] font-black uppercase tracking-[0.15em] text-brand-green mb-3 flex items-center gap-2">
-                                                        <span className="material-symbols-outlined text-brand-green" style={{ fontSize: '16px', fontVariationSettings: "'FILL' 1" }}>psychology</span>
+
+                                            <div className="flex-1 flex flex-col gap-6 bg-gray-50/80 dark:bg-white/[0.03] rounded-2xl p-6 sm:p-8 border border-gray-100/50 dark:border-white/5 w-full">
+                                                <div className="relative text-left">
+                                                    <h5 className="text-journey-subheading text-brand-green">
+                                                        <span className="material-symbols-outlined text-brand-green" style={{ fontSize: '28px', fontVariationSettings: "'FILL' 1" }}>psychology</span>
                                                         What Happens
                                                     </h5>
-                                                    <p className="text-[15px] sm:text-base text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-medium">
+                                                    <p className="text-journey-body">
                                                         {step.whatHappens}
                                                     </p>
                                                 </div>
 
-                                                {/* Vertical Divider */}
-                                                <div className="relative">
-                                                    <div className="absolute left-0 top-0 bottom-0 w-px bg-gray-200 dark:bg-white/10"></div>
-                                                    <div className="pl-8">
-                                                        <h5 className="text-[10px] font-black uppercase tracking-[0.15em] text-brand-green mb-3 flex items-center gap-2">
-                                                            <span className="material-symbols-outlined text-brand-green" style={{ fontSize: '16px', fontVariationSettings: "'FILL' 1" }}>insights</span>
-                                                            The Result
-                                                        </h5>
-                                                        <p className="text-[15px] sm:text-base text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-medium">
-                                                            {step.result}
-                                                        </p>
-                                                    </div>
+                                                <div className="w-full h-px bg-gray-200 dark:bg-white/10 opacity-60"></div>
+
+                                                <div className="relative text-left">
+                                                    <h5 className="text-journey-subheading text-brand-green">
+                                                        <span className="material-symbols-outlined text-brand-green" style={{ fontSize: '28px', fontVariationSettings: "'FILL' 1" }}>insights</span>
+                                                        The Result
+                                                    </h5>
+                                                    <p className="text-journey-body">
+                                                        {step.result}
+                                                    </p>
                                                 </div>
                                             </div>
+
                                         </div>
                                     ))}
                                 </div>
 
-                                {/* Shared Progress Bar at bottom */}
-                                <div className="mt-8 pt-5 border-t border-gray-100 dark:border-white/5 flex items-center justify-between shrink-0">
-                                    <span className="text-xs font-bold text-brand-text-light-secondary dark:text-white/40 tracking-wide uppercase">
-                                        Step {activeStep + 1} of {steps.length}
-                                    </span>
-                                    <div className="flex items-center gap-2">
-                                        {steps.map((_, dotIdx) => (
-                                            <div
-                                                key={dotIdx}
-                                                className={`rounded-full transition-all duration-500 ${dotIdx <= activeStep ? 'bg-brand-green' : 'bg-gray-200 dark:bg-white/10'} ${dotIdx === activeStep ? 'w-8 h-2' : 'w-2 h-2'}`}
-                                            ></div>
-                                        ))}
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -322,25 +304,24 @@ const JourneySteps: React.FC = () => {
             {/* WHY SCIENCE CALLOUT — Outside the sticky container */}
             <div className="hidden lg:block w-full py-20 lg:py-28">
                 <div className="container mx-auto px-6 lg:px-[clamp(24px,6vw,120px)]">
-                    <div className="max-w-5xl mx-auto rounded-[2rem] bg-brand-light-secondary dark:bg-brand-dark-secondary p-10 sm:p-14 lg:p-16 border border-brand-green/10 dark:border-white/5 transition-colors">
-                        <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-14">
-                            <div className="flex-shrink-0 w-20 h-20 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green">
-                                <span className="material-symbols-outlined" style={{ fontSize: '2.5rem', fontVariationSettings: "'FILL' 1" }}>science</span>
-                            </div>
-                            <div className="flex-1 lg:border-l border-gray-200 dark:border-white/10 lg:pl-14">
-                                <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-dark-primary dark:text-white mb-4 tracking-tight">
-                                    Why <span className="text-brand-green">Behavioral Intelligence</span>?
-                                </h3>
-                                <p className="text-base sm:text-lg text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-medium mb-6">
-                                    Traditional counseling asks a student what they <span className="text-brand-green font-bold">LIKE</span> (which changes every year). We show you what they are <span className="text-brand-green font-bold">BUILT</span> for (which is their lifelong advantage).
+                    <div className="max-w-5xl mx-auto relative [border-radius:2.3rem_0_2.3rem_0] bg-brand-green px-10 py-12 lg:px-16 lg:py-16 text-center shadow-[0_18px_48px_-22px_rgba(30,211,106,0.7)] overflow-hidden">
+                        <img src="/quote-symbol.svg" alt="" aria-hidden="true" className="absolute top-6 left-8 w-10 h-auto opacity-80 pointer-events-none select-none" />
+
+                        <div className="max-w-4xl mx-auto">
+                            <h3 className="text-3xl sm:text-4xl font-extrabold text-brand-dark-green mb-6 tracking-tight">
+                                Why Behavioral Intelligence?
+                            </h3>
+                            <p className="text-lg sm:text-xl text-brand-dark-green/90 leading-relaxed font-semibold mb-8">
+                                Traditional counseling asks a student what they LIKE (which changes every year). We show you what they are BUILT for (which is their lifelong advantage).
+                            </p>
+                            <div className="inline-block bg-brand-dark-green/10 px-8 py-4 rounded-full border border-brand-dark-green/20">
+                                <p className="text-xl sm:text-2xl font-bold text-brand-dark-green tracking-tight">
+                                    Interest is temporary; potential is permanent.
                                 </p>
-                                <div className="inline-block bg-brand-green/10 dark:bg-brand-green/15 px-6 py-3 rounded-full">
-                                    <p className="text-lg sm:text-xl font-bold text-brand-dark-primary dark:text-white tracking-tight">
-                                        Interest is temporary; <span className="text-brand-green">potential is permanent</span>.
-                                    </p>
-                                </div>
                             </div>
                         </div>
+
+                        <img src="/quote-symbol.svg" alt="" aria-hidden="true" className="absolute bottom-6 right-8 w-10 h-auto rotate-180 opacity-80 pointer-events-none select-none" />
                     </div>
                 </div>
             </div>

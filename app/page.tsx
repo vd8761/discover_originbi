@@ -9,18 +9,8 @@ import WhyOriginBI from "@/components/sections/WhyOriginBI";
 import CareerValueCard from "@/components/sections/CareerValueCard";
 import FAQSection from "@/components/sections/FAQSection";
 import FinalCTASection from "@/components/sections/FinalCTASection";
-import Solution from "@/components/sections/Solution";
 import DimensionQuote from "@/components/sections/DimensionQuote";
-import WhyThisMatters from "@/components/sections/WhyThisMatters";
-import DiscoverYourself from "@/components/sections/DiscoverYourself";
 
-import HowItWorks from "@/components/sections/HowItWorks";
-import WhereCanItLead from "@/components/sections/WhereCanItLead";
-import Outcomes from "@/components/sections/Outcomes";
-import WhoIsItFor from "@/components/sections/WhoIsItFor";
-import Impact from "@/components/sections/Impact";
-import SchoolIntegration from "@/components/sections/SchoolIntegration";
-import Testimonials from "@/components/sections/Testimonials";
 
 
 export default function Home() {
@@ -34,17 +24,8 @@ export default function Home() {
       <WhyOriginBI />
       <CareerValueCard />
       <FAQSection />
-      <Solution />
       <DimensionQuote />
-      <WhyThisMatters />
-      <DiscoverYourself />
-      <HowItWorks />
-      <WhereCanItLead />
-      <Outcomes />
-      <WhoIsItFor />
-      <Impact />
-      <SchoolIntegration />
-      <Testimonials />
+
       <FinalCTASection />
 
       <Footer />
