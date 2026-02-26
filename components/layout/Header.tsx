@@ -22,8 +22,10 @@ const Header: React.FC<HeaderProps> = ({
   const { getRegisterUrl } = useReferral();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -42,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({
         : "text-white hover:text-white/80";
 
   const renderThemeToggle = () => {
-    if (!isInitialized) return <div className="w-12 lg:w-16 h-7 lg:h-8" />;
+    if (!mounted || !isInitialized) return <div className="w-12 lg:w-16 h-7 lg:h-8" />;
 
     return (
       <button

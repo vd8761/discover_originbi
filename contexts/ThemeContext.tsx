@@ -26,7 +26,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
     const [mounted, setMounted] = useState(false);
     const [isInitialized, setIsInitialized] = useState(false);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         // Check localStorage immediately to prevent flash
         const savedTheme = localStorage.getItem("theme") as Theme | null;
         if (savedTheme) {
