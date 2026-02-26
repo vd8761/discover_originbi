@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect, useMemo } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { ChevronDownIcon } from '../icons';
 import { COUNTRY_CODES } from '../../lib/countryCodes';
+import { T } from "@/contexts/LanguageContext";
 
 interface MobileInputProps {
     countryCode: string;
@@ -152,7 +153,7 @@ const MobileInput: React.FC<MobileInputProps> = ({
                                         </button>
                                     ))
                                 ) : (
-                                    <div className="p-4 text-center text-xs text-brand-text-secondary italic">No results found</div>
+                                    <div className="p-4 text-center text-xs text-brand-text-secondary italic">{/* @ts-ignore */} <T>No results found</T> </div>
                                 )}
                             </div>
                         </div>

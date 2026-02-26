@@ -3,6 +3,7 @@
 import React from "react";
 import { CheckIcon } from "@/components/icons";
 import Button from "@/components/ui/Button";
+import { T } from "@/contexts/LanguageContext";
 
 const features = [
     {
@@ -46,10 +47,10 @@ const CareerValueCard: React.FC = () => {
                     <div className="flex-1 w-full order-2 lg:order-1">
                         <div className="mb-12 text-center lg:text-left">
                             <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight mb-6 transition-colors">
-                                The <span className="text-brand-green">Career Value Card</span>
+                                {/* @ts-ignore */} <T> The </T> <span className="text-brand-green">{/* @ts-ignore */} <T>Career Value Card</T> </span>
                             </h2>
                             <p className="text-lg sm:text-xl text-brand-text-light-secondary dark:text-white/70 font-medium max-w-2xl mx-auto lg:mx-0">
-                                Everything your child needs to choose the right path for{" "}
+                                {/* @ts-ignore */} <T> Everything your child needs to choose the right path for</T> {" "}
                                 <span className="text-brand-green font-bold">₹749</span>.
                             </p>
                         </div>
@@ -86,33 +87,28 @@ const CareerValueCard: React.FC = () => {
 
                             <div className="relative z-10">
                                 <span className="inline-block px-3 py-1 lg:px-4 lg:py-1.5 rounded-full bg-white/20 text-white border border-white/30 text-[9px] lg:text-[10px] font-black tracking-[0.2em] uppercase mb-10 backdrop-blur-md">
-                                    Lifetime Value
-                                </span>
+                                    {/* @ts-ignore */} <T> Lifetime Value </T> </span>
                                 <h3 className="text-3xl lg:text-4xl font-extrabold text-white mb-2 leading-tight tracking-tight">
-                                    The Career Value Package
-                                </h3>
+                                    {/* @ts-ignore */} <T> The Career Value Package </T> </h3>
                                 <div className="flex items-baseline gap-2 mb-10">
                                     <span className="text-5xl lg:text-8xl font-black text-white tracking-tighter">₹749</span>
-                                    <span className="text-white/60 text-base lg:text-lg font-bold">/ one-time</span>
+                                    <span className="text-white/60 text-base lg:text-lg font-bold">{/* @ts-ignore */} <T>/ one-time</T> </span>
                                 </div>
 
                                 <Button
                                     href="/register"
                                     className="w-full bg-white !text-brand-green hover:bg-brand-dark-green hover:!text-white text-base lg:text-lg font-black py-3.5 lg:py-4.5 rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-lg flex items-center justify-center gap-2 border-none"
                                 >
-                                    Get the Blueprint Now
-                                </Button>
+                                    {/* @ts-ignore */} <T> Get the Blueprint Now </T> </Button>
                             </div>
                         </div>
 
                         {/* Philosophy Quote - Simple & Elegant */}
                         <div className="relative rounded-[1.8rem] bg-white dark:bg-brand-dark-secondary border border-gray-100 dark:border-white/5 px-8 py-10 lg:p-12 text-center shadow-[0_15px_30px_-10px_rgba(0,0,0,0.03)] dark:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.2)]">
                             <h4 className="text-[11px] font-black tracking-[0.2em] uppercase text-brand-green mb-6">
-                                The OriginBI Philosophy
-                            </h4>
+                                {/* @ts-ignore */} <T> The OriginBI Philosophy </T> </h4>
                             <p className="text-xl sm:text-2xl lg:text-3xl leading-snug text-brand-dark-primary dark:text-white font-semibold italic">
-                                "Choose the <span className="not-italic text-brand-green font-extrabold">Role</span> first, then pick the <span className="not-italic text-brand-green font-extrabold">Course</span>. Stop spending lakhs on degrees that don't fit."
-                            </p>
+                                {/* @ts-ignore */} <T> "Choose the </T> <span className="not-italic text-brand-green font-extrabold">{/* @ts-ignore */} <T>Role</T> </span> {/* @ts-ignore */} <T> first, then pick the </T> <span className="not-italic text-brand-green font-extrabold">{/* @ts-ignore */} <T>Course</T> </span>{/* @ts-ignore */} <T>. Stop spending lakhs on degrees that don't fit." </T> </p>
                         </div>
                     </div>
                 </div>

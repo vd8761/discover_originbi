@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { T } from "@/contexts/LanguageContext";
 
 const Problem: React.FC = () => {
     const problems = [
@@ -36,11 +37,9 @@ const Problem: React.FC = () => {
                 {/* Section Header */}
                 <div className="text-center mb-12 lg:mb-20 animate-fade-in">
                     <span className="text-[clamp(10px,0.8vw,14px)] font-bold uppercase tracking-[0.2em] text-brand-green mb-4 block">
-                        Problem
-                    </span>
+                        {/* @ts-ignore */} <T> Problem </T> </span>
                     <h2 className="text-[clamp(26px,3.2vw,48px)] font-sans font-bold leading-[1.2] lg:leading-[1.1] text-brand-dark-primary dark:text-white max-w-4xl mx-auto transition-colors duration-300 px-4">
-                        Still choosing courses based on fear or pressure?
-                    </h2>
+                        {/* @ts-ignore */} <T> Still choosing courses based on fear or pressure? </T> </h2>
                 </div>
 
                 {/* Problems Grid */}

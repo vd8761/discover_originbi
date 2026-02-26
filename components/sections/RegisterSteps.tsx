@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { T } from "@/contexts/LanguageContext";
 
 const RegisterSteps: React.FC = () => {
     const steps = [
@@ -22,11 +23,9 @@ const RegisterSteps: React.FC = () => {
 
             <div className="max-w-[1440px] mx-auto px-6 relative z-10 text-center">
                 <h2 className="text-3xl lg:text-4xl font-sans font-bold text-brand-dark-primary dark:text-white mb-4">
-                    How it works
-                </h2>
+                    {/* @ts-ignore */} <T> How it works </T> </h2>
                 <p className="text-gray-500 max-w-2xl mx-auto mb-16 text-lg font-light">
-                    Your journey to career clarity is simple, digital, and designed for results. Follow these six steps to unlock your potential.
-                </p>
+                    {/* @ts-ignore */} <T> Your journey to career clarity is simple, digital, and designed for results. Follow these six steps to unlock your potential. </T> </p>
 
                 <div className="flex flex-wrap justify-center gap-8 relative">
                     {/* Connecting Line (Desktop) */}

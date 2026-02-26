@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { T } from "@/contexts/LanguageContext";
 
 const MobileHowItWorksCarousel: React.FC = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -50,8 +51,7 @@ const MobileHowItWorksCarousel: React.FC = () => {
     return (
         <div className="w-full pb-8">
             <h3 className="text-xl font-bold text-center mb-6 text-brand-dark-primary dark:text-white">
-                How it works
-            </h3>
+                {/* @ts-ignore */} <T> How it works </T> </h3>
 
             <div
                 ref={scrollRef}

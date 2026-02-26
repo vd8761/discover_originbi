@@ -1,10 +1,12 @@
 "use client";
+import { I18nToggle } from "@/contexts/LanguageContext";
 
 import React, { useState, useEffect } from "react";
 import Logo from "@/components/ui/Logo";
 import Button from "@/components/ui/Button";
 import { useTheme } from "@/contexts/ThemeContext";
 import { LightModeIcon, DarkModeIcon } from "@/components/icons";
+import { T } from "@/contexts/LanguageContext";
 
 interface HeaderProps {
   horizontalPadding?: string;
@@ -90,14 +92,12 @@ const Header: React.FC<HeaderProps> = ({
               href="/#product"
               className={`font-sans font-semibold text-[13px] 2xl:text-sm transition-colors uppercase tracking-[0.15em] ${linkColorClass}`}
             >
-              The Journey
-            </a>
+              {/* @ts-ignore */} <T> The Journey </T> </a>
             <a
               href="/#impact"
               className={`font-sans font-semibold text-[13px] 2xl:text-sm transition-colors uppercase tracking-[0.15em] ${linkColorClass}`}
             >
-              Why Us?
-            </a>
+              {/* @ts-ignore */} <T> Why Us? </T> </a>
           </div>
         </div>
 
@@ -106,6 +106,7 @@ const Header: React.FC<HeaderProps> = ({
           <div className="hidden xl:block">{renderThemeToggle()}</div>
 
           <div className="flex items-center gap-2 lg:gap-5">
+            <I18nToggle />
             {/* Login button - Only visible on desktop (xl and above) */}
             <div className="hidden xl:block">
               <Button
@@ -114,8 +115,7 @@ const Header: React.FC<HeaderProps> = ({
                 size="sm"
                 className="text-[13px] sm:text-[14px] lg:text-[13px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px]"
               >
-                Login
-              </Button>
+                {/* @ts-ignore */} <T> Login </T> </Button>
             </div>
             {showRegisterButton && (
               <Button
@@ -123,8 +123,7 @@ const Header: React.FC<HeaderProps> = ({
                 size="sm"
                 className="shadow-lg shadow-brand-green/20 text-[13px] sm:text-[14px] lg:text-[13px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px] border-none"
               >
-                Register now
-              </Button>
+                {/* @ts-ignore */} <T> Register now </T> </Button>
             )}
           </div>
 
@@ -176,22 +175,19 @@ const Header: React.FC<HeaderProps> = ({
               onClick={() => setIsMenuOpen(false)}
               className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-gray-900 transition-colors hover:text-brand-green dark:text-white"
             >
-              The Journey
-            </a>
+              {/* @ts-ignore */} <T> The Journey </T> </a>
             <a
               href="/#impact"
               onClick={() => setIsMenuOpen(false)}
               className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-gray-900 transition-colors hover:text-brand-green dark:text-white"
             >
-              Why Us?
-            </a>
+              {/* @ts-ignore */} <T> Why Us? </T> </a>
 
             <div className="h-px bg-gray-200 dark:bg-white/10 w-full my-2" />
 
             <div className="flex items-center justify-between">
               <span className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-gray-900 dark:text-white">
-                Theme
-              </span>
+                {/* @ts-ignore */} <T> Theme </T> </span>
               {renderThemeToggle()}
             </div>
 
@@ -202,16 +198,14 @@ const Header: React.FC<HeaderProps> = ({
                 className="w-full justify-center text-sm py-3"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Login
-              </Button>
+                {/* @ts-ignore */} <T> Login </T> </Button>
               {showRegisterButton && (
                 <Button
                   href="/register"
                   className="w-full justify-center shadow-lg shadow-brand-green/20 border-none text-sm py-3"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Register now
-                </Button>
+                  {/* @ts-ignore */} <T> Register now </T> </Button>
               )}
             </div>
           </div>

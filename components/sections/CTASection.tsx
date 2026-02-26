@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Button from "@/components/ui/Button";
+import { T } from "@/contexts/LanguageContext";
 
 const CTASection: React.FC = () => {
     return (
@@ -24,19 +25,16 @@ const CTASection: React.FC = () => {
                     {/* Centered Content */}
                     <div className="relative z-10 flex flex-col items-center justify-center text-center p-8 sm:p-12 lg:p-16 min-h-[280px] lg:min-h-[350px]">
                         <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-bold text-white leading-[1.1] mb-4 max-w-4xl tracking-tight">
-                            What should I do Next?
-                        </h2>
+                            {/* @ts-ignore */} <T> What should I do Next? </T> </h2>
                         <p className="text-[clamp(20px,2vw,28px)] text-white/90 font-medium mb-12 max-w-2xl leading-relaxed">
-                            Let your strengths answer that
-                        </p>
+                            {/* @ts-ignore */} <T> Let your strengths answer that </T> </p>
                         <div className="flex justify-center w-full">
                             <Button
                                 size="lg"
                                 href="/register"
                                 className="!bg-brand-green !text-white hover:!bg-brand-green/90 border-none rounded-full shadow-lg shadow-brand-green/30 hover:scale-105 transition-all duration-300 px-10 py-4 text-lg font-bold"
                             >
-                                Take the First Step
-                            </Button>
+                                {/* @ts-ignore */} <T> Take the First Step </T> </Button>
                         </div>
                     </div>
                 </div>

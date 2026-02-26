@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { ChevronDownIcon } from "@/components/icons";
 import Button from "@/components/ui/Button";
+import { T } from "@/contexts/LanguageContext";
 
 type FAQ = {
     target: "Parents" | "Students" | "Both";
@@ -90,14 +91,12 @@ const FAQSection: React.FC = () => {
 
                 <div className="text-center mb-12 lg:mb-16">
                     <div className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 dark:bg-brand-green/20 text-brand-green font-bold text-xs tracking-widest uppercase mb-6">
-                        Support Center
-                    </div>
+                        {/* @ts-ignore */} <T> Support Center </T> </div>
                     <h2 className="text-[clamp(28px,3.4vw,54px)] font-sans font-semibold text-brand-dark-primary dark:text-white leading-tight mb-4 transition-colors duration-300">
-                        Frequently Asked <span className="text-brand-green">Questions</span>
+                        {/* @ts-ignore */} <T> Frequently Asked </T> <span className="text-brand-green">{/* @ts-ignore */} <T>Questions</T> </span>
                     </h2>
                     <p className="text-[clamp(18px,1.5vw,24px)] text-gray-600 dark:text-gray-300">
-                        Clearing the Path for Students & Parents
-                    </p>
+                        {/* @ts-ignore */} <T> Clearing the Path for Students & Parents </T> </p>
                 </div>
 
                 <div className="max-w-4xl mx-auto space-y-4">
@@ -133,14 +132,12 @@ const FAQSection: React.FC = () => {
 
                         <div className="relative z-10 flex flex-col items-center">
                             <h3 className="text-lg lg:text-3xl font-semibold text-white mb-8 px-4 lg:px-0 leading-relaxed max-w-3xl">
-                                "At +2, a wrong choice isn't just a loss of time; it's a loss of confidence."
-                            </h3>
+                                {/* @ts-ignore */} <T> "At +2, a wrong choice isn't just a loss of time; it's a loss of confidence." </T> </h3>
                             <Button
                                 href="/register"
                                 className="inline-block bg-white !text-brand-green hover:bg-brand-dark-green hover:!text-white px-5 py-2.5 lg:px-8 lg:py-3.5 rounded-full text-sm lg:text-xl font-bold tracking-wide shadow-lg border-none cursor-pointer"
                             >
-                                Spend ₹749 today to ensure they walk into college with a clear purpose.
-                            </Button>
+                                {/* @ts-ignore */} <T> Spend ₹749 today to ensure they walk into college with a clear purpose. </T> </Button>
                         </div>
                     </div>
                 </div>

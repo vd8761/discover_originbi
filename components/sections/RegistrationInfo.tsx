@@ -1,4 +1,5 @@
 import React from 'react';
+import { T } from "@/contexts/LanguageContext";
 
 const RegistrationInfo: React.FC<{ className?: string }> = ({ className = "" }) => {
 
@@ -43,11 +44,9 @@ const RegistrationInfo: React.FC<{ className?: string }> = ({ className = "" }) 
                 {/* Hero / Intro */}
                 <div className="mb-4 text-center lg:text-left">
                     <h2 className="text-3xl lg:text-4xl font-bold mb-2 text-brand-dark-primary dark:text-white drop-shadow-sm">
-                        Unlock Your Full Potential
-                    </h2>
+                        {/* @ts-ignore */} <T> Unlock Your Full Potential </T> </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300 italic">
-                        "Insights Discovery transforms your performance using the power of awareness."
-                    </p>
+                        {/* @ts-ignore */} <T> "Insights Discovery transforms your performance using the power of awareness." </T> </p>
                 </div>
 
                 {/* Value Props Grid */}
@@ -67,8 +66,7 @@ const RegistrationInfo: React.FC<{ className?: string }> = ({ className = "" }) 
                 <div className="bg-brand-green/5 dark:bg-brand-green/10 rounded-2xl p-4 border border-brand-green/10">
                     <h3 className="font-bold text-base text-brand-dark-primary dark:text-white mb-2 flex items-center gap-2">
                         <span className="w-1.5 h-5 bg-brand-green rounded-full"></span>
-                        For Parents & Students
-                    </h3>
+                        {/* @ts-ignore */} <T> For Parents & Students </T> </h3>
                     <div className="space-y-2">
                         {parentOutcomes.map((item, idx) => (
                             <div key={idx} className="flex gap-2 items-start">
@@ -86,8 +84,7 @@ const RegistrationInfo: React.FC<{ className?: string }> = ({ className = "" }) 
                 {/* Trust/Testimonial Footer */}
                 <div className="mt-4 pt-4 border-t border-gray-200 dark:border-white/10 text-center lg:text-left">
                     <p className="text-xs text-gray-500 dark:text-gray-400">
-                        Join thousands of students discovering their path with Origin BI.
-                    </p>
+                        {/* @ts-ignore */} <T> Join thousands of students discovering their path with Origin BI. </T> </p>
                 </div>
 
             </div>

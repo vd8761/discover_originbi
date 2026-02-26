@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { T } from "@/contexts/LanguageContext";
 
 const ProgramSteps: React.FC = () => {
     const steps = [
@@ -31,11 +32,10 @@ const ProgramSteps: React.FC = () => {
             <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
                 <div className="mb-20 max-w-4xl">
                     <h2 className="text-4xl lg:text-5xl font-sans font-light text-brand-dark-primary dark:text-white mb-6">
-                        Using Origin BI as part of a <span className="font-bold">wider programme</span>
+                        {/* @ts-ignore */} <T> Using Origin BI as part of a </T> <span className="font-bold">{/* @ts-ignore */} <T>wider programme</T> </span>
                     </h2>
                     <p className="text-xl text-gray-600 dark:text-gray-300 font-light">
-                        Origin BI is at the heart of what we do. By applying the four colour model to a variety of academic challenges, we focus on your most important asset - your students.
-                    </p>
+                        {/* @ts-ignore */} <T> Origin BI is at the heart of what we do. By applying the four colour model to a variety of academic challenges, we focus on your most important asset - your students. </T> </p>
                 </div>
 
                 <div className="relative grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">

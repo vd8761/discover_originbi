@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { T } from "@/contexts/LanguageContext";
 
 const SoundFamiliar: React.FC = () => {
     const situations = [
@@ -8,8 +9,7 @@ const SoundFamiliar: React.FC = () => {
             title: "Stop the Guesswork",
             description: (
                 <>
-                    Choosing a degree just because <span className="text-brand-green">"everyone is doing IT/CSE"</span> or because of friend’s choices. You fear that picking the wrong course now will lead to a career they will regret in 4 years.
-                </>
+                    {/* @ts-ignore */} <T> Choosing a degree just because </T> <span className="text-brand-green">{/* @ts-ignore */} <T>"everyone is doing IT/CSE"</T> </span> {/* @ts-ignore */} <T> or because of friend’s choices. You fear that picking the wrong course now will lead to a career they will regret in 4 years. </T> </>
             ),
             icon: "help"
         },
@@ -17,7 +17,7 @@ const SoundFamiliar: React.FC = () => {
             title: "Find Your Direction",
             description: (
                 <>
-                    Your child has the marks, but no clear idea which industry or specific professional role actually fits their natural personality. You are looking for a direction that goes beyond just <span className="text-brand-green">"getting a degree."</span>
+                    {/* @ts-ignore */} <T> Your child has the marks, but no clear idea which industry or specific professional role actually fits their natural personality. You are looking for a direction that goes beyond just </T> <span className="text-brand-green">{/* @ts-ignore */} <T>"getting a degree."</T> </span>
                 </>
             ),
             icon: "explore"
@@ -26,8 +26,7 @@ const SoundFamiliar: React.FC = () => {
             title: "Correct Your Course Before It Starts",
             description: (
                 <>
-                    Feeling pressured to pick a college path without knowing if they have the natural <span className="text-brand-green">"Behavioral Fit"</span> for that work. You want to ensure they don't spend lakhs on a course only to realize later it was the wrong fit.
-                </>
+                    {/* @ts-ignore */} <T> Feeling pressured to pick a college path without knowing if they have the natural </T> <span className="text-brand-green">{/* @ts-ignore */} <T>"Behavioral Fit"</T> </span> {/* @ts-ignore */} <T> for that work. You want to ensure they don't spend lakhs on a course only to realize later it was the wrong fit. </T> </>
             ),
             icon: "gpp_maybe"
         }
@@ -39,11 +38,10 @@ const SoundFamiliar: React.FC = () => {
                 {/* Header Sequence */}
                 <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
                     <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight mb-6 transition-colors">
-                        Is This Your <span className="text-brand-green">Current Situation</span> ?
+                        {/* @ts-ignore */} <T> Is This Your </T> <span className="text-brand-green">{/* @ts-ignore */} <T>Current Situation</T> </span> ?
                     </h2>
                     <p className="text-lg sm:text-xl text-brand-text-light-secondary dark:text-white/70 font-medium">
-                        Check if you (or your child) are at one of these career crossroads:
-                    </p>
+                        {/* @ts-ignore */} <T> Check if you (or your child) are at one of these career crossroads: </T> </p>
                 </div>
 
                 {/* Grid Layout for Situations */}

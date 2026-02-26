@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Languages } from "lucide-react";
+import { T } from "@/contexts/LanguageContext";
 
 interface Expert {
     id: number;
@@ -113,11 +114,10 @@ const IndustryExperts: React.FC = () => {
             <div className="max-w-[1920px] mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]">
                 <div className="text-center mb-12 lg:mb-16">
                     <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-tight mb-4">
-                        Industry <span className="text-brand-green">Experts</span>
+                        {/* @ts-ignore */} <T> Industry </T> <span className="text-brand-green">{/* @ts-ignore */} <T>Experts</T> </span>
                     </h2>
                     <p className="text-lg sm:text-xl text-brand-text-light-secondary dark:text-white/60 font-medium max-w-3xl mx-auto">
-                        Insights from leaders who understand the true value of behavioral mapping in professional success.
-                    </p>
+                        {/* @ts-ignore */} <T> Insights from leaders who understand the true value of behavioral mapping in professional success. </T> </p>
                 </div>
 
                 <div className="max-w-4xl mx-auto relative group">
@@ -161,10 +161,9 @@ const IndustryExperts: React.FC = () => {
                                     <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-brand-dark-primary/20">
                                         <div className="w-20 h-20 rounded-full bg-brand-green/20 flex items-center justify-center mb-4">
                                             <span className="material-symbols-outlined text-brand-green animate-pulse" style={{ fontSize: '40px' }}>
-                                                play_circle
-                                            </span>
+                                                {/* @ts-ignore */} <T> play_circle </T> </span>
                                         </div>
-                                        <p className="text-white font-medium text-lg">Video coming soon</p>
+                                        <p className="text-white font-medium text-lg">{/* @ts-ignore */} <T>Video coming soon</T> </p>
                                     </div>
                                 )}
                             </div>
@@ -197,8 +196,7 @@ const IndustryExperts: React.FC = () => {
                                             onClick={() => setSelectedLanguage("english")}
                                             className={`px-3 py-1 rounded-md text-xs font-bold transition-all duration-300 ${selectedLanguage === "english" ? "bg-white dark:bg-brand-dark-secondary text-brand-green shadow-sm" : "text-gray-500 dark:text-gray-400"}`}
                                         >
-                                            English
-                                        </button>
+                                            {/* @ts-ignore */} <T> English </T> </button>
                                     </div>
                                 )}
 

@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDownIcon } from '../icons';
+import { T } from "@/contexts/LanguageContext";
 
 interface Option {
     value: string;
@@ -84,7 +85,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
                             </button>
                         ))}
                         {options.length === 0 && (
-                            <div className="px-6 py-4 text-sm text-brand-text-secondary text-center italic">No options available</div>
+                            <div className="px-6 py-4 text-sm text-brand-text-secondary text-center italic">{/* @ts-ignore */} <T>No options available</T> </div>
                         )}
                     </div>
                 )}

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { T } from "@/contexts/LanguageContext";
 
 interface Testimonial {
     name: string;
@@ -82,8 +83,7 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial; onClick: () => void 
 
         {/* Quote Text */}
         <p className="text-[15px] sm:text-base leading-relaxed text-gray-700 dark:text-gray-300 font-medium mb-6 line-clamp-4">
-            &ldquo;{testimonial.quote}&rdquo;
-        </p>
+            {/* @ts-ignore */} <T> &ldquo;</T> {testimonial.quote}{/* @ts-ignore */} <T>&rdquo; </T> </p>
 
         {/* Student Info */}
         <div className="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-white/5">
@@ -123,14 +123,11 @@ const Testimonials: React.FC = () => {
             <div className="max-w-[1920px] mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] mb-12 lg:mb-16">
                 <div className="text-center">
                     <div className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 dark:bg-brand-green/20 text-brand-green font-bold text-xs tracking-widest uppercase mb-6">
-                        Student Voices
-                    </div>
+                        {/* @ts-ignore */} <T> Student Voices </T> </div>
                     <h2 className="text-[clamp(28px,3.4vw,54px)] font-sans font-semibold text-brand-dark-primary dark:text-white leading-tight mb-4 transition-colors duration-300">
-                        What Our <span className="text-brand-green">Students</span> Say
-                    </h2>
+                        {/* @ts-ignore */} <T> What Our </T> <span className="text-brand-green">{/* @ts-ignore */} <T>Students</T> </span> {/* @ts-ignore */} <T> Say </T> </h2>
                     <p className="text-[clamp(16px,1.3vw,22px)] text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                        Real experiences from students who discovered their perfect career path.
-                    </p>
+                        {/* @ts-ignore */} <T> Real experiences from students who discovered their perfect career path. </T> </p>
                 </div>
             </div>
 
@@ -214,8 +211,7 @@ const Testimonials: React.FC = () => {
                                     <path d="M0.926245 27.7395C2.61695 33.3818 7.64973 37.176 13.4492 37.176C20.6839 37.176 26.5817 31.2192 26.5817 23.906C26.5817 18.9322 23.8883 14.4695 19.6223 12.189C19.8385 9.86922 20.8018 4.93473 24.7533 3.85347C25.697 3.5979 26.3064 2.69357 26.1885 1.73027C26.0705 0.76696 25.2841 0.0199051 24.3012 0.000244141H24.0063C22.0797 0.000244141 11.503 0.432751 4.66152 9.61365C0.218513 15.5704 -1.09867 22.0383 0.926245 27.7395Z" fill="currentColor" />
                                 </svg>
                                 <p className="text-xl sm:text-2xl leading-relaxed text-brand-dark-primary dark:text-white font-semibold italic">
-                                    &ldquo;{selectedTestimonial.quote}&rdquo;
-                                </p>
+                                    {/* @ts-ignore */} <T> &ldquo;</T> {selectedTestimonial.quote}{/* @ts-ignore */} <T>&rdquo; </T> </p>
                             </div>
 
                             <div className="flex items-center gap-4 pt-8 border-t border-gray-100 dark:border-white/5">

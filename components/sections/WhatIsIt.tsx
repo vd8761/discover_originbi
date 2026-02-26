@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { T } from "@/contexts/LanguageContext";
 
 const WhatIsIt: React.FC = () => {
     return (
@@ -10,20 +11,17 @@ const WhatIsIt: React.FC = () => {
                 <div className="space-y-8 order-2 lg:order-1">
                     <div>
                         <div className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 dark:bg-brand-green/20 text-brand-green font-bold text-xs tracking-widest uppercase mb-6">
-                            About The Platform
-                        </div>
+                            {/* @ts-ignore */} <T> About The Platform </T> </div>
                         <h2 className="text-4xl lg:text-6xl font-sans font-medium text-brand-dark-primary dark:text-white leading-[1.1] mb-6">
-                            What is <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-teal-500">Origin BI?</span>
+                            {/* @ts-ignore */} <T> What is </T> <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-teal-500">{/* @ts-ignore */} <T>Origin BI?</T> </span>
                         </h2>
                         <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-light">
-                            At OriginBI MindWorks, we help you build a more accountable, agile, and mentally fit mind space using frameworks designed for Indian students. We combine Agile in India, frugal lifestyle thinking, and deep self-awareness to help people truly know their strength.
-                        </p>
+                            {/* @ts-ignore */} <T> At OriginBI MindWorks, we help you build a more accountable, agile, and mentally fit mind space using frameworks designed for Indian students. We combine Agile in India, frugal lifestyle thinking, and deep self-awareness to help people truly know their strength. </T> </p>
                     </div>
 
                     <div className="relative pl-6 border-l-4 border-brand-green">
                         <p className="text-lg lg:text-xl text-brand-dark-primary dark:text-white font-medium italic">
-                            "Traditional systems are outdated. We build human-first mind spaces."
-                        </p>
+                            {/* @ts-ignore */} <T> "Traditional systems are outdated. We build human-first mind spaces." </T> </p>
                     </div>
                 </div>
 
@@ -43,9 +41,9 @@ const WhatIsIt: React.FC = () => {
                             <div className="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl shadow-lg">
                                 <div className="flex items-center gap-3 mb-1">
                                     <div className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
-                                    <p className="text-brand-green text-xs font-bold uppercase tracking-wider">Mission</p>
+                                    <p className="text-brand-green text-xs font-bold uppercase tracking-wider">{/* @ts-ignore */} <T>Mission</T> </p>
                                 </div>
-                                <p className="text-white text-lg font-medium leading-snug">Empowering Student Growth through Self-Awareness</p>
+                                <p className="text-white text-lg font-medium leading-snug">{/* @ts-ignore */} <T>Empowering Student Growth through Self-Awareness</T> </p>
                             </div>
                         </div>
                     </div>

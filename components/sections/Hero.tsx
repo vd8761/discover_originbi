@@ -3,6 +3,7 @@
 import React from 'react';
 import Button from "@/components/ui/Button";
 import { Check } from "lucide-react";
+import { T } from "@/contexts/LanguageContext";
 
 const Hero: React.FC = () => {
     return (
@@ -14,13 +15,12 @@ const Hero: React.FC = () => {
                     <div className="w-full lg:w-[45%] text-left order-2 lg:order-1">
                         <div className="max-w-xl">
                             <h1 className="text-[clamp(30px,4vw,52px)] font-sans font-extrabold leading-[1.2] mb-5 tracking-tight text-brand-dark-primary dark:text-white transition-colors">
-                                Discover, Align and Excel <br className="hidden sm:block" />
-                                <span className="text-brand-green">in the Right Career Path</span>
+                                {/* @ts-ignore */} <T> Discover, Align and Excel </T> <br className="hidden sm:block" />
+                                <span className="text-brand-green">{/* @ts-ignore */} <T>in the Right Career Path</T> </span>
                             </h1>
 
                             <p className="text-base sm:text-lg text-brand-text-light-secondary dark:text-white/60 font-medium mb-8 max-w-md leading-relaxed">
-                                Find Your Edge. Move Beyond the Degree.
-                            </p>
+                                {/* @ts-ignore */} <T> Find Your Edge. Move Beyond the Degree. </T> </p>
 
                             {/* Checklist */}
                             <div className="space-y-3 mb-10">
@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
                                             <Check className="w-3.5 h-3.5 text-brand-green" strokeWidth={3} />
                                         </div>
                                         <span className="text-brand-text-light-primary dark:text-white/80 text-sm sm:text-base font-semibold tracking-tight">
-                                            {item}
+                                            <T>{item}</T>
                                         </span>
                                     </div>
                                 ))}
@@ -47,8 +47,7 @@ const Hero: React.FC = () => {
                                     size="lg"
                                     className="!bg-brand-green !text-white border-none rounded-full px-9 py-3.5 text-base font-extrabold transition-all duration-300 hover:scale-[1.02] hover:brightness-105"
                                 >
-                                    Get Your Career Roadmap Now • ₹749
-                                </Button>
+                                    {/* @ts-ignore */} <T> Get Your Career Roadmap Now • ₹749 </T> </Button>
                             </div>
                         </div>
                     </div>

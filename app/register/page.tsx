@@ -16,6 +16,8 @@ import MobileHowItWorksCarousel from "@/components/sections/MobileHowItWorksCaro
 import { registerStudent, validateStudent, validateReferralCode } from "@/lib/api";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getEnabledBoards } from "@/lib/constants";
+import { T } from "@/contexts/LanguageContext";
+
 declare global {
   interface Window {
     Razorpay: any;
@@ -327,18 +329,16 @@ function RegisterPageContent() {
                     className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 rounded-2xl h-12"
                     onClick={() => window.open('https://www.youtube.com/watch?v=4luQSZLsZUk', '_blank')}
                   >
-                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">play_circle</span>
-                    Watch in Tamil
-                  </Button>
+                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">{/* @ts-ignore */} <T>play_circle</T> </span>
+                    {/* @ts-ignore */} <T> Watch in Tamil </T> </Button>
                   <Button
                     variant="outline"
                     size="md"
                     className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 rounded-2xl h-12"
                     onClick={() => window.open('https://www.youtube.com/watch?v=Z2ZkryASFi0', '_blank')}
                   >
-                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">play_circle</span>
-                    Watch in English
-                  </Button>
+                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">{/* @ts-ignore */} <T>play_circle</T> </span>
+                    {/* @ts-ignore */} <T> Watch in English </T> </Button>
                 </div>
 
                 <RegistrationInfo className="" />
@@ -351,8 +351,8 @@ function RegisterPageContent() {
               {referralValidationStatus === 'checking' ? (
                 <div className="w-full max-w-lg flex flex-col items-center justify-center text-center animate-fade-in py-10">
                   <div className="w-16 h-16 border-4 border-brand-green/20 border-t-brand-green rounded-full animate-spin mb-6"></div>
-                  <h2 className="text-2xl font-bold text-brand-dark-primary dark:text-white mb-2">Validating URL...</h2>
-                  <p className="text-gray-500 dark:text-gray-400">Please wait while we check the URL.</p>
+                  <h2 className="text-2xl font-bold text-brand-dark-primary dark:text-white mb-2">{/* @ts-ignore */} <T>Validating URL...</T> </h2>
+                  <p className="text-gray-500 dark:text-gray-400">{/* @ts-ignore */} <T>Please wait while we check the URL.</T> </p>
                 </div>
               ) : referralValidationStatus === 'invalid' ? (
                 <div className="w-full max-w-lg flex flex-col items-center justify-center text-center animate-fade-in py-10">
@@ -361,17 +361,15 @@ function RegisterPageContent() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                     </svg>
                   </div>
-                  <h2 className="text-3xl font-bold text-brand-dark-primary dark:text-white mb-4">Invalid URL</h2>
+                  <h2 className="text-3xl font-bold text-brand-dark-primary dark:text-white mb-4">{/* @ts-ignore */} <T>Invalid URL</T> </h2>
                   <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-sm">
-                    The URL you are using is invalid or has expired. You can still proceed with a standard registration below.
-                  </p>
+                    {/* @ts-ignore */} <T> The URL you are using is invalid or has expired. You can still proceed with a standard registration below. </T> </p>
                   <Button
                     onClick={handleClearInvalidReferral}
                     size="lg"
                     className="rounded-full px-10 h-14 text-lg font-bold shadow-lg"
                   >
-                    Continue to Register
-                  </Button>
+                    {/* @ts-ignore */} <T> Continue to Register </T> </Button>
                 </div>
               ) : isSuccess ? (
                 <div className="w-full max-w-lg flex flex-col items-center justify-center text-center animate-fade-in py-10">
@@ -380,10 +378,9 @@ function RegisterPageContent() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h2 className="text-3xl font-bold text-brand-dark-primary dark:text-white mb-4">Registration Successful!</h2>
+                  <h2 className="text-3xl font-bold text-brand-dark-primary dark:text-white mb-4">{/* @ts-ignore */} <T>Registration Successful!</T> </h2>
                   <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-sm">
-                    Your account has been created. Redirecting you to the login page...
-                  </p>
+                    {/* @ts-ignore */} <T> Your account has been created. Redirecting you to the login page... </T> </p>
                   <div className="w-full max-w-xs bg-gray-100 dark:bg-brand-dark-tertiary h-1.5 rounded-full overflow-hidden">
                     <div className="h-full bg-brand-green animate-progress origin-left w-full"></div>
                   </div>
@@ -391,14 +388,13 @@ function RegisterPageContent() {
               ) : (
                 <>
                   <h1 className="text-3xl lg:text-4xl font-sans font-bold tracking-tight mb-3 text-brand-dark-primary dark:text-white">
-                    Start your <span className="text-brand-green">journey</span>
+                    {/* @ts-ignore */} <T> Start your </T> <span className="text-brand-green">{/* @ts-ignore */} <T>journey</T> </span>
                   </h1>
 
                   <p className="text-base text-gray-500 dark:text-gray-400 mb-8 font-light leading-relaxed max-w-md">
-                    Create your student profile to unlock exclusive insights and discover your potential.
-                  </p>
+                    {/* @ts-ignore */} <T> Create your student profile to unlock exclusive insights and discover your potential. </T> </p>
 
-                  <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-5">
+                  <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-5 notranslate">
 
 
                     {/* Name & Gender */}
@@ -415,7 +411,7 @@ function RegisterPageContent() {
 
                       <div className="space-y-1.5">
                         <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-4">
-                          Gender <span className="text-brand-red">*</span>
+                          {/* @ts-ignore */} <T> Gender </T> <span className="text-brand-red">*</span>
                         </label>
                         <div className="relative w-full bg-gray-100 dark:bg-brand-dark-tertiary rounded-full p-1 flex h-12">
                           {genderOptions.map((g) => (
@@ -491,14 +487,14 @@ function RegisterPageContent() {
                     <div className="pt-2 space-y-5">
                       <div className="flex items-center gap-4">
                         <div className="h-px flex-1 bg-gray-100 dark:bg-white/10"></div>
-                        <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">Academic Details</h3>
+                        <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">{/* @ts-ignore */} <T>Academic Details</T> </h3>
                         <div className="h-px flex-1 bg-gray-100 dark:bg-white/10"></div>
                       </div>
 
                       <div className={`grid gap-5 ${formData.schoolLevel === 'HSC' ? 'sm:grid-cols-3' : 'sm:grid-cols-1'}`}>
                         <div className="space-y-1.5">
                           <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-4">
-                            Student Board <span className="text-brand-red">*</span>
+                            {/* @ts-ignore */} <T> Student Board </T> <span className="text-brand-red">*</span>
                           </label>
                           <div className="grid grid-cols-2 gap-2">
                             {getEnabledBoards().map((b) => (
@@ -592,10 +588,9 @@ function RegisterPageContent() {
 
                     <div className="text-center pt-2">
                       <p className="text-sm text-gray-500 dark:text-gray-400">
-                        Already have an account?{" "}
+                        {/* @ts-ignore */} <T> Already have an account?</T> {" "}
                         <a href={process.env.NEXT_PUBLIC_LOGIN_URL || "#"} className="text-brand-green font-bold hover:underline transition-all">
-                          Log in
-                        </a>
+                          {/* @ts-ignore */} <T> Log in </T> </a>
                       </p>
                     </div>
 
@@ -627,18 +622,16 @@ function RegisterPageContent() {
                     className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 bg-white dark:bg-brand-dark-secondary rounded-2xl h-12"
                     onClick={() => window.open('https://www.youtube.com/watch?v=4luQSZLsZUk', '_blank')}
                   >
-                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">play_circle</span>
-                    Watch in Tamil
-                  </Button>
+                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">{/* @ts-ignore */} <T>play_circle</T> </span>
+                    {/* @ts-ignore */} <T> Watch in Tamil </T> </Button>
                   <Button
                     variant="outline"
                     size="md"
                     className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 bg-white dark:bg-brand-dark-secondary rounded-2xl h-12"
                     onClick={() => window.open('https://www.youtube.com/watch?v=Z2ZkryASFi0', '_blank')}
                   >
-                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">play_circle</span>
-                    Watch in English
-                  </Button>
+                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">{/* @ts-ignore */} <T>play_circle</T> </span>
+                    {/* @ts-ignore */} <T> Watch in English </T> </Button>
                 </div>
                 <RegistrationInfo className="!pt-4 !pb-0 w-full" />
               </div>
@@ -660,7 +653,7 @@ function RegisterPageContent() {
 
 export default function RegisterPage() {
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
+    <React.Suspense fallback={<div>{/* @ts-ignore */} <T>Loading...</T> </div>}>
       <RegisterPageContent />
     </React.Suspense>
   );

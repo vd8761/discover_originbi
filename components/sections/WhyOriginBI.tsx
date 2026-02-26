@@ -2,6 +2,7 @@
 
 import React from "react";
 import { CheckIcon, AlertCircleIcon } from "@/components/icons";
+import { T } from "@/contexts/LanguageContext";
 
 const WhyOriginBI: React.FC = () => {
   const tableData = [
@@ -40,33 +41,29 @@ const WhyOriginBI: React.FC = () => {
       <div className="max-w-[1920px] mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]">
         <div className="text-center mb-8 lg:mb-12">
           <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-tight mb-2 transition-colors duration-300">
-            Why <span className="text-brand-green">OriginBI?</span>
+            {/* @ts-ignore */} <T> Why </T> <span className="text-brand-green">{/* @ts-ignore */} <T>OriginBI?</T> </span>
           </h2>
           <p className="text-lg sm:text-xl text-brand-text-light-secondary dark:text-white/60 font-medium mb-1">
-            The Difference Between Guessing and Knowing
-          </p>
+            {/* @ts-ignore */} <T> The Difference Between Guessing and Knowing </T> </p>
         </div>
 
         <div className="max-w-6xl mx-auto overflow-hidden rounded-[1.5rem] border border-gray-200 dark:border-white/5 shadow-sm bg-white dark:bg-brand-dark-secondary transition-colors duration-300">
           {/* Header Row */}
           <div className="hidden md:grid grid-cols-[1fr_1.5fr_1.5fr] bg-brand-light-secondary dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-800">
             <div className="p-5 lg:p-6 font-semibold text-xl text-brand-dark-primary dark:text-white flex items-center">
-              Feature
-            </div>
+              {/* @ts-ignore */} <T> Feature </T> </div>
             <div className="p-5 lg:p-6 font-semibold text-xl text-brand-dark-primary dark:text-white flex items-center gap-3">
               <span className="w-10 h-10 rounded-full bg-red-100 dark:bg-red-500/10 flex items-center justify-center text-red-500 shrink-0">
                 <span
                   className="material-symbols-outlined"
                   style={{ fontSize: "24px" }}
                 >
-                  dangerous
-                </span>
+                  {/* @ts-ignore */} <T> dangerous </T> </span>
               </span>
               <span className="pt-1">
-                The Old Way{" "}
+                {/* @ts-ignore */} <T> The Old Way</T> {" "}
                 <span className="text-gray-500 dark:text-gray-400 text-sm font-medium block mt-0.5">
-                  (High Risk)
-                </span>
+                  {/* @ts-ignore */} <T> (High Risk) </T> </span>
               </span>
             </div>
             <div className="p-5 lg:p-6 font-semibold text-2xl text-brand-green flex items-center gap-3 bg-brand-green/5 dark:bg-brand-green/10 border-l border-brand-green/20">
@@ -78,14 +75,12 @@ const WhyOriginBI: React.FC = () => {
                     fontVariationSettings: "'FILL' 1",
                   }}
                 >
-                  verified
-                </span>
+                  {/* @ts-ignore */} <T> verified </T> </span>
               </span>
               <span className="pt-1">
-                The OriginBI Way{" "}
+                {/* @ts-ignore */} <T> The OriginBI Way</T> {" "}
                 <span className="text-brand-green/70 text-sm font-medium block mt-0.5">
-                  (The Strategy)
-                </span>
+                  {/* @ts-ignore */} <T> (The Strategy) </T> </span>
               </span>
             </div>
           </div>
@@ -99,8 +94,7 @@ const WhyOriginBI: React.FC = () => {
               >
                 <div className="p-5 lg:px-6 flex flex-col justify-center bg-gray-50/50 dark:bg-gray-800/10">
                   <span className="md:hidden font-semibold text-[11px] text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 block">
-                    Feature
-                  </span>
+                    {/* @ts-ignore */} <T> Feature </T> </span>
                   <span className="font-bold text-lg text-brand-dark-primary dark:text-gray-100">
                     {row.feature}
                   </span>
@@ -112,10 +106,8 @@ const WhyOriginBI: React.FC = () => {
                       className="material-symbols-outlined"
                       style={{ fontSize: "16px" }}
                     >
-                      dangerous
-                    </span>{" "}
-                    The Old Way
-                  </span>
+                      {/* @ts-ignore */} <T> dangerous </T> </span>{" "}
+                    {/* @ts-ignore */} <T> The Old Way </T> </span>
                   <p className="leading-relaxed">{row.old}</p>
                 </div>
 
@@ -128,10 +120,8 @@ const WhyOriginBI: React.FC = () => {
                         fontVariationSettings: "'FILL' 1",
                       }}
                     >
-                      verified
-                    </span>{" "}
-                    The OriginBI Way
-                  </span>
+                      {/* @ts-ignore */} <T> verified </T> </span>{" "}
+                    {/* @ts-ignore */} <T> The OriginBI Way </T> </span>
                   <p className="leading-relaxed font-bold">{row.new}</p>
                 </div>
               </div>
@@ -156,18 +146,15 @@ const WhyOriginBI: React.FC = () => {
             />
             <p className="relative z-10 text-[clamp(20px,1.8vw,32px)] leading-[1.6] text-white font-semibold">
               <span className="opacity-90 font-medium">
-                Most students pick a degree based on 10% of the information
-                (Marks & Trends).
-              </span>
+                {/* @ts-ignore */} <T> Most students pick a degree based on 10% of the information (Marks & Trends). </T> </span>
               <br className="hidden md:block" />
               <span className="mt-5 block">
-                We help you decide based on the other{" "}
+                {/* @ts-ignore */} <T> We help you decide based on the other</T> {" "}
                 <strong className="text-brand-dark-green bg-white/90 px-3 py-1.5 rounded-lg text-[1em] font-extrabold mx-1 shadow-sm">
                   90%
                 </strong>{" "}
                 <span className="block mt-2 sm:inline sm:mt-0 opacity-90">
-                  (Personality, Behavior, and Potential).
-                </span>
+                  {/* @ts-ignore */} <T> (Personality, Behavior, and Potential). </T> </span>
               </span>
             </p>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
+import { T } from "@/contexts/LanguageContext";
 
 const JourneySteps: React.FC = () => {
     const [activeStep, setActiveStep] = useState(0);
@@ -16,21 +17,15 @@ const JourneySteps: React.FC = () => {
                 "Finally, someone understands how I actually think, not just how many marks I score.",
             whatHappens: (
                 <>
-                    Your child takes our{" "}
+                    {/* @ts-ignore */} <T> Your child takes our</T> {" "}
                     <span className="text-brand-green font-bold">
-                        Proprietary Behavioral Intelligence Assessment
-                    </span>
-                    . It is not a pass/fail school exam, but a discovery of their natural
-                    brain wiring.
-                </>
+                        {/* @ts-ignore */} <T> Proprietary Behavioral Intelligence Assessment </T> </span>
+                    {/* @ts-ignore */} <T> . It is not a pass/fail school exam, but a discovery of their natural brain wiring. </T> </>
             ),
             result: (
                 <>
-                    We identify their core strengths and decision-making style, showing
-                    you exactly what they are{" "}
-                    <span className="text-brand-green font-bold">"built"</span> for before
-                    you spend a rupee on college fees.
-                </>
+                    {/* @ts-ignore */} <T> We identify their core strengths and decision-making style, showing you exactly what they are</T> {" "}
+                    <span className="text-brand-green font-bold">{/* @ts-ignore */} <T>"built"</T> </span> {/* @ts-ignore */} <T> for before you spend a rupee on college fees. </T> </>
             ),
         },
         {
@@ -42,13 +37,10 @@ const JourneySteps: React.FC = () => {
                 "We take the assessment data and match it against thousands of real-world professional roles and industry requirements.",
             result: (
                 <>
-                    You see the perfect{" "}
-                    <span className="text-brand-green font-bold">"fit"</span> between your
-                    child's personality and the modern career landscape. We show you the{" "}
-                    <span className="text-brand-green font-bold">Role</span> they are
-                    meant for, which makes choosing the{" "}
-                    <span className="text-brand-green font-bold">Course</span> easy.
-                </>
+                    {/* @ts-ignore */} <T> You see the perfect</T> {" "}
+                    <span className="text-brand-green font-bold">{/* @ts-ignore */} <T>"fit"</T> </span> {/* @ts-ignore */} <T> between your child's personality and the modern career landscape. We show you the</T> {" "}
+                    <span className="text-brand-green font-bold">{/* @ts-ignore */} <T>Role</T> </span> {/* @ts-ignore */} <T> they are meant for, which makes choosing the</T> {" "}
+                    <span className="text-brand-green font-bold">{/* @ts-ignore */} <T>Course</T> </span> {/* @ts-ignore */} <T> easy. </T> </>
             ),
         },
         {
@@ -60,11 +52,9 @@ const JourneySteps: React.FC = () => {
                 "We provide a Step-by-Step Action Plan designed specifically for the transition from school to college.",
             result: (
                 <>
-                    You get a clear list of the degrees and specializations that will lead
-                    to long-term success, removing the stress and risk of a{" "}
-                    <span className="text-brand-green font-bold">"wrong-fit"</span>{" "}
-                    choice.
-                </>
+                    {/* @ts-ignore */} <T> You get a clear list of the degrees and specializations that will lead to long-term success, removing the stress and risk of a</T> {" "}
+                    <span className="text-brand-green font-bold">{/* @ts-ignore */} <T>"wrong-fit"</T> </span>{" "}
+                    {/* @ts-ignore */} <T> choice. </T> </>
             ),
         },
     ];
@@ -124,12 +114,11 @@ const JourneySteps: React.FC = () => {
                 {/* Mobile Header */}
                 <div className="mb-12 text-center">
                     <h2 className="text-[clamp(28px,6vw,42px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight mb-4">
-                        Your Journey to <br />
-                        <span className="text-brand-green">Career Certainty</span>
+                        {/* @ts-ignore */} <T> Your Journey to </T> <br />
+                        <span className="text-brand-green">{/* @ts-ignore */} <T>Career Certainty</T> </span>
                     </h2>
                     <p className="text-base text-brand-text-light-secondary dark:text-white/60 font-medium">
-                        3 Simple Steps to Stop Guessing and Start Growing
-                    </p>
+                        {/* @ts-ignore */} <T> 3 Simple Steps to Stop Guessing and Start Growing </T> </p>
                 </div>
 
                 {/* Mobile Steps */}
@@ -143,7 +132,7 @@ const JourneySteps: React.FC = () => {
                                 </div>
                                 <div>
                                     <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-brand-green block">
-                                        Step {step.step}
+                                        {/* @ts-ignore */} <T> Step </T> {step.step}
                                     </span>
                                     <h3 className="text-xl font-extrabold text-brand-dark-primary dark:text-white leading-tight">
                                         {step.title}
@@ -156,8 +145,7 @@ const JourneySteps: React.FC = () => {
                                 {/* Quote */}
                                 <div className="relative mb-8 text-left border-l-[3px] border-brand-green pl-5">
                                     <p className="text-xl italic text-brand-dark-primary dark:text-white font-medium leading-relaxed">
-                                        &ldquo;{step.feeling}&rdquo;
-                                    </p>
+                                        {/* @ts-ignore */} <T> &ldquo;</T> {step.feeling}{/* @ts-ignore */} <T>&rdquo; </T> </p>
                                 </div>
 
                                 {/* What Happens + Result */}
@@ -171,10 +159,8 @@ const JourneySteps: React.FC = () => {
                                                     fontVariationSettings: "'FILL' 1",
                                                 }}
                                             >
-                                                psychology
-                                            </span>
-                                            What Happens
-                                        </h5>
+                                                {/* @ts-ignore */} <T> psychology </T> </span>
+                                            {/* @ts-ignore */} <T> What Happens </T> </h5>
                                         <p className="text-base text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-semibold">
                                             {step.whatHappens}
                                         </p>
@@ -189,10 +175,8 @@ const JourneySteps: React.FC = () => {
                                                     fontVariationSettings: "'FILL' 1",
                                                 }}
                                             >
-                                                insights
-                                            </span>
-                                            The Result
-                                        </h5>
+                                                {/* @ts-ignore */} <T> insights </T> </span>
+                                            {/* @ts-ignore */} <T> The Result </T> </h5>
                                         <p className="text-base text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-semibold">
                                             {step.result}
                                         </p>
@@ -214,16 +198,12 @@ const JourneySteps: React.FC = () => {
                             className="absolute top-4 left-4 w-7 h-auto opacity-70 pointer-events-none select-none brightness-0 invert"
                         />
                         <h3 className="relative z-10 text-2xl font-extrabold text-white mb-4 px-4">
-                            Why Behavioral Intelligence?
-                        </h3>
+                            {/* @ts-ignore */} <T> Why Behavioral Intelligence? </T> </h3>
                         <p className="relative z-10 text-base text-white opacity-90 leading-relaxed font-semibold mb-6 px-4">
-                            Traditional counseling asks a student what they like. We show you
-                            what they are built for.
-                        </p>
+                            {/* @ts-ignore */} <T> Traditional counseling asks a student what they like. We show you what they are built for. </T> </p>
                         <div className="relative z-10 inline-block bg-white px-4 py-2 rounded-full shadow-sm">
                             <p className="text-[11px] font-bold text-brand-dark-green uppercase tracking-wider">
-                                Interest is temporary; potential is permanent.
-                            </p>
+                                {/* @ts-ignore */} <T> Interest is temporary; potential is permanent. </T> </p>
                         </div>
                         <img
                             src="/quote-symbol.svg"
@@ -247,12 +227,11 @@ const JourneySteps: React.FC = () => {
                             {/* Header */}
                             <div className="mb-16">
                                 <h2 className="text-[clamp(36px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.05] tracking-tight mb-5">
-                                    Your Journey to <br />
-                                    <span className="text-brand-green">Career Certainty</span>
+                                    {/* @ts-ignore */} <T> Your Journey to </T> <br />
+                                    <span className="text-brand-green">{/* @ts-ignore */} <T>Career Certainty</T> </span>
                                 </h2>
                                 <p className="text-lg text-brand-text-light-secondary dark:text-white/60 font-medium">
-                                    3 Simple Steps to Stop Guessing and Start Growing
-                                </p>
+                                    {/* @ts-ignore */} <T> 3 Simple Steps to Stop Guessing and Start Growing </T> </p>
                             </div>
 
                             {/* Step Tracker with Connector Line */}
@@ -290,7 +269,7 @@ const JourneySteps: React.FC = () => {
                                                 <span
                                                     className={`text-[11px] font-bold tracking-[0.2em] uppercase block mb-1 transition-colors duration-500 ${isActive ? "text-brand-green" : "text-gray-400 dark:text-white/30"}`}
                                                 >
-                                                    Step {step.step}
+                                                    {/* @ts-ignore */} <T> Step </T> {step.step}
                                                 </span>
                                                 <h4
                                                     className={`font-extrabold leading-tight tracking-tight transition-all duration-500 ${isActive ? "text-2xl text-brand-dark-primary dark:text-white" : "text-lg text-gray-400 dark:text-white/40"}`}
@@ -321,8 +300,7 @@ const JourneySteps: React.FC = () => {
 
                                         <div className="relative z-10 mb-8 shrink-0 text-left">
                                             <p className="text-journey-quote text-brand-dark-primary dark:text-white">
-                                                &ldquo;{step.feeling}&rdquo;
-                                            </p>
+                                                {/* @ts-ignore */} <T> &ldquo;</T> {step.feeling}{/* @ts-ignore */} <T>&rdquo; </T> </p>
                                         </div>
 
                                         <div className="relative z-10 flex-1 flex flex-col gap-6 bg-gray-50/80 dark:bg-white/[0.03] rounded-2xl p-6 sm:p-8 border border-gray-100/50 dark:border-white/5 w-full">
@@ -335,10 +313,8 @@ const JourneySteps: React.FC = () => {
                                                             fontVariationSettings: "'FILL' 1",
                                                         }}
                                                     >
-                                                        psychology
-                                                    </span>
-                                                    What Happens
-                                                </h5>
+                                                        {/* @ts-ignore */} <T> psychology </T> </span>
+                                                    {/* @ts-ignore */} <T> What Happens </T> </h5>
                                                 <p className="text-journey-body">
                                                     {step.whatHappens}
                                                 </p>
@@ -355,10 +331,8 @@ const JourneySteps: React.FC = () => {
                                                             fontVariationSettings: "'FILL' 1",
                                                         }}
                                                     >
-                                                        insights
-                                                    </span>
-                                                    The Result
-                                                </h5>
+                                                        {/* @ts-ignore */} <T> insights </T> </span>
+                                                    {/* @ts-ignore */} <T> The Result </T> </h5>
                                                 <p className="text-journey-body">{step.result}</p>
                                             </div>
                                         </div>
@@ -384,17 +358,12 @@ const JourneySteps: React.FC = () => {
 
                         <div className="relative z-10 max-w-4xl mx-auto">
                             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-8 tracking-tight">
-                                Why Behavioral Intelligence?
-                            </h3>
+                                {/* @ts-ignore */} <T> Why Behavioral Intelligence? </T> </h3>
                             <p className="text-xl sm:text-2xl text-white opacity-95 leading-relaxed font-semibold mb-10">
-                                Traditional counseling asks a student what they LIKE (which
-                                changes every year). We show you what they are BUILT for (which
-                                is their lifelong advantage).
-                            </p>
+                                {/* @ts-ignore */} <T> Traditional counseling asks a student what they LIKE (which changes every year). We show you what they are BUILT for (which is their lifelong advantage). </T> </p>
                             <div className="inline-block bg-white px-6 py-3 rounded-full shadow-sm">
                                 <p className="text-base sm:text-lg font-bold text-brand-dark-green tracking-tight uppercase">
-                                    Interest is temporary; potential is permanent.
-                                </p>
+                                    {/* @ts-ignore */} <T> Interest is temporary; potential is permanent. </T> </p>
                             </div>
                         </div>
 
