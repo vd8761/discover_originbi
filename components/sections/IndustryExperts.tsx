@@ -143,7 +143,7 @@ const IndustryExperts: React.FC = () => {
                     </div>
 
                     <div className={`transition-all duration-500 transform ${isAnimating ? "opacity-0 scale-95 translate-y-4" : "opacity-100 scale-100 translate-y-0"}`}>
-                        <div className="bg-white dark:bg-brand-dark-secondary rounded-[2.5rem] border border-gray-200 dark:border-white/5 shadow-2xl overflow-hidden transition-all duration-500">
+                        <div className="bg-white dark:bg-brand-dark-secondary rounded-3xl border border-gray-200 dark:border-white/5 shadow-2xl overflow-hidden transition-all duration-500">
                             <div className="aspect-video md:aspect-[21/9] w-full relative bg-gray-900 overflow-hidden">
                                 {rawVideoUrl ? (
                                     <iframe

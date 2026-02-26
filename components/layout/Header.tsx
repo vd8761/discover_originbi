@@ -106,7 +106,9 @@ const Header: React.FC<HeaderProps> = ({
           <div className="hidden xl:block">{renderThemeToggle()}</div>
 
           <div className="flex items-center gap-2 lg:gap-5">
-            <I18nToggle />
+            <div className="hidden xl:block">
+              <I18nToggle />
+            </div>
             {/* Login button - Only visible on desktop (xl and above) */}
             <div className="hidden xl:block">
               <Button

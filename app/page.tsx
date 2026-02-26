@@ -11,6 +11,7 @@ import CareerValueCard from "@/components/sections/CareerValueCard";
 import FAQSection from "@/components/sections/FAQSection";
 import Testimonials from "@/components/sections/Testimonials";
 import FinalCTASection from "@/components/sections/FinalCTASection";
+import AiCounsellor from "@/components/sections/AiCounsellor";
 
 
 
@@ -24,6 +25,7 @@ export default function Home() {
       <JourneySteps />
       <WhyOriginBI />
       <IndustryExperts />
+      <AiCounsellor />
       <CareerValueCard />
       <Testimonials />
       <FAQSection />
