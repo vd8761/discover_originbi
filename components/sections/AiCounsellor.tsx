@@ -13,6 +13,12 @@ const AiCounsellor: React.FC = () => {
                     {/* Content Side */}
                     <div className="order-1 lg:order-1 flex flex-col space-y-6">
                         <div className="space-y-4">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-green/10 text-brand-green border border-brand-green/20 mb-2 w-fit">
+                                <span className="material-symbols-outlined text-[14px]">bolt</span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em]">
+                                    {/* @ts-ignore */} <T>Get Started for Free</T>
+                                </span>
+                            </div>
                             <h2 className="text-[clamp(36px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] transition-colors duration-300">
                                 {/* @ts-ignore */} <T>Meet Your Personal</T> <br />
                                 <span className="text-brand-green">
@@ -68,7 +74,7 @@ const AiCounsellor: React.FC = () => {
 
                         <div className="pt-2">
                             <Button variant="primary" size="lg" className="group">
-                                {/* @ts-ignore */} <T>Start Your Session</T>
+                                {/* @ts-ignore */} <T>Start Your Free Session</T>
                                 <span className="material-symbols-outlined ml-2 transition-transform group-hover:translate-x-1" style={{ fontSize: "20px" }}>
                                     arrow_forward
                                 </span>
@@ -88,10 +94,13 @@ const AiCounsellor: React.FC = () => {
                                         <h3 className="font-bold text-gray-900 dark:text-white leading-tight">
                                             {/* @ts-ignore */} <T>OriginBI AI</T>
                                         </h3>
-                                        <p className="text-xs text-brand-green font-medium flex items-center gap-1">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse"></span>
-                                            {/* @ts-ignore */} <T>Online</T>
-                                        </p>
+                                        <div className="flex items-center gap-2">
+                                            <p className="text-xs text-brand-green font-medium flex items-center gap-1">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse"></span>
+                                                {/* @ts-ignore */} <T>Online</T>
+                                            </p>
+                                            <span className="text-[9px] bg-brand-green/20 text-brand-green px-1.5 py-0.5 rounded font-black uppercase tracking-wider border border-brand-green/10 leading-none">FREE</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="flex gap-2">
