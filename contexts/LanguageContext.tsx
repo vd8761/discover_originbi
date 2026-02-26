@@ -107,16 +107,16 @@ export const I18nToggle: React.FC = () => {
         <div className="relative inline-block" ref={containerRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-2.5 px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 rounded-full border border-brand-green/30 dark:border-white/10 bg-white/5 dark:bg-brand-dark-tertiary/50 hover:border-brand-green transition-all duration-300 group shadow-sm backdrop-blur-md"
+                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 lg:py-1.5 rounded-full border-2 border-brand-green/30 dark:border-white/10 bg-white/5 dark:bg-brand-dark-tertiary/50 hover:border-brand-green transition-all duration-300 group shadow-sm backdrop-blur-md"
             >
-                <span className="material-symbols-outlined text-[20px] text-brand-green group-hover:scale-110 transition-transform">translate</span>
-                <span className="text-[13px] sm:text-[14px] lg:text-[13px] font-bold text-brand-dark-primary dark:text-white uppercase tracking-wider leading-none">{currentLang?.short}</span>
-                <span className={`material-symbols-outlined text-[18px] text-gray-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>expand_more</span>
+                <span className="material-symbols-outlined text-[11px] text-brand-green group-hover:scale-110 transition-transform">translate</span>
+                <span className="text-[10px] font-bold text-brand-dark-primary dark:text-white uppercase tracking-wider leading-none mt-[1px]">{currentLang?.short}</span>
+                <span className={`material-symbols-outlined text-[11px] text-gray-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>expand_more</span>
             </button>
 
             {isOpen && (
-                <div className="absolute top-full mt-2 right-0 w-40 bg-white dark:bg-brand-dark-secondary rounded-2xl shadow-2xl border border-gray-100 dark:border-white/10 overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-200">
-                    <div className="py-1">
+                <div className="absolute top-full mt-2 right-0 w-28 bg-white dark:bg-brand-dark-secondary rounded-xl shadow-2xl border border-gray-100 dark:border-white/10 overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-200">
+                    <div className="py-0.5">
                         {languages.map((lang) => (
                             <button
                                 key={lang.code}
@@ -124,7 +124,7 @@ export const I18nToggle: React.FC = () => {
                                     setLanguage(lang.code as Language);
                                     setIsOpen(false);
                                 }}
-                                className={`w-full text-left px-5 py-3 text-[14px] font-bold transition-all flex items-center justify-between ${language === lang.code
+                                className={`w-full text-left px-3 py-2 text-[12px] font-bold transition-all flex items-center justify-between ${language === lang.code
                                     ? 'bg-brand-green text-white'
                                     : 'text-gray-700 dark:text-gray-300 hover:bg-brand-green/10 hover:text-brand-green dark:hover:bg-brand-green/20'
                                     }`}
@@ -133,7 +133,7 @@ export const I18nToggle: React.FC = () => {
                                     {lang.label}
                                 </span>
                                 {language === lang.code && (
-                                    <span className="material-symbols-outlined text-[18px]">check</span>
+                                    <span className="material-symbols-outlined text-[14px]">check</span>
                                 )}
                             </button>
                         ))}

@@ -79,7 +79,7 @@ const AiCounsellor: React.FC = () => {
                     {/* Visual Side (Mockup Chat) */}
                     <div className="order-2 lg:order-2 relative lg:ml-auto w-full max-w-lg lg:max-w-none">
                         <div className="relative bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-white/10 rounded-3xl shadow-2xl overflow-hidden z-10 backdrop-blur-sm">
-                            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-brand-dark-tertiary bg-gray-50/80 dark:bg-brand-dark-tertiary/50">
+                            <div className="flex items-center justify-between px-6 py-3 border-b border-gray-100 dark:border-brand-dark-tertiary bg-gray-50/80 dark:bg-brand-dark-tertiary/50">
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-full bg-brand-green flex items-center justify-center shadow-lg">
                                         <span className="material-symbols-outlined text-white" style={{ fontSize: "20px" }}>psychology_alt</span>
@@ -101,7 +101,7 @@ const AiCounsellor: React.FC = () => {
                                 </div>
                             </div>
 
-                            <div className="p-6 space-y-6 min-h-[340px] flex flex-col bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-transparent to-gray-50/50 dark:to-transparent">
+                            <div className="p-5 space-y-4 min-h-[300px] flex flex-col bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-transparent to-gray-50/50 dark:to-transparent">
 
                                 {/* AI Message */}
                                 <div className="flex gap-4 max-w-[85%]">
@@ -146,16 +146,16 @@ const AiCounsellor: React.FC = () => {
 
                                             <div className="bg-white dark:bg-brand-dark-secondary p-3 rounded-xl border border-gray-100 dark:border-white/5 flex items-center justify-between shadow-sm transform hover:scale-[1.02] transition-transform cursor-default">
                                                 <div className="flex items-center gap-3">
-                                                    <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                                                        <span className="material-symbols-outlined text-indigo-500 text-[18px]">auto_fix_high</span>
+                                                    <div className="w-8 h-8 rounded-lg bg-brand-blue/10 flex items-center justify-center">
+                                                        <span className="material-symbols-outlined text-brand-blue text-[18px]">auto_fix_high</span>
                                                     </div>
                                                     <span className="text-[12px] font-bold text-gray-700 dark:text-gray-200">Strategic Focus</span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <div className="h-1 w-12 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                                                        <div className="h-full bg-indigo-500 w-[85%]"></div>
+                                                        <div className="h-full bg-brand-blue w-[85%]"></div>
                                                     </div>
-                                                    <span className="text-[10px] font-black text-indigo-500">85%</span>
+                                                    <span className="text-[10px] font-black text-brand-blue">85%</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -165,7 +165,7 @@ const AiCounsellor: React.FC = () => {
                             </div>
 
                             {/* Chat Input Placeholder */}
-                            <div className="px-6 py-4 bg-gray-50 dark:bg-brand-dark-tertiary/50 border-t border-gray-100 dark:border-brand-dark-tertiary">
+                            <div className="px-6 py-3 bg-gray-50 dark:bg-brand-dark-tertiary/50 border-t border-gray-100 dark:border-brand-dark-tertiary">
                                 <div className="flex items-center bg-white dark:bg-brand-dark-secondary rounded-full px-4 py-2 border border-gray-200 dark:border-white/10 shadow-sm focus-within:ring-2 focus-within:ring-brand-green/50 transition-all">
                                     <span className="material-symbols-outlined text-gray-400 mr-2" style={{ fontSize: "20px" }}>sentiment_satisfied</span>
                                     <input
