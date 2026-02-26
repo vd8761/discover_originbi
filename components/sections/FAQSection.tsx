@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { ChevronDownIcon } from "@/components/icons";
 import Button from "@/components/ui/Button";
 import { T } from "@/contexts/LanguageContext";
+import { useReferral } from "@/contexts/ReferralContext";
 
 type FAQ = {
     target: "Parents" | "Students" | "Both";
@@ -80,6 +81,7 @@ const FAQItem: React.FC<{ faq: FAQ; isOpen: boolean; toggle: () => void }> = ({ 
 };
 
 const FAQSection: React.FC = () => {
+    const { getRegisterUrl } = useReferral();
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
@@ -134,7 +136,7 @@ const FAQSection: React.FC = () => {
                             <h3 className="text-lg lg:text-3xl font-semibold text-white mb-8 px-4 lg:px-0 leading-relaxed max-w-3xl">
                                 {/* @ts-ignore */} <T> "At +2, a wrong choice isn't just a loss of time; it's a loss of confidence." </T> </h3>
                             <Button
-                                href="/register"
+                                href={getRegisterUrl()}
                                 className="inline-block bg-white !text-brand-green hover:bg-brand-dark-green hover:!text-white px-5 py-2.5 lg:px-8 lg:py-3.5 rounded-full text-sm lg:text-xl font-bold tracking-wide shadow-lg border-none cursor-pointer"
                             >
                                 {/* @ts-ignore */} <T> Spend ₹749 today to ensure they walk into college with a clear purpose. </T> </Button>

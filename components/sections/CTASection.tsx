@@ -3,8 +3,10 @@
 import React from 'react';
 import Button from "@/components/ui/Button";
 import { T } from "@/contexts/LanguageContext";
+import { useReferral } from "@/contexts/ReferralContext";
 
 const CTASection: React.FC = () => {
+    const { getRegisterUrl } = useReferral();
     return (
         <section className="relative z-10 w-full py-12 sm:py-16 lg:py-20">
             <div className="max-w-[1920px] mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]">
@@ -31,7 +33,7 @@ const CTASection: React.FC = () => {
                         <div className="flex justify-center w-full">
                             <Button
                                 size="lg"
-                                href="/register"
+                                href={getRegisterUrl()}
                                 className="!bg-brand-green !text-white hover:!bg-brand-green/90 border-none rounded-full shadow-lg shadow-brand-green/30 hover:scale-105 transition-all duration-300 px-10 py-4 text-lg font-bold"
                             >
                                 {/* @ts-ignore */} <T> Take the First Step </T> </Button>

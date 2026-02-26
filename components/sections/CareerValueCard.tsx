@@ -4,6 +4,7 @@ import React from "react";
 import { CheckIcon } from "@/components/icons";
 import Button from "@/components/ui/Button";
 import { T } from "@/contexts/LanguageContext";
+import { useReferral } from "@/contexts/ReferralContext";
 
 const features = [
     {
@@ -34,6 +35,7 @@ const features = [
 ];
 
 const CareerValueCard: React.FC = () => {
+    const { getRegisterUrl } = useReferral();
     return (
         <section
             id="career-value-card"
@@ -96,7 +98,7 @@ const CareerValueCard: React.FC = () => {
                                 </div>
 
                                 <Button
-                                    href="/register"
+                                    href={getRegisterUrl()}
                                     className="w-full bg-white !text-brand-green hover:bg-brand-dark-green hover:!text-white text-base lg:text-lg font-black py-3.5 lg:py-4.5 rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-lg flex items-center justify-center gap-2 border-none"
                                 >
                                     {/* @ts-ignore */} <T> Get the Blueprint Now </T> </Button>

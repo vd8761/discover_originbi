@@ -17,6 +17,7 @@ import { registerStudent, validateStudent, validateReferralCode } from "@/lib/ap
 import { useRouter, useSearchParams } from "next/navigation";
 import { getEnabledBoards } from "@/lib/constants";
 import { T, useLanguage } from "@/contexts/LanguageContext";
+import { useReferral } from "@/contexts/ReferralContext";
 
 declare global {
   interface Window {
@@ -138,30 +139,34 @@ function RegisterPageContent() {
     }
   };
 
-  React.useEffect(() => {
-    const refCode = searchParams.get('ref');
+  const { referralCode, clearReferral } = useReferral();
 
+  React.useEffect(() => {
     // If ?ref= param exists but is empty/whitespace, redirect to base register URL
-    if (searchParams.has('ref') && (!refCode || !refCode.trim())) {
+    const searchRef = searchParams.get('ref');
+    if (searchParams.has('ref') && (!searchRef || !searchRef.trim())) {
+      clearReferral();
       router.replace('/register');
       return;
     }
 
-    if (refCode && refCode.trim()) {
+    if (referralCode && referralCode.trim()) {
       setReferralValidationStatus('checking');
-      validateReferralCode(refCode.trim())
+      validateReferralCode(referralCode.trim())
         .then(() => {
           setReferralValidationStatus('valid');
-          setFormData(prev => ({ ...prev, referralCode: refCode.trim() }));
+          setFormData(prev => ({ ...prev, referralCode: referralCode.trim() }));
         })
         .catch((err) => {
           console.error("Invalid referral code:", err);
           setReferralValidationStatus('invalid');
+          clearReferral();
         });
     }
-  }, [searchParams, router]);
+  }, [referralCode, searchParams, router, clearReferral]);
 
   const handleClearInvalidReferral = () => {
+    clearReferral();
     router.replace('/register');
     setReferralValidationStatus(null);
   };

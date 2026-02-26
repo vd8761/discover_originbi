@@ -4,8 +4,10 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { T } from "@/contexts/LanguageContext";
+import { useReferral } from "@/contexts/ReferralContext";
 
 const FinalCTASection: React.FC = () => {
+    const { getRegisterUrl } = useReferral();
     return (
         <section
             id="final-cta"
@@ -47,7 +49,7 @@ const FinalCTASection: React.FC = () => {
 
                         <div className="flex flex-col items-center gap-4 w-full sm:w-auto">
                             <Button
-                                href="/register"
+                                href={getRegisterUrl()}
                                 className="group relative w-full sm:w-auto overflow-hidden rounded-full bg-white hover:bg-brand-dark-green px-5 py-3.5 lg:px-8 lg:py-5 shadow-xl transition-all duration-300 active:scale-95 border-none focus:outline-none focus:ring-0"
                             >
                                 <span className="relative z-10 flex items-center justify-center gap-2 lg:gap-3 text-sm lg:text-lg font-bold text-brand-green group-hover:text-white tracking-wide transition-colors duration-300">

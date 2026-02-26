@@ -4,8 +4,10 @@ import React from 'react';
 import Button from "@/components/ui/Button";
 import { Check } from "lucide-react";
 import { T } from "@/contexts/LanguageContext";
+import { useReferral } from "@/contexts/ReferralContext";
 
 const Hero: React.FC = () => {
+    const { getRegisterUrl } = useReferral();
     return (
         <section className="relative w-full flex items-center bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500 pt-24 pb-16 lg:pt-44 lg:pb-8 overflow-hidden">
             <div className="container mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] relative z-10">
@@ -43,7 +45,7 @@ const Hero: React.FC = () => {
                             {/* CTA Button */}
                             <div className="flex flex-col sm:flex-row items-start gap-4">
                                 <Button
-                                    href="/register"
+                                    href={getRegisterUrl()}
                                     size="lg"
                                     className="!bg-brand-green !text-white border-none rounded-full px-9 py-3.5 text-base font-extrabold transition-all duration-300 hover:scale-[1.02] hover:brightness-105"
                                 >

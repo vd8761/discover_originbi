@@ -3,6 +3,8 @@ import { Noto_Sans_Tamil } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { ReferralProvider } from "@/contexts/ReferralContext";
+import { Suspense } from "react";
 
 const notoSansTamil = Noto_Sans_Tamil({
   subsets: ["tamil"],
@@ -29,7 +31,11 @@ export default function RootLayout({
       <body className="antialiased">
         <ThemeProvider>
           <LanguageProvider>
-            {children}
+            <Suspense fallback={null}>
+              <ReferralProvider>
+                {children}
+              </ReferralProvider>
+            </Suspense>
           </LanguageProvider>
         </ThemeProvider>
       </body>

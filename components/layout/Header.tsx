@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import { useTheme } from "@/contexts/ThemeContext";
 import { LightModeIcon, DarkModeIcon } from "@/components/icons";
 import { T } from "@/contexts/LanguageContext";
+import { useReferral } from "@/contexts/ReferralContext";
 
 interface HeaderProps {
   horizontalPadding?: string;
@@ -18,6 +19,7 @@ const Header: React.FC<HeaderProps> = ({
   showRegisterButton = true,
 }) => {
   const { theme, toggleTheme, isInitialized } = useTheme();
+  const { getRegisterUrl } = useReferral();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -121,7 +123,7 @@ const Header: React.FC<HeaderProps> = ({
             </div>
             {showRegisterButton && (
               <Button
-                href="/register"
+                href={getRegisterUrl()}
                 size="sm"
                 className="shadow-lg shadow-brand-green/20 text-[13px] sm:text-[14px] lg:text-[13px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px] border-none"
               >
@@ -209,7 +211,7 @@ const Header: React.FC<HeaderProps> = ({
                 {/* @ts-ignore */} <T> Login </T> </Button>
               {showRegisterButton && (
                 <Button
-                  href="/register"
+                  href={getRegisterUrl()}
                   className="w-full justify-center shadow-lg shadow-brand-green/20 border-none text-sm py-3"
                   onClick={() => setIsMenuOpen(false)}
                 >
