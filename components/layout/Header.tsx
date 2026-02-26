@@ -187,6 +187,12 @@ const Header: React.FC<HeaderProps> = ({
 
             <div className="flex items-center justify-between">
               <span className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-gray-900 dark:text-white">
+                {/* @ts-ignore */} <T> Language </T> </span>
+              <I18nToggle />
+            </div>
+
+            <div className="flex items-center justify-between">
+              <span className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-gray-900 dark:text-white">
                 {/* @ts-ignore */} <T> Theme </T> </span>
               {renderThemeToggle()}
             </div>

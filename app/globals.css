@@ -228,6 +228,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html.lang-ta {
+  --font-sans: var(--font-noto-tamil), "Haskoy", ui-sans-serif, system-ui, sans-serif;
+}
+
+html.lang-ta body {
+  font-family: var(--font-sans);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -291,20 +299,24 @@ body {
 .goog-te-banner-frame {
   display: none !important;
 }
+
 body {
   top: 0 !important;
   position: static !important;
 }
+
 html {
   height: auto !important;
 }
 
-#goog-gt-tt, .goog-te-balloon-frame {
+#goog-gt-tt,
+.goog-te-balloon-frame {
   display: none !important;
 }
+
 .goog-text-highlight {
   background-color: transparent !important;
-  border: none !important; 
+  border: none !important;
   box-shadow: none !important;
 }
 

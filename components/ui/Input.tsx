@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     label?: string;
@@ -8,12 +9,13 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const Input: React.FC<InputProps> = ({ label, error, suffix, className = '', ...props }) => {
     const isInvalid = !!error;
+    const { t } = useLanguage();
 
     return (
         <div className="w-full space-y-2">
             {label && (
                 <label className="block text-[12px] font-bold tracking-[0.05em] text-black dark:text-white ml-1">
-                    {label} {props.required && <span className="text-red-500">*</span>}
+                    {t(label)} {props.required && <span className="text-red-500">*</span>}
                 </label>
             )}
             <div className="relative">
@@ -23,6 +25,7 @@ const Input: React.FC<InputProps> = ({ label, error, suffix, className = '', ...
                         : "focus:border-brand-green shadow-sm"
                         } ${className}`}
                     {...props}
+                    placeholder={props.placeholder ? t(props.placeholder) : undefined}
                 />
                 {suffix && (
                     <div className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center">

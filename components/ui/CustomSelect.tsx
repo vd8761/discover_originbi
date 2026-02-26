@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDownIcon } from '../icons';
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 
 interface Option {
     value: string;
@@ -32,6 +32,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 }) => {
     const [isOpen, setIsOpen] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
+    const { t } = useLanguage();
 
     const selectedOption = options.find(opt => opt.value === value);
 
@@ -54,7 +55,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
         <div className={`space-y-2 w-full ${className} ${isOpen ? 'relative z-[60]' : ''}`} ref={containerRef}>
             {label && (
                 <label className="block text-[12px] font-bold tracking-[0.05em] text-black dark:text-white ml-1">
-                    {label} {required && <span className="text-red-500">*</span>}
+                    {t(label)} {required && <span className="text-red-500">*</span>}
                 </label>
             )}
             <div className="relative">
@@ -64,7 +65,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
                     className={`w-full flex items-center justify-between bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 rounded-full px-7 py-[clamp(14px,1vw,18px)] text-[clamp(14px,0.83vw,16px)] transition-all duration-200 focus:outline-none shadow-sm ${isOpen ? 'border-brand-green ring-2 ring-brand-green/20' : ''} ${buttonClassName}`}
                 >
                     <span className={selectedOption ? "text-brand-dark-primary dark:text-white font-medium" : "text-brand-dark-primary/30 dark:text-brand-text-secondary/30"}>
-                        {selectedOption ? selectedOption.label : placeholder}
+                        {selectedOption ? t(selectedOption.label) : t(placeholder)}
                     </span>
                     <ChevronDownIcon className={`w-5 h-5 text-brand-dark-primary dark:text-white opacity-30 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -81,7 +82,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
                                     : 'text-brand-dark-primary dark:text-brand-text-secondary hover:bg-brand-green/10 dark:hover:bg-brand-green/10 hover:text-brand-green'
                                     }`}
                             >
-                                {option.label}
+                                {t(option.label)}
                             </button>
                         ))}
                         {options.length === 0 && (

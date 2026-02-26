@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 
 const RegisterSteps: React.FC = () => {
+    const { t } = useLanguage();
     const steps = [
         { title: "Fill the Registration Form", desc: "Name, Email, Age, Education, etc." },
         { title: "Make Payment", desc: "via UPI, Card, or NetBanking" },
@@ -37,10 +38,10 @@ const RegisterSteps: React.FC = () => {
                                 {index + 1}
                             </div>
                             <h3 className="text-lg font-bold text-brand-dark-primary dark:text-white mb-2 leading-tight min-h-[44px]">
-                                {step.title}
+                                {t(step.title)}
                             </h3>
                             <p className="text-brand-text-light-secondary dark:text-brand-text-secondary text-sm">
-                                {step.desc}
+                                {t(step.desc)}
                             </p>
                         </div>
                     ))}

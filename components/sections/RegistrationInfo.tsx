@@ -1,39 +1,40 @@
 import React from 'react';
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 
 const RegistrationInfo: React.FC<{ className?: string }> = ({ className = "" }) => {
+    const { t } = useLanguage();
 
     const valueProps = [
         {
-            title: "The Science of You",
+            title: t("The Science of You"),
             icon: "biotech",
-            description: "Unlock the data behind your daily decisions."
+            description: t("Unlock the data behind your daily decisions.")
         },
         {
-            title: "Beyond Academics",
+            title: t("Beyond Academics"),
             icon: "psychology",
-            description: "Success is more than just grades."
+            description: t("Success is more than just grades.")
         },
         {
-            title: "Future Ready",
+            title: t("Future Ready"),
             icon: "rocket_launch",
-            description: "Prepare for careers that don't exist yet."
+            description: t("Prepare for careers that don't exist yet.")
         },
         {
-            title: "Relationship Dynamics",
+            title: t("Relationship Dynamics"),
             icon: "diversity_3",
-            description: "Master the art of connecting with others."
+            description: t("Master the art of connecting with others.")
         }
     ];
 
     const parentOutcomes = [
         {
             icon: "family_restroom",
-            text: "Bridging the gap between generations with shared understanding."
+            text: t("Bridging the gap between generations with shared understanding.")
         },
         {
             icon: "menu_book",
-            text: "Learning strategies that match your natural cognitive style."
+            text: t("Learning strategies that match your natural cognitive style.")
         }
     ];
 

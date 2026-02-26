@@ -68,7 +68,14 @@ export const useLanguage = (): LanguageContextType => {
 export const T: React.FC<{ children: ReactNode }> = ({ children }) => {
     const { t } = useLanguage();
     if (typeof children === "string") {
-        return <>{t(children)}</>;
+        const trimmed = children.trim();
+        const translated = t(trimmed);
+        if (translated !== trimmed) {
+            const preSpace = children.match(/^\s*/)?.[0] || "";
+            const postSpace = children.match(/\s*$/)?.[0] || "";
+            return <>{preSpace}{translated}{postSpace}</>;
+        }
+        return <>{translated}</>;
     }
     return <>{children}</>;
 };
@@ -81,10 +88,10 @@ export const I18nToggle: React.FC = () => {
         <select
             value={language}
             onChange={(e) => setLanguage(e.target.value as Language)}
-            className="color-[var(--foreground)] bg-transparent font-sans text-[13px] font-semibold px-3 py-1.5 border border-brand-green/30 rounded-full outline-none cursor-pointer flex items-center transition-all duration-300 hover:border-brand-green hover:shadow-[0_0_10px_rgba(30,211,106,0.1)] dark:text-white dark:border-white/15"
+            className="text-brand-dark-primary dark:text-white bg-transparent font-sans text-[13px] font-semibold px-3 py-1.5 border border-brand-green/30 rounded-full outline-none cursor-pointer flex items-center transition-all duration-300 hover:border-brand-green hover:shadow-[0_0_10px_rgba(30,211,106,0.1)] dark:border-white/15"
         >
-            <option value="en" className="text-[var(--foreground)] bg-[var(--background)]">English</option>
-            <option value="ta" className="text-[var(--foreground)] bg-[var(--background)]">தமிழ்</option>
+            <option value="en" className="text-brand-dark-primary bg-background dark:text-white dark:bg-brand-dark-primary">English</option>
+            <option value="ta" className="text-brand-dark-primary bg-background dark:text-white dark:bg-brand-dark-primary">தமிழ்</option>
         </select>
     );
 };

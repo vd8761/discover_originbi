@@ -16,7 +16,7 @@ import MobileHowItWorksCarousel from "@/components/sections/MobileHowItWorksCaro
 import { registerStudent, validateStudent, validateReferralCode } from "@/lib/api";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getEnabledBoards } from "@/lib/constants";
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 
 declare global {
   interface Window {
@@ -26,6 +26,7 @@ declare global {
 
 function RegisterPageContent() {
   const { theme } = useTheme();
+  const { t } = useLanguage();
   const router = useRouter();
   const searchParams = useSearchParams();
   const [referralValidationStatus, setReferralValidationStatus] = useState<'valid' | 'invalid' | 'checking' | null>(null);
@@ -424,7 +425,7 @@ function RegisterPageContent() {
                                 : "text-gray-500 dark:text-gray-400 hover:text-brand-green"
                                 }`}
                             >
-                              {g.label}
+                              {t(g.label)}
                             </button>
                           ))}
                         </div>
@@ -507,7 +508,7 @@ function RegisterPageContent() {
                                   : "bg-white dark:bg-brand-dark-secondary text-gray-500 dark:text-gray-400 border-gray-200 dark:border-brand-dark-tertiary hover:border-brand-green hover:text-brand-green"
                                   }`}
                               >
-                                {b.label}
+                                {t(b.label)}
                               </button>
                             ))}
                           </div>
@@ -583,7 +584,7 @@ function RegisterPageContent() {
                       disabled={isLoading || Object.keys(formErrors).length > 0}
                       className="h-14 text-lg font-bold shadow-xl shadow-brand-green/20 hover:shadow-brand-green/40 transition-all transform hover:-translate-y-0.5 rounded-full mt-6"
                     >
-                      {isLoading ? "Processing..." : "Register and Pay"}
+                      {isLoading ? t("Processing...") : t("Register and Pay")}
                     </Button>
 
                     <div className="text-center pt-2">
