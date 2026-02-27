@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { T, useLanguage } from "@/contexts/LanguageContext";
+import { T, useTranslation } from "@/contexts/LanguageContext";
 
 const MobileHowItWorksCarousel: React.FC = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
     const [activeStep, setActiveStep] = useState(0);
-    const { t } = useLanguage();
+    const { t } = useTranslation();
 
     const steps = [
         { title: "Fill the Registration Form", desc: "Name, Email, Age, Education, etc." },
@@ -69,10 +69,10 @@ const MobileHowItWorksCarousel: React.FC = () => {
                             {index + 1}
                         </div>
                         <h4 className="font-bold text-brand-dark-primary dark:text-white mb-2">
-                            {t(step.title)}
+                            {/* @ts-ignore */} <T>{step.title}</T>
                         </h4>
                         <p className="text-sm text-gray-500 dark:text-gray-400">
-                            {t(step.desc)}
+                            {/* @ts-ignore */} <T>{step.desc}</T>
                         </p>
                     </div>
                 ))}

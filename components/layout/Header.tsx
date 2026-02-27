@@ -6,7 +6,7 @@ import Logo from "@/components/ui/Logo";
 import Button from "@/components/ui/Button";
 import { useTheme } from "@/contexts/ThemeContext";
 import { LightModeIcon, DarkModeIcon } from "@/components/icons";
-import { T } from "@/contexts/LanguageContext";
+import { T, useTranslation } from "@/contexts/LanguageContext";
 import { useReferral } from "@/contexts/ReferralContext";
 
 interface HeaderProps {
@@ -20,6 +20,7 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const { theme, toggleTheme, isInitialized } = useTheme();
   const { getRegisterUrl } = useReferral();
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);

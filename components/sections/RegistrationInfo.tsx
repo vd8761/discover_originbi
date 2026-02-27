@@ -1,8 +1,7 @@
-import React from 'react';
-import { T, useLanguage } from "@/contexts/LanguageContext";
+import { T, useTranslation } from "@/contexts/LanguageContext";
 
 const RegistrationInfo: React.FC<{ className?: string }> = ({ className = "" }) => {
-    const { t } = useLanguage();
+    const { t } = useTranslation();
 
     const valueProps = [
         {
