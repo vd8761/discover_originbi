@@ -3,11 +3,12 @@
 import React from 'react';
 import Button from "@/components/ui/Button";
 import { Check } from "lucide-react";
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 import { useReferral } from "@/contexts/ReferralContext";
 
 const Hero: React.FC = () => {
     const { getRegisterUrl } = useReferral();
+    const { language } = useLanguage();
     return (
         <section className="relative w-full flex items-center bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500 pt-24 pb-16 lg:pt-44 lg:pb-8 overflow-hidden">
             <div className="container mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] relative z-10">
@@ -16,7 +17,7 @@ const Hero: React.FC = () => {
                     {/* Left Content Column */}
                     <div className="w-full lg:w-[45%] text-left order-2 lg:order-1">
                         <div className="max-w-xl">
-                            <h1 className="text-[clamp(30px,4vw,52px)] font-sans font-extrabold leading-[1.2] mb-5 tracking-tight text-brand-dark-primary dark:text-white transition-colors">
+                            <h1 className={`font-sans font-extrabold leading-[1.2] mb-5 tracking-tight text-brand-dark-primary dark:text-white transition-colors ${language === 'ta' ? 'text-[clamp(26px,3.5vw,42px)]' : 'text-[clamp(30px,4vw,52px)]'}`}>
                                 {/* @ts-ignore */} <T> Discover, Align and Excel </T> <br className="hidden sm:block" />
                                 <span className="text-brand-green">{/* @ts-ignore */} <T>in the Right Career Path</T> </span>
                             </h1>

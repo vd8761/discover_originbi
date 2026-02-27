@@ -9,7 +9,12 @@ const Logo: React.FC<{ className?: string, forceWhite?: boolean, forceDark?: boo
     forceDark = false
 }) => {
     const { theme, isInitialized } = useTheme();
-    const showWhite = forceWhite || (!forceDark && isInitialized && theme === 'dark');
+    const [mounted, setMounted] = React.useState(false);
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const showWhite = mounted ? (forceWhite || (!forceDark && isInitialized && theme === 'dark')) : false;
 
     const outlineStyle = {};
 
