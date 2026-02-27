@@ -7,29 +7,29 @@ import { T } from "@/contexts/LanguageContext";
 const WhyOriginBI: React.FC = () => {
   const tableData = [
     {
-      feature: "Basis of Choice",
-      old: 'Based on "Market Trends" or what relatives/friends suggest.',
-      new: "Based on your child’s Unique Behavioral profile and natural strengths.",
+      feature: <>{/* @ts-ignore */} <T> Basis of Choice </T></>,
+      old: <>{/* @ts-ignore */} <T> Based on "Market Trends" or what relatives/friends suggest. </T></>,
+      new: <>{/* @ts-ignore */} <T> Based on your child’s Unique Behavioral profile and natural strengths. </T></>,
     },
     {
-      feature: "The Method",
-      old: 'General marks in school or "What do you like?" questions.',
-      new: "Proprietary Behavioral Mapping to see how their brain is naturally designed.",
+      feature: <>{/* @ts-ignore */} <T> The Method </T></>,
+      old: <>{/* @ts-ignore */} <T> General marks in school or "What do you like?" questions. </T></>,
+      new: <>{/* @ts-ignore */} <T> Proprietary Behavioral Mapping to see how their brain is naturally designed. </T></>,
     },
     {
-      feature: "The Outcome",
-      old: "Picking a degree and hoping it leads to a good career.",
-      new: "Identifying the Role first, then picking the degree that fits.",
+      feature: <>{/* @ts-ignore */} <T> The Outcome </T></>,
+      old: <>{/* @ts-ignore */} <T> Picking a degree and hoping it leads to a good career. </T></>,
+      new: <>{/* @ts-ignore */} <T> Identifying the Role first, then picking the degree that fits. </T></>,
     },
     {
-      feature: "Family Stress",
-      old: 'High anxiety and "Dinner Table" arguments over college choices.',
-      new: "Confidence and Peace of Mind knowing the path is backed by science.",
+      feature: <>{/* @ts-ignore */} <T> Family Stress </T></>,
+      old: <>{/* @ts-ignore */} <T> High anxiety and "Dinner Table" arguments over college choices. </T></>,
+      new: <>{/* @ts-ignore */} <T> Confidence and Peace of Mind knowing the path is backed by science. </T></>,
     },
     {
-      feature: "The Goal",
-      old: 'Just getting into "A Good College" or any popular branch.',
-      new: "Finding the Right Professional Fit for long-term growth and success.",
+      feature: <>{/* @ts-ignore */} <T> The Goal </T></>,
+      old: <>{/* @ts-ignore */} <T> Just getting into "A Good College" or any popular branch. </T></>,
+      new: <>{/* @ts-ignore */} <T> Finding the Right Professional Fit for long-term growth and success. </T></>,
     },
   ];
 
@@ -58,7 +58,8 @@ const WhyOriginBI: React.FC = () => {
                   className="material-symbols-outlined"
                   style={{ fontSize: "24px" }}
                 >
-                  {/* @ts-ignore */} <T> dangerous </T> </span>
+                  dangerous
+                </span>
               </span>
               <span className="pt-1">
                 {/* @ts-ignore */} <T> The Old Way</T> {" "}
@@ -75,7 +76,8 @@ const WhyOriginBI: React.FC = () => {
                     fontVariationSettings: "'FILL' 1",
                   }}
                 >
-                  {/* @ts-ignore */} <T> verified </T> </span>
+                  verified
+                </span>
               </span>
               <span className="pt-1">
                 {/* @ts-ignore */} <T> The OriginBI Way</T> {" "}
@@ -106,7 +108,8 @@ const WhyOriginBI: React.FC = () => {
                       className="material-symbols-outlined"
                       style={{ fontSize: "16px" }}
                     >
-                      {/* @ts-ignore */} <T> dangerous </T> </span>{" "}
+                      dangerous
+                    </span>{" "}
                     {/* @ts-ignore */} <T> The Old Way </T> </span>
                   <p className="leading-relaxed">{row.old}</p>
                 </div>
@@ -120,7 +123,8 @@ const WhyOriginBI: React.FC = () => {
                         fontVariationSettings: "'FILL' 1",
                       }}
                     >
-                      {/* @ts-ignore */} <T> verified </T> </span>{" "}
+                      verified
+                    </span>{" "}
                     {/* @ts-ignore */} <T> The OriginBI Way </T> </span>
                   <p className="leading-relaxed font-bold">{row.new}</p>
                 </div>

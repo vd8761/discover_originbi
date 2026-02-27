@@ -7,7 +7,7 @@ interface Testimonial {
     name: string;
     grade: string;
     location: string;
-    quote: string;
+    quote: React.ReactNode;
 }
 
 const testimonials: Testimonial[] = [
@@ -15,49 +15,49 @@ const testimonials: Testimonial[] = [
         name: "Aditi R.",
         grade: "Class 12",
         location: "Chennai",
-        quote: "I was confused between engineering and design. My behavioral profile showed I'm a natural creative problem solver — now I'm pursuing UX Design with zero doubts."
+        quote: <>{/* @ts-ignore */} <T> I was confused between engineering and design. My behavioral profile showed I'm a natural creative problem solver — now I'm pursuing UX Design with zero doubts. </T></>
     },
     {
         name: "Karthik M.",
         grade: "Class 11",
         location: "Bangalore",
-        quote: "My parents wanted me to do medicine, but my report clearly showed I'm built for leadership roles. It helped my whole family align on my future."
+        quote: <>{/* @ts-ignore */} <T> My parents wanted me to do medicine, but my report clearly showed I'm built for leadership roles. It helped my whole family align on my future. </T></>
     },
     {
         name: "Sneha P.",
         grade: "Class 12",
         location: "Hyderabad",
-        quote: "The 14-dimension mapping was eye-opening. I discovered strengths I never knew I had. It gave me the confidence to choose Data Science."
+        quote: <>{/* @ts-ignore */} <T> The 14-dimension mapping was eye-opening. I discovered strengths I never knew I had. It gave me the confidence to choose Data Science. </T></>
     },
     {
         name: "Rohan V.",
         grade: "Class 11",
         location: "Mumbai",
-        quote: "Instead of following the crowd into JEE coaching, I found out I'm a natural strategist. Now I'm focused on business analytics and loving every second."
+        quote: <>{/* @ts-ignore */} <T> Instead of following the crowd into JEE coaching, I found out I'm a natural strategist. Now I'm focused on business analytics and loving every second. </T></>
     },
     {
         name: "Priya S.",
         grade: "Class 12",
         location: "Delhi",
-        quote: "Every career counselor just said 'do what you love.' OriginBI actually showed me WHAT I love and WHY — backed by real behavioral data."
+        quote: <>{/* @ts-ignore */} <T> Every career counselor just said 'do what you love.' OriginBI actually showed me WHAT I love and WHY — backed by real behavioral data. </T></>
     },
     {
         name: "Arjun K.",
         grade: "Class 11",
         location: "Pune",
-        quote: "The roadmap didn't just say 'engineering.' It told me exactly which role fits my personality — Systems Architect. That specificity changed everything."
+        quote: <>{/* @ts-ignore */} <T> The roadmap didn't just say 'engineering.' It told me exactly which role fits my personality — Systems Architect. That specificity changed everything. </T></>
     },
     {
         name: "Meera D.",
         grade: "Class 12",
         location: "Kolkata",
-        quote: "I spent a year stressed about stream selection. 60 minutes with OriginBI gave me more clarity than 12 months of anxiety."
+        quote: <>{/* @ts-ignore */} <T> I spent a year stressed about stream selection. 60 minutes with OriginBI gave me more clarity than 12 months of anxiety. </T></>
     },
     {
         name: "Vikram T.",
         grade: "Class 11",
         location: "Coimbatore",
-        quote: "My behavioral DNA report was like reading a manual about myself. Turns out I'm wired for research — something I'd never considered before."
+        quote: <>{/* @ts-ignore */} <T> My behavioral DNA report was like reading a manual about myself. Turns out I'm wired for research — something I'd never considered before. </T></>
     },
 ];
 

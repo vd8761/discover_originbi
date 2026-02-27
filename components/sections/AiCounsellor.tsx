@@ -143,7 +143,7 @@ const AiCounsellor: React.FC = () => {
                                                     <div className="w-8 h-8 rounded-lg bg-brand-green/10 flex items-center justify-center">
                                                         <span className="material-symbols-outlined text-brand-green text-[18px]">psychology</span>
                                                     </div>
-                                                    <span className="text-[12px] font-bold text-gray-700 dark:text-gray-200">Logical Reasoning</span>
+                                                    <span className="text-[12px] font-bold text-gray-700 dark:text-gray-200">{/* @ts-ignore */} <T>Logical Reasoning</T></span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <div className="h-1 w-12 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
@@ -158,7 +158,7 @@ const AiCounsellor: React.FC = () => {
                                                     <div className="w-8 h-8 rounded-lg bg-brand-blue/10 flex items-center justify-center">
                                                         <span className="material-symbols-outlined text-brand-blue text-[18px]">auto_fix_high</span>
                                                     </div>
-                                                    <span className="text-[12px] font-bold text-gray-700 dark:text-gray-200">Strategic Focus</span>
+                                                    <span className="text-[12px] font-bold text-gray-700 dark:text-gray-200">{/* @ts-ignore */} <T>Strategic Focus</T></span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <div className="h-1 w-12 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">

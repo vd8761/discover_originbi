@@ -12,9 +12,9 @@ const JourneySteps: React.FC = () => {
     const steps = [
         {
             step: 1,
-            title: "Finding Your Natural Blueprint",
+            title: <>{/* @ts-ignore */} <T> Finding Your Natural Blueprint </T></>,
             feeling:
-                "Finally, someone understands how I actually think, not just how many marks I score.",
+                <>{/* @ts-ignore */} <T> Finally, someone understands how I actually think, not just how many marks I score. </T></>,
             whatHappens: (
                 <>
                     {/* @ts-ignore */} <T> Your child takes our</T> {" "}
@@ -30,11 +30,11 @@ const JourneySteps: React.FC = () => {
         },
         {
             step: 2,
-            title: "Connecting the Dots",
+            title: <>{/* @ts-ignore */} <T> Connecting the Dots </T></>,
             feeling:
-                "Now we see the link between their personality and the right degree.",
+                <>{/* @ts-ignore */} <T> Now we see the link between their personality and the right degree. </T></>,
             whatHappens:
-                "We take the assessment data and match it against thousands of real-world professional roles and industry requirements.",
+                <>{/* @ts-ignore */} <T> We take the assessment data and match it against thousands of real-world professional roles and industry requirements. </T></>,
             result: (
                 <>
                     {/* @ts-ignore */} <T> You see the perfect</T> {" "}
@@ -45,11 +45,11 @@ const JourneySteps: React.FC = () => {
         },
         {
             step: 3,
-            title: "Following Your Personalized Roadmap",
+            title: <>{/* @ts-ignore */} <T> Following Your Personalized Roadmap </T></>,
             feeling:
-                "We finally have a plan we can trust. No more confusion about which college or branch to pick.",
+                <>{/* @ts-ignore */} <T> We finally have a plan we can trust. No more confusion about which college or branch to pick. </T></>,
             whatHappens:
-                "We provide a Step-by-Step Action Plan designed specifically for the transition from school to college.",
+                <>{/* @ts-ignore */} <T> We provide a Step-by-Step Action Plan designed specifically for the transition from school to college. </T></>,
             result: (
                 <>
                     {/* @ts-ignore */} <T> You get a clear list of the degrees and specializations that will lead to long-term success, removing the stress and risk of a</T> {" "}

@@ -67,15 +67,22 @@ export const useLanguage = (): LanguageContextType => {
 // Wrapper Component for JSX texts
 export const T: React.FC<{ children: ReactNode }> = ({ children }) => {
     const { t } = useLanguage();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
+
     if (typeof children === "string") {
+        if (!mounted) {
+            return <>{children}</>;
+        }
+
         const trimmed = children.trim();
         const translated = t(trimmed);
-        if (translated !== trimmed) {
-            const preSpace = children.match(/^\s*/)?.[0] || "";
-            const postSpace = children.match(/\s*$/)?.[0] || "";
-            return <>{preSpace}{translated}{postSpace}</>;
-        }
-        return <>{translated}</>;
+        const preSpace = children.match(/^\s*/)?.[0] || "";
+        const postSpace = children.match(/\s*$/)?.[0] || "";
+        return <>{preSpace}{translated}{postSpace}</>;
     }
     return <>{children}</>;
 };
@@ -85,8 +92,10 @@ export const I18nToggle: React.FC = () => {
     const { language, setLanguage } = useLanguage();
     const [isOpen, setIsOpen] = React.useState(false);
     const containerRef = React.useRef<HTMLDivElement>(null);
+    const [mounted, setMounted] = React.useState(false);
 
     React.useEffect(() => {
+        setMounted(true);
         const handleClickOutside = (event: MouseEvent) => {
             if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
                 setIsOpen(false);
@@ -102,6 +111,7 @@ export const I18nToggle: React.FC = () => {
     ];
 
     const currentLang = languages.find(l => l.code === language);
+    const displayShort = mounted ? currentLang?.short : 'ENG';
 
     return (
         <div className="relative inline-block" ref={containerRef}>
@@ -110,7 +120,7 @@ export const I18nToggle: React.FC = () => {
                 className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 lg:py-1.5 rounded-full border-2 border-brand-green/30 dark:border-white/10 bg-white/5 dark:bg-brand-dark-tertiary/50 hover:border-brand-green transition-all duration-300 group shadow-sm backdrop-blur-md"
             >
                 <span className="material-symbols-outlined text-[11px] text-brand-green group-hover:scale-110 transition-transform">translate</span>
-                <span className="text-[10px] font-bold text-brand-dark-primary dark:text-white uppercase tracking-wider leading-none mt-[1px]">{currentLang?.short}</span>
+                <span className="text-[10px] font-bold text-brand-dark-primary dark:text-white uppercase tracking-wider leading-none mt-[1px]">{displayShort}</span>
                 <span className={`material-symbols-outlined text-[11px] text-gray-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>expand_more</span>
             </button>
 

@@ -35,13 +35,15 @@ const Header: React.FC<HeaderProps> = ({
 
   const isWhiteHeader = isScrolled && theme === "light";
   const linkColorClass =
-    theme === "light"
-      ? isScrolled
-        ? "text-gray-700 hover:text-brand-green"
-        : "text-gray-900 hover:text-brand-green"
-      : isScrolled
-        ? "text-white hover:text-white/80"
-        : "text-white hover:text-white/80";
+    !mounted
+      ? "text-gray-900 hover:text-brand-green"
+      : theme === "light"
+        ? isScrolled
+          ? "text-gray-700 hover:text-brand-green"
+          : "text-gray-900 hover:text-brand-green"
+        : isScrolled
+          ? "text-white hover:text-white/80"
+          : "text-white hover:text-white/80";
 
   const renderThemeToggle = () => {
     if (!mounted || !isInitialized) return <div className="w-12 lg:w-16 h-7 lg:h-8" />;

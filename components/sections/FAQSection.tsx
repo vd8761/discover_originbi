@@ -8,45 +8,45 @@ import { useReferral } from "@/contexts/ReferralContext";
 
 type FAQ = {
     target: "Parents" | "Students" | "Both";
-    question: string;
-    answer: string;
+    question: React.ReactNode;
+    answer: React.ReactNode;
 };
 
 const faqs: FAQ[] = [
     {
         target: "Parents",
-        question: "My child is already focused on NEET/JEE. Why do we need this?",
-        answer: "Competitive exams are about getting in; Behavioral Mapping is about getting out with a successful career. Even with a top degree, if the professional \"Role\" doesn't match their personality, they will face burnout. We ensure the goal they are working for is actually the right one for their DNA."
+        question: <>{/* @ts-ignore */} <T> My child is already focused on NEET/JEE. Why do we need this? </T></>,
+        answer: <>{/* @ts-ignore */} <T> Competitive exams are about getting in; Behavioral Mapping is about getting out with a successful career. Even with a top degree, if the professional "Role" doesn't match their personality, they will face burnout. We ensure the goal they are working for is actually the right one for their DNA. </T></>
     },
     {
         target: "Students",
-        question: "Is this going to be like another school exam where I'm judged on marks?",
-        answer: "Not at all. There are no \"pass\" or \"fail\" grades here. This is a discovery of how your brain naturally likes to solve problems and lead. It is the one test where the only right answer is the one that describes the real you."
+        question: <>{/* @ts-ignore */} <T> Is this going to be like another school exam where I'm judged on marks? </T></>,
+        answer: <>{/* @ts-ignore */} <T> Not at all. There are no "pass" or "fail" grades here. This is a discovery of how your brain naturally likes to solve problems and lead. It is the one test where the only right answer is the one that describes the real you. </T></>
     },
     {
         target: "Parents",
-        question: "Is this just another counseling session that suggests Engineering or Medicine?",
-        answer: "No. We go much deeper. We don't just say \"Engineering\"—we identify if they are a Natural Researcher, a Project Leader, or a Technical Specialist. We provide specific role fitment so you can choose the right specialization from day one."
+        question: <>{/* @ts-ignore */} <T> Is this just another counseling session that suggests Engineering or Medicine? </T></>,
+        answer: <>{/* @ts-ignore */} <T> No. We go much deeper. We don't just say "Engineering"—we identify if they are a Natural Researcher, a Project Leader, or a Technical Specialist. We provide specific role fitment so you can choose the right specialization from day one. </T></>
     },
     {
         target: "Students",
-        question: "My parents want me to do one thing, but I’m not sure. Will this help?",
-        answer: "Yes. Instead of an argument, we provide data. Showing your parents your 10x Advantage helps them understand your natural strengths. It turns a \"What I want\" conversation into a \"What I'm built for\" strategy."
+        question: <>{/* @ts-ignore */} <T> My parents want me to do one thing, but I’m not sure. Will this help? </T></>,
+        answer: <>{/* @ts-ignore */} <T> Yes. Instead of an argument, we provide data. Showing your parents your 10x Advantage helps them understand your natural strengths. It turns a "What I want" conversation into a "What I'm built for" strategy. </T></>
     },
     {
         target: "Both",
-        question: "Can we use this report for college applications or interviews?",
-        answer: "Absolutely. The Behavioral Profile gives a student a clear, professional way to explain their strengths during admissions and interviews, making them stand out from thousands of other applicants."
+        question: <>{/* @ts-ignore */} <T> Can we use this report for college applications or interviews? </T></>,
+        answer: <>{/* @ts-ignore */} <T> Absolutely. The Behavioral Profile gives a student a clear, professional way to explain their strengths during admissions and interviews, making them stand out from thousands of other applicants. </T></>
     },
     {
         target: "Both",
-        question: "What if the results suggest a path we haven't considered?",
-        answer: "This is the most valuable part. Many families find the student has a \"hidden\" edge in high-growth, emerging sectors. We show you the data so you can make a safe, informed decision together."
+        question: <>{/* @ts-ignore */} <T> What if the results suggest a path we haven't considered? </T></>,
+        answer: <>{/* @ts-ignore */} <T> This is the most valuable part. Many families find the student has a "hidden" edge in high-growth, emerging sectors. We show you the data so you can make a safe, informed decision together. </T></>
     },
     {
         target: "Both",
-        question: "How long is this roadmap valid?",
-        answer: "Behavioral DNA stays consistent. The Success Blueprint we provide serves as a foundational roadmap for the next 4–5 years of college and their eventual entry into the professional world."
+        question: <>{/* @ts-ignore */} <T> How long is this roadmap valid? </T></>,
+        answer: <>{/* @ts-ignore */} <T> Behavioral DNA stays consistent. The Success Blueprint we provide serves as a foundational roadmap for the next 4–5 years of college and their eventual entry into the professional world. </T></>
     }
 ];
 

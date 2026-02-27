@@ -11,7 +11,7 @@ import Input from "@/components/ui/Input";
 import CustomSelect from "@/components/ui/CustomSelect";
 import MobileInput from "@/components/ui/MobileInput";
 import RegisterSteps from "@/components/sections/RegisterSteps";
-import RegistrationInfo from "@/components/sections/RegistrationInfo";
+
 import MobileHowItWorksCarousel from "@/components/sections/MobileHowItWorksCarousel";
 import { registerStudent, validateStudent, validateReferralCode } from "@/lib/api";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -316,43 +316,7 @@ function RegisterPageContent() {
               {/* Decorative Top Line */}
               <div className="hidden lg:block w-16 h-1 bg-brand-green mb-6 rounded-full"></div>
 
-              {/* Mobile View Info Section (Top of Page) */}
-              <div className="block lg:hidden mb-8 border-b border-gray-100 dark:border-white/10 pb-8">
-                {/* Student Photo */}
-                <div className="w-full max-w-[380px] mx-auto mb-8 relative">
-                  <img
-                    src="/hero-new.png"
-                    alt="Student"
-                    className="relative z-10 w-full h-auto object-contain drop-shadow-xl"
-                  />
-                </div>
 
-                {/* Watch Video Links (Mobile Only) */}
-                <div className="flex gap-3 justify-center mb-8 px-2 max-w-[420px] mx-auto">
-                  <Button
-                    variant="outline"
-                    size="md"
-                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 rounded-2xl h-12"
-                    onClick={() => window.open('https://www.youtube.com/watch?v=4luQSZLsZUk', '_blank')}
-                  >
-                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">{/* @ts-ignore */} <T>play_circle</T> </span>
-                    {/* @ts-ignore */} <T> Watch in Tamil </T> </Button>
-                  <Button
-                    variant="outline"
-                    size="md"
-                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 rounded-2xl h-12"
-                    onClick={() => window.open('https://www.youtube.com/watch?v=Z2ZkryASFi0', '_blank')}
-                  >
-                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">{/* @ts-ignore */} <T>play_circle</T> </span>
-                    {/* @ts-ignore */} <T> Watch in English </T> </Button>
-                </div>
-
-                <RegistrationInfo className="" />
-
-                <div className="mt-8 pt-8 border-t border-gray-100 dark:border-white/10">
-                  <MobileHowItWorksCarousel />
-                </div>
-              </div>
 
               {referralValidationStatus === 'checking' ? (
                 <div className="w-full max-w-lg flex flex-col items-center justify-center text-center animate-fade-in py-10">
@@ -605,6 +569,23 @@ function RegisterPageContent() {
               )}
 
 
+              {/* Mobile View Info Section (Bottom of Page now) */}
+              <div className="block lg:hidden mt-12 pt-12 border-t border-gray-100 dark:border-white/10">
+                {/* Student Photo */}
+                <div className="w-full max-w-[380px] mx-auto mb-8 relative">
+                  <img
+                    src="/hero-new.png"
+                    alt="Student"
+                    className="relative z-10 w-full h-auto object-contain drop-shadow-xl"
+                  />
+                </div>
+
+                <div className="mt-4">
+                  <MobileHowItWorksCarousel />
+                </div>
+              </div>
+
+
 
             </div>
 
@@ -620,26 +601,7 @@ function RegisterPageContent() {
                   />
                 </div>
 
-                {/* Watch Video Links (Desktop) */}
-                <div className="flex gap-3 justify-center mb-8 px-8 w-full max-w-[600px] mx-auto">
-                  <Button
-                    variant="outline"
-                    size="md"
-                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 bg-white dark:bg-brand-dark-secondary rounded-2xl h-12"
-                    onClick={() => window.open('https://www.youtube.com/watch?v=4luQSZLsZUk', '_blank')}
-                  >
-                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">{/* @ts-ignore */} <T>play_circle</T> </span>
-                    {/* @ts-ignore */} <T> Watch in Tamil </T> </Button>
-                  <Button
-                    variant="outline"
-                    size="md"
-                    className="flex-1 gap-2 border-brand-green/30 text-brand-dark-primary dark:text-white hover:bg-brand-green/5 bg-white dark:bg-brand-dark-secondary rounded-2xl h-12"
-                    onClick={() => window.open('https://www.youtube.com/watch?v=Z2ZkryASFi0', '_blank')}
-                  >
-                    <span className="material-symbols-outlined !text-[20px] text-brand-green flex items-center justify-center">{/* @ts-ignore */} <T>play_circle</T> </span>
-                    {/* @ts-ignore */} <T> Watch in English </T> </Button>
-                </div>
-                <RegistrationInfo className="!pt-4 !pb-0 w-full" />
+
               </div>
             </div>
 

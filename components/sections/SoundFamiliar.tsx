@@ -6,7 +6,7 @@ import { T } from "@/contexts/LanguageContext";
 const SoundFamiliar: React.FC = () => {
     const situations = [
         {
-            title: "Stop the Guesswork",
+            title: <>{/* @ts-ignore */} <T> Stop the Guesswork </T></>,
             description: (
                 <>
                     {/* @ts-ignore */} <T> Choosing a degree just because </T> <span className="text-brand-green">{/* @ts-ignore */} <T>"everyone is doing IT/CSE"</T> </span> {/* @ts-ignore */} <T> or because of friend’s choices. You fear that picking the wrong course now will lead to a career they will regret in 4 years. </T> </>
@@ -14,7 +14,7 @@ const SoundFamiliar: React.FC = () => {
             icon: "help"
         },
         {
-            title: "Find Your Direction",
+            title: <>{/* @ts-ignore */} <T> Find Your Direction </T></>,
             description: (
                 <>
                     {/* @ts-ignore */} <T> Your child has the marks, but no clear idea which industry or specific professional role actually fits their natural personality. You are looking for a direction that goes beyond just </T> <span className="text-brand-green">{/* @ts-ignore */} <T>"getting a degree."</T> </span>
@@ -23,7 +23,7 @@ const SoundFamiliar: React.FC = () => {
             icon: "explore"
         },
         {
-            title: "Correct Your Course Before It Starts",
+            title: <>{/* @ts-ignore */} <T> Correct Your Course Before It Starts </T></>,
             description: (
                 <>
                     {/* @ts-ignore */} <T> Feeling pressured to pick a college path without knowing if they have the natural </T> <span className="text-brand-green">{/* @ts-ignore */} <T>"Behavioral Fit"</T> </span> {/* @ts-ignore */} <T> for that work. You want to ensure they don't spend lakhs on a course only to realize later it was the wrong fit. </T> </>

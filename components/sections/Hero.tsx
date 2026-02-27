@@ -52,6 +52,19 @@ const Hero: React.FC = () => {
                                 >
                                     {/* @ts-ignore */} <T> Get Your Career Roadmap Now • ₹749 </T> </Button>
                             </div>
+
+                            {/* Language Support Indicator */}
+                            <div className="mt-6 flex flex-col gap-1 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-tight">
+                                <div className="flex items-center gap-2">
+                                    <span className="material-symbols-outlined text-[16px] text-brand-green">language</span>
+                                    <span>
+                                        {/* @ts-ignore */} <T>We support English & Tamil.</T>
+                                    </span>
+                                </div>
+                                <span className="ml-6 text-xs text-gray-400 dark:text-gray-500">
+                                    {/* @ts-ignore */} <T>Soon will add more native languages.</T>
+                                </span>
+                            </div>
                         </div>
                     </div>
 

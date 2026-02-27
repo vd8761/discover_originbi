@@ -8,28 +8,28 @@ import { useReferral } from "@/contexts/ReferralContext";
 
 const features = [
     {
-        title: "Behavioral Mapping",
-        desc: "A deep dive into how their brain is naturally wired to work, lead, and solve problems.",
+        title: <>{/* @ts-ignore */} <T> Behavioral Mapping </T></>,
+        desc: <>{/* @ts-ignore */} <T> A deep dive into how their brain is naturally wired to work, lead, and solve problems. </T></>,
         icon: "psychology"
     },
     {
-        title: "The Success Blueprint",
-        desc: "A clear, data-backed plan that shows exactly where they belong in the professional world.",
+        title: <>{/* @ts-ignore */} <T> The Success Blueprint </T></>,
+        desc: <>{/* @ts-ignore */} <T> A clear, data-backed plan that shows exactly where they belong in the professional world. </T></>,
         icon: "description"
     },
     {
-        title: "The 10x Advantage",
-        desc: "Identification of specific job roles where their personality gives them a massive edge over others.",
+        title: <>{/* @ts-ignore */} <T> The 10x Advantage </T></>,
+        desc: <>{/* @ts-ignore */} <T> Identification of specific job roles where their personality gives them a massive edge over others. </T></>,
         icon: "trending_up"
     },
     {
-        title: "Agile Compatibility",
-        desc: "A clear understanding of how their natural strengths will adapt to a rapidly changing job market.",
+        title: <>{/* @ts-ignore */} <T> Agile Compatibility </T></>,
+        desc: <>{/* @ts-ignore */} <T> A clear understanding of how their natural strengths will adapt to a rapidly changing job market. </T></>,
         icon: "bolt"
     },
     {
-        title: "Future-Sector Alignment",
-        desc: "A guide to high-growth industries and emerging technologies that match their specific profile.",
+        title: <>{/* @ts-ignore */} <T> Future-Sector Alignment </T></>,
+        desc: <>{/* @ts-ignore */} <T> A guide to high-growth industries and emerging technologies that match their specific profile. </T></>,
         icon: "explore"
     }
 ];
