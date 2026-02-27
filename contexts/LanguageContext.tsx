@@ -64,6 +64,24 @@ export const useLanguage = (): LanguageContextType => {
     return context;
 };
 
+/**
+ * A hydration-safe translation hook.
+ * It ensures that translations are only applied after the component has mounted on the client,
+ * preventing hydration mismatches between server and client HTML.
+ */
+export const useTranslation = () => {
+    const { t, language, setLanguage } = useLanguage();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const safeT = (key: string) => mounted ? t(key) : key;
+
+    return { t: safeT, language, setLanguage, mounted };
+};
+
 // Wrapper Component for JSX texts
 export const T: React.FC<{ children: ReactNode }> = ({ children }) => {
     const { t } = useLanguage();

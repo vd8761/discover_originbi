@@ -16,7 +16,7 @@ import MobileHowItWorksCarousel from "@/components/sections/MobileHowItWorksCaro
 import { registerStudent, validateStudent, validateReferralCode } from "@/lib/api";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getEnabledBoards } from "@/lib/constants";
-import { T, useLanguage } from "@/contexts/LanguageContext";
+import { T, useTranslation } from "@/contexts/LanguageContext";
 import { useReferral } from "@/contexts/ReferralContext";
 
 declare global {
@@ -27,7 +27,7 @@ declare global {
 
 function RegisterPageContent() {
   const { theme } = useTheme();
-  const { t } = useLanguage();
+  const { t } = useTranslation();
   const router = useRouter();
   const searchParams = useSearchParams();
   const [referralValidationStatus, setReferralValidationStatus] = useState<'valid' | 'invalid' | 'checking' | null>(null);
@@ -589,18 +589,37 @@ function RegisterPageContent() {
 
             </div>
 
-            {/* Right Side - Visual Section (Normal flow) */}
-            <div className="hidden lg:block w-1/2 px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] bg-gray-50 dark:bg-[#1E1E1E] transition-colors duration-300 border-l border-gray-100 dark:border-white/5">
-              <div className="flex flex-col justify-center items-center pb-12 pt-[100px]">
-                {/* Student Photo Desktop */}
-                <div className="w-full max-w-[500px] mx-auto mb-8 relative px-10">
+            {/* Right Side - Visual Section (Sticky Full Height) */}
+            <div className="hidden lg:block w-1/2 bg-gray-50 dark:bg-[#1D1D1D] transition-colors duration-300 border-l border-gray-100 dark:border-white/5 relative">
+              <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+
+                {/* Subtle Dots Background Pattern */}
+                <div className="absolute inset-0 dark:hidden opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, black 2px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+                <div className="absolute inset-0 hidden dark:block opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 2px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+
+                {/* Minimal Glow Blobs */}
+                <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-brand-green/10 rounded-full blur-[120px] pointer-events-none mix-blend-multiply dark:mix-blend-screen"></div>
+                <div className="absolute bottom-[10%] left-[-10%] w-[400px] h-[400px] bg-brand-blue/10 rounded-full blur-[100px] pointer-events-none mix-blend-multiply dark:mix-blend-screen"></div>
+
+                {/* Primary Feature Image */}
+                <div className="w-full max-w-[700px] mx-auto relative z-10 px-8 2xl:px-12 transition-transform duration-700 hover:scale-105 group">
                   <img
                     src="/hero-new.png"
-                    alt="Student"
-                    className="relative z-10 w-full h-auto object-contain drop-shadow-2xl"
+                    alt="OriginBI Student Mapping"
+                    className="relative z-10 w-full h-auto object-contain drop-shadow-2xl group-hover:drop-shadow-[0_20px_50px_rgba(30,211,106,0.15)] transition-all duration-700"
+                    draggable={false}
                   />
                 </div>
 
+                {/* Small Anchor Tag */}
+                <div className="absolute bottom-16 left-0 right-0 flex justify-center z-20">
+                  <div className="px-5 py-2 rounded-full border border-gray-200 dark:border-brand-dark-tertiary bg-white/50 dark:bg-brand-dark-tertiary/50 backdrop-blur-md shadow-sm">
+                    <span className="text-xs font-bold tracking-widest uppercase text-brand-dark-primary dark:text-gray-300 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+                      {/* @ts-ignore */} <T> AI-Powered Career Discovery </T>
+                    </span>
+                  </div>
+                </div>
 
               </div>
             </div>

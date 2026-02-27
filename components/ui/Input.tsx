@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslation } from '@/contexts/LanguageContext';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     label?: string;
@@ -9,7 +9,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const Input: React.FC<InputProps> = ({ label, error, suffix, className = '', ...props }) => {
     const isInvalid = !!error;
-    const { t } = useLanguage();
+    const { t } = useTranslation();
 
     return (
         <div className="w-full space-y-2">

@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDownIcon } from '../icons';
-import { T, useLanguage } from "@/contexts/LanguageContext";
+import { T, useTranslation } from "@/contexts/LanguageContext";
 
 interface Option {
     value: string;
@@ -32,7 +32,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 }) => {
     const [isOpen, setIsOpen] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
-    const { t } = useLanguage();
+    const { t } = useTranslation();
 
     const selectedOption = options.find(opt => opt.value === value);
 

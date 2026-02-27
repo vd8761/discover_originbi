@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect, useMemo } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { ChevronDownIcon } from '../icons';
 import { COUNTRY_CODES } from '../../lib/countryCodes';
-import { T, useLanguage } from "@/contexts/LanguageContext";
+import { T, useTranslation } from "@/contexts/LanguageContext";
 
 interface MobileInputProps {
     countryCode: string;
@@ -33,7 +33,7 @@ const MobileInput: React.FC<MobileInputProps> = ({
     const [searchTerm, setSearchTerm] = useState("");
     const dropdownRef = useRef<HTMLDivElement>(null);
     const searchInputRef = useRef<HTMLInputElement>(null);
-    const { t } = useLanguage();
+    const { t } = useTranslation();
 
     const selectedCountry =
         COUNTRY_CODES.find((c) => c.dial_code === countryCode) ||
