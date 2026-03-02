@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 
 interface Testimonial {
     name: string;
@@ -61,7 +61,7 @@ const testimonials: Testimonial[] = [
     },
 ];
 
-const TestimonialCard: React.FC<{ testimonial: Testimonial; onClick: () => void }> = ({ testimonial, onClick }) => (
+const TestimonialCard: React.FC<{ testimonial: Testimonial; onClick: () => void; mounted: boolean; language: string }> = ({ testimonial, onClick, mounted, language }) => (
     <div
         onClick={onClick}
         className="flex-shrink-0 w-[320px] sm:w-[380px] rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-brand-dark-secondary p-6 sm:p-7 transition-all duration-300 select-none cursor-pointer hover:border-brand-green/30 hover:shadow-lg"
@@ -99,6 +99,12 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial; onClick: () => void 
 );
 
 const Testimonials: React.FC = () => {
+    const { language } = useLanguage();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
     const [selectedTestimonial, setSelectedTestimonial] = React.useState<Testimonial | null>(null);
     const firstRow = testimonials.slice(0, 4);
     const secondRow = testimonials.slice(4, 8);
@@ -124,9 +130,9 @@ const Testimonials: React.FC = () => {
                 <div className="text-center">
                     <div className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 dark:bg-brand-green/20 text-brand-green font-bold text-xs tracking-widest uppercase mb-6">
                         {/* @ts-ignore */} <T> Student Voices </T> </div>
-                    <h2 className="text-[clamp(28px,3.4vw,54px)] font-sans font-semibold text-brand-dark-primary dark:text-white leading-tight mb-4 transition-colors duration-300">
+                    <h2 className={`font-sans font-semibold text-brand-dark-primary dark:text-white leading-tight mb-4 transition-colors duration-300 ${mounted && language === 'ta' ? 'text-[clamp(24px,3vw,42px)]' : 'text-[clamp(28px,3.4vw,54px)]'}`}>
                         {/* @ts-ignore */} <T> What Our </T> <span className="text-brand-green">{/* @ts-ignore */} <T>Students</T> </span> {/* @ts-ignore */} <T> Say </T> </h2>
-                    <p className="text-[clamp(16px,1.3vw,22px)] text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    <p className={`max-w-2xl mx-auto ${mounted && language === 'ta' ? 'text-[clamp(14px,1.2vw,18px)] text-gray-600 dark:text-gray-300/80' : 'text-[clamp(16px,1.3vw,22px)] text-gray-600 dark:text-gray-300'}`}>
                         {/* @ts-ignore */} <T> Real experiences from students who discovered their perfect career path. </T> </p>
                 </div>
             </div>
@@ -151,6 +157,8 @@ const Testimonials: React.FC = () => {
                                 key={`row1-${i}`}
                                 testimonial={t}
                                 onClick={() => setSelectedTestimonial(t)}
+                                mounted={mounted}
+                                language={language}
                             />
                         ))}
                     </div>
@@ -170,6 +178,8 @@ const Testimonials: React.FC = () => {
                                 key={`row2-${i}`}
                                 testimonial={t}
                                 onClick={() => setSelectedTestimonial(t)}
+                                mounted={mounted}
+                                language={language}
                             />
                         ))}
                     </div>
@@ -210,7 +220,7 @@ const Testimonials: React.FC = () => {
                                     <path d="M45.8674 37.1955C53.102 37.1955 58.9998 31.2388 58.9998 23.9255C58.9998 18.9517 56.3065 14.489 52.0404 12.2086C52.2566 9.88875 53.2199 4.95426 57.1715 3.873C58.1151 3.61743 58.7245 2.7131 58.6066 1.7498C58.4886 0.786491 57.7023 0.0394363 56.7193 0.0197754H56.4244C54.4978 0.0197754 43.9211 0.452282 37.0796 9.63318C32.6366 15.59 31.3195 22.0579 33.3444 27.7591C35.0351 33.4013 40.0679 37.1955 45.8674 37.1955Z" fill="currentColor" />
                                     <path d="M0.926245 27.7395C2.61695 33.3818 7.64973 37.176 13.4492 37.176C20.6839 37.176 26.5817 31.2192 26.5817 23.906C26.5817 18.9322 23.8883 14.4695 19.6223 12.189C19.8385 9.86922 20.8018 4.93473 24.7533 3.85347C25.697 3.5979 26.3064 2.69357 26.1885 1.73027C26.0705 0.76696 25.2841 0.0199051 24.3012 0.000244141H24.0063C22.0797 0.000244141 11.503 0.432751 4.66152 9.61365C0.218513 15.5704 -1.09867 22.0383 0.926245 27.7395Z" fill="currentColor" />
                                 </svg>
-                                <p className="text-xl sm:text-2xl leading-relaxed text-brand-dark-primary dark:text-white font-semibold italic">
+                                <p className={`leading-relaxed text-brand-dark-primary dark:text-white font-semibold italic ${mounted && language === 'ta' ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'}`}>
                                     {/* @ts-ignore */} <T> &ldquo;</T> {selectedTestimonial.quote}{/* @ts-ignore */} <T>&rdquo; </T> </p>
                             </div>
 

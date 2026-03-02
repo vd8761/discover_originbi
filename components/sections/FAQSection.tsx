@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { ChevronDownIcon } from "@/components/icons";
 import Button from "@/components/ui/Button";
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 import { useReferral } from "@/contexts/ReferralContext";
 
 type FAQ = {
@@ -50,7 +50,7 @@ const faqs: FAQ[] = [
     }
 ];
 
-const FAQItem: React.FC<{ faq: FAQ; isOpen: boolean; toggle: () => void }> = ({ faq, isOpen, toggle }) => {
+const FAQItem: React.FC<{ faq: FAQ; isOpen: boolean; toggle: () => void; mounted: boolean; language: string }> = ({ faq, isOpen, toggle, mounted, language }) => {
     return (
         <div className={`overflow-hidden rounded-2xl border transition-all duration-300 ${isOpen ? 'border-brand-green bg-brand-green/5 dark:bg-brand-green/[0.05] shadow-md' : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-brand-dark-primary hover:border-brand-green/30'}`}>
             <button
@@ -58,7 +58,7 @@ const FAQItem: React.FC<{ faq: FAQ; isOpen: boolean; toggle: () => void }> = ({ 
                 className="w-full text-left px-6 py-5 lg:px-8 lg:py-6 flex items-center justify-between gap-4 focus:outline-none"
             >
                 <div className="flex flex-col gap-2 md:gap-3 pr-4">
-                    <h3 className={`text-lg lg:text-xl font-semibold transition-colors duration-300 ${isOpen ? 'text-brand-green' : 'text-brand-dark-primary dark:text-gray-100'}`}>
+                    <h3 className={`font-semibold transition-colors duration-300 ${isOpen ? 'text-brand-green' : 'text-brand-dark-primary dark:text-gray-100'} ${mounted && language === 'ta' ? 'text-base lg:text-lg' : 'text-lg lg:text-xl'}`}>
                         {faq.question}
                     </h3>
                 </div>
@@ -71,7 +71,7 @@ const FAQItem: React.FC<{ faq: FAQ; isOpen: boolean; toggle: () => void }> = ({ 
                 className={`grid transition-all duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100 pb-6 lg:pb-8' : 'grid-rows-[0fr] opacity-0'}`}
             >
                 <div className="overflow-hidden px-6 lg:px-8">
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-[1.05rem]">
+                    <p className={`text-gray-600 dark:text-gray-300 leading-relaxed ${mounted && language === 'ta' ? 'text-sm' : 'text-[1.05rem]'}`}>
                         {faq.answer}
                     </p>
                 </div>
@@ -81,6 +81,13 @@ const FAQItem: React.FC<{ faq: FAQ; isOpen: boolean; toggle: () => void }> = ({ 
 };
 
 const FAQSection: React.FC = () => {
+    const { language } = useLanguage();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
+
     const { getRegisterUrl } = useReferral();
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -94,10 +101,10 @@ const FAQSection: React.FC = () => {
                 <div className="text-center mb-12 lg:mb-16">
                     <div className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 dark:bg-brand-green/20 text-brand-green font-bold text-xs tracking-widest uppercase mb-6">
                         {/* @ts-ignore */} <T> Support Center </T> </div>
-                    <h2 className="text-[clamp(28px,3.4vw,54px)] font-sans font-semibold text-brand-dark-primary dark:text-white leading-tight mb-4 transition-colors duration-300">
+                    <h2 className={`font-sans font-semibold text-brand-dark-primary dark:text-white leading-tight mb-4 transition-colors duration-300 ${mounted && language === 'ta' ? 'text-[clamp(24px,3vw,42px)]' : 'text-[clamp(28px,3.4vw,54px)]'}`}>
                         {/* @ts-ignore */} <T> Frequently Asked </T> <span className="text-brand-green">{/* @ts-ignore */} <T>Questions</T> </span>
                     </h2>
-                    <p className="text-[clamp(18px,1.5vw,24px)] text-gray-600 dark:text-gray-300">
+                    <p className={`text-gray-600 dark:text-gray-300 ${mounted && language === 'ta' ? 'text-[clamp(16px,1.3vw,20px)]' : 'text-[clamp(18px,1.5vw,24px)]'}`}>
                         {/* @ts-ignore */} <T> Clearing the Path for Students & Parents </T> </p>
                 </div>
 
@@ -108,6 +115,8 @@ const FAQSection: React.FC = () => {
                             faq={faq}
                             isOpen={openIndex === index}
                             toggle={() => setOpenIndex(openIndex === index ? null : index)}
+                            mounted={mounted}
+                            language={language}
                         />
                     ))}
                 </div>
@@ -133,11 +142,11 @@ const FAQSection: React.FC = () => {
                         />
 
                         <div className="relative z-10 flex flex-col items-center">
-                            <h3 className="text-lg lg:text-3xl font-semibold text-white mb-8 px-4 lg:px-0 leading-relaxed max-w-3xl">
+                            <h3 className={`font-semibold text-white mb-8 px-4 lg:px-0 leading-relaxed max-w-3xl ${mounted && language === 'ta' ? 'text-base lg:text-xl' : 'text-lg lg:text-3xl'}`}>
                                 {/* @ts-ignore */} <T> "At +2, a wrong choice isn't just a loss of time; it's a loss of confidence." </T> </h3>
                             <Button
                                 href={getRegisterUrl()}
-                                className="inline-block bg-white !text-brand-green hover:bg-brand-dark-green hover:!text-white px-5 py-2.5 lg:px-8 lg:py-3.5 rounded-full text-sm lg:text-xl font-bold tracking-wide shadow-lg border-none cursor-pointer"
+                                className={`inline-block bg-white !text-brand-green hover:bg-brand-dark-green hover:!text-white rounded-full font-bold tracking-wide shadow-lg border-none cursor-pointer ${mounted && language === 'ta' ? 'px-4 py-2 lg:px-6 lg:py-3 text-sm lg:text-lg' : 'px-5 py-2.5 lg:px-8 lg:py-3.5 text-sm lg:text-xl'}`}
                             >
                                 {/* @ts-ignore */} <T> Spend ₹749 today to ensure they walk into college with a clear purpose. </T> </Button>
                         </div>

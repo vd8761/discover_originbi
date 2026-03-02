@@ -1,9 +1,15 @@
 "use client";
 
 import React from 'react';
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 
 const ProgramSteps: React.FC = () => {
+    const { language } = useLanguage();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
     const steps = [
         {
             id: 1,
@@ -31,10 +37,10 @@ const ProgramSteps: React.FC = () => {
         <section className="py-24 bg-white dark:bg-brand-dark-secondary">
             <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
                 <div className="mb-20 max-w-4xl">
-                    <h2 className="text-4xl lg:text-5xl font-sans font-light text-brand-dark-primary dark:text-white mb-6">
+                    <h2 className={`font-sans leading-[1.1] mb-6 transition-all duration-300 ${mounted && language === 'ta' ? 'text-3xl lg:text-4xl font-semibold' : 'text-4xl lg:text-5xl font-light text-brand-dark-primary dark:text-white'}`}>
                         {/* @ts-ignore */} <T> Using Origin BI as part of a </T> <span className="font-bold">{/* @ts-ignore */} <T>wider programme</T> </span>
                     </h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-300 font-light">
+                    <p className={`font-light transition-all duration-300 ${mounted && language === 'ta' ? 'text-lg text-gray-600 dark:text-gray-300/80' : 'text-xl text-gray-600 dark:text-gray-300'}`}>
                         {/* @ts-ignore */} <T> Origin BI is at the heart of what we do. By applying the four colour model to a variety of academic challenges, we focus on your most important asset - your students. </T> </p>
                 </div>
 

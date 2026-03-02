@@ -1,11 +1,17 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { T, useTranslation } from "@/contexts/LanguageContext";
+import { T, useTranslation, useLanguage } from "@/contexts/LanguageContext";
 
 const MobileHowItWorksCarousel: React.FC = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
     const [activeStep, setActiveStep] = useState(0);
+    const { language } = useLanguage();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
     const { t } = useTranslation();
 
     const steps = [
@@ -51,7 +57,7 @@ const MobileHowItWorksCarousel: React.FC = () => {
 
     return (
         <div className="w-full pb-8">
-            <h3 className="text-xl font-bold text-center mb-6 text-brand-dark-primary dark:text-white">
+            <h3 className={`font-bold text-center mb-6 text-brand-dark-primary dark:text-white transition-all duration-300 ${mounted && language === 'ta' ? 'text-lg' : 'text-xl'}`}>
                 {/* @ts-ignore */} <T> How it works </T> </h3>
 
             <div
@@ -68,10 +74,10 @@ const MobileHowItWorksCarousel: React.FC = () => {
                         <div className="w-12 h-12 bg-brand-green/10 text-brand-green rounded-full flex items-center justify-center text-lg font-bold mb-4">
                             {index + 1}
                         </div>
-                        <h4 className="font-bold text-brand-dark-primary dark:text-white mb-2">
+                        <h4 className={`font-bold text-brand-dark-primary dark:text-white mb-2 transition-all duration-300 ${mounted && language === 'ta' ? 'text-base' : 'text-lg'}`}>
                             {/* @ts-ignore */} <T>{step.title}</T>
                         </h4>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className={`text-gray-500 dark:text-gray-400 transition-all duration-300 ${mounted && language === 'ta' ? 'text-xs' : 'text-sm'}`}>
                             {/* @ts-ignore */} <T>{step.desc}</T>
                         </p>
                     </div>

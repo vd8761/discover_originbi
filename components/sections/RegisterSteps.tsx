@@ -1,9 +1,15 @@
 "use client";
 
-import React from "react";
-import { T, useTranslation } from "@/contexts/LanguageContext";
+import React, { useState, useEffect } from "react";
+import { T, useTranslation, useLanguage } from "@/contexts/LanguageContext";
 
 const RegisterSteps: React.FC = () => {
+    const { language } = useLanguage();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
     const { t } = useTranslation();
     const steps = [
         { title: "Fill the Registration Form", desc: "Name, Email, Age, Education, etc." },
@@ -23,9 +29,9 @@ const RegisterSteps: React.FC = () => {
             </div>
 
             <div className="max-w-[1440px] mx-auto px-6 relative z-10 text-center">
-                <h2 className="text-3xl lg:text-4xl font-sans font-bold text-brand-dark-primary dark:text-white mb-4">
+                <h2 className={`font-sans font-bold text-brand-dark-primary dark:text-white mb-4 transition-all duration-300 ${mounted && language === 'ta' ? 'text-2xl lg:text-3xl' : 'text-3xl lg:text-4xl'}`}>
                     {/* @ts-ignore */} <T> How it works </T> </h2>
-                <p className="text-gray-500 max-w-2xl mx-auto mb-16 text-lg font-light">
+                <p className={`text-gray-500 max-w-2xl mx-auto mb-16 font-light transition-all duration-300 ${mounted && language === 'ta' ? 'text-base' : 'text-lg'}`}>
                     {/* @ts-ignore */} <T> Your journey to career clarity is simple, digital, and designed for results. Follow these six steps to unlock your potential. </T> </p>
 
                 <div className="flex flex-wrap justify-center gap-8 relative">

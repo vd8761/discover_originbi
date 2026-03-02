@@ -2,10 +2,16 @@
 
 import React from 'react';
 import Button from "@/components/ui/Button";
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 import { useReferral } from "@/contexts/ReferralContext";
 
 const CTASection: React.FC = () => {
+    const { language } = useLanguage();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
     const { getRegisterUrl } = useReferral();
     return (
         <section className="relative z-10 w-full py-12 sm:py-16 lg:py-20">
@@ -26,9 +32,9 @@ const CTASection: React.FC = () => {
 
                     {/* Centered Content */}
                     <div className="relative z-10 flex flex-col items-center justify-center text-center p-8 sm:p-12 lg:p-16 min-h-[280px] lg:min-h-[350px]">
-                        <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-bold text-white leading-[1.1] mb-4 max-w-4xl tracking-tight">
+                        <h2 className={`font-sans font-bold text-white leading-[1.1] mb-4 max-w-4xl tracking-tight ${mounted && language === 'ta' ? 'text-[clamp(24px,3.5vw,42px)]' : 'text-[clamp(32px,4vw,56px)]'}`}>
                             {/* @ts-ignore */} <T> What should I do Next? </T> </h2>
-                        <p className="text-[clamp(20px,2vw,28px)] text-white/90 font-medium mb-12 max-w-2xl leading-relaxed">
+                        <p className={`text-white/90 font-medium mb-12 max-w-2xl leading-relaxed ${mounted && language === 'ta' ? 'text-[clamp(16px,1.8vw,22px)]' : 'text-[clamp(20px,2vw,28px)]'}`}>
                             {/* @ts-ignore */} <T> Let your strengths answer that </T> </p>
                         <div className="flex justify-center w-full">
                             <Button

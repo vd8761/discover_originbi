@@ -3,10 +3,16 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 import { useReferral } from "@/contexts/ReferralContext";
 
 const FinalCTASection: React.FC = () => {
+    const { language } = useLanguage();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
     const { getRegisterUrl } = useReferral();
     return (
         <section
@@ -34,16 +40,16 @@ const FinalCTASection: React.FC = () => {
                     />
 
                     <div className="relative z-10 px-6 py-12 lg:py-16 max-w-4xl mx-auto flex flex-col items-center text-center">
-                        <h2 className="text-[clamp(24px,4vw,56px)] font-sans font-bold text-white leading-[1.1] tracking-tight mb-6 px-4 lg:px-0">
+                        <h2 className={`font-sans font-bold text-white leading-[1.1] tracking-tight mb-6 px-4 lg:px-0 ${mounted && language === 'ta' ? 'text-[clamp(20px,3.5vw,42px)]' : 'text-[clamp(24px,4vw,56px)]'}`}>
                             <span className="block opacity-90">{/* @ts-ignore */} <T>Stop choosing courses</T> </span>
-                            <span className="block text-brand-dark-green mt-2">{/* @ts-ignore */} <T>in the dark.</T> </span>
+                            <span className={`block text-brand-dark-green ${mounted && language === 'ta' ? 'mt-1' : 'mt-2'}`}>{/* @ts-ignore */} <T>in the dark.</T> </span>
                         </h2>
 
-                        <h3 className="text-[clamp(16px,2.2vw,30px)] font-medium text-white mb-6">
+                        <h3 className={`font-medium text-white mb-6 ${mounted && language === 'ta' ? 'text-[clamp(14px,1.8vw,24px)]' : 'text-[clamp(16px,2.2vw,30px)]'}`}>
                             {/* @ts-ignore */} <T> Start with your natural role. </T> </h3>
 
                         <div className="max-w-2xl mb-10">
-                            <p className="text-[clamp(14px,1.2vw,20px)] text-white/90 leading-relaxed font-semibold">
+                            <p className={`text-white/90 leading-relaxed font-semibold ${mounted && language === 'ta' ? 'text-[clamp(13px,1.1vw,16px)]' : 'text-[clamp(14px,1.2vw,20px)]'}`}>
                                 {/* @ts-ignore */} <T> "Every year, thousands of students pick degrees they will never use. Don't let your child be one of them. Spend </T> <strong className="inline-block text-brand-dark-green bg-white/90 px-2 py-0 lg:px-3 lg:py-1 rounded-md mx-0.5 text-[0.95em]">{/* @ts-ignore */} <T>60 minutes</T> </strong> {/* @ts-ignore */} <T> now to save </T> <strong className="inline-block text-brand-dark-green bg-white/90 px-2 py-0 lg:px-3 lg:py-1 rounded-md mx-1 text-[0.95em]">{/* @ts-ignore */} <T>4 years</T> </strong> {/* @ts-ignore */} <T> of struggle." </T> </p>
                         </div>
 

@@ -1,6 +1,13 @@
-import { T, useTranslation } from "@/contexts/LanguageContext";
+import React, { useState, useEffect } from "react";
+import { T, useTranslation, useLanguage } from "@/contexts/LanguageContext";
 
 const RegistrationInfo: React.FC<{ className?: string }> = ({ className = "" }) => {
+    const { language } = useLanguage();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
     const { t } = useTranslation();
 
     const valueProps = [
@@ -43,9 +50,9 @@ const RegistrationInfo: React.FC<{ className?: string }> = ({ className = "" }) 
 
                 {/* Hero / Intro */}
                 <div className="mb-4 text-center lg:text-left">
-                    <h2 className="text-3xl lg:text-4xl font-bold mb-2 text-brand-dark-primary dark:text-white drop-shadow-sm">
+                    <h2 className={`font-bold mb-2 text-brand-dark-primary dark:text-white drop-shadow-sm transition-all duration-300 ${mounted && language === 'ta' ? 'text-2xl lg:text-3xl' : 'text-3xl lg:text-4xl'}`}>
                         {/* @ts-ignore */} <T> Unlock Your Full Potential </T> </h2>
-                    <p className="text-lg text-gray-600 dark:text-gray-300 italic">
+                    <p className={`italic transition-all duration-300 ${mounted && language === 'ta' ? 'text-base text-gray-600 dark:text-gray-300/80' : 'text-lg text-gray-600 dark:text-gray-300'}`}>
                         {/* @ts-ignore */} <T> "Insights Discovery transforms your performance using the power of awareness." </T> </p>
                 </div>
 

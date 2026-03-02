@@ -3,7 +3,7 @@
 import React from "react";
 import { CheckIcon } from "@/components/icons";
 import Button from "@/components/ui/Button";
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 import { useReferral } from "@/contexts/ReferralContext";
 
 const features = [
@@ -35,6 +35,12 @@ const features = [
 ];
 
 const CareerValueCard: React.FC = () => {
+    const { language } = useLanguage();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
     const { getRegisterUrl } = useReferral();
     return (
         <section
@@ -48,10 +54,10 @@ const CareerValueCard: React.FC = () => {
                     {/* Left side content - Description & List */}
                     <div className="flex-1 w-full order-2 lg:order-1">
                         <div className="mb-12 text-center lg:text-left">
-                            <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight mb-6 transition-colors">
+                            <h2 className={`font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight mb-6 transition-all duration-300 ${mounted && language === 'ta' ? 'text-[clamp(28px,3.5vw,48px)]' : 'text-[clamp(32px,4vw,56px)]'}`}>
                                 {/* @ts-ignore */} <T> The </T> <span className="text-brand-green">{/* @ts-ignore */} <T>Career Value Card</T> </span>
                             </h2>
-                            <p className="text-lg sm:text-xl text-brand-text-light-secondary dark:text-white/70 font-medium max-w-2xl mx-auto lg:mx-0">
+                            <p className={`text-brand-text-light-secondary dark:text-white/70 font-medium max-w-2xl mx-auto lg:mx-0 transition-all duration-300 ${mounted && language === 'ta' ? 'text-base sm:text-lg' : 'text-lg sm:text-xl'}`}>
                                 {/* @ts-ignore */} <T> Everything your child needs to choose the right path for</T> {" "}
                                 <span className="text-brand-green font-bold">₹749</span>.
                             </p>
@@ -66,10 +72,10 @@ const CareerValueCard: React.FC = () => {
                                         </span>
                                     </div>
                                     <div className="flex-1">
-                                        <h3 className="text-xl sm:text-2xl font-bold text-brand-dark-primary dark:text-white mb-2 leading-tight tracking-tight group-hover:text-brand-green transition-colors duration-300">
+                                        <h3 className={`font-bold text-brand-dark-primary dark:text-white mb-2 leading-tight tracking-tight group-hover:text-brand-green transition-all duration-300 ${mounted && language === 'ta' ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'}`}>
                                             {feature.title}
                                         </h3>
-                                        <p className="text-base sm:text-lg text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-medium">
+                                        <p className={`text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-medium transition-all duration-300 ${mounted && language === 'ta' ? 'text-sm sm:text-base' : 'text-base sm:text-lg'}`}>
                                             {feature.desc}
                                         </p>
                                     </div>
@@ -90,10 +96,10 @@ const CareerValueCard: React.FC = () => {
                             <div className="relative z-10">
                                 <span className="inline-block px-3 py-1 lg:px-4 lg:py-1.5 rounded-full bg-white/20 text-white border border-white/30 text-[9px] lg:text-[10px] font-black tracking-[0.2em] uppercase mb-10 backdrop-blur-md">
                                     {/* @ts-ignore */} <T> Lifetime Value </T> </span>
-                                <h3 className="text-3xl lg:text-4xl font-extrabold text-white mb-2 leading-tight tracking-tight">
+                                <h3 className={`font-extrabold text-white mb-2 leading-tight tracking-tight transition-all duration-300 ${mounted && language === 'ta' ? 'text-2xl lg:text-3xl' : 'text-3xl lg:text-4xl'}`}>
                                     {/* @ts-ignore */} <T> The Career Value Package </T> </h3>
                                 <div className="flex items-baseline gap-2 mb-10">
-                                    <span className="text-5xl lg:text-8xl font-black text-white tracking-tighter">₹749</span>
+                                    <span className={`font-black text-white tracking-tighter transition-all duration-300 ${mounted && language === 'ta' ? 'text-4xl lg:text-6xl' : 'text-5xl lg:text-8xl'}`}>₹749</span>
                                     <span className="text-white/60 text-base lg:text-lg font-bold">{/* @ts-ignore */} <T>/ one-time</T> </span>
                                 </div>
 
@@ -109,7 +115,7 @@ const CareerValueCard: React.FC = () => {
                         <div className="relative rounded-[1.8rem] bg-white dark:bg-brand-dark-secondary border border-gray-100 dark:border-white/5 px-8 py-10 lg:p-12 text-center shadow-[0_15px_30px_-10px_rgba(0,0,0,0.03)] dark:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.2)]">
                             <h4 className="text-[11px] font-black tracking-[0.2em] uppercase text-brand-green mb-6">
                                 {/* @ts-ignore */} <T> The OriginBI Philosophy </T> </h4>
-                            <p className="text-xl sm:text-2xl lg:text-3xl leading-snug text-brand-dark-primary dark:text-white font-semibold italic">
+                            <p className={`leading-snug text-brand-dark-primary dark:text-white font-semibold italic transition-all duration-300 ${mounted && language === 'ta' ? 'text-lg sm:text-xl lg:text-2xl' : 'text-xl sm:text-2xl lg:text-3xl'}`}>
                                 {/* @ts-ignore */} <T> "Choose the </T> <span className="not-italic text-brand-green font-extrabold">{/* @ts-ignore */} <T>Role</T> </span> {/* @ts-ignore */} <T> first, then pick the </T> <span className="not-italic text-brand-green font-extrabold">{/* @ts-ignore */} <T>Course</T> </span>{/* @ts-ignore */} <T>. Stop spending lakhs on degrees that don't fit." </T> </p>
                         </div>
                     </div>

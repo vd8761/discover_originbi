@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Languages } from "lucide-react";
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 
 interface Expert {
     id: number;
@@ -42,6 +42,13 @@ const experts: Expert[] = [
 ];
 
 const IndustryExperts: React.FC = () => {
+    const { language } = useLanguage();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
+
     const [currentIndex, setCurrentIndex] = useState(0);
     const [hasEnteredView, setHasEnteredView] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState<"english" | "tamil">("tamil");
@@ -113,10 +120,10 @@ const IndustryExperts: React.FC = () => {
         >
             <div className="max-w-[1920px] mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]">
                 <div className="text-center mb-12 lg:mb-16">
-                    <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-tight mb-4">
+                    <h2 className={`font-sans font-extrabold text-brand-dark-primary dark:text-white leading-tight mb-4 ${mounted && language === 'ta' ? 'text-[clamp(24px,3.5vw,42px)]' : 'text-[clamp(32px,4vw,56px)]'}`}>
                         {/* @ts-ignore */} <T> Industry </T> <span className="text-brand-green">{/* @ts-ignore */} <T>Experts</T> </span>
                     </h2>
-                    <p className="text-lg sm:text-xl text-brand-text-light-secondary dark:text-white/60 font-medium max-w-3xl mx-auto">
+                    <p className={`font-medium max-w-3xl mx-auto ${mounted && language === 'ta' ? 'text-base text-brand-text-light-secondary dark:text-white/50' : 'text-lg sm:text-xl text-brand-text-light-secondary dark:text-white/60'}`}>
                         {/* @ts-ignore */} <T> Insights from leaders who understand the true value of behavioral mapping in professional success. </T> </p>
                 </div>
 

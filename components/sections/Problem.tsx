@@ -1,9 +1,15 @@
 "use client";
 
 import React from 'react';
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 
 const Problem: React.FC = () => {
+    const { language } = useLanguage();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
     const problems = [
         {
             title: "Following friends without",
@@ -38,7 +44,7 @@ const Problem: React.FC = () => {
                 <div className="text-center mb-12 lg:mb-20 animate-fade-in">
                     <span className="text-[clamp(10px,0.8vw,14px)] font-bold uppercase tracking-[0.2em] text-brand-green mb-4 block">
                         {/* @ts-ignore */} <T> Problem </T> </span>
-                    <h2 className="text-[clamp(26px,3.2vw,48px)] font-sans font-bold leading-[1.2] lg:leading-[1.1] text-brand-dark-primary dark:text-white max-w-4xl mx-auto transition-colors duration-300 px-4">
+                    <h2 className={`font-sans font-bold leading-[1.2] lg:leading-[1.1] text-brand-dark-primary dark:text-white max-w-4xl mx-auto transition-colors duration-300 px-4 ${mounted && language === 'ta' ? 'text-[clamp(22px,2.8vw,38px)]' : 'text-[clamp(26px,3.2vw,48px)]'}`}>
                         {/* @ts-ignore */} <T> Still choosing courses based on fear or pressure? </T> </h2>
                 </div>
 
@@ -52,7 +58,7 @@ const Problem: React.FC = () => {
                         >
                             {/* Text content */}
                             <div className="p-6 lg:p-8 relative z-20">
-                                <h3 className={`text-[clamp(16px,1.3vw,24px)] font-medium leading-[1.4] lg:leading-[1.3] ${item.textColor} transition-colors duration-300`}>
+                                <h3 className={`font-medium leading-[1.4] lg:leading-[1.3] ${item.textColor} transition-colors duration-300 ${mounted && language === 'ta' ? 'text-[clamp(14px,1.2vw,20px)]' : 'text-[clamp(16px,1.3vw,24px)]'}`}>
                                     {item.title} <br />
                                     <span className="font-bold">{item.highlight}</span>
                                 </h3>

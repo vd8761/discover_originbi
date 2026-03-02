@@ -1,10 +1,16 @@
 "use client";
 
 import React from "react";
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 import Button from "@/components/ui/Button";
 
 const AiCounsellor: React.FC = () => {
+    const { language } = useLanguage();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
     return (
         <section className="relative z-10 w-full py-16 lg:py-32 bg-white dark:bg-brand-dark-primary transition-colors duration-300 overflow-hidden">
             <div className="max-w-[1920px] mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] relative z-10">
@@ -19,13 +25,13 @@ const AiCounsellor: React.FC = () => {
                                     {/* @ts-ignore */} <T>Get Started for Free</T>
                                 </span>
                             </div>
-                            <h2 className="text-[clamp(36px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] transition-colors duration-300">
+                            <h2 className={`font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] transition-colors duration-300 ${mounted && language === 'ta' ? 'text-[clamp(24px,3.5vw,42px)]' : 'text-[clamp(36px,4vw,56px)]'}`}>
                                 {/* @ts-ignore */} <T>Meet Your Personal</T> <br />
                                 <span className="text-brand-green">
                                     {/* @ts-ignore */} <T>AI Counsellor</T>
                                 </span>
                             </h2>
-                            <p className="text-lg text-gray-600 dark:text-gray-300/90 leading-relaxed max-w-xl">
+                            <p className={`leading-relaxed max-w-xl ${mounted && language === 'ta' ? 'text-base text-gray-600 dark:text-gray-300/80' : 'text-lg text-gray-600 dark:text-gray-300/90'}`}>
                                 {/* @ts-ignore */} <T>Ask personalized questions, make wise choices, and discover who you truly are. Our AI analyzes your unique behavioral data to provide deeply personal guidance on your path forward.</T>
                             </p>
                         </div>

@@ -2,9 +2,16 @@
 
 import React from "react";
 import { CheckIcon, AlertCircleIcon } from "@/components/icons";
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 
 const WhyOriginBI: React.FC = () => {
+  const { language } = useLanguage();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const tableData = [
     {
       feature: <>{/* @ts-ignore */} <T> Basis of Choice </T></>,
@@ -40,10 +47,10 @@ const WhyOriginBI: React.FC = () => {
     >
       <div className="max-w-[1920px] mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]">
         <div className="text-center mb-8 lg:mb-12">
-          <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-tight mb-2 transition-colors duration-300">
+          <h2 className={`font-sans font-extrabold text-brand-dark-primary dark:text-white leading-tight mb-2 transition-colors duration-300 ${mounted && language === 'ta' ? 'text-[clamp(24px,3vw,42px)]' : 'text-[clamp(32px,4vw,56px)]'}`}>
             {/* @ts-ignore */} <T> Why </T> <span className="text-brand-green">{/* @ts-ignore */} <T>OriginBI?</T> </span>
           </h2>
-          <p className="text-lg sm:text-xl text-brand-text-light-secondary dark:text-white/60 font-medium mb-1">
+          <p className={`text-brand-text-light-secondary dark:text-white/60 font-medium mb-1 ${mounted && language === 'ta' ? 'text-base sm:text-lg' : 'text-lg sm:text-xl'}`}>
             {/* @ts-ignore */} <T> The Difference Between Guessing and Knowing </T> </p>
         </div>
 
@@ -97,12 +104,12 @@ const WhyOriginBI: React.FC = () => {
                 <div className="p-5 lg:px-6 flex flex-col justify-center bg-gray-50/50 dark:bg-gray-800/10">
                   <span className="md:hidden font-semibold text-[11px] text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2 block">
                     {/* @ts-ignore */} <T> Feature </T> </span>
-                  <span className="font-bold text-lg text-brand-dark-primary dark:text-gray-100">
+                  <span className={`font-bold text-brand-dark-primary dark:text-gray-100 ${mounted && language === 'ta' ? 'text-base' : 'text-lg'}`}>
                     {row.feature}
                   </span>
                 </div>
 
-                <div className="p-5 lg:p-6 flex flex-col justify-center text-gray-600 dark:text-gray-400 text-[1.1rem] border-t border-gray-100 dark:border-white/5 md:border-t-0">
+                <div className={`p-5 lg:p-6 flex flex-col justify-center text-gray-600 dark:text-gray-400 border-t border-gray-100 dark:border-white/5 md:border-t-0 ${mounted && language === 'ta' ? 'text-sm sm:text-base leading-tight' : 'text-[1.1rem] leading-relaxed'}`}>
                   <span className="md:hidden font-semibold text-[11px] text-red-500/80 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
                     <span
                       className="material-symbols-outlined"
@@ -114,7 +121,7 @@ const WhyOriginBI: React.FC = () => {
                   <p className="leading-relaxed">{row.old}</p>
                 </div>
 
-                <div className="p-5 lg:p-6 flex flex-col justify-center text-[1.15rem] text-brand-dark-primary dark:text-white bg-brand-green/[0.03] dark:bg-brand-green/5 border-t border-brand-green/10 md:border-t-0 md:border-l border-brand-green/20">
+                <div className={`p-5 lg:p-6 flex flex-col justify-center text-brand-dark-primary dark:text-white bg-brand-green/[0.03] dark:bg-brand-green/5 border-t border-brand-green/10 md:border-t-0 md:border-l border-brand-green/20 ${mounted && language === 'ta' ? 'text-[15px] sm:text-[1.05rem] leading-tight' : 'text-[1.15rem] leading-relaxed'}`}>
                   <span className="md:hidden font-semibold text-[11px] text-brand-green uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
                     <span
                       className="material-symbols-outlined"
@@ -148,7 +155,7 @@ const WhyOriginBI: React.FC = () => {
               aria-hidden="true"
               className="absolute bottom-5 right-8 w-9 h-auto lg:w-11 rotate-180 opacity-90 pointer-events-none select-none brightness-0 invert"
             />
-            <p className="relative z-10 text-[clamp(20px,1.8vw,32px)] leading-[1.6] text-white font-semibold">
+            <p className={`relative z-10 leading-[1.6] text-white font-semibold ${mounted && language === 'ta' ? 'text-[clamp(18px,1.6vw,26px)]' : 'text-[clamp(20px,1.8vw,32px)]'}`}>
               <span className="opacity-90 font-medium">
                 {/* @ts-ignore */} <T> Most students pick a degree based on 10% of the information (Marks & Trends). </T> </span>
               <br className="hidden md:block" />
