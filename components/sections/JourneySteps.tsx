@@ -166,7 +166,7 @@ const JourneySteps: React.FC = () => {
                                                     fontVariationSettings: "'FILL' 1",
                                                 }}
                                             >
-                                                {/* @ts-ignore */} <T> psychology </T> </span>
+                                                psychology </span>
                                             {/* @ts-ignore */} <T> What Happens </T> </h5>
                                         <p className={`text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-semibold ${mounted && language === 'ta' ? 'text-sm' : 'text-base'}`}>
                                             {step.whatHappens}
@@ -182,7 +182,7 @@ const JourneySteps: React.FC = () => {
                                                     fontVariationSettings: "'FILL' 1",
                                                 }}
                                             >
-                                                {/* @ts-ignore */} <T> insights </T> </span>
+                                                insights </span>
                                             {/* @ts-ignore */} <T> The Result </T> </h5>
                                         <p className={`text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-semibold ${mounted && language === 'ta' ? 'text-sm' : 'text-base'}`}>
                                             {step.result}
@@ -320,7 +320,7 @@ const JourneySteps: React.FC = () => {
                                                             fontVariationSettings: "'FILL' 1",
                                                         }}
                                                     >
-                                                        {/* @ts-ignore */} <T> psychology </T> </span>
+                                                        psychology </span>
                                                     {/* @ts-ignore */} <T> What Happens </T> </h5>
                                                 <p className={mounted && language === 'ta' ? 'text-sm text-brand-text-light-secondary dark:text-white/80 leading-relaxed font-semibold' : 'text-journey-body'}>
                                                     {step.whatHappens}
@@ -338,7 +338,7 @@ const JourneySteps: React.FC = () => {
                                                             fontVariationSettings: "'FILL' 1",
                                                         }}
                                                     >
-                                                        {/* @ts-ignore */} <T> insights </T> </span>
+                                                        insights </span>
                                                     {/* @ts-ignore */} <T> The Result </T> </h5>
                                                 <p className={mounted && language === 'ta' ? 'text-sm text-brand-text-light-secondary dark:text-white/80 leading-relaxed font-semibold' : 'text-journey-body'}>{step.result}</p>
                                             </div>
