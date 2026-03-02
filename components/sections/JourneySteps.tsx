@@ -1,9 +1,16 @@
 "use client";
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 
 const JourneySteps: React.FC = () => {
+    const { language } = useLanguage();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
+
     const [activeStep, setActiveStep] = useState(0);
     const [scrollProgress, setScrollProgress] = useState(0);
     const sectionRef = useRef<HTMLDivElement>(null);
@@ -113,11 +120,11 @@ const JourneySteps: React.FC = () => {
             <div className="lg:hidden py-16 px-6">
                 {/* Mobile Header */}
                 <div className="mb-12 text-center">
-                    <h2 className="text-[clamp(28px,6vw,42px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight mb-4">
-                        {/* @ts-ignore */} <T> Your Journey to </T> <br />
+                    <h2 className={`font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight mb-4 ${mounted && language === 'ta' ? 'text-[clamp(20px,5vw,30px)]' : 'text-[clamp(28px,6vw,42px)]'}`}>
+                        {/* @ts-ignore */} <T> Your Journey to </T> {mounted && language === 'ta' ? '' : <br />}
                         <span className="text-brand-green">{/* @ts-ignore */} <T>Career Certainty</T> </span>
                     </h2>
-                    <p className="text-base text-brand-text-light-secondary dark:text-white/60 font-medium">
+                    <p className={`text-brand-text-light-secondary dark:text-white/60 font-medium ${mounted && language === 'ta' ? 'text-sm' : 'text-base'}`}>
                         {/* @ts-ignore */} <T> 3 Simple Steps to Stop Guessing and Start Growing </T> </p>
                 </div>
 
@@ -144,7 +151,7 @@ const JourneySteps: React.FC = () => {
                             <div className="rounded-2xl bg-white dark:bg-brand-dark-secondary border border-gray-100 dark:border-white/5 p-8 shadow-sm">
                                 {/* Quote */}
                                 <div className="relative mb-8 text-left border-l-[3px] border-brand-green pl-5">
-                                    <p className="text-xl italic text-brand-dark-primary dark:text-white font-medium leading-relaxed">
+                                    <p className={`italic text-brand-dark-primary dark:text-white font-medium leading-relaxed ${mounted && language === 'ta' ? 'text-lg' : 'text-xl'}`}>
                                         {/* @ts-ignore */} <T> &ldquo;</T> {step.feeling}{/* @ts-ignore */} <T>&rdquo; </T> </p>
                                 </div>
 
@@ -161,7 +168,7 @@ const JourneySteps: React.FC = () => {
                                             >
                                                 {/* @ts-ignore */} <T> psychology </T> </span>
                                             {/* @ts-ignore */} <T> What Happens </T> </h5>
-                                        <p className="text-base text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-semibold">
+                                        <p className={`text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-semibold ${mounted && language === 'ta' ? 'text-sm' : 'text-base'}`}>
                                             {step.whatHappens}
                                         </p>
                                     </div>
@@ -177,7 +184,7 @@ const JourneySteps: React.FC = () => {
                                             >
                                                 {/* @ts-ignore */} <T> insights </T> </span>
                                             {/* @ts-ignore */} <T> The Result </T> </h5>
-                                        <p className="text-base text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-semibold">
+                                        <p className={`text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-semibold ${mounted && language === 'ta' ? 'text-sm' : 'text-base'}`}>
                                             {step.result}
                                         </p>
                                     </div>
@@ -226,11 +233,11 @@ const JourneySteps: React.FC = () => {
                         <div className="w-[42%] flex flex-col justify-center pr-16 relative">
                             {/* Header */}
                             <div className="mb-16">
-                                <h2 className="text-[clamp(36px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.05] tracking-tight mb-5">
-                                    {/* @ts-ignore */} <T> Your Journey to </T> <br />
+                                <h2 className={`font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.05] tracking-tight mb-5 ${mounted && language === 'ta' ? 'text-[clamp(22px,2.8vw,36px)]' : 'text-[clamp(36px,4vw,56px)]'}`}>
+                                    {/* @ts-ignore */} <T> Your Journey to </T> {mounted && language === 'ta' ? '' : <br />}
                                     <span className="text-brand-green">{/* @ts-ignore */} <T>Career Certainty</T> </span>
                                 </h2>
-                                <p className="text-lg text-brand-text-light-secondary dark:text-white/60 font-medium">
+                                <p className={`text-brand-text-light-secondary dark:text-white/60 font-medium ${mounted && language === 'ta' ? 'text-base' : 'text-lg'}`}>
                                     {/* @ts-ignore */} <T> 3 Simple Steps to Stop Guessing and Start Growing </T> </p>
                             </div>
 
@@ -272,7 +279,7 @@ const JourneySteps: React.FC = () => {
                                                     {/* @ts-ignore */} <T> Step </T> {step.step}
                                                 </span>
                                                 <h4
-                                                    className={`font-extrabold leading-tight tracking-tight transition-all duration-500 ${isActive ? "text-2xl text-brand-dark-primary dark:text-white" : "text-lg text-gray-400 dark:text-white/40"}`}
+                                                    className={`font-extrabold leading-tight tracking-tight transition-all duration-500 ${isActive ? (mounted && language === 'ta' ? 'text-xl text-brand-dark-primary dark:text-white' : 'text-2xl text-brand-dark-primary dark:text-white') : (mounted && language === 'ta' ? 'text-base text-gray-400 dark:text-white/40' : 'text-lg text-gray-400 dark:text-white/40')}`}
                                                 >
                                                     {step.title}
                                                 </h4>
@@ -299,13 +306,13 @@ const JourneySteps: React.FC = () => {
                                         <div className="absolute inset-0 bg-grid opacity-[0.03] dark:opacity-[0.05] pointer-events-none rounded-[1.8rem]"></div>
 
                                         <div className="relative z-10 mb-8 shrink-0 text-left">
-                                            <p className="text-journey-quote text-brand-dark-primary dark:text-white">
+                                            <p className={`text-brand-dark-primary dark:text-white ${mounted && language === 'ta' ? 'text-lg sm:text-xl' : 'text-journey-quote'}`}>
                                                 {/* @ts-ignore */} <T> &ldquo;</T> {step.feeling}{/* @ts-ignore */} <T>&rdquo; </T> </p>
                                         </div>
 
                                         <div className="relative z-10 flex-1 flex flex-col gap-6 bg-gray-50/80 dark:bg-white/[0.03] rounded-2xl p-6 sm:p-8 border border-gray-100/50 dark:border-white/5 w-full">
                                             <div className="relative text-left">
-                                                <h5 className="text-journey-subheading text-brand-green">
+                                                <h5 className={`text-brand-green ${mounted && language === 'ta' ? 'text-base font-black uppercase tracking-[0.2em] mb-4 flex items-center gap-3' : 'text-journey-subheading'}`}>
                                                     <span
                                                         className="material-symbols-outlined text-brand-green"
                                                         style={{
@@ -315,7 +322,7 @@ const JourneySteps: React.FC = () => {
                                                     >
                                                         {/* @ts-ignore */} <T> psychology </T> </span>
                                                     {/* @ts-ignore */} <T> What Happens </T> </h5>
-                                                <p className="text-journey-body">
+                                                <p className={mounted && language === 'ta' ? 'text-sm text-brand-text-light-secondary dark:text-white/80 leading-relaxed font-semibold' : 'text-journey-body'}>
                                                     {step.whatHappens}
                                                 </p>
                                             </div>
@@ -323,7 +330,7 @@ const JourneySteps: React.FC = () => {
                                             <div className="w-full h-px bg-gray-200 dark:bg-white/10 opacity-60"></div>
 
                                             <div className="relative text-left">
-                                                <h5 className="text-journey-subheading text-brand-green">
+                                                <h5 className={`text-brand-green ${mounted && language === 'ta' ? 'text-base font-black uppercase tracking-[0.2em] mb-4 flex items-center gap-3' : 'text-journey-subheading'}`}>
                                                     <span
                                                         className="material-symbols-outlined text-brand-green"
                                                         style={{
@@ -333,7 +340,7 @@ const JourneySteps: React.FC = () => {
                                                     >
                                                         {/* @ts-ignore */} <T> insights </T> </span>
                                                     {/* @ts-ignore */} <T> The Result </T> </h5>
-                                                <p className="text-journey-body">{step.result}</p>
+                                                <p className={mounted && language === 'ta' ? 'text-sm text-brand-text-light-secondary dark:text-white/80 leading-relaxed font-semibold' : 'text-journey-body'}>{step.result}</p>
                                             </div>
                                         </div>
                                     </div>

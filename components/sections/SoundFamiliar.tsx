@@ -1,9 +1,16 @@
 "use client";
 
 import React from 'react';
-import { T } from "@/contexts/LanguageContext";
+import { T, useLanguage } from "@/contexts/LanguageContext";
 
 const SoundFamiliar: React.FC = () => {
+    const { language } = useLanguage();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
+
     const situations = [
         {
             title: <>{/* @ts-ignore */} <T> Stop the Guesswork </T></>,
@@ -36,11 +43,11 @@ const SoundFamiliar: React.FC = () => {
         <section id="situation" className="relative w-full py-20 lg:py-32 bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500 overflow-hidden">
             <div className="container mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] relative z-10">
                 {/* Header Sequence */}
-                <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-                    <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight mb-6 transition-colors">
+                <div className={`text-center mx-auto mb-16 lg:mb-20 ${mounted && language === 'ta' ? 'max-w-5xl' : 'max-w-3xl'}`}>
+                    <h2 className={`font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight mb-6 transition-colors ${mounted && language === 'ta' ? 'text-[clamp(24px,3vw,38px)]' : 'text-[clamp(28px,3.5vw,48px)]'}`}>
                         {/* @ts-ignore */} <T> Is This Your </T> <span className="text-brand-green">{/* @ts-ignore */} <T>Current Situation</T> </span> ?
                     </h2>
-                    <p className="text-lg sm:text-xl text-brand-text-light-secondary dark:text-white/70 font-medium">
+                    <p className={`text-brand-text-light-secondary dark:text-white/70 font-medium ${mounted && language === 'ta' ? 'text-base sm:text-lg' : 'text-lg sm:text-xl'}`}>
                         {/* @ts-ignore */} <T> Check if you (or your child) are at one of these career crossroads: </T> </p>
                 </div>
 
@@ -57,10 +64,10 @@ const SoundFamiliar: React.FC = () => {
                                         {item.icon}
                                     </span>
                                 </div>
-                                <h3 className="text-xl sm:text-2xl font-bold text-brand-dark-primary dark:text-white mb-4 leading-tight tracking-tight">
+                                <h3 className={`font-bold text-brand-dark-primary dark:text-white mb-4 leading-tight tracking-tight ${mounted && language === 'ta' ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'}`}>
                                     {item.title}
                                 </h3>
-                                <p className="text-base sm:text-lg text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-medium">
+                                <p className={`text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-medium ${mounted && language === 'ta' ? 'text-sm sm:text-base' : 'text-base sm:text-lg'}`}>
                                     {item.description}
                                 </p>
                             </div>

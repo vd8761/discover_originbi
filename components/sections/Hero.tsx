@@ -9,20 +9,27 @@ import { useReferral } from "@/contexts/ReferralContext";
 const Hero: React.FC = () => {
     const { getRegisterUrl } = useReferral();
     const { language } = useLanguage();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
+
     return (
-        <section className="relative w-full flex items-center bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500 pt-24 pb-16 lg:pt-44 lg:pb-8 overflow-hidden">
+        <section className={`relative w-full flex bg-brand-light-primary dark:bg-brand-dark-primary transition-colors duration-500 overflow-hidden ${mounted && language === 'ta' ? 'pt-24 pb-12 items-center' : 'pt-24 pb-16 lg:pt-44 lg:pb-8 items-center'}`}>
             <div className="container mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] relative z-10">
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-12">
+                <div className={`flex flex-col lg:flex-row justify-between gap-10 lg:gap-16 items-center`}>
 
                     {/* Left Content Column */}
-                    <div className="w-full lg:w-[45%] text-left order-2 lg:order-1">
+                    <div className={`w-full text-left order-2 lg:order-1 transition-all duration-300 ${mounted && language === 'ta' ? 'lg:w-[50%] pt-4 lg:pt-8' : 'lg:w-[45%]'}`}>
                         <div className="max-w-xl">
-                            <h1 className={`font-sans font-extrabold leading-[1.2] mb-5 tracking-tight text-brand-dark-primary dark:text-white transition-colors ${language === 'ta' ? 'text-[clamp(26px,3.5vw,42px)]' : 'text-[clamp(30px,4vw,52px)]'}`}>
-                                {/* @ts-ignore */} <T> Discover, Align and Excel </T> <br className="hidden sm:block" />
-                                <span className="text-brand-green">{/* @ts-ignore */} <T>in the Right Career Path</T> </span>
+                            <h1 className={`font-sans font-extrabold tracking-tight text-brand-dark-primary dark:text-white transition-colors py-1 ${mounted && language === 'ta' ? 'leading-[1.3] text-[clamp(18px,2.5vw,28px)] mb-6' : 'leading-[1.2] text-[clamp(30px,4vw,52px)] mb-5'}`}>
+                                {/* @ts-ignore */} <T> Discover, Align and Excel </T>
+                                <br className={mounted && language === 'ta' ? 'hidden' : 'hidden sm:block'} />
+                                <span className={mounted && language === 'ta' ? 'text-brand-green' : 'text-brand-green'}>{mounted && language === 'ta' ? ' ' : ''}{/* @ts-ignore */} <T>in the Right Career Path</T> </span>
                             </h1>
 
-                            <p className="text-base sm:text-lg text-brand-text-light-secondary dark:text-white/60 font-medium mb-8 max-w-md leading-relaxed">
+                            <p className={`text-base sm:text-lg text-brand-text-light-secondary dark:text-white/60 font-medium mb-8 leading-relaxed ${mounted && language === 'ta' ? 'max-w-xl' : 'max-w-md'}`}>
                                 {/* @ts-ignore */} <T> Find Your Edge. Move Beyond the Degree. </T> </p>
 
                             {/* Checklist */}
@@ -69,12 +76,12 @@ const Hero: React.FC = () => {
                     </div>
 
                     {/* Right Image Column - Plain Image, no container */}
-                    <div className="w-full lg:w-[55%] relative flex justify-center lg:justify-end order-1 lg:order-2">
-                        <div className="w-full max-w-[650px]">
+                    <div className={`w-full relative flex justify-center order-1 lg:order-2 transition-all duration-300 ${mounted && language === 'ta' ? 'lg:w-[50%]' : 'lg:w-[55%]'}`}>
+                        <div className={`w-full flex justify-center items-center ${mounted && language === 'ta' ? 'max-w-[550px]' : 'max-w-[650px]'}`}>
                             <img
                                 src="/hero-new.png"
                                 alt="Origin BI Assessment Platform"
-                                className="w-full h-auto object-contain max-w-[360px] sm:max-w-full mx-auto scale-100 lg:scale-110 lg:-translate-y-10"
+                                className={`w-full h-auto object-contain max-w-[360px] sm:max-w-full mx-auto transition-transform duration-300 ${mounted && language === 'ta' ? 'scale-110' : 'scale-100 lg:scale-110 lg:-translate-y-10'}`}
                                 draggable={false}
                             />
                         </div>
