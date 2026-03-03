@@ -31,6 +31,7 @@ function RegisterPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [referralValidationStatus, setReferralValidationStatus] = useState<'valid' | 'invalid' | 'checking' | null>(null);
+  const [affiliatorName, setAffiliatorName] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -153,9 +154,12 @@ function RegisterPageContent() {
     if (referralCode && referralCode.trim()) {
       setReferralValidationStatus('checking');
       validateReferralCode(referralCode.trim())
-        .then(() => {
+        .then((res) => {
           setReferralValidationStatus('valid');
           setFormData(prev => ({ ...prev, referralCode: referralCode.trim() }));
+          if (res?.name) {
+            setAffiliatorName(res.name);
+          }
         })
         .catch((err) => {
           console.error("Invalid referral code:", err);
@@ -363,6 +367,19 @@ function RegisterPageContent() {
 
                   <p className="text-base text-gray-500 dark:text-gray-400 mb-8 font-light leading-relaxed max-w-md">
                     {/* @ts-ignore */} <T> Create your student profile to unlock exclusive insights and discover your potential. </T> </p>
+
+                  {affiliatorName && (
+                    <div className="flex items-center gap-3 p-4 mb-8 bg-brand-green/5 border border-brand-green/20 rounded-2xl text-brand-dark-primary dark:text-white animate-fade-in shadow-sm">
+                      <div className="flex items-center justify-center w-10 h-10 rounded-full bg-brand-green/10 text-brand-green flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                        </svg>
+                      </div>
+                      <p className="font-medium text-sm">
+                        {/* @ts-ignore */} <T> You're signing up using </T> <span className="font-bold text-brand-green">{affiliatorName}</span>'s {/* @ts-ignore */} <T> referral link </T>
+                      </p>
+                    </div>
+                  )}
 
                   <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-5 notranslate">
 
