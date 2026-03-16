@@ -116,3 +116,25 @@ export const validateReferralCode = async (code: string) => {
         throw error;
     }
 };
+
+export const getSchoolStreams = async () => {
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    if (!API_URL) throw new Error('API_URL is not defined');
+
+    try {
+        const response = await fetch(`${API_URL}/student/streams`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({}),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch school streams');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Fetch School Streams Error:', error);
+        return [];
+    }
+};

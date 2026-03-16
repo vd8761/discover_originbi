@@ -13,7 +13,7 @@ import MobileInput from "@/components/ui/MobileInput";
 import RegisterSteps from "@/components/sections/RegisterSteps";
 
 import MobileHowItWorksCarousel from "@/components/sections/MobileHowItWorksCarousel";
-import { registerStudent, validateStudent, validateReferralCode } from "@/lib/api";
+import { registerStudent, validateStudent, validateReferralCode, getSchoolStreams } from "@/lib/api";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getEnabledBoards } from "@/lib/constants";
 import { T, useTranslation } from "@/contexts/LanguageContext";
@@ -49,6 +49,31 @@ function RegisterPageContent() {
     studentBoard: "",
     referralCode: "",
   });
+
+  const [streamOptions, setStreamOptions] = useState<{ value: string; label: string }[]>([]);
+
+  React.useEffect(() => {
+    getSchoolStreams().then((streams: any[]) => {
+      if (streams && streams.length > 0) {
+        const options = streams.map(s => {
+          const short = s.shortName || s.short_name;
+          const full = s.name;
+          return {
+            value: short,
+            label: `${short} (${full})`
+          };
+        });
+        setStreamOptions(options);
+      } else {
+        // Fallback to defaults if API fails
+        setStreamOptions([
+          { value: "SCIENCE", label: "Science" },
+          { value: "COMMERCE", label: "Commerce" },
+          { value: "HUMANITIES", label: "Humanities" },
+        ]);
+      }
+    });
+  }, []);
 
   const validatePassword = (pwd: string) => {
     if (!pwd) return "Password is required";
@@ -184,12 +209,6 @@ function RegisterPageContent() {
   const schoolLevelOptions = [
     { value: "SSLC", label: "SSLC" },
     { value: "HSC", label: "HSC" },
-  ];
-
-  const streamOptions = [
-    { value: "SCIENCE", label: "Science" },
-    { value: "COMMERCE", label: "Commerce" },
-    { value: "HUMANITIES", label: "Humanities" },
   ];
 
   const loadRazorpay = () => {
@@ -478,7 +497,7 @@ function RegisterPageContent() {
                         <div className="h-px flex-1 bg-gray-100 dark:bg-white/10"></div>
                       </div>
 
-                      <div className={`grid gap-5 ${formData.schoolLevel === 'HSC' ? 'sm:grid-cols-3' : 'sm:grid-cols-1'}`}>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div className="space-y-1.5">
                           <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-4">
                             {/* @ts-ignore */} <T> Student Board </T> <span className="text-brand-red">*</span>
@@ -510,50 +529,49 @@ function RegisterPageContent() {
                           placeholder="Select Grade"
                           buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
                         />
-
-                        {formData.schoolLevel === 'HSC' && (
-                          <>
-                            <CustomSelect
-                              label="Stream"
-                              required
-                              options={streamOptions}
-                              value={formData.stream}
-                              onChange={(val) => handleSelectChange("stream", val)}
-                              placeholder="Select Stream"
-                              buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
-                              className="animate-fade-in"
-                            />
-                            <Input
-                              type="text"
-                              label="Current Level"
-                              name="currentYear"
-                              required
-                              placeholder="1 or 2"
-                              value={formData.currentYear}
-                              error={formErrors.currentYear}
-                              onChange={(e) => {
-                                const val = e.target.value.replace(/\D/g, "");
-                                if (val.length > 1) return;
-                                setFormData(prev => ({ ...prev, currentYear: val }));
-
-                                if (val && val !== "1" && val !== "2") {
-                                  setFormErrors(prev => ({ ...prev, currentYear: "Must be 1 or 2" }));
-                                } else {
-
-                                  if (formErrors.currentYear) {
-                                    setFormErrors(prev => {
-                                      const newErrors = { ...prev };
-                                      delete newErrors.currentYear;
-                                      return newErrors;
-                                    });
-                                  }
-                                }
-                              }}
-                              className="animate-fade-in h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
-                            />
-                          </>
-                        )}
                       </div>
+
+                      {formData.schoolLevel === 'HSC' && (
+                        <div className="space-y-5 animate-fade-in">
+                          <CustomSelect
+                            label="Stream"
+                            required
+                            options={streamOptions}
+                            value={formData.stream}
+                            onChange={(val) => handleSelectChange("stream", val)}
+                            placeholder="Select Stream"
+                            buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
+                          />
+                          <Input
+                            type="text"
+                            label="Current Level"
+                            name="currentYear"
+                            required
+                            placeholder="1 or 2"
+                            value={formData.currentYear}
+                            error={formErrors.currentYear}
+                            onChange={(e) => {
+                              const val = e.target.value.replace(/\D/g, "");
+                              if (val.length > 1) return;
+                              setFormData(prev => ({ ...prev, currentYear: val }));
+
+                              if (val && val !== "1" && val !== "2") {
+                                setFormErrors(prev => ({ ...prev, currentYear: "Must be 1 or 2" }));
+                              } else {
+
+                                if (formErrors.currentYear) {
+                                  setFormErrors(prev => {
+                                    const newErrors = { ...prev };
+                                    delete newErrors.currentYear;
+                                    return newErrors;
+                                  });
+                                }
+                              }
+                            }}
+                            className="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
+                          />
+                        </div>
+                      )}
                     </div>
 
                     {formErrors.apiError && (
@@ -648,10 +666,10 @@ function RegisterPageContent() {
             <RegisterSteps />
           </div>
         </div>
-      </main>
+      </main >
 
       <Footer />
-    </div>
+    </div >
   );
 }
 
