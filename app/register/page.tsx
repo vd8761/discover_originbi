@@ -261,6 +261,7 @@ function RegisterPageContent() {
         handler: async function (response: any) {
           // Payment Success - Now Register Student
           try {
+            const amount = (Number(process.env.NEXT_PUBLIC_REGISTRATION_COST) || 500).toString();
             const registerResponse = await registerStudent({
               full_name: formData.name,
               email: formData.email,
@@ -273,6 +274,9 @@ function RegisterPageContent() {
               school_stream: formData.schoolLevel === 'HSC' ? formData.stream : undefined,
               student_board: formData.studentBoard,
               referral_code: formData.referralCode || undefined,
+              payment_amount: amount,
+              payment_reference: response.razorpay_payment_id,
+              payment_provider: 'RAZORPAY',
             });
 
             if (registerResponse.success) {

@@ -11,6 +11,9 @@ export interface RegistrationFormData {
     school_stream?: string;
     student_board?: string;
     referral_code?: string;
+    payment_amount?: string;
+    payment_reference?: string;
+    payment_provider?: string;
 }
 
 export const registerStudent = async (formData: RegistrationFormData) => {
@@ -31,6 +34,9 @@ export const registerStudent = async (formData: RegistrationFormData) => {
             school_stream: formData.school_stream,
             student_board: formData.student_board,
             referral_code: formData.referral_code,
+            payment_amount: formData.payment_amount,
+            payment_reference: formData.payment_reference,
+            payment_provider: formData.payment_provider || 'RAZORPAY',
         };
 
         const response = await fetch(`${API_URL}/student/register`, {
