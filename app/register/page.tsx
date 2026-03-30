@@ -114,10 +114,12 @@ function RegisterPageContent() {
     if (!formData.email && !formData.mobile) return;
 
     try {
-      // Clear previous API error before validating
+      // Clear previous API and field-specific errors before validating
       setFormErrors(prev => {
         const newErrors = { ...prev };
         delete newErrors.apiError;
+        delete newErrors.email;
+        delete newErrors.mobile;
         return newErrors;
       });
 
@@ -128,14 +130,37 @@ function RegisterPageContent() {
       });
 
       if (result && !result.isValid) {
-        setFormErrors(prev => ({ ...prev, apiError: result.message }));
+        const fieldName = result.field === 'mobile_number' ? 'mobile' : result.field;
+        if (fieldName && (fieldName === 'email' || fieldName === 'mobile')) {
+          setFormErrors(prev => ({ ...prev, [fieldName]: result.message }));
+        } else {
+          setFormErrors(prev => ({ ...prev, apiError: result.message }));
+        }
       }
 
     } catch (error: any) {
       console.error("Validation Error:", error);
-      setFormErrors(prev => ({ ...prev, apiError: error.message || "User validation failed." }));
+      // Don't show generic error on type/blur if it's not from existence check
+      // Only set apiError if it's explicitly a business rule violation
+      if (error.message && (error.message.includes("already exists") || error.message.includes("registered"))) {
+        setFormErrors(prev => ({ ...prev, apiError: error.message }));
+      }
     }
   };
+
+  // Instant Validation Debounce
+  React.useEffect(() => {
+    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+    const isMobilePossible = formData.mobile.length >= 8;
+
+    if (!isEmailValid && !isMobilePossible) return;
+
+    const timer = setTimeout(() => {
+      handleBlur();
+    }, 800);
+
+    return () => clearTimeout(timer);
+  }, [formData.email, formData.mobile]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -237,7 +262,12 @@ function RegisterPageContent() {
       });
 
       if (validationResult && !validationResult.isValid) {
-        setFormErrors(prev => ({ ...prev, apiError: validationResult.message || "User validation failed." }));
+        const fieldName = validationResult.field === 'mobile_number' ? 'mobile' : validationResult.field;
+        if (fieldName && (fieldName === 'email' || fieldName === 'mobile')) {
+          setFormErrors(prev => ({ ...prev, [fieldName]: validationResult.message }));
+        } else {
+          setFormErrors(prev => ({ ...prev, apiError: validationResult.message || "User validation failed." }));
+        }
         setIsLoading(false);
         return;
       }
@@ -451,6 +481,7 @@ function RegisterPageContent() {
                       value={formData.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      error={formErrors.email}
                       className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all h-12"
                     />
 
@@ -533,6 +564,7 @@ function RegisterPageContent() {
                           placeholder="Select Grade"
                           buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
                         />
+                        {formErrors.schoolLevel && <p className="text-red-500 text-xs ml-4 mt-1">{formErrors.schoolLevel}</p>}
                       </div>
 
                       {formData.schoolLevel === 'HSC' && (
@@ -546,34 +578,20 @@ function RegisterPageContent() {
                             placeholder="Select Stream"
                             buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
                           />
-                          <Input
-                            type="text"
-                            label="Current Level"
-                            name="currentYear"
+                          {formErrors.stream && <p className="text-red-500 text-xs ml-4 mt-1">{formErrors.stream}</p>}
+                          <CustomSelect
+                            label="Current Standard"
                             required
-                            placeholder="1 or 2"
+                            options={[
+                              { value: "1", label: "11th Standard" },
+                              { value: "2", label: "12th Standard" }
+                            ]}
                             value={formData.currentYear}
-                            error={formErrors.currentYear}
-                            onChange={(e) => {
-                              const val = e.target.value.replace(/\D/g, "");
-                              if (val.length > 1) return;
-                              setFormData(prev => ({ ...prev, currentYear: val }));
-
-                              if (val && val !== "1" && val !== "2") {
-                                setFormErrors(prev => ({ ...prev, currentYear: "Must be 1 or 2" }));
-                              } else {
-
-                                if (formErrors.currentYear) {
-                                  setFormErrors(prev => {
-                                    const newErrors = { ...prev };
-                                    delete newErrors.currentYear;
-                                    return newErrors;
-                                  });
-                                }
-                              }
-                            }}
-                            className="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
+                            onChange={(val) => handleSelectChange("currentYear", val)}
+                            placeholder="Select Standard"
+                            buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
                           />
+                          {formErrors.currentYear && <p className="text-red-500 text-xs ml-4 mt-1">{formErrors.currentYear}</p>}
                         </div>
                       )}
                     </div>
