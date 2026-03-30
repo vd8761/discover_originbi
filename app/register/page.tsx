@@ -110,19 +110,19 @@ function RegisterPageContent() {
   };
 
   const handleBlur = async () => {
+    // Clear previous API and field-specific errors immediately
+    setFormErrors(prev => {
+      const newErrors = { ...prev };
+      delete newErrors.apiError;
+      delete newErrors.email;
+      delete newErrors.mobile;
+      return newErrors;
+    });
+
     // Only validate if we have at least one field filled to avoid unnecessary calls.
     if (!formData.email && !formData.mobile) return;
 
     try {
-      // Clear previous API and field-specific errors before validating
-      setFormErrors(prev => {
-        const newErrors = { ...prev };
-        delete newErrors.apiError;
-        delete newErrors.email;
-        delete newErrors.mobile;
-        return newErrors;
-      });
-
       const result = await validateStudent({
         email: formData.email,
         mobile_number: formData.mobile,
@@ -491,8 +491,26 @@ function RegisterPageContent() {
                       required
                       countryCode={formData.countryCode}
                       phoneNumber={formData.mobile}
-                      onCountryChange={(code) => setFormData(prev => ({ ...prev, countryCode: code }))}
-                      onPhoneChange={(num) => setFormData(prev => ({ ...prev, mobile: num }))}
+                      onCountryChange={(code) => {
+                        setFormData(prev => ({ ...prev, countryCode: code }));
+                        if (formErrors.mobile) {
+                          setFormErrors(prev => {
+                            const newErrors = { ...prev };
+                            delete newErrors.mobile;
+                            return newErrors;
+                          });
+                        }
+                      }}
+                      onPhoneChange={(num) => {
+                        setFormData(prev => ({ ...prev, mobile: num }));
+                        if (formErrors.mobile) {
+                          setFormErrors(prev => {
+                            const newErrors = { ...prev };
+                            delete newErrors.mobile;
+                            return newErrors;
+                          });
+                        }
+                      }}
                       error={formErrors.mobile}
                       onBlur={handleBlur}
                       className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full transition-all h-12"
