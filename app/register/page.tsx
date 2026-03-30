@@ -542,8 +542,36 @@ function RegisterPageContent() {
                       }
                     />
 
+                    {/* Password Strength Indicator */}
+                    {formData.password && (
+                      <div className="px-5 py-4 bg-gray-50/50 dark:bg-brand-dark-tertiary/30 rounded-2xl space-y-3 animate-fade-in border border-gray-100 dark:border-white/5 shadow-sm">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
+                          {[
+                            { label: "Min 8 Chars", valid: formData.password.length >= 8 },
+                            { label: "Uppercase", valid: /[A-Z]/.test(formData.password) },
+                            { label: "Lowercase", valid: /[a-z]/.test(formData.password) },
+                            { label: "One Number", valid: /[0-9]/.test(formData.password) },
+                            { label: "Special Char", valid: /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(formData.password) },
+                          ].map((check, idx) => (
+                            <div key={idx} className="flex items-center gap-2.5 group">
+                              <div className={`w-4 h-4 rounded-full flex items-center justify-center transition-all duration-300 ${check.valid ? 'bg-brand-green text-white scale-110 shadow-sm shadow-brand-green/20' : 'bg-gray-100 dark:bg-brand-dark-secondary text-gray-300'}`}>
+                                {check.valid ? (
+                                  <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M5 13l4 4L19 7" /></svg>
+                                ) : (
+                                  <div className="w-1 h-1 bg-current rounded-full transition-all group-hover:scale-150"></div>
+                                )}
+                              </div>
+                              <span className={`text-[10.5px] font-bold transition-colors duration-300 ${check.valid ? 'text-brand-green' : 'text-gray-400'}`}>
+                                <T>{check.label}</T>
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
                     {/* Academic Details - Simplified */}
-                    <div className="pt-2 space-y-5">
+                    <div className="pt-2 space-y-5 relative z-20">
                       <div className="flex items-center gap-4">
                         <div className="h-px flex-1 bg-gray-100 dark:bg-white/10"></div>
                         <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">{/* @ts-ignore */} <T>Academic Details</T> </h3>
@@ -573,20 +601,24 @@ function RegisterPageContent() {
                           {formErrors.studentBoard && <p className="text-red-500 text-xs ml-4 mt-1">{formErrors.studentBoard}</p>}
                         </div>
 
-                        <CustomSelect
-                          label="School Level"
-                          required
-                          options={schoolLevelOptions}
-                          value={formData.schoolLevel}
-                          onChange={(val) => handleSelectChange("schoolLevel", val)}
-                          placeholder="Select Grade"
-                          buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
-                        />
-                        {formErrors.schoolLevel && <p className="text-red-500 text-xs ml-4 mt-1">{formErrors.schoolLevel}</p>}
+                        <div className="space-y-1.5 w-full">
+                          <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-4">
+                            {/* @ts-ignore */} <T> School Level </T> <span className="text-brand-red">*</span>
+                          </label>
+                          <CustomSelect
+                            required
+                            options={schoolLevelOptions}
+                            value={formData.schoolLevel}
+                            onChange={(val) => handleSelectChange("schoolLevel", val)}
+                            placeholder="Select Stage"
+                            buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
+                          />
+                          {formErrors.schoolLevel && <p className="text-red-500 text-xs ml-4 mt-1">{formErrors.schoolLevel}</p>}
+                        </div>
                       </div>
 
                       {formData.schoolLevel === 'HSC' && (
-                        <div className="space-y-5 animate-fade-in">
+                        <div className="space-y-5 animate-fade-in relative z-30">
                           <CustomSelect
                             label="Stream"
                             required
@@ -621,15 +653,17 @@ function RegisterPageContent() {
                       </div>
                     )}
 
-                    <Button
-                      type="submit"
-                      size="lg"
-                      fullWidth
-                      disabled={isLoading || Object.keys(formErrors).length > 0}
-                      className="h-14 text-lg font-bold shadow-xl shadow-brand-green/20 hover:shadow-brand-green/40 transition-all transform hover:-translate-y-0.5 rounded-full mt-6"
-                    >
-                      {isLoading ? <T>Processing...</T> : <T>Register and Pay</T>}
-                    </Button>
+                    <div className="relative z-0">
+                      <Button
+                        type="submit"
+                        size="lg"
+                        fullWidth
+                        disabled={isLoading || Object.keys(formErrors).length > 0}
+                        className="h-14 text-lg font-bold shadow-xl shadow-brand-green/20 hover:shadow-brand-green/40 transition-all transform hover:-translate-y-0.5 rounded-full mt-6"
+                      >
+                        {isLoading ? <T>Processing...</T> : <T>Register and Pay</T>}
+                      </Button>
+                    </div>
 
                     <div className="text-center pt-2">
                       <p className="text-sm text-gray-500 dark:text-gray-400">
