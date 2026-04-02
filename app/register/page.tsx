@@ -51,6 +51,9 @@ function RegisterPageContent() {
     referralCode: "",
   });
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const handleTurnstileVerify = useCallback((token: string) => {
+    setTurnstileToken(token);
+  }, []);
 
   const [streamOptions, setStreamOptions] = useState<{ value: string; label: string }[]>([]);
 
@@ -658,7 +661,7 @@ function RegisterPageContent() {
 
                     <div className="relative z-0 space-y-6">
                       <div className="flex justify-center pt-4">
-                        <Turnstile onVerify={useCallback((token: string) => setTurnstileToken(token), [])} />
+                        <Turnstile onVerify={handleTurnstileVerify} />
                       </div>
                       <Button
                         type="submit"
