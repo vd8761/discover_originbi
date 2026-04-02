@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ReferralProvider } from "@/contexts/ReferralContext";
 import { Suspense } from "react";
+import Script from "next/script";
 
 const notoSansTamil = Noto_Sans_Tamil({
   subsets: ["tamil"],
@@ -27,6 +28,19 @@ export default function RootLayout({
     <html lang="en" className={`${notoSansTamil.variable}`}>
       <head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,100..700,0..1,-50..200" />
+        {/* Google Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+          `}
+        </Script>
       </head>
       <body className="antialiased">
         <ThemeProvider>
