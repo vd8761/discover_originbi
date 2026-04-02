@@ -14,6 +14,7 @@ export interface RegistrationFormData {
     payment_amount?: string;
     payment_reference?: string;
     payment_provider?: string;
+    turnstile_token?: string;
 }
 
 export const registerStudent = async (formData: RegistrationFormData) => {
@@ -37,6 +38,7 @@ export const registerStudent = async (formData: RegistrationFormData) => {
             payment_amount: formData.payment_amount,
             payment_reference: formData.payment_reference,
             payment_provider: formData.payment_provider || 'RAZORPAY',
+            turnstile_token: formData.turnstile_token,
         };
 
         const response = await fetch(`${API_URL}/student/register`, {

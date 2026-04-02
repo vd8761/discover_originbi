@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -11,6 +11,7 @@ import Input from "@/components/ui/Input";
 import CustomSelect from "@/components/ui/CustomSelect";
 import MobileInput from "@/components/ui/MobileInput";
 import RegisterSteps from "@/components/sections/RegisterSteps";
+import Turnstile from "@/components/ui/Turnstile";
 
 import MobileHowItWorksCarousel from "@/components/sections/MobileHowItWorksCarousel";
 import { registerStudent, validateStudent, validateReferralCode, getSchoolStreams } from "@/lib/api";
@@ -49,6 +50,7 @@ function RegisterPageContent() {
     studentBoard: "",
     referralCode: "",
   });
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
   const [streamOptions, setStreamOptions] = useState<{ value: string; label: string }[]>([]);
 
@@ -307,6 +309,7 @@ function RegisterPageContent() {
               payment_amount: amount,
               payment_reference: response.razorpay_payment_id,
               payment_provider: 'RAZORPAY',
+              turnstile_token: turnstileToken || undefined,
             });
 
             if (registerResponse.success) {
@@ -653,13 +656,16 @@ function RegisterPageContent() {
                       </div>
                     )}
 
-                    <div className="relative z-0">
+                    <div className="relative z-0 space-y-6">
+                      <div className="flex justify-center pt-4">
+                        <Turnstile onVerify={useCallback((token: string) => setTurnstileToken(token), [])} />
+                      </div>
                       <Button
                         type="submit"
                         size="lg"
                         fullWidth
-                        disabled={isLoading || Object.keys(formErrors).length > 0}
-                        className="h-14 text-lg font-bold shadow-xl shadow-brand-green/20 hover:shadow-brand-green/40 transition-all transform hover:-translate-y-0.5 rounded-full mt-6"
+                        disabled={isLoading || Object.keys(formErrors).length > 0 || !turnstileToken}
+                        className="h-14 text-lg font-bold shadow-xl shadow-brand-green/20 hover:shadow-brand-green/40 transition-all transform hover:-translate-y-0.5 rounded-full disabled:opacity-50"
                       >
                         {isLoading ? <T>Processing...</T> : <T>Register and Pay</T>}
                       </Button>
