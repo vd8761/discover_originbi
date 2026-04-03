@@ -17,8 +17,8 @@ const Footer: React.FC = () => {
                     </a>
                     <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 text-[13px] 2xl:text-sm font-medium">
                         <span className="text-brand-text-light-primary dark:text-brand-text-primary transition-colors duration-300">{/* @ts-ignore */} <T>&copy; </T> {new Date().getFullYear()} {/* @ts-ignore */} <T> OriginBI mindworks</T> </span>
-                        <a href="#" className="text-brand-text-light-secondary dark:text-brand-text-secondary hover:text-brand-green transition-colors duration-300">{/* @ts-ignore */} <T>Privacy Policy</T> </a>
-                        <a href="#" className="text-brand-text-light-secondary dark:text-brand-text-secondary hover:text-brand-green transition-colors duration-300">{/* @ts-ignore */} <T>Terms and Conditions</T> </a>
+                        <a href="https://originbi.com/privacypolicy.php" target="_blank" rel="noopener noreferrer" className="text-brand-text-light-secondary dark:text-brand-text-secondary hover:text-brand-green transition-colors duration-300">{/* @ts-ignore */} <T>Privacy Policy</T> </a>
+                        <a href="https://originbi.com/termsandconditions.php" target="_blank" rel="noopener noreferrer" className="text-brand-text-light-secondary dark:text-brand-text-secondary hover:text-brand-green transition-colors duration-300">{/* @ts-ignore */} <T>Terms and Conditions</T> </a>
                     </div>
                 </div>
 
