@@ -184,6 +184,7 @@ function RegisterPageContent() {
     setFormData((prev) => ({
       ...prev,
       [name]: value,
+      ...(name === 'studentBoard' ? { schoolLevel: '' } : {}), // Clear school level when board changes
       ...(name === 'schoolLevel' && value !== 'HSC' ? { stream: '', currentYear: '' } : {})
     }));
     if (formErrors[name]) {
@@ -236,10 +237,12 @@ function RegisterPageContent() {
     { value: "OTHER", label: "Other" }
   ];
 
-  const schoolLevelOptions = [
-    { value: "SSLC", label: "SSLC" },
-    { value: "HSC", label: "HSC" },
-  ];
+  const schoolLevelOptions = formData.studentBoard === "IGCSE" 
+    ? [{ value: "GCSE", label: "GCSE" }]
+    : [
+        { value: "SSLC", label: "SSLC" },
+        { value: "HSC", label: "HSC" },
+      ];
 
   const loadRazorpay = () => {
     return new Promise((resolve) => {
@@ -585,25 +588,18 @@ function RegisterPageContent() {
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div className="space-y-1.5">
+                        <div className="space-y-1.5 w-full">
                           <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-4">
                             {/* @ts-ignore */} <T> Student Board </T> <span className="text-brand-red">*</span>
                           </label>
-                          <div className="grid grid-cols-2 gap-2">
-                            {getEnabledBoards().map((b) => (
-                              <button
-                                key={b.value}
-                                type="button"
-                                onClick={() => handleSelectChange("studentBoard", b.value)}
-                                className={`h-12 text-xs md:text-sm font-bold uppercase tracking-wide rounded-full transition-all duration-300 border ${formData.studentBoard === b.value
-                                  ? "bg-brand-green text-white border-brand-green shadow-md"
-                                  : "bg-white dark:bg-brand-dark-secondary text-gray-500 dark:text-gray-400 border-gray-200 dark:border-brand-dark-tertiary hover:border-brand-green hover:text-brand-green"
-                                  }`}
-                              >
-                                {/* @ts-ignore */} <T>{b.label}</T>
-                              </button>
-                            ))}
-                          </div>
+                          <CustomSelect
+                            required
+                            options={getEnabledBoards()}
+                            value={formData.studentBoard}
+                            onChange={(val) => handleSelectChange("studentBoard", val)}
+                            placeholder="Select Board"
+                            buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
+                          />
                           {formErrors.studentBoard && <p className="text-red-500 text-xs ml-4 mt-1">{formErrors.studentBoard}</p>}
                         </div>
 
