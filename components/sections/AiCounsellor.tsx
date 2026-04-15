@@ -161,16 +161,16 @@ const AiCounsellor: React.FC = () => {
 
                                             <div className="bg-white dark:bg-brand-dark-secondary p-3 rounded-xl border border-gray-100 dark:border-white/5 flex items-center justify-between shadow-sm transform hover:scale-[1.02] transition-transform cursor-default">
                                                 <div className="flex items-center gap-3">
-                                                    <div className="w-8 h-8 rounded-lg bg-brand-blue/10 flex items-center justify-center">
-                                                        <span className="material-symbols-outlined text-brand-blue text-[18px]">auto_fix_high</span>
+                                                    <div className="w-8 h-8 rounded-lg bg-brand-blue/10 dark:bg-blue-400/25 flex items-center justify-center">
+                                                        <span className="material-symbols-outlined text-brand-blue/70 dark:text-blue-300 text-[18px]">auto_fix_high</span>
                                                     </div>
                                                     <span className="text-[12px] font-bold text-gray-700 dark:text-gray-200">{/* @ts-ignore */} <T>Strategic Focus</T></span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <div className="h-1 w-12 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                                                        <div className="h-full bg-brand-blue w-[85%]"></div>
+                                                        <div className="h-full bg-brand-blue/70 dark:bg-blue-300 w-[85%]"></div>
                                                     </div>
-                                                    <span className="text-[10px] font-black text-brand-blue">85%</span>
+                                                    <span className="text-[10px] font-black text-brand-blue/70 dark:text-blue-300">85%</span>
                                                 </div>
                                             </div>
                                         </div>
