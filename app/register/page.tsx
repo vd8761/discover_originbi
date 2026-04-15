@@ -14,9 +14,8 @@ import RegisterSteps from "@/components/sections/RegisterSteps";
 import Turnstile from "@/components/ui/Turnstile";
 
 import MobileHowItWorksCarousel from "@/components/sections/MobileHowItWorksCarousel";
-import { registerStudent, validateStudent, validateReferralCode, getSchoolStreams } from "@/lib/api";
+import { registerStudent, validateStudent, validateReferralCode, getDepartments } from "@/lib/api";
 import { useRouter, useSearchParams } from "next/navigation";
-import { getEnabledBoards } from "@/lib/constants";
 import { T, useTranslation } from "@/contexts/LanguageContext";
 import { useReferral } from "@/contexts/ReferralContext";
 
@@ -44,10 +43,8 @@ function RegisterPageContent() {
     countryCode: "+91",
     mobile: "",
     password: "",
-    schoolLevel: "",
+    department: "",
     currentYear: "",
-    stream: "",
-    studentBoard: "",
     referralCode: "",
   });
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
@@ -55,26 +52,24 @@ function RegisterPageContent() {
     setTurnstileToken(token);
   }, []);
 
-  const [streamOptions, setStreamOptions] = useState<{ value: string; label: string }[]>([]);
+  const [departmentOptions, setDepartmentOptions] = useState<{ value: string; label: string }[]>([]);
 
   React.useEffect(() => {
-    getSchoolStreams().then((streams: any[]) => {
-      if (streams && streams.length > 0) {
-        const options = streams.map(s => {
-          const short = s.shortName || s.short_name;
-          const full = s.name;
-          return {
-            value: short,
-            label: `${short} (${full})`
-          };
-        });
-        setStreamOptions(options);
+    getDepartments().then((departments: any[]) => {
+      if (departments && departments.length > 0) {
+        const options = departments
+          .filter((d: any) => d.isActive)
+          .map((d: any) => ({
+            value: d.id,
+            label: d.name
+          }));
+        setDepartmentOptions(options);
       } else {
         // Fallback to defaults if API fails
-        setStreamOptions([
-          { value: "SCIENCE", label: "Science" },
-          { value: "COMMERCE", label: "Commerce" },
-          { value: "HUMANITIES", label: "Humanities" },
+        setDepartmentOptions([
+          { value: "1", label: "Computer Science" },
+          { value: "2", label: "Engineering" },
+          { value: "3", label: "Business Administration" },
         ]);
       }
     });
@@ -93,18 +88,13 @@ function RegisterPageContent() {
   const validateForm = () => {
     const errors: Record<string, string> = {};
 
-    if (!formData.name.trim()) errors.name = "Required";
-    if (!formData.email.trim()) errors.email = "Required";
-    if (!formData.mobile.trim()) errors.mobile = "Mobile number required";
-    if (!formData.studentBoard) errors.studentBoard = "Required";
-    if (!formData.schoolLevel) errors.schoolLevel = "Required";
-
-    if (formData.schoolLevel === "HSC") {
-      if (!formData.stream) errors.stream = "Required";
-      if (!formData.currentYear) errors.currentYear = "Required";
-      else if (formData.currentYear !== "1" && formData.currentYear !== "2") {
-        errors.currentYear = "Must be 1 or 2";
-      }
+    if (!formData.name.trim()) errors.name = "Full name is required";
+    if (!formData.email.trim()) errors.email = "Email is required";
+    if (!formData.mobile.trim()) errors.mobile = "Mobile number is required";
+    if (!formData.department) errors.department = "Department is required";
+    if (!formData.currentYear) errors.currentYear = "Current year is required";
+    else if (formData.currentYear !== "1" && formData.currentYear !== "2" && formData.currentYear !== "3" && formData.currentYear !== "4") {
+      errors.currentYear = "Must be between 1 and 4";
     }
 
     const passwordError = validatePassword(formData.password);
@@ -181,12 +171,7 @@ function RegisterPageContent() {
   };
 
   const handleSelectChange = (name: string, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-      ...(name === 'studentBoard' ? { schoolLevel: '' } : {}), // Clear school level when board changes
-      ...(name === 'schoolLevel' && value !== 'HSC' ? { stream: '', currentYear: '' } : {})
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
     if (formErrors[name]) {
       setFormErrors(prev => {
         const newErrors = { ...prev };
@@ -236,13 +221,6 @@ function RegisterPageContent() {
     { value: "FEMALE", label: "Female" },
     { value: "OTHER", label: "Other" }
   ];
-
-  const schoolLevelOptions = formData.studentBoard === "IGCSE" 
-    ? [{ value: "GCSE", label: "GCSE" }]
-    : [
-        { value: "SSLC", label: "SSLC" },
-        { value: "HSC", label: "HSC" },
-      ];
 
   const loadRazorpay = () => {
     return new Promise((resolve) => {
@@ -307,10 +285,9 @@ function RegisterPageContent() {
               country_code: formData.countryCode,
               password: formData.password,
               gender: formData.gender,
-              program_code: 'SCHOOL_STUDENT',
-              school_level: formData.schoolLevel,
-              school_stream: formData.schoolLevel === 'HSC' ? formData.stream : undefined,
-              student_board: formData.studentBoard,
+              program_code: 'COLLEGE_STUDENT',
+              department_degree_id: formData.department,
+              current_year: formData.currentYear,
               referral_code: formData.referralCode || undefined,
               payment_amount: amount,
               payment_reference: response.razorpay_payment_id,
@@ -443,7 +420,7 @@ function RegisterPageContent() {
                     </div>
                   )}
 
-                  <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-5 notranslate">
+                  <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-5 notranslate" noValidate>
 
 
                     {/* Name & Gender */}
@@ -455,11 +432,12 @@ function RegisterPageContent() {
                         placeholder="E.g. John Doe"
                         value={formData.name}
                         onChange={handleChange}
-                        className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all h-12"
+                        error={formErrors.name}
+                        className="bg-white dark:bg-brand-dark-secondary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all h-12"
                       />
 
                       <div className="space-y-1.5">
-                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-4">
+                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-1">
                           {/* @ts-ignore */} <T> Gender </T> <span className="text-brand-red">*</span>
                         </label>
                         <div className="relative w-full bg-gray-100 dark:bg-brand-dark-tertiary rounded-full p-1 flex h-12">
@@ -491,7 +469,7 @@ function RegisterPageContent() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       error={formErrors.email}
-                      className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all h-12"
+                      className="bg-white dark:bg-brand-dark-secondary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all h-12"
                     />
 
                     {/* Mobile Number */}
@@ -522,7 +500,7 @@ function RegisterPageContent() {
                       }}
                       error={formErrors.mobile}
                       onBlur={handleBlur}
-                      className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full transition-all h-12"
+                      className="bg-white dark:bg-brand-dark-secondary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full transition-all h-12"
                     />
 
                     {/* Password */}
@@ -535,7 +513,7 @@ function RegisterPageContent() {
                       value={formData.password}
                       onChange={handleChange}
                       error={formErrors.password}
-                      className="bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all h-12"
+                      className="bg-white dark:bg-brand-dark-secondary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all h-12"
                       suffix={
                         <button
                           type="button"
@@ -589,63 +567,40 @@ function RegisterPageContent() {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div className="space-y-1.5 w-full">
-                          <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-4">
-                            {/* @ts-ignore */} <T> Student Board </T> <span className="text-brand-red">*</span>
+                          <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-1">
+                            {/* @ts-ignore */} <T> Department </T> <span className="text-brand-red">*</span>
                           </label>
                           <CustomSelect
                             required
-                            options={getEnabledBoards()}
-                            value={formData.studentBoard}
-                            onChange={(val) => handleSelectChange("studentBoard", val)}
-                            placeholder="Select Board"
-                            buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
+                            options={departmentOptions}
+                            value={formData.department}
+                            onChange={(val) => handleSelectChange("department", val)}
+                            placeholder="Select Department"
+                            buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
+                            error={formErrors.department}
                           />
-                          {formErrors.studentBoard && <p className="text-red-500 text-xs ml-4 mt-1">{formErrors.studentBoard}</p>}
                         </div>
 
                         <div className="space-y-1.5 w-full">
-                          <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-4">
-                            {/* @ts-ignore */} <T> School Level </T> <span className="text-brand-red">*</span>
+                          <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-1">
+                            {/* @ts-ignore */} <T> Current Year </T> <span className="text-brand-red">*</span>
                           </label>
                           <CustomSelect
                             required
-                            options={schoolLevelOptions}
-                            value={formData.schoolLevel}
-                            onChange={(val) => handleSelectChange("schoolLevel", val)}
-                            placeholder="Select Stage"
-                            buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
-                          />
-                          {formErrors.schoolLevel && <p className="text-red-500 text-xs ml-4 mt-1">{formErrors.schoolLevel}</p>}
-                        </div>
-                      </div>
-
-                      {formData.schoolLevel === 'HSC' && (
-                        <div className="space-y-5 animate-fade-in relative z-30">
-                          <CustomSelect
-                            label="Stream"
-                            required
-                            options={streamOptions}
-                            value={formData.stream}
-                            onChange={(val) => handleSelectChange("stream", val)}
-                            placeholder="Select Stream"
-                            buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
-                          />
-                          {formErrors.stream && <p className="text-red-500 text-xs ml-4 mt-1">{formErrors.stream}</p>}
-                          <CustomSelect
-                            label="Current Standard"
-                            required
                             options={[
-                              { value: "1", label: "11th Standard" },
-                              { value: "2", label: "12th Standard" }
+                              { value: "1", label: "1st Year" },
+                              { value: "2", label: "2nd Year" },
+                              { value: "3", label: "3rd Year" },
+                              { value: "4", label: "4th Year" }
                             ]}
                             value={formData.currentYear}
                             onChange={(val) => handleSelectChange("currentYear", val)}
-                            placeholder="Select Standard"
-                            buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary border border-gray-200 dark:border-brand-dark-tertiary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
+                            placeholder="Select Year"
+                            buttonClassName="h-12 bg-white dark:bg-brand-dark-secondary focus:border-brand-green focus:ring-1 focus:ring-brand-green/20 rounded-full px-6 transition-all"
+                            error={formErrors.currentYear}
                           />
-                          {formErrors.currentYear && <p className="text-red-500 text-xs ml-4 mt-1">{formErrors.currentYear}</p>}
                         </div>
-                      )}
+                      </div>
                     </div>
 
                     {formErrors.apiError && (

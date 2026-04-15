@@ -7,9 +7,8 @@ export interface RegistrationFormData {
     password: string;
     gender: string;
     program_code?: string;
-    school_level?: string;
-    school_stream?: string;
-    student_board?: string;
+    department_degree_id?: string;
+    current_year?: string;
     referral_code?: string;
     payment_amount?: string;
     payment_reference?: string;
@@ -30,10 +29,9 @@ export const registerStudent = async (formData: RegistrationFormData) => {
             country_code: formData.country_code || '+91',
             password: formData.password,
             gender: formData.gender,
-            program_code: 'SCHOOL_STUDENT',
-            school_level: formData.school_level,
-            school_stream: formData.school_stream,
-            student_board: formData.student_board,
+            program_code: 'COLLEGE_STUDENT',
+            department_degree_id: formData.department_degree_id,
+            current_year: formData.current_year,
             referral_code: formData.referral_code,
             payment_amount: formData.payment_amount,
             payment_reference: formData.payment_reference,
@@ -143,6 +141,28 @@ export const getSchoolStreams = async () => {
         return await response.json();
     } catch (error) {
         console.error('Fetch School Streams Error:', error);
+        return [];
+    }
+};
+
+export const getDepartments = async () => {
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    if (!API_URL) throw new Error('API_URL is not defined');
+
+    try {
+        const response = await fetch(`${API_URL}/student/departments`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({}),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch departments');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Fetch Departments Error:', error);
         return [];
     }
 };

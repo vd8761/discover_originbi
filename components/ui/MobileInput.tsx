@@ -95,7 +95,7 @@ const MobileInput: React.FC<MobileInputProps> = ({
                     <button
                         type="button"
                         onClick={() => setIsDropdownOpen((p) => !p)}
-                        className={`w-full h-full flex items-center justify-between bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 rounded-full px-4 text-sm text-brand-dark-primary dark:text-white transition-all shadow-sm hover:border-brand-green/50 ${className}`}
+                        className={`w-full h-full flex items-center justify-between bg-white dark:bg-brand-dark-tertiary border ${error ? 'border-red-300 ring-1 ring-red-200' : 'border-brand-light-tertiary dark:border-white/5'} rounded-full px-4 text-sm text-brand-dark-primary dark:text-white transition-all shadow-sm hover:border-brand-green/50 ${className} ${error ? 'border-red-300 ring-1 ring-red-200' : ''}`}
                     >
                         <span className="flex items-center gap-1.5 truncate">
                             <ReactCountryFlag
@@ -169,7 +169,7 @@ const MobileInput: React.FC<MobileInputProps> = ({
                         onChange={handlePhoneInput}
                         onBlur={onBlur}
                         placeholder={"0".repeat(maxLen)}
-                        className={`w-full h-full bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 rounded-full pl-7 pr-14 text-[clamp(14px,0.83vw,16px)] text-brand-dark-primary dark:text-brand-text-primary placeholder:text-brand-dark-primary/30 dark:placeholder:text-brand-text-secondary/30 focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20 transition-all shadow-sm ${error ? "border-red-500/50" : ""} ${className}`}
+                        className={`w-full h-full bg-white dark:bg-brand-dark-tertiary border border-brand-light-tertiary dark:border-white/5 rounded-full pl-7 pr-14 text-[clamp(14px,0.83vw,16px)] text-brand-dark-primary dark:text-brand-text-primary placeholder:text-brand-dark-primary/30 dark:placeholder:text-brand-text-secondary/30 focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20 transition-all shadow-sm ${className} ${error ? "border-red-300 ring-1 ring-red-200" : ""}`}
                     />
                     <div className="absolute right-5 top-1/2 -translate-y-1/2 text-[10px] text-brand-dark-primary/30 dark:text-brand-text-secondary/30 pointer-events-none font-mono">
                         {phoneNumber.length}/{maxLen}
@@ -178,12 +178,7 @@ const MobileInput: React.FC<MobileInputProps> = ({
             </div>
 
             {error && (
-                <p className="mt-1.5 ml-1 text-xs font-medium text-red-500 animate-fade-in flex items-center gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                    </svg>
-                    {error}
-                </p>
+                <p className="text-red-500 text-xs ml-1 mt-1">{error}</p>
             )}
         </div>
     );
