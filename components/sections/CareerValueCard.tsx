@@ -51,7 +51,7 @@ const CareerValueCard: React.FC = () => {
             <div className="container mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] relative z-10">
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center justify-between">
 
-                    {/* Left side content - Description & List. */}
+                    {/* Left side content - Description & List */}
                     <div className="flex-1 w-full order-2 lg:order-1">
                         <div className="mb-12 text-center lg:text-left">
                             <h2 className={`font-sans font-extrabold text-brand-dark-primary dark:text-white leading-[1.1] tracking-tight mb-6 transition-all duration-300 ${mounted && language === 'ta' ? 'text-[clamp(28px,3.5vw,48px)]' : 'text-[clamp(32px,4vw,56px)]'}`}>
