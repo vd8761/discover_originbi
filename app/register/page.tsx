@@ -393,7 +393,7 @@ function RegisterPageContent() {
                   </div>
                   <h2 className="text-3xl font-bold text-brand-dark-primary dark:text-white mb-4">{/* @ts-ignore */} <T>Registration Successful!</T> </h2>
                   <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-sm">
-                    {/* @ts-ignore */} <T> Your account has been created. Redirecting you to the login page... </T> </p>
+                    {/* @ts-ignore */} <T> Your account has been created. You can take your assessment immediately. Redirecting you to the login page... </T> </p>
                   <div className="w-full max-w-xs bg-gray-100 dark:bg-brand-dark-tertiary h-1.5 rounded-full overflow-hidden">
                     <div className="h-full bg-brand-green animate-progress origin-left w-full"></div>
                   </div>
