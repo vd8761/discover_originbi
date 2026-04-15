@@ -148,7 +148,7 @@ const FAQSection: React.FC = () => {
                                 href={getRegisterUrl()}
                                 className={`inline-block bg-white !text-brand-green hover:bg-brand-dark-green hover:!text-white rounded-full font-bold tracking-wide shadow-lg border-none cursor-pointer ${mounted && language === 'ta' ? 'px-4 py-2 lg:px-6 lg:py-3 text-sm lg:text-lg' : 'px-5 py-2.5 lg:px-8 lg:py-3.5 text-sm lg:text-xl'}`}
                             >
-                                {/* @ts-ignore */} <T> Invest ₹749 today to make your college years focused and career-ready. </T> </Button>
+                                {/* @ts-ignore */} <T> Invest ₹499 today to make your college years focused and career-ready. </T> </Button>
                         </div>
                     </div>
                 </div>

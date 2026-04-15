@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
                                     size="lg"
                                     className="!bg-brand-green !text-white border-none rounded-full px-9 py-3.5 text-base font-extrabold transition-all duration-300 hover:scale-[1.02] hover:brightness-105"
                                 >
-                                    {/* @ts-ignore */} <T> Find My Career Match • ₹749 </T> </Button>
+                                    {/* @ts-ignore */} <T> Find My Career Match • ₹499 </T> </Button>
                             </div>
 
                             {/* Language Support Indicator */}

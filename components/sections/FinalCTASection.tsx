@@ -60,7 +60,7 @@ const FinalCTASection: React.FC = () => {
                             >
                                 <span className="relative z-10 flex items-center justify-center gap-2 lg:gap-3 text-sm lg:text-lg font-bold text-brand-green group-hover:text-white tracking-wide transition-colors duration-300">
                                     {/* @ts-ignore */} <T> Download Your Career Roadmap </T> <span className="w-1.5 h-1.5 rounded-full bg-brand-green group-hover:bg-white opacity-30 mt-0.5 transition-colors"></span>
-                                    <span>₹749</span>
+                                    <span>₹499</span>
                                     <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
                                 </span>
                             </Button>

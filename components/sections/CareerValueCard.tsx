@@ -59,7 +59,7 @@ const CareerValueCard: React.FC = () => {
                             </h2>
                             <p className={`text-brand-text-light-secondary dark:text-white/70 font-medium max-w-2xl mx-auto lg:mx-0 transition-all duration-300 ${mounted && language === 'ta' ? 'text-base sm:text-lg' : 'text-lg sm:text-xl'}`}>
                                 {/* @ts-ignore */} <T> Everything you need to choose the right college-to-career path for</T> {" "}
-                                <span className="text-brand-green font-bold">₹749</span>.
+                                <span className="text-brand-green font-bold">₹499</span>.
                             </p>
                         </div>
 
@@ -99,7 +99,7 @@ const CareerValueCard: React.FC = () => {
                                 <h3 className={`font-extrabold text-white mb-2 leading-tight tracking-tight transition-all duration-300 ${mounted && language === 'ta' ? 'text-2xl lg:text-3xl' : 'text-3xl lg:text-4xl'}`}>
                                     {/* @ts-ignore */} <T> The Career Value Package </T> </h3>
                                 <div className="flex items-baseline gap-2 mb-10">
-                                    <span className={`font-black text-white tracking-tighter transition-all duration-300 ${mounted && language === 'ta' ? 'text-4xl lg:text-6xl' : 'text-5xl lg:text-8xl'}`}>₹749</span>
+                                    <span className={`font-black text-white tracking-tighter transition-all duration-300 ${mounted && language === 'ta' ? 'text-4xl lg:text-6xl' : 'text-5xl lg:text-8xl'}`}>₹499</span>
                                     <span className="text-white/60 text-base lg:text-lg font-bold">{/* @ts-ignore */} <T>/ one-time</T> </span>
                                 </div>
 

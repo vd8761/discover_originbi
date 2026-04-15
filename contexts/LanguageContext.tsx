@@ -45,8 +45,18 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     };
 
     const t = (key: string): string => {
-        if (!mounted || language === "en") return key;
-        return (taTranslations as Record<string, string>)[key] || key;
+        if (!mounted) return key;
+        
+        // Get the translated text (or use the key as default for English)
+        let text = language === "en" ? key : (taTranslations as Record<string, string>)[key] || key;
+        
+        // Dynamically replace the legacy 749 price with the configured cost
+        const COST = process.env.NEXT_PUBLIC_REGISTRATION_COST || '499';
+        if (text.includes('749')) {
+            return text.split('749').join(COST);
+        }
+        
+        return text;
     };
 
     return (
