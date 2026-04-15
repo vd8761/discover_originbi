@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Logo from "@/components/ui/Logo";
-import { LinkedInIcon, InstagramIcon, XIcon } from "@/components/icons";
+import { LinkedInIcon, InstagramIcon, XIcon, YouTubeIcon } from "@/components/icons";
 import { T } from "@/contexts/LanguageContext";
 
 const Footer: React.FC = () => {
@@ -23,6 +23,10 @@ const Footer: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-5">
+                    <a href="https://www.youtube.com/@OriginBIMindworks" target="_blank" rel="noopener noreferrer"
+                        className="p-2.5 rounded-xl bg-brand-light-primary dark:bg-brand-dark-secondary border border-brand-dark-primary/5 dark:border-white/10 text-brand-green hover:scale-110 hover:shadow-[0_10px_20px_-5px_rgba(30,211,106,0.3)] transition-all duration-300 shadow-sm">
+                        <YouTubeIcon className="w-5 h-5" />
+                    </a>
                     <a href="https://x.com/originbimindwrk" target="_blank" rel="noopener noreferrer"
                         className="p-2.5 rounded-xl bg-brand-light-primary dark:bg-brand-dark-secondary border border-brand-dark-primary/5 dark:border-white/10 text-brand-green hover:scale-110 hover:shadow-[0_10px_20px_-5px_rgba(30,211,106,0.3)] transition-all duration-300 shadow-sm">
                         <XIcon className="w-5 h-5" />
