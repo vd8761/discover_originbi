@@ -24,9 +24,9 @@ const Hero: React.FC = () => {
                     <div className={`w-full text-left order-2 lg:order-1 transition-all duration-300 ${mounted && language === 'ta' ? 'lg:w-[50%] pt-4 lg:pt-8' : 'lg:w-[45%]'}`}>
                         <div className="max-w-xl">
                             <h1 className={`font-sans font-extrabold tracking-tight text-brand-dark-primary dark:text-white transition-colors py-1 ${mounted && language === 'ta' ? 'leading-[1.3] text-[clamp(18px,2.5vw,28px)] mb-6' : 'leading-[1.2] text-[clamp(30px,4vw,52px)] mb-5'}`}>
-                                {/* @ts-ignore */} <T> Discover, Align and Excel </T>
+                                {/* @ts-ignore */} <T> Find the Right Career Path </T>
                                 <br className={mounted && language === 'ta' ? 'hidden' : 'hidden sm:block'} />
-                                <span className={mounted && language === 'ta' ? 'text-brand-green' : 'text-brand-green'}>{mounted && language === 'ta' ? ' ' : ''}{/* @ts-ignore */} <T>in the Right Career Path</T> </span>
+                                <span className={mounted && language === 'ta' ? 'text-brand-green' : 'text-brand-green'}>{mounted && language === 'ta' ? ' ' : ''}{/* @ts-ignore */} <T>for Your Future</T> </span>
                             </h1>
 
                             <p className={`text-base sm:text-lg text-brand-text-light-secondary dark:text-white/60 font-medium mb-8 leading-relaxed ${mounted && language === 'ta' ? 'max-w-xl' : 'max-w-md'}`}>
@@ -35,9 +35,9 @@ const Hero: React.FC = () => {
                             {/* Checklist */}
                             <div className="space-y-3 mb-10">
                                 {[
-                                    "1-on-1 Personalized Cognitive Profile Mapping",
-                                    "Tailored Job-Role Alignment & Career Roadmaps",
-                                    "Precision-Based Decision Making for Your Next Move"
+                                    "Understand your strengths, work style, and decision patterns",
+                                    "See career roles that match your personality and interests",
+                                    "Get a clear action plan for majors, skills, and your first job",
                                 ].map((item, index) => (
                                     <div key={index} className="flex items-start gap-3">
                                         <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-green/10 dark:bg-brand-green/20 flex items-center justify-center">
@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
                                     size="lg"
                                     className="!bg-brand-green !text-white border-none rounded-full px-9 py-3.5 text-base font-extrabold transition-all duration-300 hover:scale-[1.02] hover:brightness-105"
                                 >
-                                    {/* @ts-ignore */} <T> Get Your Career Roadmap Now • ₹749 </T> </Button>
+                                    {/* @ts-ignore */} <T> Find My Career Match • ₹749 </T> </Button>
                             </div>
 
                             {/* Language Support Indicator */}

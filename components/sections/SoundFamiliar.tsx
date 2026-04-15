@@ -52,24 +52,26 @@ const SoundFamiliar: React.FC = () => {
                 </div>
 
                 {/* Grid Layout for Situations */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
                     {situations.map((item, index) => {
                         return (
                             <div
                                 key={index}
-                                className="group flex flex-col items-center text-center h-full px-2 lg:px-6"
+                                className="group h-full"
                             >
-                                <div className="flex-shrink-0 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:-translate-y-2 text-brand-green">
-                                    <span className="material-symbols-outlined" style={{ fontSize: '3.5rem' }}>
-                                        {item.icon}
-                                    </span>
+                                <div className="h-full flex flex-col items-center text-center px-2 lg:px-6">
+                                    <div className="h-16 flex-shrink-0 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:-translate-y-2 text-brand-green">
+                                        <span className="material-symbols-outlined" style={{ fontSize: '3.5rem' }}>
+                                            {item.icon}
+                                        </span>
+                                    </div>
+                                    <h3 className={`font-bold text-brand-dark-primary dark:text-white mb-4 leading-tight tracking-tight min-h-[68px] flex items-center justify-center ${mounted && language === 'ta' ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'}`}>
+                                        {item.title}
+                                    </h3>
+                                    <p className={`text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-medium max-w-[34ch] mx-auto ${mounted && language === 'ta' ? 'text-sm sm:text-base' : 'text-base sm:text-lg'}`}>
+                                        {item.description}
+                                    </p>
                                 </div>
-                                <h3 className={`font-bold text-brand-dark-primary dark:text-white mb-4 leading-tight tracking-tight ${mounted && language === 'ta' ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'}`}>
-                                    {item.title}
-                                </h3>
-                                <p className={`text-brand-text-light-secondary dark:text-white/70 leading-relaxed font-medium ${mounted && language === 'ta' ? 'text-sm sm:text-base' : 'text-base sm:text-lg'}`}>
-                                    {item.description}
-                                </p>
                             </div>
                         );
                     })}

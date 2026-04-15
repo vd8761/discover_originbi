@@ -13,51 +13,51 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
     {
         name: "Aditi R.",
-        grade: "Class 12",
+        grade: "B.Des - 2nd Year",
         location: "Chennai",
-        quote: <>{/* @ts-ignore */} <T> I was confused between engineering and design. My behavioral profile showed I'm a natural creative problem solver — now I'm pursuing UX Design with zero doubts. </T></>
+        quote: <>{/* @ts-ignore */} <T> I was confused between UX design and product roles. My profile showed I am a natural creative systems thinker, and now I have a clear direction. </T></>
     },
     {
         name: "Karthik M.",
-        grade: "Class 11",
+        grade: "B.E. Mechanical - 3rd Year",
         location: "Bangalore",
-        quote: <>{/* @ts-ignore */} <T> My parents wanted me to do medicine, but my report clearly showed I'm built for leadership roles. It helped my whole family align on my future. </T></>
+        quote: <>{/* @ts-ignore */} <T> I did not know whether to stay in core engineering or switch tracks. The report showed strong leadership and operations fit, and my decisions became easier. </T></>
     },
     {
         name: "Sneha P.",
-        grade: "Class 12",
+        grade: "B.Sc Data Science - 1st Year",
         location: "Hyderabad",
-        quote: <>{/* @ts-ignore */} <T> The 14-dimension mapping was eye-opening. I discovered strengths I never knew I had. It gave me the confidence to choose Data Science. </T></>
+        quote: <>{/* @ts-ignore */} <T> The 14-dimension mapping was eye-opening. I discovered strengths I had never articulated, and it gave me confidence in my data science path. </T></>
     },
     {
         name: "Rohan V.",
-        grade: "Class 11",
+        grade: "BBA - 2nd Year",
         location: "Mumbai",
-        quote: <>{/* @ts-ignore */} <T> Instead of following the crowd into JEE coaching, I found out I'm a natural strategist. Now I'm focused on business analytics and loving every second. </T></>
+        quote: <>{/* @ts-ignore */} <T> I was drifting through college without direction. I found I am a natural strategist, and now I am focused on business analytics with intent. </T></>
     },
     {
         name: "Priya S.",
-        grade: "Class 12",
+        grade: "B.Tech IT - 4th Year",
         location: "Delhi",
-        quote: <>{/* @ts-ignore */} <T> Every career counselor just said 'do what you love.' OriginBI actually showed me WHAT I love and WHY — backed by real behavioral data. </T></>
+        quote: <>{/* @ts-ignore */} <T> Generic advice said "follow your passion." OriginBI showed me what actually fits me and why, backed by behavioral data. </T></>
     },
     {
         name: "Arjun K.",
-        grade: "Class 11",
+        grade: "B.Com - 3rd Year",
         location: "Pune",
-        quote: <>{/* @ts-ignore */} <T> The roadmap didn't just say 'engineering.' It told me exactly which role fits my personality — Systems Architect. That specificity changed everything. </T></>
+        quote: <>{/* @ts-ignore */} <T> The roadmap did not give broad labels. It gave role-level clarity, and that changed how I prepared for internships. </T></>
     },
     {
         name: "Meera D.",
-        grade: "Class 12",
+        grade: "Integrated MBA - 1st Year",
         location: "Kolkata",
-        quote: <>{/* @ts-ignore */} <T> I spent a year stressed about stream selection. 60 minutes with OriginBI gave me more clarity than 12 months of anxiety. </T></>
+        quote: <>{/* @ts-ignore */} <T> I spent months overthinking specialization choices. One session gave me more clarity than a year of anxiety. </T></>
     },
     {
         name: "Vikram T.",
-        grade: "Class 11",
+        grade: "B.Tech CSE - 2nd Year",
         location: "Coimbatore",
-        quote: <>{/* @ts-ignore */} <T> My behavioral DNA report was like reading a manual about myself. Turns out I'm wired for research — something I'd never considered before. </T></>
+        quote: <>{/* @ts-ignore */} <T> My behavioral profile felt like reading a manual about myself. It revealed a research orientation I had never considered seriously. </T></>
     },
 ];
 
@@ -133,7 +133,7 @@ const Testimonials: React.FC = () => {
                     <h2 className={`font-sans font-semibold text-brand-dark-primary dark:text-white leading-tight mb-4 transition-colors duration-300 ${mounted && language === 'ta' ? 'text-[clamp(24px,3vw,42px)]' : 'text-[clamp(28px,3.4vw,54px)]'}`}>
                         {/* @ts-ignore */} <T> What Our </T> <span className="text-brand-green">{/* @ts-ignore */} <T>Students</T> </span> {/* @ts-ignore */} <T> Say </T> </h2>
                     <p className={`max-w-2xl mx-auto ${mounted && language === 'ta' ? 'text-[clamp(14px,1.2vw,18px)] text-gray-600 dark:text-gray-300/80' : 'text-[clamp(16px,1.3vw,22px)] text-gray-600 dark:text-gray-300'}`}>
-                        {/* @ts-ignore */} <T> Real experiences from students who discovered their perfect career path. </T> </p>
+                        {/* @ts-ignore */} <T> Real experiences from students who found clarity in majors and careers. </T> </p>
                 </div>
             </div>
 

@@ -9,7 +9,7 @@ import { useReferral } from "@/contexts/ReferralContext";
 const features = [
     {
         title: <>{/* @ts-ignore */} <T> Behavioral Mapping </T></>,
-        desc: <>{/* @ts-ignore */} <T> A deep dive into how their brain is naturally wired to work, lead, and solve problems. </T></>,
+        desc: <>{/* @ts-ignore */} <T> A deep dive into how your brain is naturally wired to work, lead, and solve problems. </T></>,
         icon: "psychology"
     },
     {
@@ -58,7 +58,7 @@ const CareerValueCard: React.FC = () => {
                                 {/* @ts-ignore */} <T> The </T> <span className="text-brand-green">{/* @ts-ignore */} <T>Career Value Card</T> </span>
                             </h2>
                             <p className={`text-brand-text-light-secondary dark:text-white/70 font-medium max-w-2xl mx-auto lg:mx-0 transition-all duration-300 ${mounted && language === 'ta' ? 'text-base sm:text-lg' : 'text-lg sm:text-xl'}`}>
-                                {/* @ts-ignore */} <T> Everything your child needs to choose the right path for</T> {" "}
+                                {/* @ts-ignore */} <T> Everything you need to choose the right college-to-career path for</T> {" "}
                                 <span className="text-brand-green font-bold">₹749</span>.
                             </p>
                         </div>
@@ -107,7 +107,7 @@ const CareerValueCard: React.FC = () => {
                                     href={getRegisterUrl()}
                                     className="w-full bg-white !text-brand-green hover:bg-brand-dark-green hover:!text-white text-base lg:text-lg font-black py-3.5 lg:py-4.5 rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-lg flex items-center justify-center gap-2 border-none"
                                 >
-                                    {/* @ts-ignore */} <T> Get the Blueprint Now </T> </Button>
+                                    {/* @ts-ignore */} <T> Get My Career Blueprint </T> </Button>
                             </div>
                         </div>
 
@@ -116,7 +116,7 @@ const CareerValueCard: React.FC = () => {
                             <h4 className="text-[11px] font-black tracking-[0.2em] uppercase text-brand-green mb-6">
                                 {/* @ts-ignore */} <T> The OriginBI Philosophy </T> </h4>
                             <p className={`leading-snug text-brand-dark-primary dark:text-white font-semibold italic transition-all duration-300 ${mounted && language === 'ta' ? 'text-lg sm:text-xl lg:text-2xl' : 'text-xl sm:text-2xl lg:text-3xl'}`}>
-                                {/* @ts-ignore */} <T> "Choose the </T> <span className="not-italic text-brand-green font-extrabold">{/* @ts-ignore */} <T>Role</T> </span> {/* @ts-ignore */} <T> first, then pick the </T> <span className="not-italic text-brand-green font-extrabold">{/* @ts-ignore */} <T>Course</T> </span>{/* @ts-ignore */} <T>. Stop spending lakhs on degrees that don't fit." </T> </p>
+                                {/* @ts-ignore */} <T> "Choose the </T> <span className="not-italic text-brand-green font-extrabold">{/* @ts-ignore */} <T>Role</T> </span> {/* @ts-ignore */} <T> first, then pick the </T> <span className="not-italic text-brand-green font-extrabold">{/* @ts-ignore */} <T>Specialization</T> </span>{/* @ts-ignore */} <T>. Stop investing years in paths that do not fit." </T> </p>
                         </div>
                     </div>
                 </div>

@@ -7,46 +7,46 @@ import { T, useLanguage } from "@/contexts/LanguageContext";
 import { useReferral } from "@/contexts/ReferralContext";
 
 type FAQ = {
-    target: "Parents" | "Students" | "Both";
+    target: "Students" | "Both";
     question: React.ReactNode;
     answer: React.ReactNode;
 };
 
 const faqs: FAQ[] = [
     {
-        target: "Parents",
-        question: <>{/* @ts-ignore */} <T> My child is already focused on NEET/JEE. Why do we need this? </T></>,
-        answer: <>{/* @ts-ignore */} <T> Competitive exams are about getting in; Behavioral Mapping is about getting out with a successful career. Even with a top degree, if the professional "Role" doesn't match their personality, they will face burnout. We ensure the goal they are working for is actually the right one for their DNA. </T></>
+        target: "Students",
+        question: <>{/* @ts-ignore */} <T> I am already in college. Can this still help me? </T></>,
+        answer: <>{/* @ts-ignore */} <T> Yes. This is built for students who want clarity during college. It helps you align strengths with roles, then choose better specializations, projects, and internships. </T></>
     },
     {
         target: "Students",
-        question: <>{/* @ts-ignore */} <T> Is this going to be like another school exam where I'm judged on marks? </T></>,
-        answer: <>{/* @ts-ignore */} <T> Not at all. There are no "pass" or "fail" grades here. This is a discovery of how your brain naturally likes to solve problems and lead. It is the one test where the only right answer is the one that describes the real you. </T></>
-    },
-    {
-        target: "Parents",
-        question: <>{/* @ts-ignore */} <T> Is this just another counseling session that suggests Engineering or Medicine? </T></>,
-        answer: <>{/* @ts-ignore */} <T> No. We go much deeper. We don't just say "Engineering"—we identify if they are a Natural Researcher, a Project Leader, or a Technical Specialist. We provide specific role fitment so you can choose the right specialization from day one. </T></>
+        question: <>{/* @ts-ignore */} <T> Is this like another exam where marks decide everything? </T></>,
+        answer: <>{/* @ts-ignore */} <T> Not at all. There are no pass or fail grades. This assessment helps you understand how you think, decide, and work best. </T></>
     },
     {
         target: "Students",
-        question: <>{/* @ts-ignore */} <T> My parents want me to do one thing, but I’m not sure. Will this help? </T></>,
-        answer: <>{/* @ts-ignore */} <T> Yes. Instead of an argument, we provide data. Showing your parents your 10x Advantage helps them understand your natural strengths. It turns a "What I want" conversation into a "What I'm built for" strategy. </T></>
+        question: <>{/* @ts-ignore */} <T> I already picked a major. Is it too late to use this? </T></>,
+        answer: <>{/* @ts-ignore */} <T> Not late at all. You can still use your profile to choose the right track, electives, projects, and internship roles within your major. </T></>
+    },
+    {
+        target: "Students",
+        question: <>{/* @ts-ignore */} <T> Can this help me choose internships and projects? </T></>,
+        answer: <>{/* @ts-ignore */} <T> Yes. Your roadmap links your strengths to practical next steps, so you can choose internships, projects, and certifications that improve role readiness. </T></>
     },
     {
         target: "Both",
-        question: <>{/* @ts-ignore */} <T> Can we use this report for college applications or interviews? </T></>,
-        answer: <>{/* @ts-ignore */} <T> Absolutely. The Behavioral Profile gives a student a clear, professional way to explain their strengths during admissions and interviews, making them stand out from thousands of other applicants. </T></>
+        question: <>{/* @ts-ignore */} <T> Can I use this report in resumes and interviews? </T></>,
+        answer: <>{/* @ts-ignore */} <T> Absolutely. It gives you a clear way to explain your strengths in resumes, internship interviews, and placement conversations. </T></>
     },
     {
         target: "Both",
-        question: <>{/* @ts-ignore */} <T> What if the results suggest a path we haven't considered? </T></>,
-        answer: <>{/* @ts-ignore */} <T> This is the most valuable part. Many families find the student has a "hidden" edge in high-growth, emerging sectors. We show you the data so you can make a safe, informed decision together. </T></>
+        question: <>{/* @ts-ignore */} <T> What if the results suggest a path I never considered? </T></>,
+        answer: <>{/* @ts-ignore */} <T> That is often the biggest breakthrough. Many students discover hidden strengths for roles they had never explored before. </T></>
     },
     {
         target: "Both",
         question: <>{/* @ts-ignore */} <T> How long is this roadmap valid? </T></>,
-        answer: <>{/* @ts-ignore */} <T> Behavioral DNA stays consistent. The Success Blueprint we provide serves as a foundational roadmap for the next 4–5 years of college and their eventual entry into the professional world. </T></>
+        answer: <>{/* @ts-ignore */} <T> Behavioral patterns stay stable. Your roadmap remains useful through college and your early career transition. </T></>
     }
 ];
 
@@ -105,7 +105,7 @@ const FAQSection: React.FC = () => {
                         {/* @ts-ignore */} <T> Frequently Asked </T> <span className="text-brand-green">{/* @ts-ignore */} <T>Questions</T> </span>
                     </h2>
                     <p className={`text-gray-600 dark:text-gray-300 ${mounted && language === 'ta' ? 'text-[clamp(16px,1.3vw,20px)]' : 'text-[clamp(18px,1.5vw,24px)]'}`}>
-                        {/* @ts-ignore */} <T> Clearing the Path for Students & Parents </T> </p>
+                        {/* @ts-ignore */} <T> Clear answers for college students </T> </p>
                 </div>
 
                 <div className="max-w-4xl mx-auto space-y-4">
@@ -143,12 +143,12 @@ const FAQSection: React.FC = () => {
 
                         <div className="relative z-10 flex flex-col items-center">
                             <h3 className={`font-semibold text-white mb-8 px-4 lg:px-0 leading-relaxed max-w-3xl ${mounted && language === 'ta' ? 'text-base lg:text-xl' : 'text-lg lg:text-3xl'}`}>
-                                {/* @ts-ignore */} <T> "At +2, a wrong choice isn't just a loss of time; it's a loss of confidence." </T> </h3>
+                                {/* @ts-ignore */} <T> "In college, the wrong direction costs time, confidence, and opportunities." </T> </h3>
                             <Button
                                 href={getRegisterUrl()}
                                 className={`inline-block bg-white !text-brand-green hover:bg-brand-dark-green hover:!text-white rounded-full font-bold tracking-wide shadow-lg border-none cursor-pointer ${mounted && language === 'ta' ? 'px-4 py-2 lg:px-6 lg:py-3 text-sm lg:text-lg' : 'px-5 py-2.5 lg:px-8 lg:py-3.5 text-sm lg:text-xl'}`}
                             >
-                                {/* @ts-ignore */} <T> Spend ₹749 today to ensure they walk into college with a clear purpose. </T> </Button>
+                                {/* @ts-ignore */} <T> Invest ₹749 today to make your college years focused and career-ready. </T> </Button>
                         </div>
                     </div>
                 </div>
