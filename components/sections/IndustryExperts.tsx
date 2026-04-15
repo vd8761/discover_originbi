@@ -42,7 +42,7 @@ const experts: Expert[] = [
 ];
 
 const IndustryExperts: React.FC = () => {
-    const { language } = useLanguage();
+    const { language, t } = useLanguage();
     const [mounted, setMounted] = React.useState(false);
 
     React.useEffect(() => {
@@ -161,7 +161,7 @@ const IndustryExperts: React.FC = () => {
                                         frameBorder="0"
                                         allow="autoplay; encrypted-media; picture-in-picture"
                                         allowFullScreen
-                                        title={currentExpert.title}
+                                        title={t(currentExpert.title)}
                                         className="absolute inset-0 w-full h-full"
                                     ></iframe>
                                 ) : (
@@ -180,13 +180,13 @@ const IndustryExperts: React.FC = () => {
 
                                 <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 mb-2 md:mb-0">
                                     <h3 className="text-xl md:text-2xl font-bold text-brand-dark-primary dark:text-white mb-1">
-                                        {currentExpert.name}
+                                        <T>{currentExpert.name}</T>
                                     </h3>
                                     <p className="text-sm md:text-base text-brand-green font-semibold mb-1">
-                                        {currentExpert.role}
+                                        <T>{currentExpert.role}</T>
                                     </p>
                                     <p className="text-[11px] md:text-sm text-gray-600 dark:text-gray-400 font-medium px-2">
-                                        {currentExpert.organization}
+                                        <T>{currentExpert.organization}</T>
                                     </p>
                                 </div>
 
