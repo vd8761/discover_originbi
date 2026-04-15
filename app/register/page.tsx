@@ -334,7 +334,9 @@ function RegisterPageContent() {
       const timer = setTimeout(() => {
         const loginUrl = process.env.NEXT_PUBLIC_LOGIN_URL;
         if (loginUrl) {
-          window.location.href = loginUrl;
+          window.open(loginUrl, '_blank');
+          // Optionally redirect current tab to home after opening new one
+          router.push('/');
         } else {
           router.push('/');
         }
