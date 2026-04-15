@@ -4,15 +4,17 @@ import React from 'react';
 import Logo from "@/components/ui/Logo";
 import { LinkedInIcon, InstagramIcon, XIcon, YouTubeIcon } from "@/components/icons";
 import { T } from "@/contexts/LanguageContext";
+import { useReferral } from "@/contexts/ReferralContext";
 
 const Footer: React.FC = () => {
+    const { wrapUrl } = useReferral();
     const horizontalPadding = "px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]";
 
     return (
         <footer className="relative z-10 w-full border-t border-brand-dark-primary/5 dark:border-white/5 bg-white dark:bg-brand-dark-primary transition-all duration-500">
             <div className={`max-w-[1920px] mx-auto flex flex-col md:flex-row justify-between items-center ${horizontalPadding} py-14 gap-8`}>
                 <div className="flex flex-col items-center md:items-start gap-4 text-center md:text-left">
-                    <a href="/" className="hover:opacity-80 transition-opacity">
+                    <a href={wrapUrl("/")} className="hover:opacity-80 transition-opacity">
                         <Logo className="h-6 2xl:h-7 w-auto mb-2" />
                     </a>
                     <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 text-[13px] 2xl:text-sm font-medium">

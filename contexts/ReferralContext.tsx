@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 interface ReferralContextType {
     referralCode: string | null;
     getRegisterUrl: () => string;
+    wrapUrl: (url: string) => string;
     clearReferral: () => void;
 }
 
@@ -17,28 +18,39 @@ export const ReferralProvider: React.FC<{ children: ReactNode }> = ({ children }
 
     useEffect(() => {
         const urlRef = searchParams.get("ref");
-        const storedRef = typeof window !== 'undefined' ? localStorage.getItem("originbi_referral_code") : null;
+        const storedRef = typeof window !== 'undefined' ? sessionStorage.getItem("originbi_referral_code") : null;
 
         if (searchParams.has("ref")) {
             if (urlRef && urlRef.trim() !== "") {
                 const cleanRef = urlRef.trim();
                 setReferralCode(cleanRef);
-                localStorage.setItem("originbi_referral_code", cleanRef);
+                sessionStorage.setItem("originbi_referral_code", cleanRef);
             } else {
                 setReferralCode(null);
-                localStorage.removeItem("originbi_referral_code");
+                sessionStorage.removeItem("originbi_referral_code");
             }
         } else {
-            // Explicitly sync with storedRef (which could be null)
-            setReferralCode(storedRef);
+            // Restore from session storage if available to handle the initial load
+            // but keep the URL as the source of truth for "active" referrals.
+            // However, to satisfy "remove and refresh = gone", we clear it if the URL is bare.
+            setReferralCode(null);
+            sessionStorage.removeItem("originbi_referral_code");
         }
     }, [searchParams]);
 
     const clearReferral = () => {
         setReferralCode(null);
         if (typeof window !== 'undefined') {
-            localStorage.removeItem("originbi_referral_code");
+            sessionStorage.removeItem("originbi_referral_code");
         }
+    };
+
+    const wrapUrl = (url: string) => {
+        if (!referralCode) return url;
+        const [path, hash] = url.split('#');
+        const separator = path.includes('?') ? '&' : '?';
+        const newUrl = `${path}${separator}ref=${referralCode}${hash ? '#' + hash : ''}`;
+        return newUrl;
     };
 
     const getRegisterUrl = () => {
@@ -46,7 +58,7 @@ export const ReferralProvider: React.FC<{ children: ReactNode }> = ({ children }
     };
 
     return (
-        <ReferralContext.Provider value={{ referralCode, getRegisterUrl, clearReferral }}>
+        <ReferralContext.Provider value={{ referralCode, getRegisterUrl, wrapUrl, clearReferral }}>
             {children}
         </ReferralContext.Provider>
     );

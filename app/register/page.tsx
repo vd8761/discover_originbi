@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = "force-dynamic";
+
 import React, { useState, useCallback } from "react";
 import Link from "next/link";
 import Header from "@/components/layout/Header";

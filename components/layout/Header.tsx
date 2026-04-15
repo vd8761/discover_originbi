@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({
   showRegisterButton = true,
 }) => {
   const { theme, toggleTheme, isInitialized } = useTheme();
-  const { getRegisterUrl } = useReferral();
+  const { getRegisterUrl, wrapUrl } = useReferral();
   const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -87,7 +87,7 @@ const Header: React.FC<HeaderProps> = ({
         className={`max-w-[1920px] mx-auto flex items-center justify-between ${horizontalPadding}`}
       >
         <div className="flex items-center gap-4 lg:gap-12">
-          <a href="/" className="hover:opacity-90 transition-opacity">
+          <a href={wrapUrl("/")} className="hover:opacity-90 transition-opacity">
             <Logo
               className="h-6 sm:h-7 lg:h-6 w-auto"
               forceWhite={theme === "dark"}
@@ -96,12 +96,12 @@ const Header: React.FC<HeaderProps> = ({
           </a>
           <div className="hidden xl:flex items-center gap-8">
             <a
-              href="/#situation"
+              href={wrapUrl("/#situation")}
               className={`font-sans font-semibold text-[13px] 2xl:text-sm transition-colors uppercase tracking-[0.15em] ${linkColorClass}`}
             >
               {/* @ts-ignore */} <T> Explore Careers </T> </a>
             <a
-              href="/#product"
+              href={wrapUrl("/#product")}
               className={`font-sans font-semibold text-[13px] 2xl:text-sm transition-colors uppercase tracking-[0.15em] ${linkColorClass}`}
             >
               {/* @ts-ignore */} <T> How It Works </T> </a>
@@ -180,13 +180,13 @@ const Header: React.FC<HeaderProps> = ({
         <div className="xl:hidden absolute top-full left-0 right-0 bg-white dark:bg-brand-dark-primary border-t border-gray-100 dark:border-white/5 shadow-xl py-4 flex flex-col transition-all duration-300 animate-slide-down">
           <div className={`flex flex-col gap-4 ${horizontalPadding}`}>
             <a
-              href="/#situation"
+              href={wrapUrl("/#situation")}
               onClick={() => setIsMenuOpen(false)}
               className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-gray-900 transition-colors hover:text-brand-green dark:text-white"
             >
               {/* @ts-ignore */} <T> Explore Careers </T> </a>
             <a
-              href="/#product"
+              href={wrapUrl("/#product")}
               onClick={() => setIsMenuOpen(false)}
               className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-gray-900 transition-colors hover:text-brand-green dark:text-white"
             >
