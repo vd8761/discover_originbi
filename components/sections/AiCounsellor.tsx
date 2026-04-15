@@ -32,7 +32,7 @@ const AiCounsellor: React.FC = () => {
                                 </span>
                             </h2>
                             <p className={`leading-relaxed max-w-xl ${mounted && language === 'ta' ? 'text-base text-gray-600 dark:text-gray-300/80' : 'text-lg text-gray-600 dark:text-gray-300/90'}`}>
-                                {/* @ts-ignore */} <T>Ask personalized questions, make wise choices, and discover who you truly are. Our AI analyzes your unique behavioral data to provide deeply personal guidance on your path forward.</T>
+                                {/* @ts-ignore */} <T>Ask personalized questions, make smarter college decisions, and discover what careers fit you best. Our AI uses your behavioral data to guide majors, projects, internships, and placement goals.</T>
                             </p>
                         </div>
 
@@ -47,8 +47,8 @@ const AiCounsellor: React.FC = () => {
                                 },
                                 {
                                     icon: "insights",
-                                    title: "Data-Driven Choices",
-                                    desc: "Make confident decisions backed by your personalized metrics.",
+                                    title: "Plan Better Decisions",
+                                    desc: "Choose majors, electives, and internships with clarity.",
                                     color: "text-brand-green",
                                     bg: "bg-brand-green/10",
                                 },
@@ -80,7 +80,7 @@ const AiCounsellor: React.FC = () => {
 
                         <div className="pt-2">
                             <Button variant="primary" size="lg" className="group">
-                                {/* @ts-ignore */} <T>Start Your Free Session</T>
+                                {/* @ts-ignore */} <T>Start Your Free Career Chat</T>
                                 <span className="material-symbols-outlined ml-2 transition-transform group-hover:translate-x-1" style={{ fontSize: "20px" }}>
                                     arrow_forward
                                 </span>
