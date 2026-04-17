@@ -15,8 +15,20 @@ const notoSansTamil = Noto_Sans_Tamil({
 });
 
 export const metadata: Metadata = {
-  title: "OriginBI - Career Readiness for Students",
-  description: "A behavioral assessment platform designed for students to discover their personality and career readiness.",
+  title: "OriginBI Rolefitment - Career Readiness for Students",
+  description: "A behavioral assessment platform designed for students to discover their personality and career readiness with OriginBI Rolefitment.",
+  openGraph: {
+    title: "OriginBI Rolefitment - Career Readiness for Students",
+    description: "A behavioral assessment platform designed for students to discover their personality and career readiness with OriginBI Rolefitment.",
+    images: [
+      {
+        url: "/Origin-BI-Logo-01.png",
+        width: 1200,
+        height: 630,
+        alt: "OriginBI Rolefitment",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
