@@ -15,8 +15,8 @@ const notoSansTamil = Noto_Sans_Tamil({
 });
 
 export const metadata: Metadata = {
-  title: "OriginBI Schools - Career Readiness for Students",
-  description: "A behavioral assessment platform designed for school students to discover their personality and career readiness.",
+  title: "OriginBI - Career Readiness for Students",
+  description: "A behavioral assessment platform designed for students to discover their personality and career readiness.",
 };
 
 export default function RootLayout({
