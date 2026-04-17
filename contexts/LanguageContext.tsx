@@ -45,18 +45,25 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     };
 
     const t = (key: string): string => {
-        if (!mounted) return key;
+        const COST = process.env.NEXT_PUBLIC_REGISTRATION_COST || '999';
+        const legacyPrices = ['749', '499', '500'];
+        
+        const applyReplacement = (str: string) => {
+            let result = str;
+            legacyPrices.forEach(price => {
+                if (result.includes(price)) {
+                    result = result.split(price).join(COST);
+                }
+            });
+            return result;
+        };
+
+        if (!mounted) return applyReplacement(key);
         
         // Get the translated text (or use the key as default for English)
         let text = language === "en" ? key : (taTranslations as Record<string, string>)[key] || key;
         
-        // Dynamically replace the legacy 749 price with the configured cost
-        const COST = process.env.NEXT_PUBLIC_REGISTRATION_COST || '499';
-        if (text.includes('749')) {
-            return text.split('749').join(COST);
-        }
-        
-        return text;
+        return applyReplacement(text);
     };
 
     return (
@@ -87,7 +94,7 @@ export const useTranslation = () => {
         setMounted(true);
     }, []);
 
-    const safeT = (key: string) => mounted ? t(key) : key;
+    const safeT = (key: string) => t(key);
 
     return { t: safeT, language, setLanguage, mounted };
 };
@@ -103,7 +110,7 @@ export const T: React.FC<{ children: ReactNode }> = ({ children }) => {
 
     if (typeof children === "string") {
         if (!mounted) {
-            return <>{children}</>;
+            return <>{t(children)}</>;
         }
 
         const trimmed = children.trim();

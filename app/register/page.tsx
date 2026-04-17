@@ -269,7 +269,7 @@ function RegisterPageContent() {
 
       const options = {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-        amount: (Number(process.env.NEXT_PUBLIC_REGISTRATION_COST) || 500) * 100, // Amount is in currency subunits. Default: 50000 paise = 500 INR
+        amount: (Number(process.env.NEXT_PUBLIC_REGISTRATION_COST) || 999) * 100, // Amount is in currency subunits. Default: 99900 paise = 999 INR
         currency: "INR",
         name: "Origin BI",
         description: "Student Registration Fee",
@@ -277,7 +277,7 @@ function RegisterPageContent() {
         handler: async function (response: any) {
           // Payment Success - Now Register Student
           try {
-            const amount = (Number(process.env.NEXT_PUBLIC_REGISTRATION_COST) || 500).toString();
+            const amount = (Number(process.env.NEXT_PUBLIC_REGISTRATION_COST) || 999).toString();
             const registerResponse = await registerStudent({
               full_name: formData.name,
               email: formData.email,
