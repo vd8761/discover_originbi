@@ -24,7 +24,7 @@ const experts: Expert[] = [
         name: "Dr Shree Pratap",
         role: "Advisory Board Member - OriginBI",
         organization: "Medical Director, Shadithya Psychiatric Hospital, Chennai",
-        videoUrl: "https://www.youtube.com/embed/m189-McRa2M",
+        videoUrl: "https://www.youtube.com/embed/ZEHYqAiwDUQ",
         title: "Dr Shree Pratap - Advisory Board Member",
     },
     {
@@ -159,7 +159,8 @@ const IndustryExperts: React.FC = () => {
                                         width="100%"
                                         height="100%"
                                         frameBorder="0"
-                                        allow="autoplay; encrypted-media; picture-in-picture"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerPolicy="strict-origin-when-cross-origin"
                                         allowFullScreen
                                         title={t(currentExpert.title)}
                                         className="absolute inset-0 w-full h-full"
