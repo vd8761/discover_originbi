@@ -20,10 +20,32 @@ const Header: React.FC<HeaderProps> = ({
   const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = React.useRef(0);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isMenuOpen) return;
+      const currentScrollY = window.scrollY;
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY.current) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isMenuOpen]);
 
   const navLinks = [
     { label: "Problem", href: "#problem" },
@@ -37,7 +59,9 @@ const Header: React.FC<HeaderProps> = ({
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 w-full bg-[var(--bg-color)] py-4 lg:py-6 transition-all duration-300">
+    <nav className={`fixed top-0 left-0 right-0 z-50 w-full bg-[var(--bg-color)] py-4 lg:py-6 transition-all duration-300 ${
+      isVisible ? "translate-y-0" : "-translate-y-full"
+    }`}>
       <div className={`max-w-[1920px] mx-auto flex items-center justify-between ${horizontalPadding}`}>
         {/* Left Side: Logo */}
         <div className="flex-shrink-0">

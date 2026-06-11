@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 32" fill="currentColor">
+  <path d="M 2,4 L 16,4 Q 16,16 9,23 Q 2,16 2,4 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+  <rect x="4.5" y="7" width="3.5" height="2.5" rx="0.5"/>
+  <rect x="10.5" y="7" width="3.5" height="2.5" rx="0.5"/>
+  <rect x="7.5" y="14" width="3.5" height="2.5" rx="0.5"/>
+  <text x="24" y="22" font-family="'Times New Roman', Georgia, serif" font-weight="700" font-size="18" letter-spacing="1px">HARVARD</text>
+</svg>
