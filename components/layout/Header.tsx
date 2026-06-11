@@ -95,16 +95,6 @@ const Header: React.FC<HeaderProps> = ({
             />
           </a>
           <div className="hidden xl:flex items-center gap-8">
-            <a
-              href={wrapUrl("/#situation")}
-              className={`font-sans font-semibold text-[13px] 2xl:text-sm transition-colors uppercase tracking-[0.15em] ${linkColorClass}`}
-            >
-              {/* @ts-ignore */} <T> Explore Careers </T> </a>
-            <a
-              href={wrapUrl("/#product")}
-              className={`font-sans font-semibold text-[13px] 2xl:text-sm transition-colors uppercase tracking-[0.15em] ${linkColorClass}`}
-            >
-              {/* @ts-ignore */} <T> How It Works </T> </a>
           </div>
         </div>
 
@@ -179,20 +169,6 @@ const Header: React.FC<HeaderProps> = ({
       {isMenuOpen && (
         <div className="xl:hidden absolute top-full left-0 right-0 bg-white dark:bg-brand-dark-primary border-t border-gray-100 dark:border-white/5 shadow-xl py-4 flex flex-col transition-all duration-300 animate-slide-down">
           <div className={`flex flex-col gap-4 ${horizontalPadding}`}>
-            <a
-              href={wrapUrl("/#situation")}
-              onClick={() => setIsMenuOpen(false)}
-              className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-gray-900 transition-colors hover:text-brand-green dark:text-white"
-            >
-              {/* @ts-ignore */} <T> Explore Careers </T> </a>
-            <a
-              href={wrapUrl("/#product")}
-              onClick={() => setIsMenuOpen(false)}
-              className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-gray-900 transition-colors hover:text-brand-green dark:text-white"
-            >
-              {/* @ts-ignore */} <T> How It Works </T> </a>
-
-            <div className="h-px bg-gray-200 dark:bg-white/10 w-full my-2" />
 
             <div className="flex items-center justify-between">
               <span className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-gray-900 dark:text-white">
