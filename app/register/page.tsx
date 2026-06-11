@@ -5,17 +5,15 @@ export const dynamic = "force-dynamic";
 import React, { useState, useCallback } from "react";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+
 import Button from "@/components/ui/Button";
 import { useTheme } from "@/contexts/ThemeContext";
 import { EyeIcon, EyeOffIcon, PlayIcon } from "@/components/icons";
 import Input from "@/components/ui/Input";
 import CustomSelect from "@/components/ui/CustomSelect";
 import MobileInput from "@/components/ui/MobileInput";
-import RegisterSteps from "@/components/sections/RegisterSteps";
 import Turnstile from "@/components/ui/Turnstile";
 
-import MobileHowItWorksCarousel from "@/components/sections/MobileHowItWorksCarousel";
 import { registerStudent, validateStudent, validateReferralCode, getDepartments } from "@/lib/api";
 import { useRouter, useSearchParams } from "next/navigation";
 import { T, useTranslation } from "@/contexts/LanguageContext";
@@ -353,10 +351,10 @@ function RegisterPageContent() {
 
       <main className="flex-1 w-full relative">
         <div className="max-w-[1920px] mx-auto">
-          <div className="flex flex-col lg:flex-row">
+          <div className="flex flex-col items-center">
 
-            {/* Left Side - Form Section (scrolls with page) */}
-            <div className="w-full lg:w-1/2 px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] pt-28 lg:pt-36 pb-12 bg-white dark:bg-brand-dark-primary relative z-10 transition-colors duration-300">
+            {/* Form Section */}
+            <div className="w-full max-w-2xl px-6 pt-28 lg:pt-36 pb-12 bg-white dark:bg-brand-dark-primary relative z-10 transition-colors duration-300">
 
               {/* Decorative Top Line */}
               <div className="hidden lg:block w-16 h-1 bg-brand-green mb-6 rounded-full"></div>
@@ -648,73 +646,12 @@ function RegisterPageContent() {
                 </>
               )}
 
-
-              {/* Mobile View Info Section (Bottom of Page now) */}
-              <div className="block lg:hidden mt-12 pt-12 border-t border-gray-100 dark:border-white/10">
-                {/* Student Photo */}
-                <div className="w-full max-w-[380px] mx-auto mb-8 relative">
-                  <img
-                    src="/hero-new.png"
-                    alt="Student"
-                    className="relative z-10 w-full h-auto object-contain drop-shadow-xl"
-                  />
-                </div>
-
-                <div className="mt-4">
-                  <MobileHowItWorksCarousel />
-                </div>
-              </div>
-
-
-
             </div>
 
-            {/* Right Side - Visual Section (Sticky Full Height) */}
-            <div className="hidden lg:block w-1/2 bg-gray-50 dark:bg-[#1D1D1D] transition-colors duration-300 border-l border-gray-100 dark:border-white/5 relative">
-              <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
-
-                {/* Subtle Dots Background Pattern */}
-                <div className="absolute inset-0 dark:hidden opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, black 2px, transparent 0)', backgroundSize: '32px 32px' }}></div>
-                <div className="absolute inset-0 hidden dark:block opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 2px, transparent 0)', backgroundSize: '32px 32px' }}></div>
-
-                {/* Minimal Glow Blobs */}
-                <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-brand-green/10 rounded-full blur-[120px] pointer-events-none mix-blend-multiply dark:mix-blend-screen"></div>
-                <div className="absolute bottom-[10%] left-[-10%] w-[400px] h-[400px] bg-brand-blue/10 rounded-full blur-[100px] pointer-events-none mix-blend-multiply dark:mix-blend-screen"></div>
-
-                {/* Primary Feature Image */}
-                <div className="w-full max-w-[700px] mx-auto relative z-10 px-8 2xl:px-12 transition-transform duration-700 hover:scale-105 group">
-                  <img
-                    src="/hero-new.png"
-                    alt="OriginBI Student Mapping"
-                    className="relative z-10 w-full h-auto object-contain drop-shadow-2xl group-hover:drop-shadow-[0_20px_50px_rgba(30,211,106,0.15)] transition-all duration-700"
-                    draggable={false}
-                  />
-                </div>
-
-                {/* Small Anchor Tag */}
-                <div className="absolute bottom-16 left-0 right-0 flex justify-center z-20">
-                  <div className="px-5 py-2 rounded-full border border-gray-200 dark:border-brand-dark-tertiary bg-white/50 dark:bg-brand-dark-tertiary/50 backdrop-blur-md shadow-sm">
-                    <span className="text-xs font-bold tracking-widest uppercase text-brand-dark-primary dark:text-gray-300 flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
-                      {/* @ts-ignore */} <T> AI-Powered Career Discovery </T>
-                    </span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-
-          {/* Hide original steps on mobile since we have the carousel at the top */}
-          <div className="hidden lg:block">
-            <RegisterSteps />
           </div>
         </div>
       </main >
-
-      <Footer />
-    </div >
+    </div>
   );
 }
 
