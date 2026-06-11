@@ -346,7 +346,7 @@ function RegisterPageContent() {
   }, [isSuccess, router]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-brand-dark-primary font-sans text-brand-dark-primary dark:text-white transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-transparent font-sans text-white transition-colors duration-300">
       <Header showRegisterButton={false} />
 
       <main className="flex-1 w-full relative">
@@ -354,7 +354,7 @@ function RegisterPageContent() {
           <div className="flex flex-col items-center">
 
             {/* Form Section */}
-            <div className="w-full max-w-2xl px-6 pt-28 lg:pt-36 pb-12 bg-white dark:bg-brand-dark-primary relative z-10 transition-colors duration-300">
+            <div className="w-full max-w-2xl px-6 pt-28 lg:pt-36 pb-12 bg-transparent relative z-10 transition-colors duration-300">
 
               {/* Decorative Top Line */}
               <div className="hidden lg:block w-16 h-1 bg-brand-green mb-6 rounded-full"></div>

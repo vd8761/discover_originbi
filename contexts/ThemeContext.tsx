@@ -22,7 +22,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
     children,
 }) => {
-    const [theme, setTheme] = useState<Theme>("light");
+    const [theme, setTheme] = useState<Theme>("dark");
     const [mounted, setMounted] = useState(false);
     const [isInitialized, setIsInitialized] = useState(false);
 
@@ -34,8 +34,8 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
             if (savedTheme === "dark") document.documentElement.classList.add("dark");
             else document.documentElement.classList.remove("dark");
         } else {
-            setTheme("light");
-            document.documentElement.classList.remove("dark");
+            setTheme("dark");
+            document.documentElement.classList.add("dark");
         }
         setMounted(true);
         setIsInitialized(true);

@@ -66,18 +66,26 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #19211c;
+  --bg-color: #19211c;
+  --background: var(--bg-color);
+  --foreground: #ffffff;
   --mesh-color-1: rgba(30, 211, 106, 0.08);
   --mesh-color-2: rgba(21, 0, 137, 0.04);
 }
 
 .dark {
-  --background: #19211c;
+  --bg-color: #19211c;
+  --background: var(--bg-color);
   --foreground: #ffffff;
   --mesh-color-1: rgba(30, 211, 106, 0.06);
   --mesh-color-2: rgba(21, 0, 137, 0.06);
 }
+
+body {
+  background-color: var(--bg-color);
+  color: var(--foreground);
+}
+
 
 @theme {
   --font-sans:

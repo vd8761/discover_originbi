@@ -4,8 +4,6 @@ import { I18nToggle } from "@/contexts/LanguageContext";
 import React, { useState, useEffect } from "react";
 import Logo from "@/components/ui/Logo";
 import Button from "@/components/ui/Button";
-import { useTheme } from "@/contexts/ThemeContext";
-import { LightModeIcon, DarkModeIcon } from "@/components/icons";
 import { T, useTranslation } from "@/contexts/LanguageContext";
 import { useReferral } from "@/contexts/ReferralContext";
 
@@ -18,147 +16,87 @@ const Header: React.FC<HeaderProps> = ({
   horizontalPadding = "px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]",
   showRegisterButton = true,
 }) => {
-  const { theme, toggleTheme, isInitialized } = useTheme();
   const { getRegisterUrl, wrapUrl } = useReferral();
   const { t } = useTranslation();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isWhiteHeader = isScrolled && theme === "light";
-  const linkColorClass =
-    !mounted
-      ? "text-gray-900 hover:text-brand-green"
-      : theme === "light"
-        ? isScrolled
-          ? "text-gray-700 hover:text-brand-green"
-          : "text-gray-900 hover:text-brand-green"
-        : isScrolled
-          ? "text-white hover:text-white/80"
-          : "text-white hover:text-white/80";
-
-  const renderThemeToggle = () => {
-    if (!mounted || !isInitialized) return <div className="w-12 lg:w-16 h-7 lg:h-8" />;
-
-    return (
-      <button
-        onClick={toggleTheme}
-        className="relative flex items-center w-12 lg:w-16 h-7 lg:h-8 rounded-full bg-brand-light-tertiary dark:bg-brand-dark-tertiary cursor-pointer border border-[#19211C]/10 dark:border-white/10 shadow-[inset_1px_2px_4px_0px_rgba(25,33,28,0.15)] dark:shadow-[inset_1px_2px_4px_0px_rgba(25,33,28,0.5)] transition-all duration-300"
-        aria-label="Toggle theme"
-      >
-        {/* Background icons */}
-        <div className="flex justify-between w-full px-1.5 lg:px-2 text-gray-500 dark:text-gray-400">
-          <LightModeIcon className="w-3 lg:w-4 h-3 lg:h-4" />
-          <DarkModeIcon className="w-3 lg:w-4 h-3 lg:h-4 text-[#150089] dark:text-gray-400" />
-        </div>
-
-        {/* Switch thumb */}
-        <div
-          className={`absolute top-1 left-1 flex items-center justify-center w-5 lg:w-6 h-5 lg:h-6 bg-brand-green rounded-full transform transition-transform duration-300 ease-in-out ${theme === "dark" ? "translate-x-5 lg:translate-x-8" : "translate-x-0"} shadow-[0_1px_3px_rgba(25,33,28,0.2)] dark:shadow-[0_2px_4px_rgba(25,33,28,0.5)]`}
-        >
-          <DarkModeIcon
-            className={`w-3 lg:w-3.5 h-3 lg:h-3.5 text-white ${theme === "dark" ? "block" : "hidden"}`}
-          />
-          <LightModeIcon
-            className={`w-3.5 lg:w-4 h-3.5 lg:h-4 text-white ${theme === "dark" ? "hidden" : "block"}`}
-          />
-        </div>
-      </button>
-    );
-  };
+  const navLinks = [
+    { label: "Problem", href: "#problem" },
+    { label: "Journey", href: "#journey" },
+    { label: "Why OriginBi", href: "#why-originbi" },
+    { label: "Experts", href: "#experts" },
+    { label: "AI Counsellor", href: "#ai-counsellor" },
+    { label: "Career Package", href: "#career-package" },
+    { label: "Testimonials", href: "#testimonials" },
+    { label: "FAQ", href: "#faq" },
+  ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 w-full transition-colors duration-400 ${isScrolled || isMenuOpen
-        ? "bg-white dark:bg-brand-dark-primary py-2.5"
-        : "bg-transparent py-4"
-        }`}
-    >
-      <div
-        className={`max-w-[1920px] mx-auto flex items-center justify-between ${horizontalPadding}`}
-      >
-        <div className="flex items-center gap-4 lg:gap-12">
+    <nav className="fixed top-0 left-0 right-0 z-50 w-full bg-[var(--bg-color)] py-4 lg:py-6 transition-all duration-300">
+      <div className={`max-w-[1920px] mx-auto flex items-center justify-between ${horizontalPadding}`}>
+        {/* Left Side: Logo */}
+        <div className="flex-shrink-0">
           <a href={wrapUrl("/")} className="hover:opacity-90 transition-opacity">
-            <Logo
-              className="h-6 sm:h-7 lg:h-6 w-auto"
-              forceWhite={theme === "dark"}
-              forceDark={isScrolled || (isMenuOpen && theme === "light")}
-            />
+            <Logo className="h-6 sm:h-7 lg:h-6 w-auto" forceWhite={true} />
           </a>
-          <div className="hidden xl:flex items-center gap-8">
-          </div>
         </div>
 
-        <div className="flex items-center gap-3 lg:gap-5">
-          {/* Desktop Theme Toggle */}
-          <div className="hidden xl:block">{renderThemeToggle()}</div>
+        {/* Center: Navigation Links */}
+        <div className="hidden xl:flex items-center gap-6 2xl:gap-8 justify-center">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="text-xs font-semibold text-white/70 hover:text-[#1ed36a] transition-colors duration-200"
+            >
+              <T>{link.label}</T>
+            </a>
+          ))}
+        </div>
 
-          <div className="flex items-center gap-2 lg:gap-5">
-            <div className="hidden xl:block">
-              <I18nToggle />
-            </div>
-            {/* Login button - Only visible on desktop (xl and above) */}
-            <div className="hidden xl:block">
-              <Button
-                href="https://mind.originbi.com/student/login"
-                variant="outline"
-                size="sm"
-                className="text-[13px] sm:text-[14px] lg:text-[13px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px]"
-              >
-                {/* @ts-ignore */} <T> Login </T> </Button>
-            </div>
+        {/* Right Side: Actions (Desktop) */}
+        <div className="flex items-center gap-3 lg:gap-5">
+          {/* Language Selector & buttons */}
+          <div className="hidden xl:flex items-center gap-4 lg:gap-5">
+            <I18nToggle />
+            <Button
+              href="https://mind.originbi.com/student/login"
+              variant="primary"
+              size="sm"
+              className="text-[13px] px-5 py-2.5 min-w-[85px] hover:scale-105 active:scale-95 transition-transform"
+            >
+              <T> Login </T>
+            </Button>
             {showRegisterButton && (
               <Button
                 href={getRegisterUrl()}
+                variant="outline"
                 size="sm"
-                className="shadow-lg shadow-brand-green/20 text-[13px] sm:text-[14px] lg:text-[13px] px-5 sm:px-6 py-2.5 sm:py-3 lg:py-2.5 min-w-[100px] sm:min-w-[120px] lg:min-w-[100px] border-none"
+                className="text-[13px] px-6 py-2.5 min-w-[100px] border-brand-green text-brand-green hover:bg-[#1ed36a]/10 hover:scale-105 active:scale-95 transition-transform"
               >
-                {/* @ts-ignore */} <T> Register now </T> </Button>
+                <T> Register now </T>
+              </Button>
             )}
           </div>
 
           {/* Mobile Hamburger Menu Toggle */}
           <button
-            className="xl:hidden p-2 -mr-2 text-gray-900 dark:text-white outline-none focus:outline-none"
+            className="xl:hidden p-2 -mr-2 text-white outline-none focus:outline-none cursor-pointer"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
           </button>
@@ -167,37 +105,35 @@ const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
-        <div className="xl:hidden absolute top-full left-0 right-0 bg-white dark:bg-brand-dark-primary border-t border-gray-100 dark:border-white/5 shadow-xl py-4 flex flex-col transition-all duration-300 animate-slide-down">
+        <div className="xl:hidden absolute top-full left-0 right-0 bg-[#19211c] border-b border-white/10 shadow-2xl py-6 flex flex-col gap-6 animate-slide-down z-50">
           <div className={`flex flex-col gap-4 ${horizontalPadding}`}>
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-base font-semibold text-white/80 hover:text-[#1ed36a] py-2.5 border-b border-white/5 transition-colors duration-200"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <T>{link.label}</T>
+              </a>
+            ))}
 
-            <div className="flex items-center justify-between">
-              <span className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-gray-900 dark:text-white">
-                {/* @ts-ignore */} <T> Language </T> </span>
+            <div className="flex items-center justify-between pt-4 mt-2">
+              <span className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-white/60">
+                <T> Language </T>
+              </span>
               <I18nToggle />
             </div>
 
-            <div className="flex items-center justify-between">
-              <span className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-gray-900 dark:text-white">
-                {/* @ts-ignore */} <T> Theme </T> </span>
-              {renderThemeToggle()}
-            </div>
-
-            <div className="flex flex-col gap-3 mt-4">
+            <div className="flex flex-col gap-3 mt-6">
               <Button
                 href="https://mind.originbi.com/student/login"
-                variant="outline"
-                className="w-full justify-center text-sm py-3"
+                variant="primary"
+                className="w-full justify-center text-sm py-3.5 rounded-full"
                 onClick={() => setIsMenuOpen(false)}
               >
-                {/* @ts-ignore */} <T> Login </T> </Button>
-              {showRegisterButton && (
-                <Button
-                  href={getRegisterUrl()}
-                  className="w-full justify-center shadow-lg shadow-brand-green/20 border-none text-sm py-3"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {/* @ts-ignore */} <T> Register now </T> </Button>
-              )}
+                <T> Login </T>
+              </Button>
             </div>
           </div>
         </div>
