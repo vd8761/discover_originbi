@@ -167,12 +167,12 @@ const JourneySection: React.FC = () => {
     <section
       id="journey"
       ref={sectionRef}
-      className="relative w-full bg-[#19211c] text-white overflow-hidden"
+      className="relative w-full bg-[#19211c] text-white"
     >
       {/* Background Noise Texture ("moisture") */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.02]"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturation' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' fill='%23E3E4E3'/%3E%3C/svg%3E")`,
           }}
@@ -200,8 +200,8 @@ const JourneySection: React.FC = () => {
             <div key={idx} className="flex flex-col gap-6">
               {/* Step Header */}
               <div className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-[#1ed36a] text-white flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">
-                  {step.step}
+                <div className="w-8 h-8 rounded-full bg-[#1ed36a] text-white flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1 leading-none">
+                  <span className="leading-none block pt-[1px]">{step.step}</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#1ed36a] mb-1">
@@ -269,7 +269,7 @@ const JourneySection: React.FC = () => {
       {/* DESKTOP LAYOUT (Sticky Scrollytelling) */}
       <div
         className="hidden lg:block relative"
-        style={{ minHeight: `${steps.length * 100}vh` }}
+        style={{ minHeight: "240vh" }}
       >
         <div className="sticky top-0 h-screen w-full flex items-stretch">
           <div className="max-w-[1920px] mx-auto w-full flex items-stretch px-10 2xl:px-[clamp(24px,2.5vw,48px)]">
@@ -288,52 +288,54 @@ const JourneySection: React.FC = () => {
               </div>
 
               {/* Steps Vertical List */}
-              <div className="flex flex-col gap-12 my-auto">
+              <div className="flex flex-col w-full my-auto">
                 {steps.map((step, idx) => {
                   const isActive = activeStep === idx;
                   return (
-                    <div
-                      key={idx}
-                      className="flex items-start transition-all duration-300"
-                    >
-                      {/* Circle Number */}
-                      <div
-                        className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-lg flex-shrink-0 transition-all duration-500 mt-1.5 ${
-                          isActive
-                            ? "bg-[#1ed36a] text-[#19211c] shadow-[0_0_0_6px_rgba(30,211,106,0.15)] font-bold scale-105"
-                            : "border border-white/30 text-white opacity-40"
-                        }`}
-                      >
-                        {step.step}
-                      </div>
-
-                      {/* Text details */}
-                      <div className="ml-5 flex-1 flex flex-col items-start text-left">
-                        {/* Title */}
-                        <div
-                          className={`transition-all duration-500 origin-left ${
-                            isActive
-                              ? "text-2xl sm:text-3xl lg:text-[36px] xl:text-[40px] font-semibold leading-tight tracking-tight opacity-100 animate-fade-in"
-                              : "text-lg sm:text-xl font-medium leading-tight tracking-tight opacity-40"
-                          }`}
-                        >
-                          <span className={isActive ? "text-white" : "text-white/40 transition-colors duration-500"}>
-                            {isTa ? step.firstPartTa : step.firstPartEn}{" "}
-                          </span>
-                          <span
-                            className={`transition-all duration-500 ${
+                    <React.Fragment key={idx}>
+                      {idx === 0 && <div className="w-full h-px bg-white/10" />}
+                      <div className="flex flex-col items-start py-6 transition-all duration-300 w-full">
+                        {/* Title Row */}
+                        <div className="flex items-center w-full">
+                          {/* Circle Number */}
+                          <div
+                            className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold text-sm flex-shrink-0 transition-all duration-300 leading-none ${
                               isActive
-                                ? "text-[#1ed36a] block mt-1"
-                                : "text-white/40"
+                                ? "bg-[#1ed36a] text-white font-bold"
+                                : "border border-white text-white"
                             }`}
                           >
-                            {isTa ? step.secondPartTa : step.secondPartEn}
-                          </span>
+                            <span className="leading-none block pt-[1px]">{step.step}</span>
+                          </div>
+
+                          {/* Title text */}
+                          <div className="ml-5 flex-1 text-left">
+                            <div
+                              className={`transition-all duration-500 origin-left ${
+                                isActive
+                                  ? "text-2xl sm:text-3xl lg:text-[36px] xl:text-[40px] font-semibold leading-tight tracking-tight text-white animate-fade-in"
+                                  : "text-lg sm:text-xl font-medium leading-tight tracking-tight text-white"
+                              }`}
+                            >
+                              <span className="text-white">
+                                {isTa ? step.firstPartTa : step.firstPartEn}{" "}
+                              </span>
+                              <span
+                                className={`transition-all duration-500 ${
+                                  isActive
+                                    ? "text-[#1ed36a] block mt-1"
+                                    : "text-white"
+                                }`}
+                              >
+                                {isTa ? step.secondPartTa : step.secondPartEn}
+                              </span>
+                            </div>
+                          </div>
                         </div>
 
-                        {/* Quote Block - displayed only under active step */}
+                        {/* Quote Block - displayed only under active step, indented */}
                         <div
-                          className={`transition-all duration-700 ease-out overflow-hidden flex flex-col items-start ${
+                          className={`transition-all duration-700 ease-out overflow-hidden flex flex-col items-start pl-[52px] ${
                             isActive
                               ? "max-h-[200px] opacity-100 mt-5 pointer-events-auto"
                               : "max-h-0 opacity-0 pointer-events-none"
@@ -349,7 +351,8 @@ const JourneySection: React.FC = () => {
                           </p>
                         </div>
                       </div>
-                    </div>
+                      <div className="w-full h-px bg-white/10" />
+                    </React.Fragment>
                   );
                 })}
               </div>
@@ -360,7 +363,7 @@ const JourneySection: React.FC = () => {
 
             {/* ─── RIGHT COLUMN: Stacked Cards Area ─── */}
             <div className="w-[55%] pl-16 flex items-center justify-center relative">
-              <div className="relative w-full max-w-xl h-[380px] flex items-center overflow-visible">
+              <div className="relative w-full max-w-xl h-[480px] sm:h-[450px] lg:h-[420px] flex items-center overflow-visible">
                 {steps.map((step, idx) => {
                   const isActive = activeStep === idx;
                   return (
@@ -368,10 +371,10 @@ const JourneySection: React.FC = () => {
                       key={idx}
                       className={`absolute w-full flex flex-col transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${
                         isActive
-                          ? "opacity-100 translate-y-0 pointer-events-auto z-10"
+                          ? "opacity-100 translate-x-0 scale-100 blur-none pointer-events-auto z-10"
                           : activeStep > idx
-                          ? "opacity-0 -translate-y-8 pointer-events-none z-0"
-                          : "opacity-0 translate-y-8 pointer-events-none z-0"
+                          ? "opacity-0 -translate-x-12 scale-95 blur-sm pointer-events-none z-0"
+                          : "opacity-0 translate-x-12 scale-95 blur-sm pointer-events-none z-0"
                       }`}
                     >
                       {/* What Happens Block */}
