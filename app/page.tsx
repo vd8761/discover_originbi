@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import LogoLoop from "@/components/LogoLoop";
 import { T } from "@/contexts/LanguageContext";
 import SituationSection from "@/components/SituationSection";
+import JourneySection from "@/components/JourneySection";
 
 const PARTNER_LOGOS = [
   { name: "Stanford", imgSrc: "/assets/logos/stanford.svg" },
@@ -47,6 +48,7 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 right-0 h-[10px] bg-[linear-gradient(to_right,#ED2F34,#EF5921,#FDC00C,#1ED36A)] blur-[10px] opacity-75 animate-aura-pulse pointer-events-none z-20" />
         </section>
         <SituationSection />
+        <JourneySection />
       </main>
     </div>
   );

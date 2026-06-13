@@ -186,7 +186,7 @@ const SituationSection: React.FC = () => {
             {/* ── CARD 3: Correct Your Course Before It Starts ── */}
             <div className="relative w-full max-w-2xl mx-auto lg:mx-0 lg:w-[600px] xl:w-[640px] h-[280px] sm:h-[320px] lg:h-[420px] xl:h-[440px] rounded-[28px] lg:rounded-[36px] bg-[#19211c] text-white flex-shrink-0 overflow-hidden shadow-lg border border-white/5">
               {/* Illustration Bottom Left (increased size) */}
-              <div className="absolute bottom-0 left-0 w-[240px] sm:w-[320px] lg:w-[500px] xl:w-[540px] h-[130px] sm:h-[170px] lg:h-[260px] xl:h-[280px] pointer-events-none z-10">
+              <div className="absolute bottom-0 left-0 w-[300px] sm:w-[380px] lg:w-[500px] xl:w-[540px] h-[155px] sm:h-[200px] lg:h-[260px] xl:h-[280px] pointer-events-none z-10">
                 <img
                   src="/assets/situation/card3.svg"
                   alt="Correct Your Course"
