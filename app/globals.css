@@ -81,6 +81,11 @@
   --mesh-color-2: rgba(21, 0, 137, 0.06);
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--foreground);
@@ -117,4 +122,14 @@ body {
   --color-brand-blue: #150089;
   --animate-fade-in: fade-in 0.8s ease-in-out forwards;
   --animate-slide-down: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-aura-pulse: aura-pulse 4s ease-in-out infinite;
+
+  @keyframes aura-pulse {
+    0%, 100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 0.9;
+    }
+  }
 }

@@ -13,7 +13,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({
-  horizontalPadding = "px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]",
+  horizontalPadding = "px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)]",
   showRegisterButton = true,
 }) => {
   const { getRegisterUrl, wrapUrl } = useReferral();

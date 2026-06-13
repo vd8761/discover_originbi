@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* ===== MAIN CONTENT AREA ===== */}
-      <div className="flex-1 w-full max-w-[1920px] mx-auto px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)] flex flex-col lg:flex-row relative lg:static z-10 min-h-0">
+      <div className="flex-1 w-full max-w-[1920px] mx-auto px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] flex flex-col lg:flex-row relative lg:static z-10 min-h-0">
 
         {/* ── Left Column: Text Content ── */}
         <div className="relative z-30 flex flex-col justify-center w-full lg:w-[48%] order-1 pt-8 lg:pt-0">
@@ -71,17 +71,17 @@ const Hero: React.FC = () => {
           <img
             src="/assets/image.png"
             alt="OriginBI Right Career"
-            className="relative z-20 h-[38vh] sm:h-[42vh] lg:h-full w-auto max-w-none object-contain object-bottom select-none pointer-events-none animate-fade-in duration-1000"
+            className="relative z-20 h-[48vh] sm:h-[52vh] lg:h-full w-auto max-w-none object-contain object-bottom select-none pointer-events-none animate-fade-in duration-1000 -translate-y-8 lg:translate-y-0"
             draggable={false}
           />
         </div>
       </div>
 
       {/* ===== BOTTOM BANNER: Background Giant Text ===== */}
-      <div className="absolute bottom-0 left-0 right-0 w-full select-none pointer-events-none z-10 leading-none pb-4 lg:pb-8 px-6 lg:px-12 2xl:px-[clamp(24px,8.33vw,160px)]">
+      <div className="absolute bottom-0 left-0 right-0 w-full select-none pointer-events-none z-10 leading-none pb-4 lg:pb-8 px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)]">
         <div className="max-w-[1920px] mx-auto">
           {/* FIND THE */}
-          <div className="text-white text-xs sm:text-sm md:text-base lg:text-lg font-light tracking-[0.6em] uppercase mb-1 sm:mb-2 lg:mb-4 -ml-[0.6em]">
+          <div className="text-white text-xs sm:text-sm md:text-base lg:text-lg font-light tracking-[0.6em] uppercase mb-1 sm:mb-2 lg:mb-4">
             <T>FIND THE</T>
           </div>
           {/* RIGHT CAREER */}
