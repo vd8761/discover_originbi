@@ -20,10 +20,10 @@ const Hero: React.FC = () => {
       </div>
 
       {/* ===== MAIN CONTENT AREA ===== */}
-      <div className="flex-1 w-full max-w-[1920px] mx-auto px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] flex flex-col lg:flex-row relative lg:static z-10 min-h-0">
+      <div className="flex-1 w-full max-w-[1920px] mx-auto pl-6 pr-0 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] flex flex-col lg:flex-row relative lg:static z-10 min-h-0">
 
         {/* ── Left Column: Text Content ── */}
-        <div className="relative z-30 flex flex-col justify-center w-full lg:w-[48%] order-1 pt-8 lg:pt-0">
+        <div className="relative z-30 flex flex-col justify-center w-full pr-6 lg:pr-0 lg:w-[48%] order-1 pt-8 lg:pt-0">
           <div className="lg:-mt-56">
             {/* Subtitle */}
             <div className="text-white text-lg md:text-xl lg:text-[24px] font-light mb-3 tracking-wide flex items-center gap-1.5 animate-fade-in">
@@ -47,19 +47,12 @@ const Hero: React.FC = () => {
                 <span>
                   <T>Find My Career Match | ₹999</T>
                 </span>
-                <span className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#1ed36a]">
-                  <svg
-                    className="w-4 h-4 stroke-[3px]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
-                    />
-                  </svg>
+                <span className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
+                  <img
+                    src="/assets/icons/button_arrow.svg"
+                    alt="arrow"
+                    className="w-[10px] h-[10px]"
+                  />
                 </span>
               </a>
             </div>
@@ -67,11 +60,11 @@ const Hero: React.FC = () => {
         </div>
 
         {/* ── Right Column: Hero Portrait ── */}
-        <div className="relative w-full lg:absolute lg:right-0 lg:top-[72px] lg:bottom-0 lg:w-[50%] lg:h-auto flex-1 lg:flex-none flex items-end justify-center lg:justify-end z-20 order-2 m-0 lg:m-0">
+        <div className="relative w-full lg:absolute lg:right-0 lg:top-[72px] lg:bottom-0 lg:w-[50%] lg:h-auto flex-1 lg:flex-none flex items-end justify-end z-20 order-2 m-0 lg:m-0 overflow-hidden lg:overflow-visible">
           <img
             src="/assets/image.png"
             alt="OriginBI Right Career"
-            className="relative z-20 h-[48vh] sm:h-[52vh] lg:h-full w-auto max-w-none object-contain object-bottom select-none pointer-events-none animate-fade-in duration-1000 -translate-y-8 lg:translate-y-0"
+            className="relative z-20 h-[60vh] sm:h-[58vh] lg:h-full w-auto max-w-full lg:max-w-none object-contain object-bottom select-none pointer-events-none animate-fade-in duration-1000 -translate-y-8 lg:translate-y-0"
             draggable={false}
           />
         </div>
