@@ -77,19 +77,22 @@ const Button: React.FC<ButtonProps | LinkProps> = (props) => {
     // outline: transparent bg, green border -> green hover (white text)
     const baseColors = {
         primary: {
-            bg: "bg-brand-green border-brand-green text-white group-hover:text-white",
+            bg: "bg-brand-green border-brand-green",
+            text: "text-white group-hover:text-white",
             hoverBg: "#19211c", // Dark gray bubble color
             circleBg: "bg-white",
             arrowColor: "stroke-[#1ed36a]",
         },
         secondary: {
-            bg: "bg-brand-dark-secondary border-[#24272b] text-white group-hover:text-brand-dark-primary",
+            bg: "bg-brand-dark-secondary border-[#24272b]",
+            text: "text-white group-hover:text-brand-dark-primary",
             hoverBg: "#1ed36a", // Green bubble color
             circleBg: "bg-white",
             arrowColor: "stroke-[#19211c]",
         },
         outline: {
-            bg: "bg-transparent border-brand-green text-brand-green group-hover:text-white",
+            bg: "bg-transparent border-brand-green",
+            text: "text-brand-green group-hover:text-white",
             hoverBg: "#1ed36a", // Green bubble color
             circleBg: "bg-brand-green group-hover:bg-white",
             arrowColor: "stroke-white group-hover:stroke-[#1ed36a]",
@@ -129,7 +132,7 @@ const Button: React.FC<ButtonProps | LinkProps> = (props) => {
 
     const innerContent = (
         <>
-            <span className="relative z-10 select-none transition-colors duration-300">
+            <span className={`relative z-10 select-none transition-colors duration-300 ${selectedColors.text}`}>
                 {children}
             </span>
             {arrowIcon}

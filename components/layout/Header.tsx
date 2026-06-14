@@ -108,15 +108,21 @@ const Header: React.FC<HeaderProps> = ({
             >
               <T> Login </T>
             </Button>
-            {showRegisterButton && showRegisterOnScroll && (
-              <Button
-                href={getRegisterUrl()}
-                variant="outline"
-                noDefaultSize={true}
-                className="text-[13px] px-6 py-2.5 min-w-[100px] hover:scale-105 active:scale-95 transition-transform"
-              >
-                <T> Register now </T>
-              </Button>
+            {showRegisterButton && (
+              <div className={`transition-all duration-500 ease-out origin-right flex items-center ${
+                showRegisterOnScroll
+                  ? "max-w-[200px] opacity-100 scale-100 ml-0 pointer-events-auto overflow-visible"
+                  : "max-w-0 opacity-0 scale-75 -ml-4 lg:-ml-5 pointer-events-none overflow-hidden"
+              }`}>
+                <Button
+                  href={getRegisterUrl()}
+                  variant="outline"
+                  noDefaultSize={true}
+                  className="text-[13px] px-6 py-2.5 min-w-[100px] hover:scale-105 active:scale-95 transition-transform"
+                >
+                  <T> Register </T>
+                </Button>
+              </div>
             )}
           </div>
 

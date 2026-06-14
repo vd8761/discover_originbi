@@ -179,7 +179,9 @@ export const I18nToggle: React.FC = () => {
                                     {lang.label}
                                 </span>
                                 {language === lang.code && (
-                                    <span className="material-symbols-outlined text-[14px]">check</span>
+                                    <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                    </svg>
                                 )}
                             </button>
                         ))}
