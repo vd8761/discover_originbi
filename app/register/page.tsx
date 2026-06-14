@@ -379,7 +379,7 @@ function RegisterPageContent() {
                     {/* @ts-ignore */} <T> The URL you are using is invalid or has expired. You can still proceed with a standard registration below. </T> </p>
                   <Button
                     onClick={handleClearInvalidReferral}
-                    size="lg"
+                    noDefaultSize={true}
                     className="rounded-full px-10 h-14 text-lg font-bold shadow-lg"
                   >
                     {/* @ts-ignore */} <T> Continue to Register </T> </Button>
@@ -625,7 +625,7 @@ function RegisterPageContent() {
                       </div>
                       <Button
                         type="submit"
-                        size="lg"
+                        noDefaultSize={true}
                         fullWidth
                         disabled={isLoading || Object.keys(formErrors).length > 0 || !turnstileToken}
                         className="h-14 text-lg font-bold shadow-xl shadow-brand-green/20 hover:shadow-brand-green/40 transition-all transform hover:-translate-y-0.5 rounded-full disabled:opacity-50"

@@ -7,6 +7,8 @@ import { T } from "@/contexts/LanguageContext";
 import SituationSection from "@/components/SituationSection";
 import WhyOriginBI from "@/components/WhyOriginBI";
 import JourneySection from "@/components/JourneySection";
+import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 import Footer from "@/components/layout/Footer";
 
 const PARTNER_LOGOS = [
@@ -52,6 +54,8 @@ export default function Home() {
         <SituationSection />
         <JourneySection />
         <WhyOriginBI />
+        <Testimonials />
+        <FAQ />
         <Footer />
       </main>
     </div>

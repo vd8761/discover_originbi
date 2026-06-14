@@ -103,7 +103,7 @@ const Header: React.FC<HeaderProps> = ({
             <Button
               href="https://mind.originbi.com/student/login"
               variant="primary"
-              size="sm"
+              noDefaultSize={true}
               className="text-[13px] px-5 py-2.5 min-w-[85px] hover:scale-105 active:scale-95 transition-transform"
             >
               <T> Login </T>
@@ -112,8 +112,8 @@ const Header: React.FC<HeaderProps> = ({
               <Button
                 href={getRegisterUrl()}
                 variant="outline"
-                size="sm"
-                className="text-[13px] px-6 py-2.5 min-w-[100px] border-brand-green text-brand-green hover:bg-[#1ed36a]/10 hover:scale-105 active:scale-95 transition-transform"
+                noDefaultSize={true}
+                className="text-[13px] px-6 py-2.5 min-w-[100px] hover:scale-105 active:scale-95 transition-transform"
               >
                 <T> Register now </T>
               </Button>
@@ -165,7 +165,8 @@ const Header: React.FC<HeaderProps> = ({
               <Button
                 href="https://mind.originbi.com/student/login"
                 variant="primary"
-                className="w-full justify-center text-sm py-3.5 rounded-full"
+                noDefaultSize={true}
+                className="w-full text-sm py-3.5 rounded-full"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <T> Login </T>

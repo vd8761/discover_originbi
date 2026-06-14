@@ -36,17 +36,10 @@ const Button: React.FC<ButtonProps | LinkProps> = (props) => {
 
     const [mounted, setMounted] = useState(false);
     const circleRef = useRef<HTMLDivElement>(null);
-    const timelineRef = useRef<gsap.core.Timeline | null>(null);
     const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
         setMounted(true);
-        if (circleRef.current) {
-            timelineRef.current = gsap.timeline({ paused: true });
-            timelineRef.current
-                .to(circleRef.current, { top: "-25%", width: "150%", duration: 0.4, ease: "power3.in" }, "enter")
-                .to(circleRef.current, { top: "-150%", width: "125%", duration: 0.25 }, "exit");
-        }
         return () => {
             if (timeoutIdRef.current) clearTimeout(timeoutIdRef.current);
         };
@@ -54,13 +47,28 @@ const Button: React.FC<ButtonProps | LinkProps> = (props) => {
 
     const handleMouseEnter = () => {
         if (timeoutIdRef.current) clearTimeout(timeoutIdRef.current);
-        timelineRef.current?.tweenFromTo("enter", "exit");
+        if (circleRef.current) {
+            gsap.killTweensOf(circleRef.current);
+            gsap.fromTo(circleRef.current,
+                { top: "100%", width: "150%" },
+                { top: "-25%", width: "150%", duration: 0.4, ease: "power3.out" }
+            );
+        }
     };
 
     const handleMouseLeave = () => {
-        timeoutIdRef.current = setTimeout(() => {
-            timelineRef.current?.play();
-        }, 150);
+        if (circleRef.current) {
+            gsap.killTweensOf(circleRef.current);
+            gsap.to(circleRef.current, {
+                top: "-150%",
+                width: "125%",
+                duration: 0.35,
+                ease: "power3.in",
+                onComplete: () => {
+                    gsap.set(circleRef.current, { top: "100%", width: "150%" });
+                }
+            });
+        }
     };
 
     // Color definitions
@@ -100,7 +108,9 @@ const Button: React.FC<ButtonProps | LinkProps> = (props) => {
     const widthStyle = fullWidth ? "w-full" : "w-fit";
 
     // Composed classes
-    const composedClass = `group relative rounded-full overflow-hidden flex items-center justify-between gap-[25px] sm:gap-[40px] font-sans font-bold leading-none tracking-[0.05em] border-2 cursor-pointer transition-all duration-300 ${selectedColors.bg} ${sizeStyle} ${widthStyle} ${className}`;
+    const composedClass = `group relative rounded-full overflow-hidden flex items-center ${
+        showArrow ? "justify-between gap-[25px] sm:gap-[40px]" : "justify-center"
+    } font-sans font-bold leading-none tracking-[0.05em] border-2 cursor-pointer transition-all duration-300 ${selectedColors.bg} ${sizeStyle} ${widthStyle} ${className}`;
 
     const arrowIcon = showArrow && (
         <div className={`w-[26px] h-[26px] sm:w-[32px] sm:h-[32px] ${selectedColors.circleBg} rounded-full flex items-center justify-center relative z-10 transition-all duration-300 group-hover:scale-110 overflow-hidden`}>

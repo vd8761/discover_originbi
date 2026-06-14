@@ -30,6 +30,16 @@ const Footer: React.FC = () => {
         {/* Reusable moving gradient line at the boundary */}
         <MovingGradient />
 
+        {/* Background Noise Texture */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div
+            className="absolute inset-0 opacity-[0.02]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturation' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' fill='%23E3E4E3'/%3E%3C/svg%3E")`,
+            }}
+          />
+        </div>
+
         <div className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-0 relative z-10">
           
           {/* Left Block: Clarity Starts Here & CTA */}
@@ -156,6 +166,16 @@ const Footer: React.FC = () => {
 
       {/* ===== BOTTOM SECTION (Light Gray Background, Copyright, Large Logo) ===== */}
       <div className="w-full bg-[#f4f4f4] py-12 px-6 flex flex-col items-center justify-center relative overflow-hidden">
+        
+        {/* Background Noise Texture */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div
+            className="absolute inset-0 opacity-[0.02]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturation' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' fill='%23E3E4E3'/%3E%3C/svg%3E")`,
+            }}
+          />
+        </div>
         
         {/* Copyright & Links */}
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[#19211c] text-xs sm:text-sm font-sans font-medium mb-12 tracking-wide text-center">
