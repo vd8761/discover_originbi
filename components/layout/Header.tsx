@@ -21,6 +21,7 @@ const Header: React.FC<HeaderProps> = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [showRegisterOnScroll, setShowRegisterOnScroll] = useState(false);
   const lastScrollY = React.useRef(0);
 
   useEffect(() => {
@@ -31,6 +32,14 @@ const Header: React.FC<HeaderProps> = ({
     const handleScroll = () => {
       if (isMenuOpen) return;
       const currentScrollY = window.scrollY;
+
+      // Update register button visibility based on scroll position
+      if (currentScrollY > 300) {
+        setShowRegisterOnScroll(true);
+      } else {
+        setShowRegisterOnScroll(false);
+      }
+
       if (currentScrollY < 10) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY.current) {
@@ -42,6 +51,9 @@ const Header: React.FC<HeaderProps> = ({
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    // Run initial check
+    handleScroll();
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -96,7 +108,7 @@ const Header: React.FC<HeaderProps> = ({
             >
               <T> Login </T>
             </Button>
-            {showRegisterButton && (
+            {showRegisterButton && showRegisterOnScroll && (
               <Button
                 href={getRegisterUrl()}
                 variant="outline"

@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import LogoLoop from "@/components/LogoLoop";
 import { T } from "@/contexts/LanguageContext";
 import SituationSection from "@/components/SituationSection";
+import WhyOriginBI from "@/components/WhyOriginBI";
 import JourneySection from "@/components/JourneySection";
 
 const PARTNER_LOGOS = [
@@ -49,6 +50,7 @@ export default function Home() {
         </section>
         <SituationSection />
         <JourneySection />
+        <WhyOriginBI />
       </main>
     </div>
   );
