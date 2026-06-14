@@ -118,7 +118,7 @@ const WhyOriginBI: React.FC = () => {
             <div className="bg-[#121815] h-full rounded-l-[23px] overflow-hidden flex flex-col items-stretch">
               
               {/* Header Row */}
-              <div className="h-[90px] border-b border-white/10 grid grid-cols-[33.33%_66.67%] w-full items-stretch">
+              <div className="h-[70px] border-b border-white/10 grid grid-cols-[33.33%_66.67%] w-full items-stretch">
                 <div className="px-4 flex items-center justify-center text-[15px] text-white font-sans font-medium border-r border-white/10">
                   <T>Feature</T>
                 </div>
@@ -157,7 +157,7 @@ const WhyOriginBI: React.FC = () => {
           <div className="w-[40%] border border-[#1ed36a] rounded-r-[24px] overflow-hidden flex flex-col items-stretch">
             
             {/* OriginBI Header Row */}
-            <div className="h-[90px] bg-[#1ed36a] flex flex-col sm:flex-row items-center justify-center gap-1.5 text-[15px] text-white font-sans font-medium">
+            <div className="h-[70px] bg-[#1ed36a] flex flex-col sm:flex-row items-center justify-center gap-1.5 text-[15px] text-white font-sans font-medium">
               <span><T>The OriginBI Way</T></span>
               <span className="text-white font-medium text-[13px]"><T>(The Strategy)</T></span>
             </div>

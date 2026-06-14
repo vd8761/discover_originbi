@@ -3,6 +3,7 @@
 import React from "react";
 import { useReferral } from "@/contexts/ReferralContext";
 import { T } from "@/contexts/LanguageContext";
+import Button from "@/components/ui/Button";
 
 const Hero: React.FC = () => {
   const { getRegisterUrl } = useReferral();
@@ -40,21 +41,15 @@ const Hero: React.FC = () => {
 
             {/* CTA Button */}
             <div className="flex items-center animate-fade-in delay-200">
-              <a
+              <Button
                 href={getRegisterUrl()}
-                className="inline-flex items-center gap-4 bg-[#1ed36a] text-white font-medium text-sm md:text-base pl-6 pr-2 py-2 rounded-full"
+                showArrow={true}
+                variant="primary"
+                noDefaultSize={true}
+                className="pl-6 pr-2 py-2 text-sm md:text-base font-medium"
               >
-                <span>
-                  <T>Find My Career Match | ₹999</T>
-                </span>
-                <span className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
-                  <img
-                    src="/assets/icons/button_arrow.svg"
-                    alt="arrow"
-                    className="w-[10px] h-[10px]"
-                  />
-                </span>
-              </a>
+                <T>Find My Career Match | ₹999</T>
+              </Button>
             </div>
           </div>
         </div>

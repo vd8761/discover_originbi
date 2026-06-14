@@ -7,6 +7,7 @@ import { T } from "@/contexts/LanguageContext";
 import SituationSection from "@/components/SituationSection";
 import WhyOriginBI from "@/components/WhyOriginBI";
 import JourneySection from "@/components/JourneySection";
+import Footer from "@/components/layout/Footer";
 
 const PARTNER_LOGOS = [
   { name: "Stanford", imgSrc: "/assets/logos/stanford.svg" },
@@ -51,6 +52,7 @@ export default function Home() {
         <SituationSection />
         <JourneySection />
         <WhyOriginBI />
+        <Footer />
       </main>
     </div>
   );
