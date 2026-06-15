@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_Tamil } from "next/font/google";
+import { Noto_Sans_Tamil, Caveat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -12,6 +12,13 @@ const notoSansTamil = Noto_Sans_Tamil({
   subsets: ["tamil"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-noto-tamil",
+  display: "swap",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["500", "700"],
+  variable: "--font-caveat",
   display: "swap",
 });
 
@@ -30,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${notoSansTamil.variable}`}>
+    <html lang="en" className={`${notoSansTamil.variable} ${caveat.variable}`}>
       <head>
         {/* Google Analytics */}
         <Script

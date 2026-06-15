@@ -9,6 +9,7 @@ import WhyOriginBI from "@/components/WhyOriginBI";
 import JourneySection from "@/components/JourneySection";
 import AICounsellor from "@/components/AICounsellor";
 import Testimonials from "@/components/Testimonials";
+import IndustryExperts from "@/components/IndustryExperts";
 import ValuePackage from "@/components/ValuePackage";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/layout/Footer";
@@ -59,6 +60,7 @@ export default function Home() {
         <AICounsellor />
         <ValuePackage />
         <Testimonials />
+        <IndustryExperts />
         <FAQ />
         <Footer />
       </main>
