@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = ({
             <a
               key={link.label}
               href={link.href}
-              className="text-xs font-semibold text-white/70 hover:text-[#1ed36a] transition-colors duration-200"
+              className="text-xs font-semibold text-white hover:text-[#1ed36a] transition-colors duration-200"
             >
               <T>{link.label}</T>
             </a>

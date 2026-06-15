@@ -7,6 +7,7 @@ import { T } from "@/contexts/LanguageContext";
 import SituationSection from "@/components/SituationSection";
 import WhyOriginBI from "@/components/WhyOriginBI";
 import JourneySection from "@/components/JourneySection";
+import AICounsellor from "@/components/AICounsellor";
 import Testimonials from "@/components/Testimonials";
 import ValuePackage from "@/components/ValuePackage";
 import FAQ from "@/components/FAQ";
@@ -55,8 +56,9 @@ export default function Home() {
         <SituationSection />
         <JourneySection />
         <WhyOriginBI />
-        <Testimonials />
+        <AICounsellor />
         <ValuePackage />
+        <Testimonials />
         <FAQ />
         <Footer />
       </main>

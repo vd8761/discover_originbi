@@ -28,7 +28,7 @@ const AvatarCircles: React.FC<AvatarCirclesProps> = ({
         {avatarUrls.map((url, index) => (
           <div
             key={index}
-            className="w-[42px] h-[42px] rounded-full border-2 border-[#E3E4E3] overflow-hidden bg-white shrink-0 relative transition-transform duration-300 hover:-translate-y-1 hover:z-30"
+            className="w-[42px] h-[42px] rounded-full border-2 border-[#F4F4F4] overflow-hidden bg-white shrink-0 relative transition-transform duration-300 hover:-translate-y-1 hover:z-30"
             style={{ zIndex: 10 + index }}
           >
             <img
@@ -41,7 +41,7 @@ const AvatarCircles: React.FC<AvatarCirclesProps> = ({
         ))}
         {/* Numeric Badge (Green Circle) */}
         <div
-          className="w-[42px] h-[42px] rounded-full border-2 border-[#E3E4E3] bg-[#1ed36a] text-white flex items-center justify-center text-[13px] font-sans font-bold select-none shrink-0 relative hover:-translate-y-1 hover:z-30 transition-transform duration-300"
+          className="w-[42px] h-[42px] rounded-full border-2 border-[#F4F4F4] bg-[#1ed36a] text-white flex items-center justify-center text-[13px] font-sans font-bold select-none shrink-0 relative hover:-translate-y-1 hover:z-30 transition-transform duration-300"
           style={{ zIndex: 10 + avatarUrls.length }}
         >
           {numPeople}

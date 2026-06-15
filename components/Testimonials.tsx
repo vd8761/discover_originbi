@@ -164,7 +164,7 @@ const Testimonials: React.FC = () => {
   return (
     <section
       id="testimonials"
-      className="w-full bg-[#19211c] pt-14 pb-14 md:pt-16 md:pb-16 px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] relative overflow-hidden border-t border-white/5"
+      className="w-full bg-[#19211c] pt-14 pb-14 md:pt-16 md:pb-16 px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] relative overflow-hidden"
     >
       {/* Background Noise Texture */}
       <div className="absolute inset-0 z-0 pointer-events-none">
