@@ -57,10 +57,10 @@ export default function Home() {
         <SituationSection />
         <JourneySection />
         <WhyOriginBI />
+        <IndustryExperts />
         <AICounsellor />
         <ValuePackage />
         <Testimonials />
-        <IndustryExperts />
         <FAQ />
         <Footer />
       </main>

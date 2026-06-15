@@ -7,18 +7,18 @@ import Button from "@/components/ui/Button";
 import MovingGradient from "@/components/ui/MovingGradient";
 
 const Footer: React.FC = () => {
-  const { getRegisterUrl } = useReferral();
+  const { getRegisterUrl, wrapUrl } = useReferral();
   const { language } = useLanguage();
 
   const quickLinks = [
-    { label: "Problem", href: "#problem" },
-    { label: "Journey", href: "#journey" },
-    { label: "Why OriginBi", href: "#why-originbi" },
-    { label: "Experts", href: "#experts" },
-    { label: "AI Counsellor", href: "#ai-counsellor" },
-    { label: "Career Package", href: "#career-package" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Problem", href: "/#problem" },
+    { label: "Journey", href: "/#journey" },
+    { label: "Why OriginBi", href: "/#why-originbi" },
+    { label: "Experts", href: "/#experts" },
+    { label: "AI Counsellor", href: "/#ai-counsellor" },
+    { label: "Career Package", href: "/#career-package" },
+    { label: "Testimonials", href: "/#testimonials" },
+    { label: "FAQ", href: "/#faq" },
   ];
 
   return (
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
               {quickLinks.map((link) => (
                 <a
                   key={link.label}
-                  href={link.href}
+                  href={wrapUrl(link.href)}
                   className="rounded-full border border-white px-4 py-2.5 text-white hover:border-[#1ed36a] hover:text-[#1ed36a] text-center text-[12px] font-sans transition-all whitespace-nowrap block"
                   style={{ fontWeight: 300 }}
                 >

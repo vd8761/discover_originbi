@@ -60,14 +60,14 @@ const Header: React.FC<HeaderProps> = ({
   }, [isMenuOpen]);
 
   const navLinks = [
-    { label: "Problem", href: "#problem" },
-    { label: "Journey", href: "#journey" },
-    { label: "Why OriginBi", href: "#why-originbi" },
-    { label: "Experts", href: "#experts" },
-    { label: "AI Counsellor", href: "#ai-counsellor" },
-    { label: "Career Package", href: "#career-package" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Problem", href: "/#problem" },
+    { label: "Journey", href: "/#journey" },
+    { label: "Why OriginBi", href: "/#why-originbi" },
+    { label: "Experts", href: "/#experts" },
+    { label: "AI Counsellor", href: "/#ai-counsellor" },
+    { label: "Career Package", href: "/#career-package" },
+    { label: "Testimonials", href: "/#testimonials" },
+    { label: "FAQ", href: "/#faq" },
   ];
 
   return (
@@ -82,12 +82,11 @@ const Header: React.FC<HeaderProps> = ({
           </a>
         </div>
 
-        {/* Center: Navigation Links */}
         <div className="hidden xl:flex items-center gap-6 2xl:gap-8 justify-center">
           {navLinks.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={wrapUrl(link.href)}
               className="text-xs font-semibold text-white hover:text-[#1ed36a] transition-colors duration-200"
             >
               <T>{link.label}</T>
@@ -152,7 +151,7 @@ const Header: React.FC<HeaderProps> = ({
             {navLinks.map((link) => (
               <a
                 key={link.label}
-                href={link.href}
+                href={wrapUrl(link.href)}
                 className="text-base font-semibold text-white/80 hover:text-[#1ed36a] py-2.5 border-b border-white/5 transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >

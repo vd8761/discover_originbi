@@ -116,7 +116,7 @@ const Button: React.FC<ButtonProps | LinkProps> = (props) => {
     } font-sans font-bold leading-none tracking-[0.05em] border-2 cursor-pointer transition-all duration-300 ${selectedColors.bg} ${sizeStyle} ${widthStyle} ${className}`;
 
     const arrowIcon = showArrow && (
-        <div className={`w-[26px] h-[26px] sm:w-[32px] sm:h-[32px] ${selectedColors.circleBg} rounded-full flex items-center justify-center relative z-10 transition-all duration-300 group-hover:scale-110 overflow-hidden`}>
+        <div className={`w-[26px] h-[26px] sm:w-[32px] sm:h-[32px] ${selectedColors.circleBg} rounded-full flex items-center justify-center relative z-10 transition-all duration-300 overflow-hidden`}>
             <div className="relative w-[10px] h-[10px] sm:w-[12px] sm:h-[12px] overflow-hidden flex items-center justify-center">
                 {/* Arrow 1: Active, slides out to top-right on hover */}
                 <svg className="w-[10px] h-[10px] sm:w-[12px] sm:h-[12px] transition-transform duration-300 ease-in-out group-hover:translate-x-[150%] group-hover:-translate-y-[150%] absolute" viewBox="0 0 10 10">
