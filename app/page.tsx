@@ -8,6 +8,7 @@ import SituationSection from "@/components/SituationSection";
 import WhyOriginBI from "@/components/WhyOriginBI";
 import JourneySection from "@/components/JourneySection";
 import Testimonials from "@/components/Testimonials";
+import ValuePackage from "@/components/ValuePackage";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/layout/Footer";
 
@@ -55,6 +56,7 @@ export default function Home() {
         <JourneySection />
         <WhyOriginBI />
         <Testimonials />
+        <ValuePackage />
         <FAQ />
         <Footer />
       </main>

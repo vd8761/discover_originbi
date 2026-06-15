@@ -46,7 +46,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
 
     const t = (key: string): string => {
         const COST = process.env.NEXT_PUBLIC_REGISTRATION_COST || '999';
-        const legacyPrices = ['749', '499', '500'];
+        const legacyPrices = ['999', '749', '499', '500'];
         
         const applyReplacement = (str: string) => {
             let result = str;
@@ -61,7 +61,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
         if (!mounted) return applyReplacement(key);
         
         // Get the translated text (or use the key as default for English)
-        let text = language === "en" ? key : (taTranslations as Record<string, string>)[key] || key;
+        const text = language === "en" ? key : (taTranslations as Record<string, string>)[key] || key;
         
         return applyReplacement(text);
     };
