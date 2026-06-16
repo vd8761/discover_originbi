@@ -81,6 +81,10 @@
   --mesh-color-2: rgba(21, 0, 137, 0.06);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   overflow-x: clip;

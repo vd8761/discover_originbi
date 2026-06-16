@@ -92,7 +92,7 @@ const ValuePackage: React.FC = () => {
   ];
 
   return (
-    <section id="pricing" className="w-full bg-[#F4F4F4] py-16 lg:py-0 px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] relative overflow-hidden lg:min-h-screen lg:flex lg:items-center">
+    <section id="career-package" className="w-full bg-[#F4F4F4] py-16 lg:py-0 px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] relative overflow-hidden lg:min-h-screen lg:flex lg:items-center">
       {/* Background Noise Texture (Moister overlay) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div

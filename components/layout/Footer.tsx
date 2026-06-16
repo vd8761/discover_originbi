@@ -107,7 +107,7 @@ const Footer: React.FC = () => {
             <div className="flex items-center gap-3">
               {/* LinkedIn */}
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/originbimindworks/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full bg-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
@@ -120,7 +120,7 @@ const Footer: React.FC = () => {
 
               {/* Instagram */}
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/originbimindworks/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full bg-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
@@ -135,7 +135,7 @@ const Footer: React.FC = () => {
 
               {/* YouTube */}
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/@OriginBIMindworks"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full bg-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
@@ -148,7 +148,7 @@ const Footer: React.FC = () => {
 
               {/* X (formerly Twitter) */}
               <a
-                href="https://x.com"
+                href="https://x.com/originbimindwrk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full bg-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all"

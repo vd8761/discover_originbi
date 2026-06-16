@@ -81,7 +81,7 @@ const SituationSection: React.FC = () => {
   };
 
   return (
-    <div ref={containerRef} className="relative h-auto lg:h-[250vh] bg-[#F4F4F4]">
+    <div id="problem" ref={containerRef} className="relative h-auto lg:h-[250vh] bg-[#F4F4F4]">
       {/* Sticky Frame */}
       <div
         ref={stickyRef}

@@ -66,39 +66,88 @@ const AICounsellor: React.FC = () => {
             <T>Ask personalized questions, make smarter college decisions, and discover what careers fit you best. Our AI uses your behavioral data to guide majors, projects, internships, and placement goals.</T>
           </p>
 
-          {/* Overlapping Circles Container */}
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-8 sm:gap-0 sm:-space-x-5 lg:-space-x-7 xl:-space-x-8 w-full">
-            
-            {/* Circle 1: Discover Who You Are */}
-            <div className="relative z-10 w-[190px] h-[190px] sm:w-[210px] sm:h-[210px] lg:w-[200px] lg:h-[200px] xl:w-[235px] xl:h-[235px] aspect-square rounded-full border border-white/15 bg-white/[0.01] flex flex-col items-center justify-center text-center px-4 py-2">
-              <h4 className="text-white text-sm sm:text-base xl:text-[18px] font-sans font-semibold leading-tight max-w-[150px]">
-                <T>Discover Who You Are</T>
-              </h4>
-              <p className="text-white text-[11px] xl:text-xs mt-1 font-sans font-normal leading-relaxed max-w-[165px]">
-                <T>Understand your natural strengths and behavioral profile.</T>
-              </p>
+          {/* Overlapping Circles/Cards Container */}
+          <div className="w-full">
+            {/* Mobile layout: clean modern glassmorphic cards (hidden on sm and up) */}
+            <div className="flex flex-col gap-4 sm:hidden w-full text-left">
+              {/* Card 1 */}
+              <div className="w-full rounded-2xl border border-white/10 bg-white/[0.03] p-5 flex items-start gap-4 text-left">
+                <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/70 font-semibold shrink-0">
+                  1
+                </div>
+                <div className="flex flex-col text-left">
+                  <h4 className="text-white text-base font-sans font-semibold leading-tight">
+                    <T>Discover Who You Are</T>
+                  </h4>
+                  <p className="text-white/60 text-sm mt-1.5 font-sans font-normal leading-relaxed">
+                    <T>Understand your natural strengths and behavioral profile.</T>
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 2 */}
+              <div className="w-full rounded-2xl bg-[#1ed36a] p-5 flex items-start gap-4 text-left shadow-lg shadow-[#1ed36a]/15">
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white font-bold shrink-0">
+                  2
+                </div>
+                <div className="flex flex-col text-left">
+                  <h4 className="text-white text-base font-sans font-bold leading-tight">
+                    <T>Plan Better Decisions</T>
+                  </h4>
+                  <p className="text-white/90 text-sm mt-1.5 font-sans font-normal leading-relaxed">
+                    <T>Choose degrees and career paths with confidence.</T>
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <div className="w-full rounded-2xl border border-white/10 bg-white/[0.03] p-5 flex items-start gap-4 text-left">
+                <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/70 font-semibold shrink-0">
+                  3
+                </div>
+                <div className="flex flex-col text-left">
+                  <h4 className="text-white text-base font-sans font-semibold leading-tight">
+                    <T>Always Available</T>
+                  </h4>
+                  <p className="text-white/60 text-sm mt-1.5 font-sans font-normal leading-relaxed">
+                    <T>Access AI-powered guidance anytime.</T>
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Circle 2: Plan Better Decisions */}
-            <div className="relative z-20 w-[205px] h-[205px] sm:w-[225px] sm:h-[225px] lg:w-[215px] lg:h-[215px] xl:w-[255px] xl:h-[255px] aspect-square rounded-full bg-[#1ed36a] flex flex-col items-center justify-center text-center px-4 py-2">
-              <h4 className="text-white text-sm sm:text-base xl:text-[18px] font-sans font-bold leading-tight max-w-[150px]">
-                <T>Plan Better Decisions</T>
-              </h4>
-              <p className="text-white text-[11px] xl:text-xs mt-1 font-sans font-normal leading-relaxed max-w-[165px]">
-                <T>Choose degrees and career paths with confidence.</T>
-              </p>
-            </div>
+            {/* Desktop & Tablet layout: Overlapping Circles (hidden on mobile) */}
+            <div className="hidden sm:flex flex-row items-center justify-center lg:justify-start sm:-space-x-5 lg:-space-x-7 xl:-space-x-8 w-full animate-fade-in">
+              {/* Circle 1: Discover Who You Are */}
+              <div className="relative z-10 w-[210px] h-[210px] lg:w-[200px] lg:h-[200px] xl:w-[235px] xl:h-[235px] aspect-square rounded-full border border-white/15 bg-white/[0.01] flex flex-col items-center justify-center text-center px-4 py-2">
+                <h4 className="text-white text-sm sm:text-base xl:text-[18px] font-sans font-semibold leading-tight max-w-[150px]">
+                  <T>Discover Who You Are</T>
+                </h4>
+                <p className="text-white text-[11px] xl:text-xs mt-1 font-sans font-normal leading-relaxed max-w-[165px]">
+                  <T>Understand your natural strengths and behavioral profile.</T>
+                </p>
+              </div>
 
-            {/* Circle 3: Always Available */}
-            <div className="relative z-10 w-[190px] h-[190px] sm:w-[210px] sm:h-[210px] lg:w-[200px] lg:h-[200px] xl:w-[235px] xl:h-[235px] aspect-square rounded-full border border-white/15 bg-white/[0.01] flex flex-col items-center justify-center text-center px-4 py-2">
-              <h4 className="text-white text-sm sm:text-base xl:text-[18px] font-sans font-semibold leading-tight max-w-[150px]">
-                <T>Always Available</T>
-              </h4>
-              <p className="text-white text-[11px] xl:text-xs mt-1 font-sans font-normal leading-relaxed max-w-[165px]">
-                <T>Access AI-powered guidance anytime.</T>
-              </p>
-            </div>
+              {/* Circle 2: Plan Better Decisions */}
+              <div className="relative z-20 w-[225px] h-[225px] lg:w-[215px] lg:h-[215px] xl:w-[255px] xl:h-[255px] aspect-square rounded-full bg-[#1ed36a] flex flex-col items-center justify-center text-center px-4 py-2">
+                <h4 className="text-white text-sm sm:text-base xl:text-[18px] font-sans font-bold leading-tight max-w-[150px]">
+                  <T>Plan Better Decisions</T>
+                </h4>
+                <p className="text-white text-[11px] xl:text-xs mt-1 font-sans font-normal leading-relaxed max-w-[165px]">
+                  <T>Choose degrees and career paths with confidence.</T>
+                </p>
+              </div>
 
+              {/* Circle 3: Always Available */}
+              <div className="relative z-10 w-[210px] h-[210px] lg:w-[200px] lg:h-[200px] xl:w-[235px] xl:h-[235px] aspect-square rounded-full border border-white/15 bg-white/[0.01] flex flex-col items-center justify-center text-center px-4 py-2">
+                <h4 className="text-white text-sm sm:text-base xl:text-[18px] font-sans font-semibold leading-tight max-w-[150px]">
+                  <T>Always Available</T>
+                </h4>
+                <p className="text-white text-[11px] xl:text-xs mt-1 font-sans font-normal leading-relaxed max-w-[165px]">
+                  <T>Access AI-powered guidance anytime.</T>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 

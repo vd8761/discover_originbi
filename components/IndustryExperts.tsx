@@ -88,7 +88,7 @@ const IndustryExperts: React.FC = () => {
 
   return (
     <section
-      id="industry-experts"
+      id="experts"
       className="w-full bg-[#f4f4f4] py-16 lg:py-24 px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] relative overflow-hidden border-t border-black/5"
     >
       {/* Background Noise Texture */}

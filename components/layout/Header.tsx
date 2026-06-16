@@ -145,41 +145,43 @@ const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Mobile Dropdown Menu */}
-      {isMenuOpen && (
-        <div className="xl:hidden absolute top-full left-0 right-0 bg-[#19211c] border-b border-white/10 shadow-2xl py-6 flex flex-col gap-6 animate-slide-down z-50">
-          <div className={`flex flex-col gap-4 ${horizontalPadding}`}>
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={wrapUrl(link.href)}
-                className="text-base font-semibold text-white/80 hover:text-[#1ed36a] py-2.5 border-b border-white/5 transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <T>{link.label}</T>
-              </a>
-            ))}
+      <div className={`xl:hidden absolute top-full left-0 right-0 bg-[#19211c] border-b border-white/10 shadow-2xl transition-all duration-300 ease-in-out origin-top overflow-hidden z-50 ${
+        isMenuOpen
+          ? "max-h-[600px] opacity-100 py-6 visible"
+          : "max-h-0 opacity-0 py-0 invisible pointer-events-none"
+      }`}>
+        <div className={`flex flex-col gap-4 ${horizontalPadding}`}>
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={wrapUrl(link.href)}
+              className="text-base font-semibold text-white/80 hover:text-[#1ed36a] py-2.5 border-b border-white/5 transition-colors duration-200"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <T>{link.label}</T>
+            </a>
+          ))}
 
-            <div className="flex items-center justify-between pt-4 mt-2">
-              <span className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-white/60">
-                <T> Language </T>
-              </span>
-              <I18nToggle />
-            </div>
+          <div className="flex items-center justify-between pt-4 mt-2">
+            <span className="font-sans font-semibold text-sm uppercase tracking-[0.15em] text-white/60">
+              <T> Language </T>
+            </span>
+            <I18nToggle />
+          </div>
 
-            <div className="flex flex-col gap-3 mt-6">
-              <Button
-                href="https://mind.originbi.com/student/login"
-                variant="primary"
-                noDefaultSize={true}
-                className="w-full text-sm py-3.5 rounded-full"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <T> Login </T>
-              </Button>
-            </div>
+          <div className="flex flex-col gap-3 mt-6">
+            <Button
+              href="https://mind.originbi.com/student/login"
+              variant="primary"
+              noDefaultSize={true}
+              className="w-full text-sm py-3.5 rounded-full"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <T> Login </T>
+            </Button>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };

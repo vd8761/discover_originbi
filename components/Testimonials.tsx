@@ -178,6 +178,15 @@ const Testimonials: React.FC = () => {
 
       <div className="max-w-[1920px] mx-auto flex flex-col md:flex-row justify-between items-stretch gap-12 md:gap-16 relative z-10">
         
+        {/* Quotes Watermark SVG - Positioned absolute at bottom on mobile, and bottom-left on desktop */}
+        <div className="absolute bottom-[-24px] right-[-12px] md:bottom-[-64px] md:left-[-12px] md:right-auto w-[60%] sm:w-[45%] md:w-[48%] max-w-[450px] z-0 pointer-events-none select-none opacity-[0.04] md:opacity-[0.15]">
+          <img
+            src="/assets/quotes.svg"
+            alt="Quotes Watermark"
+            className="w-full h-auto object-contain"
+          />
+        </div>
+
         {/* Left Column (Header & Watermark) */}
         <div className="w-full md:w-[35%] flex flex-col justify-start relative min-h-[220px] md:min-h-[340px]">
           <div>
@@ -187,15 +196,6 @@ const Testimonials: React.FC = () => {
             <p className="text-white/60 text-xs md:text-sm font-sans font-normal leading-relaxed mt-2 max-w-[260px]">
               <T>Stories from students who found clarity through behavioral intelligence.</T>
             </p>
-          </div>
-          
-          {/* Quotes Watermark SVG - Positioned absolute at bottom edge and scaled larger */}
-          <div className="absolute bottom-[-56px] md:bottom-[-64px] left-[-12px] w-[95%] sm:w-[80%] md:w-[135%] max-w-[450px] z-0 pointer-events-none select-none">
-            <img
-              src="/assets/quotes.svg"
-              alt="Quotes Watermark"
-              className="w-full h-auto object-contain"
-            />
           </div>
         </div>
 
