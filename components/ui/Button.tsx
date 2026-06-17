@@ -35,6 +35,7 @@ const Button: React.FC<ButtonProps | LinkProps> = (props) => {
     } = props;
 
     const [mounted, setMounted] = useState(false);
+    const buttonRef = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
     const circleRef = useRef<HTMLDivElement>(null);
     const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -45,28 +46,47 @@ const Button: React.FC<ButtonProps | LinkProps> = (props) => {
         };
     }, []);
 
-    const handleMouseEnter = () => {
+    const handleMouseEnter = (e: React.MouseEvent) => {
         if (timeoutIdRef.current) clearTimeout(timeoutIdRef.current);
-        if (circleRef.current) {
+        if (circleRef.current && buttonRef.current) {
+            const rect = buttonRef.current.getBoundingClientRect();
+            const relX = e.clientX - rect.left;
+            const relY = e.clientY - rect.top;
+            
+            // Calculate a diameter large enough to cover the button from any entry point
+            const size = Math.max(rect.width, rect.height) * 2.5;
+
             gsap.killTweensOf(circleRef.current);
-            gsap.fromTo(circleRef.current,
-                { top: "100%", width: "150%" },
-                { top: "-25%", width: "150%", duration: 0.4, ease: "power3.out" }
-            );
+            gsap.set(circleRef.current, {
+                width: size,
+                height: size,
+                left: relX,
+                top: relY,
+                xPercent: -50,
+                yPercent: -50,
+                scale: 0,
+            });
+            gsap.to(circleRef.current, {
+                scale: 1,
+                duration: 0.8,
+                ease: "power2.out",
+            });
         }
     };
 
-    const handleMouseLeave = () => {
-        if (circleRef.current) {
+    const handleMouseLeave = (e: React.MouseEvent) => {
+        if (circleRef.current && buttonRef.current) {
+            const rect = buttonRef.current.getBoundingClientRect();
+            const relX = e.clientX - rect.left;
+            const relY = e.clientY - rect.top;
+
             gsap.killTweensOf(circleRef.current);
             gsap.to(circleRef.current, {
-                top: "-150%",
-                width: "125%",
-                duration: 0.35,
-                ease: "power3.in",
-                onComplete: () => {
-                    gsap.set(circleRef.current, { top: "100%", width: "150%" });
-                }
+                left: relX,
+                top: relY,
+                scale: 0,
+                duration: 0.7,
+                ease: "power2.in",
             });
         }
     };
@@ -138,8 +158,8 @@ const Button: React.FC<ButtonProps | LinkProps> = (props) => {
             {arrowIcon}
             <div
                 ref={circleRef}
-                style={{ backgroundColor: selectedColors.hoverBg }}
-                className="w-full h-[150%] absolute rounded-[50%] top-full left-1/2 -translate-x-1/2 z-0 pointer-events-none"
+                style={{ backgroundColor: selectedColors.hoverBg, width: 0, height: 0 }}
+                className="absolute rounded-full pointer-events-none z-0"
             />
         </>
     );
@@ -149,6 +169,7 @@ const Button: React.FC<ButtonProps | LinkProps> = (props) => {
         const anchorProps = rest as React.AnchorHTMLAttributes<HTMLAnchorElement>;
         return (
             <Link 
+                ref={buttonRef}
                 href={linkProps.href} 
                 className={composedClass}
                 onMouseEnter={handleMouseEnter}
@@ -163,6 +184,7 @@ const Button: React.FC<ButtonProps | LinkProps> = (props) => {
     const buttonProps = rest as React.ButtonHTMLAttributes<HTMLButtonElement>;
     return (
         <button 
+            ref={buttonRef}
             type={buttonProps.type || "button"}
             className={composedClass}
             onMouseEnter={handleMouseEnter}

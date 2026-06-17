@@ -7,6 +7,7 @@ import { ReferralProvider } from "@/contexts/ReferralContext";
 import { Suspense } from "react";
 import Script from "next/script";
 import SmoothScroll from "@/components/SmoothScroll";
+import CustomCursor from "@/components/CustomCursor";
 
 const notoSansTamil = Noto_Sans_Tamil({
   subsets: ["tamil"],
@@ -61,6 +62,7 @@ export default function RootLayout({
                 <SmoothScroll>
                   {children}
                 </SmoothScroll>
+                <CustomCursor />
               </ReferralProvider>
             </Suspense>
           </LanguageProvider>

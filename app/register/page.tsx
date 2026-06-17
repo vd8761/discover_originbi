@@ -6,6 +6,7 @@ import React, { useState, useCallback } from "react";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Testimonial from "@/components/Testimonial";
+import HowItWorks from "@/components/HowItWorks";
 import Footer from "@/components/layout/Footer";
 
 import Button from "@/components/ui/Button";
@@ -502,7 +503,7 @@ function RegisterPageContent() {
 
       <Header showRegisterButton={false} />
 
-      <main className="flex-1 w-full relative z-10 pt-28 lg:pt-32 pb-16 flex items-center">
+      <main className="flex-1 w-full relative z-10 pt-28 lg:pt-32 pb-16 flex flex-col justify-start gap-16 md:gap-24">
         <div className="max-w-[1920px] w-full mx-auto px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-stretch">
 
@@ -834,6 +835,8 @@ function RegisterPageContent() {
 
           </div>
         </div>
+
+        <HowItWorks />
       </main>
       <Footer />
     </div>
