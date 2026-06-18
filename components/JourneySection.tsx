@@ -313,12 +313,12 @@ const JourneySection: React.FC = () => {
                       {idx === 0 && <div className="w-full h-px bg-white/10" />}
                       <div className="flex flex-col items-start py-6 transition-all duration-300 w-full">
                         {/* Title Row */}
-                        <div className="flex items-center w-full">
+                        <div className={`flex w-full ${isActive ? "items-start" : "items-center"}`}>
                           {/* Circle Number */}
                           <div
                             className={`w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0 transition-all duration-300 ${
                               isActive
-                                ? "bg-[#1ed36a] text-white font-bold"
+                                ? "bg-[#1ed36a] text-white font-bold mt-1.5 xl:mt-2.5"
                                 : "border border-white text-white font-semibold"
                             }`}
                           >
