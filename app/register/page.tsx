@@ -349,7 +349,7 @@ function RegisterPageContent() {
   }, [isSuccess, router]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#19211c] font-sans text-white transition-colors duration-300 relative overflow-x-hidden">
+    <div className="min-h-screen bg-[var(--bg-color)] relative">
       {/* Background Noise Texture (Whole Page) */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.015]">
         <div
@@ -503,10 +503,10 @@ function RegisterPageContent() {
 
       <Header showRegisterButton={false} />
 
-      <main className="relative flex-1 w-full">
+      <main className="relative">
         {/* Main Content Wrapper (covers the sticky footer beneath) */}
-        <div className="relative z-20 bg-[#19211c] pt-28 lg:pt-32 pb-16 flex flex-col justify-start gap-16 md:gap-24">
-          <div className="max-w-[1920px] w-full mx-auto px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)]">
+        <div className="relative z-20 bg-[var(--bg-color)]">
+          <div className="max-w-[1920px] w-full mx-auto px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] pt-28 lg:pt-32 pb-16 md:pb-24">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-stretch">
 
               {/* Left Column: Form Card */}
