@@ -184,13 +184,13 @@ const JourneySection: React.FC = () => {
       <div className="lg:hidden relative z-10 py-16 px-6 max-w-xl mx-auto flex flex-col gap-12">
         {/* Mobile Header */}
         <div>
-          <h2 className="text-white text-xs uppercase tracking-[0.2em] font-medium mb-1 opacity-70">
+          <h2 className="text-white text-sm uppercase tracking-[0.2em] font-medium mb-1">
             <T>Your Journey to</T>
           </h2>
-          <h3 className="text-white text-2xl sm:text-3xl font-bold font-sans">
+          <h3 className="text-white text-3xl sm:text-4xl font-semibold font-sans">
             <T>Career Certainty</T>
           </h3>
-          <p className="text-white/80 text-sm mt-2 font-light">
+          <p className="text-white text-base mt-2 font-light">
             <T>3 Simple Steps to Stop Guessing and Start Growing</T>
           </p>
         </div>
@@ -206,19 +206,19 @@ const JourneySection: React.FC = () => {
                   className="flex items-start gap-3 cursor-pointer select-none"
                   onClick={() => setMobileActiveStep(isOpen ? -1 : idx)}
                 >
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5 transition-all duration-300 ${
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-base flex-shrink-0 mt-0.5 transition-all duration-300 ${
                     isOpen 
-                      ? "bg-[#1ed36a] text-white font-bold" 
-                      : "border border-white/30 text-white/50"
+                      ? "bg-[#1ed36a] text-white font-medium" 
+                      : "border border-white text-white font-light"
                   }`}>
                     {step.step}
                   </div>
                   <div className="flex flex-col">
-                    <h4 className="text-xl font-bold leading-tight transition-colors duration-300">
-                      <span className={isOpen ? "text-white" : "text-white/70"}>
+                    <h4 className="text-2xl font-medium leading-tight transition-colors duration-300">
+                      <span className="text-white">
                         {isTa ? step.firstPartTa : step.firstPartEn}{" "}
                       </span>
-                      <span className={isOpen ? "text-[#1ed36a]" : "text-white/70"}>
+                      <span className={isOpen ? "text-[#1ed36a]" : "text-white"}>
                         {isTa ? step.secondPartTa : step.secondPartEn}
                       </span>
                     </h4>
@@ -250,10 +250,10 @@ const JourneySection: React.FC = () => {
                     {/* Content Panel */}
                     <div className="pl-11 flex flex-col gap-6">
                       <div>
-                        <h5 className="text-[#1ed36a] text-xs font-bold uppercase tracking-[0.15em] mb-2">
+                        <h5 className="text-[#1ed36a] text-sm font-medium uppercase tracking-[0.15em] mb-2">
                           <T>What Happens</T>
                         </h5>
-                        <p className="text-white text-sm leading-relaxed font-light">
+                        <p className="text-white text-base leading-relaxed font-light">
                           {isTa ? step.whatHappensTa : step.whatHappensEn}
                         </p>
                       </div>
@@ -262,10 +262,10 @@ const JourneySection: React.FC = () => {
                       <div className="w-full h-px bg-white/10" />
 
                       <div>
-                        <h5 className="text-[#1ed36a] text-xs font-bold uppercase tracking-[0.15em] mb-2">
+                        <h5 className="text-[#1ed36a] text-sm font-medium uppercase tracking-[0.15em] mb-2">
                           <T>The Result</T>
                         </h5>
-                        <p className="text-white text-sm leading-relaxed font-light">
+                        <p className="text-white text-base leading-relaxed font-light">
                           {isTa ? step.resultTa : step.resultEn}
                         </p>
                       </div>
@@ -296,10 +296,10 @@ const JourneySection: React.FC = () => {
               
               {/* Header */}
               <div>
-                <h2 className="text-white text-[16px] tracking-[0.2em] font-medium uppercase opacity-80 mb-2">
-                  <T>Your Journey to</T> <span className="text-[#1ed36a]"><T>Career Certainty</T></span>
+                <h2 className="text-white text-[20px] tracking-[0.2em] font-medium uppercase mb-2">
+                  <T>Your Journey to Career Certainty</T>
                 </h2>
-                <p className="text-white/60 text-sm font-light">
+                <p className="text-white text-lg font-light">
                   <T>3 Simple Steps to Stop Guessing and Start Growing</T>
                 </p>
               </div>
@@ -316,10 +316,10 @@ const JourneySection: React.FC = () => {
                         <div className={`flex w-full ${isActive ? "items-start" : "items-center"}`}>
                           {/* Circle Number */}
                           <div
-                            className={`w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0 transition-all duration-300 ${
+                            className={`w-10 h-10 rounded-full flex items-center justify-center text-base flex-shrink-0 transition-all duration-300 ${
                               isActive
-                                ? "bg-[#1ed36a] text-white font-bold mt-1.5 xl:mt-2.5"
-                                : "border border-white text-white font-semibold"
+                                ? "bg-[#1ed36a] text-white font-medium mt-1.5 xl:mt-2.5"
+                                : "border border-white text-white font-light"
                             }`}
                           >
                             {step.step}
@@ -330,8 +330,8 @@ const JourneySection: React.FC = () => {
                             <div
                               className={`transition-all duration-500 origin-left ${
                                 isActive
-                                  ? "text-2xl sm:text-3xl lg:text-[36px] xl:text-[40px] font-semibold leading-tight tracking-tight text-white animate-fade-in"
-                                  : "text-lg sm:text-xl font-medium leading-tight tracking-tight text-white"
+                                  ? "text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-medium leading-tight tracking-tight text-white animate-fade-in"
+                                  : "text-xl sm:text-2xl lg:text-[24px] font-medium leading-tight tracking-tight text-white"
                               }`}
                             >
                               <span className="text-white">
@@ -352,7 +352,7 @@ const JourneySection: React.FC = () => {
 
                         {/* Quote Block - displayed only under active step, indented */}
                         <div
-                          className={`transition-all duration-700 ease-out overflow-hidden flex flex-col items-start pl-[52px] ${
+                          className={`transition-all duration-700 ease-out overflow-hidden flex flex-col items-start pl-[60px] ${
                             isActive
                               ? "max-h-[200px] opacity-100 mt-5 pointer-events-auto"
                               : "max-h-0 opacity-0 pointer-events-none"
@@ -363,7 +363,7 @@ const JourneySection: React.FC = () => {
                             alt="quotes"
                             className="w-6 h-auto mb-2 opacity-95"
                           />
-                          <p className="italic text-white text-[15px] xl:text-[16px] leading-relaxed font-light max-w-sm">
+                          <p className="italic text-white text-[16px] xl:text-[18px] leading-relaxed font-light max-w-sm">
                             "{isTa ? step.feelingTa : step.feelingEn}"
                           </p>
                         </div>
@@ -398,10 +398,10 @@ const JourneySection: React.FC = () => {
                       <div className={`flex flex-col text-left transition-all duration-700 ease-out delay-100 ${
                         isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                       }`}>
-                        <h4 className="text-white text-base font-bold uppercase tracking-[0.2em] mb-4">
+                        <h4 className="text-white text-lg font-medium uppercase tracking-[0.2em] mb-4">
                           <T>What Happens</T>
                         </h4>
-                        <p className="text-white text-lg xl:text-xl font-light leading-relaxed">
+                        <p className="text-white text-xl xl:text-2xl font-light leading-relaxed">
                           {isTa ? step.whatHappensTa : step.whatHappensEn}
                         </p>
                       </div>
@@ -415,10 +415,10 @@ const JourneySection: React.FC = () => {
                       <div className={`flex flex-col text-left transition-all duration-700 ease-out delay-300 ${
                         isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                       }`}>
-                        <h4 className="text-white text-base font-bold uppercase tracking-[0.2em] mb-4">
+                        <h4 className="text-white text-lg font-medium uppercase tracking-[0.2em] mb-4">
                           <T>The Result</T>
                         </h4>
-                        <p className="text-white text-lg xl:text-xl font-light leading-relaxed">
+                        <p className="text-white text-xl xl:text-2xl font-light leading-relaxed">
                           {isTa ? step.resultTa : step.resultEn}
                         </p>
                       </div>

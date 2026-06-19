@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
         <div className="relative z-30 flex flex-col justify-center w-full pr-6 lg:pr-0 lg:w-[48%] order-1 pt-4 sm:pt-6 lg:pt-0">
           <div className="lg:-mt-72">
             {/* Subtitle */}
-            <div className="text-white text-lg md:text-xl lg:text-[24px] font-light mb-3 tracking-wide flex items-center gap-1.5 animate-fade-in">
+            <div className="text-white text-base md:text-lg lg:text-[21px] font-light mb-3 tracking-wide flex items-center gap-1.5 animate-fade-in">
               <T>Confused After</T>{" "}
               <span className="text-[#1ed36a] font-bold">
                 <T>12th?</T>
@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Description */}
-            <h1 className="text-white text-2xl md:text-3xl lg:text-[36px] font-light leading-[1.3] mb-8 max-w-lg lg:max-w-xl tracking-normal animate-fade-in delay-100">
+            <h1 className="text-white text-xl md:text-2xl lg:text-[32px] font-light leading-[1.3] mb-8 max-w-lg lg:max-w-xl tracking-normal animate-fade-in delay-100">
               <T>Discover careers that match your strengths, not just your marks, and get a clear roadmap from 12th to your first job.</T>
             </h1>
 
@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
                 showArrow={true}
                 variant="primary"
                 noDefaultSize={true}
-                className="pl-6 pr-2 py-2 text-sm md:text-base font-medium"
+                className="pl-5 pr-2 py-1.5 text-sm font-medium"
               >
                 <T>Find My Career Match | ₹999</T>
               </Button>

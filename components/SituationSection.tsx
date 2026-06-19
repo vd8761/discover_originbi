@@ -140,9 +140,9 @@ const SituationSection: React.FC = () => {
             } as React.CSSProperties}
           >
             {/* ── CARD 1: Stop the Guesswork ── */}
-            <div className="relative w-full max-w-2xl lg:max-w-none mx-auto lg:mx-0 lg:w-[740px] xl:w-[800px] h-[280px] sm:h-[320px] lg:h-[500px] xl:h-[530px] rounded-[28px] lg:rounded-[36px] bg-[#19211c] text-white flex-shrink-0 overflow-hidden shadow-lg border border-white/5">
+            <div className="relative w-full max-w-2xl lg:max-w-none mx-auto lg:mx-0 lg:w-[640px] xl:w-[670px] h-[280px] sm:h-[320px] lg:h-[430px] xl:h-[450px] rounded-[28px] lg:rounded-[36px] bg-[#19211c] text-white flex-shrink-0 overflow-hidden shadow-lg border border-white/5">
               {/* Illustration Top Right (shifted left slightly) */}
-              <div className="absolute top-0 right-6 lg:right-10 w-[240px] sm:w-[280px] lg:w-[410px] xl:w-[450px] h-[220px] sm:h-[260px] lg:h-[410px] xl:h-[450px] pointer-events-none z-10">
+              <div className="absolute top-0 right-6 lg:right-10 w-[240px] sm:w-[280px] lg:w-[340px] xl:w-[370px] h-[220px] sm:h-[260px] lg:h-[340px] xl:h-[370px] pointer-events-none z-10">
                 <img
                   src="/assets/situation/card1.svg"
                   alt="Stop the Guesswork"
@@ -162,7 +162,7 @@ const SituationSection: React.FC = () => {
             </div>
 
             {/* ── CARD 2: Find Your Direction ── */}
-            <div className="relative w-full max-w-2xl lg:max-w-none mx-auto lg:mx-0 lg:w-[740px] xl:w-[800px] h-[280px] sm:h-[320px] lg:h-[500px] xl:h-[530px] rounded-[28px] lg:rounded-[36px] bg-white text-[#19211c] flex-shrink-0 overflow-hidden shadow-lg border border-[#e2e8f0]">
+            <div className="relative w-full max-w-2xl lg:max-w-none mx-auto lg:mx-0 lg:w-[640px] xl:w-[670px] h-[280px] sm:h-[320px] lg:h-[430px] xl:h-[450px] rounded-[28px] lg:rounded-[36px] bg-white text-[#19211c] flex-shrink-0 overflow-hidden shadow-lg border border-[#e2e8f0]">
               {/* Text content Top Center */}
               <div className="absolute top-6 lg:top-8 left-6 lg:left-8 right-6 lg:right-8 text-center z-20">
                 <h3 className="text-xl sm:text-2xl lg:text-[26px] font-semibold text-[#19211c] mb-2 sm:mb-3 leading-snug">
@@ -174,7 +174,7 @@ const SituationSection: React.FC = () => {
               </div>
 
               {/* Illustration Bottom Center (increased size) */}
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[240px] sm:w-[300px] lg:w-[500px] xl:w-[560px] h-[130px] sm:h-[160px] lg:h-[320px] xl:h-[350px] pointer-events-none z-10">
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[240px] sm:w-[300px] lg:w-[420px] xl:w-[460px] h-[130px] sm:h-[160px] lg:h-[250px] xl:h-[280px] pointer-events-none z-10">
                 <img
                   src="/assets/situation/card2.svg"
                   alt="Find Your Direction"
@@ -184,9 +184,9 @@ const SituationSection: React.FC = () => {
             </div>
 
             {/* ── CARD 3: Correct Your Course Before It Starts ── */}
-            <div className="relative w-full max-w-2xl lg:max-w-none mx-auto lg:mx-0 lg:w-[740px] xl:w-[800px] h-[280px] sm:h-[320px] lg:h-[500px] xl:h-[530px] rounded-[28px] lg:rounded-[36px] bg-[#19211c] text-white flex-shrink-0 overflow-hidden shadow-lg border border-white/5">
+            <div className="relative w-full max-w-2xl lg:max-w-none mx-auto lg:mx-0 lg:w-[640px] xl:w-[670px] h-[280px] sm:h-[320px] lg:h-[430px] xl:h-[450px] rounded-[28px] lg:rounded-[36px] bg-[#19211c] text-white flex-shrink-0 overflow-hidden shadow-lg border border-white/5">
               {/* Illustration Bottom Left (increased size) */}
-              <div className="absolute bottom-0 left-0 w-[340px] sm:w-[420px] lg:w-[600px] xl:w-[660px] h-[180px] sm:h-[230px] lg:h-[340px] xl:h-[370px] pointer-events-none z-10">
+              <div className="absolute bottom-0 left-0 w-[340px] sm:w-[420px] lg:w-[450px] xl:w-[500px] h-[180px] sm:h-[230px] lg:h-[250px] xl:h-[280px] pointer-events-none z-10">
                 <img
                   src="/assets/situation/card3.svg"
                   alt="Correct Your Course"
