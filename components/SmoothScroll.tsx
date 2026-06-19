@@ -88,35 +88,58 @@ const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({ children }) => 
       }, 600); // Wait slightly for page components to render and stabilize
     };
 
-    const initScroll = async () => {
-      if (window.innerWidth < 1024) {
-        handleInitialHash();
-        return;
-      }
-      try {
-        const LocomotiveScroll = (await import("locomotive-scroll")).default;
-        scrollInstance = new LocomotiveScroll({
-          lenisOptions: {
-            wrapper: window,
-            content: document.documentElement,
-            lerp: 0.1,
-            duration: 1.2,
-            orientation: "vertical",
-            smoothWheel: true,
+    const handleMediaQueryChange = async (e: MediaQueryListEvent | MediaQueryList) => {
+      if (e.matches) {
+        // Desktop view: initialize Locomotive Scroll if not already initialized
+        if (!scrollInstance) {
+          try {
+            const LocomotiveScroll = (await import("locomotive-scroll")).default;
+            scrollInstance = new LocomotiveScroll({
+              lenisOptions: {
+                wrapper: window,
+                content: document.documentElement,
+                lerp: 0.1,
+                duration: 1.2,
+                orientation: "vertical",
+                smoothWheel: true,
+              }
+            });
+            handleInitialHash();
+          } catch (error) {
+            console.error("Locomotive scroll initialization failed:", error);
           }
-        });
-        
+        }
+      } else {
+        // Mobile / Tablet view: destroy Locomotive Scroll if it exists
+        if (scrollInstance) {
+          if (typeof scrollInstance.destroy === "function") {
+            scrollInstance.destroy();
+          }
+          scrollInstance = null;
+        }
         handleInitialHash();
-      } catch (error) {
-        console.error("Locomotive scroll initialization failed:", error);
       }
     };
 
-    initScroll();
+    // Set up media query listener
+    const mediaQuery = window.matchMedia("(min-width: 1280px)");
+    handleMediaQueryChange(mediaQuery);
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", handleMediaQueryChange);
+    } else {
+      mediaQuery.addListener(handleMediaQueryChange);
+    }
+
     document.addEventListener("click", handleAnchorClick);
 
     return () => {
       document.removeEventListener("click", handleAnchorClick);
+      if (typeof mediaQuery.removeEventListener === "function") {
+        mediaQuery.removeEventListener("change", handleMediaQueryChange);
+      } else {
+        mediaQuery.removeListener(handleMediaQueryChange);
+      }
       if (scrollInstance && typeof scrollInstance.destroy === "function") {
         scrollInstance.destroy();
       }

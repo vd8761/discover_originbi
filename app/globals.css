@@ -199,11 +199,11 @@ body {
 }
 
 /* Hero Section Giant Background Text Size (Prevent Horizontal Overflow) */
-.lang-ta .text-\[13vw\] {
-  font-size: 11vw !important;
+.lang-ta .text-\[20vw\] {
+  font-size: 15vw !important;
 }
-.lang-ta .sm\:text-\[12\.5vw\] {
-  font-size: 10.5vw !important;
+.lang-ta .sm\:text-\[18vw\] {
+  font-size: 14vw !important;
 }
 .lang-ta .lg\:text-\[12vw\] {
   font-size: 10vw !important;

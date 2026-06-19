@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
   const { getRegisterUrl } = useReferral();
 
   return (
-    <section className="relative w-full min-h-screen lg:min-h-0 lg:h-screen lg:overflow-hidden bg-[#19211c] flex flex-col select-none pt-[56px] lg:pt-[72px]">
+    <section className="relative w-full min-h-screen xl:min-h-0 xl:h-screen overflow-x-hidden xl:overflow-hidden bg-[#19211c] flex flex-col select-none pt-[56px] xl:pt-[72px]">
       {/* Background Noise Texture */}
       <div className="absolute inset-0 z-0">
         <div
@@ -21,13 +21,13 @@ const Hero: React.FC = () => {
       </div>
 
       {/* ===== MAIN CONTENT AREA ===== */}
-      <div className="flex-1 w-full max-w-[1920px] mx-auto pl-6 pr-0 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] flex flex-col lg:flex-row relative lg:static z-10 min-h-0">
+      <div className="flex-1 w-full max-w-[1920px] mx-auto px-0 xl:px-10 2xl:px-[clamp(24px,2.5vw,48px)] flex flex-col xl:flex-row relative xl:static z-10 min-h-0">
 
         {/* ── Left Column: Text Content ── */}
-        <div className="relative z-30 flex flex-col justify-center w-full pr-6 lg:pr-0 lg:w-[48%] order-1 pt-4 sm:pt-6 lg:pt-0">
-          <div className="lg:-mt-72">
+        <div className="relative z-30 flex flex-col justify-center w-full px-6 xl:px-0 xl:w-[48%] order-1 pt-12 sm:pt-16 xl:pt-0">
+          <div className="xl:-mt-72">
             {/* Subtitle */}
-            <div className="text-white text-base md:text-lg lg:text-[21px] font-light mb-3 tracking-wide flex items-center gap-1.5 animate-fade-in">
+            <div className="text-white text-base md:text-lg xl:text-[21px] font-light mb-3 tracking-wide flex items-center gap-1.5 animate-fade-in">
               <T>Confused After</T>{" "}
               <span className="text-[#1ed36a] font-medium">
                 <T>12th?</T>
@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Description */}
-            <h1 className="text-white text-xl md:text-2xl lg:text-[32px] font-light leading-[1.3] mb-8 max-w-lg lg:max-w-xl tracking-normal animate-fade-in delay-100">
+            <h1 className="text-white text-2xl md:text-2xl xl:text-[32px] font-light leading-[1.3] mb-8 max-w-lg xl:max-w-xl tracking-normal animate-fade-in delay-100">
               <T>Discover careers that match your strengths, not just your marks, and get a clear roadmap from 12th to your first job.</T>
             </h1>
 
@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
                 showArrow={true}
                 variant="primary"
                 noDefaultSize={true}
-                className="pl-5 pr-2 py-1.5 text-sm font-medium"
+                className="pl-6 pr-3 py-2.5 text-base font-medium xl:pl-5 xl:pr-2 xl:py-1.5 xl:text-sm"
               >
                 <T>Find My Career Match | ₹999</T>
               </Button>
@@ -55,25 +55,29 @@ const Hero: React.FC = () => {
         </div>
 
         {/* ── Right Column: Hero Portrait ── */}
-        <div className="relative w-full lg:absolute lg:right-0 lg:top-[72px] lg:bottom-0 lg:w-[50%] lg:h-auto flex-1 lg:flex-none flex items-end justify-end z-20 order-2 m-0 lg:m-0 overflow-hidden lg:overflow-visible">
+        <div className="relative w-full xl:absolute xl:right-0 xl:top-[72px] xl:bottom-0 xl:w-[50%] xl:h-auto flex-1 xl:flex-none flex items-end justify-center xl:justify-end z-20 order-2 m-0 xl:m-0 overflow-visible xl:overflow-visible">
           <img
             src="/assets/image.png"
             alt="OriginBI Right Career"
-            className="relative z-20 h-[60vh] sm:h-[58vh] lg:h-full w-auto max-w-full lg:max-w-none object-contain object-bottom select-none pointer-events-none animate-fade-in duration-1000 -translate-y-8 lg:translate-y-0"
+            className="relative z-20 w-full h-auto xl:h-full xl:w-auto max-w-full xl:max-w-none object-contain object-bottom select-none pointer-events-none animate-fade-in duration-1000 -translate-y-20 scale-120 origin-bottom xl:translate-y-0 xl:scale-100"
             draggable={false}
           />
         </div>
       </div>
 
       {/* ===== BOTTOM BANNER: Background Giant Text ===== */}
-      <div className="absolute bottom-0 left-0 right-0 w-full select-none pointer-events-none z-10 leading-none pb-4 lg:pb-8 px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)]">
+      <div className="absolute bottom-0 left-0 right-0 w-full select-none pointer-events-none z-30 xl:z-10 leading-none pb-8 xl:pb-8 px-6 xl:px-10 2xl:px-[clamp(24px,2.5vw,48px)]">
         <div className="max-w-[1920px] mx-auto">
           {/* FIND THE */}
-          <div className="text-white text-[3.8vw] md:text-[2.4vw] lg:text-[2vw] font-light tracking-[2.5vw] md:tracking-[2.8vw] lg:tracking-[3vw] uppercase mb-1 sm:mb-2 lg:mb-4">
+          <div className="text-white text-[3.8vw] md:text-[2.4vw] xl:text-[2vw] font-light tracking-[2.5vw] md:tracking-[2.8vw] xl:tracking-[3vw] uppercase mb-1 sm:mb-2 xl:mb-4">
             <T>FIND THE</T>
           </div>
-          {/* RIGHT CAREER */}
-          <div className="text-white text-[13vw] sm:text-[12.5vw] lg:text-[12vw] font-medium uppercase tracking-[0.06em] whitespace-nowrap -ml-[2px]">
+          {/* RIGHT CAREER — stacked on mobile/tablet, single line on desktop */}
+          <div className="xl:hidden text-white font-medium uppercase tracking-[0.02em] leading-[0.85] -ml-[2px]">
+            <div className="text-[20vw] sm:text-[18vw] md:text-[15vw]"><T>RIGHT</T></div>
+            <div className="text-[20vw] sm:text-[18vw] md:text-[15vw]"><T>CAREER</T></div>
+          </div>
+          <div className="hidden xl:block text-white text-[12vw] font-medium uppercase tracking-[0.06em] whitespace-nowrap -ml-[2px]">
             <T>RIGHT CAREER</T>
           </div>
         </div>
