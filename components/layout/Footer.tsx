@@ -42,7 +42,7 @@ export const FooterTop: React.FC = () => {
           <h3 className="text-white text-3xl md:text-[40px] font-sans font-medium mb-4 tracking-tight leading-tight">
             <T>Clarity Starts Here</T>
           </h3>
-          <p className="text-white text-sm md:text-base font-sans font-medium mb-8 max-w-sm leading-relaxed">
+          <p className="text-white text-sm md:text-base font-sans font-normal mb-8 max-w-sm leading-relaxed">
             <T>Behavioral intelligence designed to help students make smarter career decisions.</T>
           </p>
           
@@ -52,7 +52,7 @@ export const FooterTop: React.FC = () => {
             showArrow={true}
             variant="primary"
             noDefaultSize={true}
-            className="pl-6 pr-2 py-2 text-sm md:text-base font-medium"
+            className="pl-6 pr-2 py-2 text-sm md:text-base !font-normal"
           >
             <T>Start Assessment</T>
           </Button>
@@ -60,7 +60,7 @@ export const FooterTop: React.FC = () => {
 
         {/* Middle Block: Quick Links */}
         <div className="lg:col-span-5 lg:px-12 flex flex-col">
-          <span className="text-[#1ed36a] text-[11px] font-sans font-bold tracking-[0.2em] uppercase mb-6 block">
+          <span className="text-[#1ed36a] text-[11px] font-sans font-medium tracking-[0.2em] uppercase mb-6 block">
             <T>Quick Links</T>
           </span>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
@@ -68,8 +68,7 @@ export const FooterTop: React.FC = () => {
               <a
                 key={link.label}
                 href={wrapUrl(link.href)}
-                className="rounded-full border border-white px-4 py-2.5 text-white hover:border-[#1ed36a] hover:text-[#1ed36a] text-center text-[12px] font-sans transition-all whitespace-nowrap block"
-                style={{ fontWeight: 300 }}
+                className="rounded-full border border-white px-4 py-2.5 text-white hover:border-[#1ed36a] hover:text-[#1ed36a] text-center text-[12px] font-sans font-normal transition-all whitespace-nowrap block"
               >
                 <T>{link.label}</T>
               </a>
@@ -80,23 +79,23 @@ export const FooterTop: React.FC = () => {
         {/* Right Block: Contact & Socials */}
         <div className="lg:col-span-3 lg:border-l lg:border-white/10 lg:pl-12 flex flex-col justify-start">
           {/* Contact */}
-          <span className="text-[#1ed36a] text-[11px] font-sans font-bold tracking-[0.2em] uppercase mb-4 block">
+          <span className="text-[#1ed36a] text-[11px] font-sans font-medium tracking-[0.2em] uppercase mb-4 block">
             <T>Contact</T>
           </span>
           <div className="flex flex-col gap-2.5 mb-6">
-            <p className="text-white text-sm font-sans font-medium tracking-wide">
+            <p className="text-white text-sm font-sans font-normal tracking-wide">
               +91-9985462542 <span className="text-[#1ed36a] mx-1.5">•</span> +91-7985424445
             </p>
             <a 
               href="mailto:contact@originbi.com" 
-              className="text-white text-sm font-sans font-medium hover:text-[#1ed36a] transition-colors w-fit border-b border-white/10 pb-6 w-full"
+              className="text-white text-sm font-sans font-normal hover:text-[#1ed36a] transition-colors w-fit border-b border-white/10 pb-6 w-full"
             >
               contact@originbi.com
             </a>
           </div>
 
           {/* Social */}
-          <span className="text-[#1ed36a] text-[11px] font-sans font-bold tracking-[0.2em] uppercase mb-4 block">
+          <span className="text-[#1ed36a] text-[11px] font-sans font-medium tracking-[0.2em] uppercase mb-4 block">
             <T>Social</T>
           </span>
           <div className="flex items-center gap-3">
@@ -176,7 +175,7 @@ export const FooterBottom: React.FC = () => {
       </div>
       
       {/* Copyright & Links */}
-      <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[#19211c] text-xs sm:text-sm font-sans font-medium mb-12 tracking-wide text-center">
+      <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[#19211c] text-xs sm:text-sm font-sans font-normal mb-12 tracking-wide text-center">
         <span>© 2026 <T>OriginBI mindworks</T></span>
         <span className="hidden sm:inline w-2.5 h-2.5 rounded-full bg-[#1ed36a]" />
         <a href="#privacy" className="hover:text-[#1ed36a] transition-colors">
