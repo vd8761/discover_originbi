@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_Tamil, Caveat } from "next/font/google";
+import { Mukta_Malar, Caveat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -9,10 +9,10 @@ import Script from "next/script";
 import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
 
-const notoSansTamil = Noto_Sans_Tamil({
+const muktaMalar = Mukta_Malar({
   subsets: ["tamil"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-noto-tamil",
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  variable: "--font-tamil",
   display: "swap",
 });
 
@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${notoSansTamil.variable} ${caveat.variable}`}>
+    <html lang="en" className={`${muktaMalar.variable} ${caveat.variable}`}>
       <head>
         {/* Google Analytics */}
         <Script

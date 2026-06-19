@@ -118,7 +118,7 @@ const CustomCursor: React.FC = () => {
       {/* Outer Inverting Circle Mask (Reduced to w-6 h-6, 24px) */}
       <div
         ref={cursorCircleRef}
-        className="fixed top-0 left-0 w-6 h-6 rounded-full bg-white pointer-events-none z-[9999] mix-blend-difference opacity-0"
+        className="fixed top-0 left-0 w-6 h-6 rounded-full bg-white pointer-events-none z-[999999] mix-blend-difference opacity-0"
         style={{
           transform: "translate(-50%, -50%)",
           transformOrigin: "center center",

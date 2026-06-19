@@ -154,3 +154,57 @@ body {
     }
   }
 }
+
+/* Apply Tamil font when lang-ta is active on html root */
+.lang-ta {
+  --font-sans: var(--font-tamil), sans-serif !important;
+}
+
+.lang-ta body {
+  font-family: var(--font-tamil), sans-serif !important;
+}
+
+/* Optimize Header Navigation Links & Gap spacing */
+.lang-ta nav a {
+  font-size: 11px !important;
+  letter-spacing: -0.012em !important;
+}
+.lang-ta nav .hidden.xl\:flex {
+  gap: 1.25rem !important; /* Reduce menu link gap from 24px (gap-6) to 20px */
+}
+@media (min-width: 1536px) {
+  .lang-ta nav .hidden.xl\:flex {
+    gap: 1.5rem !important; /* Reduce 2xl:gap-8 to 24px */
+  }
+}
+
+/* WhyOriginBI Comparison Table Font Correction */
+.lang-ta #why-originbi .h-\[130px\] {
+  font-size: 14px !important;
+}
+
+/* IndustryExperts Cards Height Overrides (Mobile & Tablet) */
+/* Replaces hardcoded height classes with min-height and height:auto */
+.lang-ta #experts .h-\[180px\] {
+  height: auto !important;
+  min-height: 180px !important;
+  padding-bottom: 1.5rem !important;
+}
+@media (min-width: 640px) {
+  .lang-ta #experts .sm\:h-\[210px\] {
+    height: auto !important;
+    min-height: 210px !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+/* Hero Section Giant Background Text Size (Prevent Horizontal Overflow) */
+.lang-ta .text-\[13vw\] {
+  font-size: 11vw !important;
+}
+.lang-ta .sm\:text-\[12\.5vw\] {
+  font-size: 10.5vw !important;
+}
+.lang-ta .lg\:text-\[12vw\] {
+  font-size: 10vw !important;
+}

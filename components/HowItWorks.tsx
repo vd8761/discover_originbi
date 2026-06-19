@@ -61,7 +61,7 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section className="relative w-full bg-[#f4f4f4] text-[#19211c] py-20 px-6 md:px-12 xl:px-16 overflow-hidden">
+    <section id="how-it-works" className="relative w-full bg-[#f4f4f4] text-[#19211c] py-20 px-6 md:px-12 xl:px-16 overflow-hidden">
       {/* Isolated CSS for orbital pulsing animations */}
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes orbit-pulse {
