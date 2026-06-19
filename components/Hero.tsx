@@ -24,8 +24,8 @@ const Hero: React.FC = () => {
       <div className="flex-1 w-full max-w-[1920px] mx-auto pl-6 pr-0 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] flex flex-col lg:flex-row relative lg:static z-10 min-h-0">
 
         {/* ── Left Column: Text Content ── */}
-        <div className="relative z-30 flex flex-col justify-center w-full pr-6 lg:pr-0 lg:w-[48%] order-1 pt-8 lg:pt-0">
-          <div className="lg:-mt-56">
+        <div className="relative z-30 flex flex-col justify-center w-full pr-6 lg:pr-0 lg:w-[48%] order-1 pt-4 sm:pt-6 lg:pt-0">
+          <div className="lg:-mt-72">
             {/* Subtitle */}
             <div className="text-white text-lg md:text-xl lg:text-[24px] font-light mb-3 tracking-wide flex items-center gap-1.5 animate-fade-in">
               <T>Confused After</T>{" "}
@@ -69,11 +69,11 @@ const Hero: React.FC = () => {
       <div className="absolute bottom-0 left-0 right-0 w-full select-none pointer-events-none z-10 leading-none pb-4 lg:pb-8 px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)]">
         <div className="max-w-[1920px] mx-auto">
           {/* FIND THE */}
-          <div className="text-white text-xs sm:text-sm md:text-base lg:text-lg font-light tracking-[0.6em] uppercase mb-1 sm:mb-2 lg:mb-4">
+          <div className="text-white text-[3.8vw] md:text-[2.4vw] lg:text-[2vw] font-light tracking-[2.5vw] md:tracking-[2.8vw] lg:tracking-[3vw] uppercase mb-1 sm:mb-2 lg:mb-4">
             <T>FIND THE</T>
           </div>
           {/* RIGHT CAREER */}
-          <div className="text-white text-[12vw] sm:text-[11vw] font-medium uppercase tracking-[2px] whitespace-nowrap -ml-[2px]">
+          <div className="text-white text-[13vw] sm:text-[12.5vw] lg:text-[12vw] font-medium uppercase tracking-[0.06em] whitespace-nowrap -ml-[2px]">
             <T>RIGHT CAREER</T>
           </div>
         </div>

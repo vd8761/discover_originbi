@@ -46,7 +46,7 @@ export default function Home() {
 
             <div className="relative z-10">
               <div className="max-w-[1920px] mx-auto px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] mb-8">
-                <p className="text-white text-[18px] tracking-[0.2em] font-medium">
+                <p className="text-white text-[18px] font-medium">
                   <T>Our Partners</T>
                 </p>
               </div>
