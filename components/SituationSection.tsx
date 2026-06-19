@@ -169,29 +169,31 @@ const SituationSection: React.FC = () => {
     if (position === 0) {
       if (swipeAwayDirection === "left") {
         translateX = -120;
+        translateY = 20; // Shift front card down
         rotate = -12;
         opacity = 0;
       } else if (swipeAwayDirection === "right") {
         translateX = 120;
+        translateY = 20; // Shift front card down
         rotate = 12;
         opacity = 0;
       } else {
         translateX = dragOffset;
+        translateY = 20; // Shift front card down
         rotate = (dragOffset / 300) * 15; // rotate slightly based on drag direction
         opacity = 1 - Math.min(0.4, Math.abs(dragOffset) / 600);
       }
-      translateY = 0;
       scale = 1;
     } else if (position === 1) {
-      // Scales up and slides down as front card is swiped
+      // Scales up and slides down to active card's position (from 0px to 20px)
       const progress = swipeAwayDirection !== null ? 1 : dragProgress;
-      translateY = -16 + progress * 16;
+      translateY = 0 + progress * 20;
       scale = 0.94 + progress * 0.06;
       opacity = 1;
     } else if (position === 2) {
-      // Scales up and slides down as middle card transitions, fades in as swipe occurs
+      // Scales up and slides down to middle card's position (from -20px to 0px)
       const progress = swipeAwayDirection !== null ? 1 : dragProgress;
-      translateY = -32 + progress * 16;
+      translateY = -20 + progress * 20;
       scale = 0.88 + progress * 0.06;
       opacity = progress; // Hide when idle, fade in during swipe
     }

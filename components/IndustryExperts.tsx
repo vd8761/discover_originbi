@@ -104,19 +104,47 @@ const IndustryExperts: React.FC = () => {
       <div className="max-w-[1920px] w-full mx-auto relative z-10">
         
         {/* Top Header Row */}
-        <div className="grid grid-cols-1 lg:grid-cols-[440px_1fr] xl:grid-cols-[460px_1fr] justify-between items-baseline lg:items-end gap-8 pb-4">
-          <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6">
-            <h2 className="text-[#19211c] text-[32px] sm:text-[40px] md:text-[48px] font-sans font-medium leading-[1.1] tracking-tight">
+        <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[440px_1fr] lg:xl:grid-cols-[460px_1fr] lg:justify-between lg:items-end lg:gap-8 pb-4">
+          <div className="flex items-center justify-between lg:justify-start gap-4 w-full lg:w-auto">
+            <h2 className="text-[#19211c] text-[28px] sm:text-[36px] md:text-[40px] lg:text-[48px] font-sans font-medium leading-[1.1] tracking-tight">
               <T>Industry Experts</T>
             </h2>
+            
+            {/* Language Switcher Capsule - Visible on mobile/tablet */}
+            <div className="flex lg:hidden items-center gap-1 p-0.5 bg-[#19211c] rounded-full border border-white/5 shrink-0 shadow-md w-fit">
+              <button
+                onClick={() => activeExpert === "bharathiraja" && setVideoLang("ta")}
+                disabled={activeExpert === "pratap"}
+                className={`px-3 py-1 rounded-full text-[12px] font-bold font-sans transition-all duration-300 ${
+                  activeExpert === "pratap"
+                    ? "opacity-35 cursor-not-allowed text-white/40"
+                    : videoLang === "ta"
+                    ? "bg-[#1ed36a] text-white shadow-sm cursor-pointer"
+                    : "bg-transparent text-white/70 hover:text-white cursor-pointer"
+                }`}
+              >
+                த
+              </button>
+              <button
+                onClick={() => setVideoLang("en")}
+                className={`px-3 py-1 rounded-full text-[12px] font-bold font-sans transition-all duration-300 cursor-pointer ${
+                  videoLang === "en"
+                    ? "bg-[#1ed36a] text-white shadow-sm"
+                    : "bg-transparent text-white/70 hover:text-white"
+                }`}
+              >
+                En
+              </button>
+            </div>
           </div>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 w-full">
-            <p className="text-[#19211c] text-base md:text-[18px] font-sans font-normal leading-relaxed max-w-[480px]">
+
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 w-full">
+            <p className="text-[#19211c] text-sm sm:text-base lg:text-[18px] font-sans font-normal leading-relaxed max-w-[480px]">
               <T>Insights from industry leaders shaping smarter career decisions through behavioral intelligence.</T>
             </p>
             
-            {/* Language Switcher Capsule */}
-            <div className="flex items-center gap-1 p-0.5 bg-[#19211c] rounded-full border border-white/5 self-start sm:self-auto shrink-0 shadow-md w-fit">
+            {/* Language Switcher Capsule - Desktop Version */}
+            <div className="hidden lg:flex items-center gap-1 p-0.5 bg-[#19211c] rounded-full border border-white/5 shrink-0 shadow-md w-fit">
               <button
                 onClick={() => activeExpert === "bharathiraja" && setVideoLang("ta")}
                 disabled={activeExpert === "pratap"}
@@ -147,60 +175,124 @@ const IndustryExperts: React.FC = () => {
         {/* Main Grid Section */}
         <div className="grid grid-cols-1 lg:grid-cols-[440px_1fr] xl:grid-cols-[460px_1fr] items-stretch gap-8 mt-6">
           
-          {/* Left Column: Experts Stack */}
-          <div className="grid grid-cols-1 lg:grid-rows-2 gap-6 lg:h-full">
-            {EXPERTS_DATA.map((expert) => {
-              const isActive = activeExpert === expert.id;
-              return (
-                <div
-                  key={expert.id}
-                  onClick={() => setActiveExpert(expert.id)}
-                  className={`group relative overflow-hidden rounded-[24px] border transition-all duration-500 cursor-pointer flex p-5 sm:p-6 select-none h-[180px] sm:h-[210px] lg:h-auto ${
-                    isActive
-                      ? "bg-gradient-to-br from-[#1c2520] to-[#121815] border-[#1ed36a]/30 shadow-[0_12px_40px_rgba(30,211,106,0.12)]"
-                      : "bg-[#181d19]/95 border-white/5 hover:border-white/10 hover:bg-[#1c221d] shadow-md"
-                  }`}
-                >
-                  {/* Background vector (always present) */}
-                  <img
-                    src="/assets/experts/behind_vector.svg"
-                    alt="Background Vector"
-                    className={`absolute bottom-0 right-0 w-full h-full object-contain object-[right_bottom] mix-blend-overlay pointer-events-none z-0 transition-opacity duration-500 ${
-                      isActive ? "opacity-45" : "opacity-15"
-                    }`}
-                  />
-
-                  {/* Active radial gradient glow */}
-                  {isActive && (
-                    <div className="absolute bottom-[-120px] right-[-40px] w-[320px] h-[320px] rounded-[40%_60%_70%_30%_/_40%_50%_60%_50%] bg-[radial-gradient(circle_at_35%_35%,rgba(239,89,33,0.95)_0%,rgba(239,89,33,0.45)_35%,rgba(239,89,33,0.15)_60%,transparent_75%)] blur-[45px] pointer-events-none z-0 animate-aura-spin" />
-                  )}
-
-                  {/* Left content block */}
-                  <div className="flex flex-col justify-start w-[55%] sm:w-[58%] max-w-[180px] sm:max-w-[210px] lg:max-w-[230px] relative z-20 text-left">
-                    <h3 className="text-white text-[16px] sm:text-[18px] font-sans font-semibold leading-tight">
-                      <T>{expert.nameKey}</T>
-                    </h3>
-                    <p className="text-white text-[11px] sm:text-[12px] font-sans font-medium mt-1">
-                      <T>{expert.titleKey}</T>
-                    </p>
-                    <p className="text-white text-[10px] sm:text-[11px] font-sans leading-normal mt-4 max-w-[160px] sm:max-w-[185px]">
-                      <T>{expert.subtitleKey}</T>
-                    </p>
-                  </div>
-
-                  {/* Expert Image */}
-                  <img
-                    src={expert.imgSrc}
-                    alt={expert.nameKey}
-                    className={`absolute bottom-0 right-0 h-[94%] w-auto object-contain object-bottom z-10 transition-all duration-500 ease-out pointer-events-none ${
+          {/* Left Column: Experts Selectors */}
+          <div>
+            {/* Desktop Selector (stacked card layout) */}
+            <div className="hidden lg:grid lg:grid-rows-2 gap-6 lg:h-full">
+              {EXPERTS_DATA.map((expert) => {
+                const isActive = activeExpert === expert.id;
+                return (
+                  <div
+                    key={expert.id}
+                    onClick={() => setActiveExpert(expert.id)}
+                    className={`group relative overflow-hidden rounded-[24px] border transition-all duration-500 cursor-pointer flex p-5 sm:p-6 select-none h-[180px] sm:h-[210px] lg:h-auto ${
                       isActive
-                        ? "filter-none opacity-100"
-                        : "grayscale opacity-35 group-hover:opacity-50"
+                        ? "bg-gradient-to-br from-[#1c2520] to-[#121815] border-[#1ed36a]/30 shadow-[0_12px_40px_rgba(30,211,106,0.12)]"
+                        : "bg-[#181d19]/95 border-white/5 hover:border-white/10 hover:bg-[#1c221d] shadow-md"
                     }`}
-                  />
-                </div>
-              );
-            })}
+                  >
+                    {/* Background vector (always present) */}
+                    <img
+                      src="/assets/experts/behind_vector.svg"
+                      alt="Background Vector"
+                      className={`absolute bottom-0 right-0 w-full h-full object-contain object-[right_bottom] mix-blend-overlay pointer-events-none z-0 transition-opacity duration-500 ${
+                        isActive ? "opacity-45" : "opacity-15"
+                      }`}
+                    />
+
+                    {/* Active radial gradient glow */}
+                    {isActive && (
+                      <div className="absolute bottom-[-120px] right-[-40px] w-[320px] h-[320px] rounded-[40%_60%_70%_30%_/_40%_50%_60%_50%] bg-[radial-gradient(circle_at_35%_35%,rgba(239,89,33,0.95)_0%,rgba(239,89,33,0.45)_35%,rgba(239,89,33,0.15)_60%,transparent_75%)] blur-[45px] pointer-events-none z-0 animate-aura-spin" />
+                    )}
+
+                    {/* Left content block */}
+                    <div className="flex flex-col justify-start w-[55%] sm:w-[58%] max-w-[180px] sm:max-w-[210px] lg:max-w-[230px] relative z-20 text-left">
+                      <h3 className="text-white text-[16px] sm:text-[18px] font-sans font-semibold leading-tight">
+                        <T>{expert.nameKey}</T>
+                      </h3>
+                      <p className="text-white text-[11px] sm:text-[12px] font-sans font-medium mt-1">
+                        <T>{expert.titleKey}</T>
+                      </p>
+                      <p className="text-white text-[10px] sm:text-[11px] font-sans leading-normal mt-4 max-w-[160px] sm:max-w-[185px]">
+                        <T>{expert.subtitleKey}</T>
+                      </p>
+                    </div>
+
+                    {/* Expert Image */}
+                    <img
+                      src={expert.imgSrc}
+                      alt={expert.nameKey}
+                      className={`absolute bottom-0 right-0 h-[94%] w-auto object-contain object-bottom z-10 transition-all duration-500 ease-out pointer-events-none ${
+                        isActive
+                          ? "filter-none opacity-100"
+                          : "grayscale opacity-35 group-hover:opacity-50"
+                      }`}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Mobile/Tablet Selector (side-by-side circular layouts) */}
+            <div className="grid grid-cols-2 lg:hidden gap-4 sm:gap-6 my-2">
+              {EXPERTS_DATA.map((expert) => {
+                const isActive = activeExpert === expert.id;
+                return (
+                  <div
+                    key={expert.id}
+                    onClick={() => setActiveExpert(expert.id)}
+                    className="group flex flex-col items-center cursor-pointer select-none"
+                  >
+                    {/* Circle Container */}
+                    <div
+                      className={`relative aspect-square w-full max-w-[160px] sm:max-w-[200px] rounded-full overflow-hidden border transition-all duration-500 shadow-md ${
+                        isActive
+                          ? "bg-gradient-to-br from-[#1c2520] to-[#121815] border-[#1ed36a]/30 shadow-[0_8px_24px_rgba(30,211,106,0.15)]"
+                          : "bg-[#181d19]/95 border-white/5 hover:border-white/10 hover:bg-[#1c221d]"
+                      }`}
+                    >
+                      {/* Background Vector */}
+                      <img
+                        src="/assets/experts/behind_vector.svg"
+                        alt="Background Vector"
+                        className={`absolute bottom-0 right-0 w-full h-full object-cover mix-blend-overlay pointer-events-none z-0 transition-opacity duration-500 ${
+                          isActive ? "opacity-45" : "opacity-15"
+                        }`}
+                      />
+
+                      {/* Active radial gradient glow */}
+                      {isActive && (
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(239,89,33,0.95)_0%,rgba(239,89,33,0.45)_35%,rgba(239,89,33,0.15)_60%,transparent_75%)] blur-[15px] pointer-events-none z-0" />
+                      )}
+
+                      {/* Expert Image */}
+                      <img
+                        src={expert.imgSrc}
+                        alt={expert.nameKey}
+                        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[94%] w-auto object-contain object-bottom z-10 transition-all duration-500 ease-out pointer-events-none ${
+                          isActive
+                            ? "filter-none opacity-100"
+                            : "grayscale opacity-35"
+                        }`}
+                      />
+                    </div>
+
+                    {/* Expert Info below circle */}
+                    <div className="flex flex-col items-center mt-3 text-center px-1">
+                      <h3 className="text-[#19211c] text-sm sm:text-base md:text-lg font-sans font-semibold leading-snug">
+                        <T>{expert.nameKey}</T>
+                      </h3>
+                      <p className="text-[#19211c] text-[10px] sm:text-xs font-sans font-medium mt-1 leading-normal">
+                        <T>{expert.titleKey}</T>
+                      </p>
+                      <p className="text-[#19211c] text-[9px] sm:text-[10px] font-sans leading-normal mt-1.5 max-w-[160px]">
+                        <T>{expert.subtitleKey}</T>
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           {/* Right Column: Video + Quote Box */}
@@ -224,7 +316,7 @@ const IndustryExperts: React.FC = () => {
             </div>
 
             {/* Quote Box Card */}
-            <div className="w-full bg-[#f9faf9] border border-[#19211c]/10 rounded-[24px] p-6 sm:p-8 flex flex-col md:flex-row justify-between items-stretch gap-6 shadow-sm relative">
+            <div className="w-full bg-[#f9faf9] border border-[#19211c]/10 rounded-[24px] p-6 sm:p-8 flex flex-col lg:flex-row justify-between items-stretch gap-6 shadow-sm relative">
               
               {/* Left Side: Quote Text */}
               <div className="flex-1 flex flex-col justify-start relative text-left">
@@ -240,10 +332,13 @@ const IndustryExperts: React.FC = () => {
               </div>
 
               {/* Vertical Divider (desktop only) */}
-              <div className="hidden md:block w-[1px] bg-[#19211c] self-stretch my-1 shrink-0" />
+              <div className="hidden lg:block w-[1px] bg-[#19211c] self-stretch my-1 shrink-0" />
+
+              {/* Horizontal Divider (mobile/tablet only) */}
+              <div className="block lg:hidden w-full h-[1px] bg-[#19211c]/10 my-4" />
 
               {/* Right Side: Description + Signature */}
-              <div className="flex-1 flex flex-col justify-between pt-1 h-full text-left">
+              <div className="flex-grow flex-1 flex flex-col justify-between pt-1 h-full text-left">
                 <p className="text-[#19211c] text-xs sm:text-sm md:text-[14px] leading-relaxed max-w-[420px]">
                   <T>{activeExpertData.subtextKey}</T>
                 </p>

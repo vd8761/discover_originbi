@@ -180,39 +180,39 @@ const WhyOriginBI: React.FC = () => {
           </div>
         </div>
 
-        {/* MOBILE & TABLET LAYOUT (Stacked Cards with Custom Borders) */}
-        <div className="lg:hidden w-full flex flex-col gap-6">
+        {/* MOBILE & TABLET LAYOUT (Stacked Cards with Custom Borders matching the Figma design) */}
+        <div className="lg:hidden w-full flex flex-col gap-6 max-w-md sm:max-w-xl mx-auto">
           {comparisonData.map((row, index) => (
-            <div key={index} className="relative p-[1px] rounded-[20px] bg-gradient-to-br from-[#ED2F34] via-[#FDC00C] to-[#1ED36A]">
-              <div className="bg-[#121815] rounded-[19px] p-5 sm:p-6 flex flex-col gap-5 overflow-hidden">
-                {/* Feature Header Pill */}
-                <div className="self-center px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white text-[14px] font-sans font-medium tracking-wide">
+            <div 
+              key={index} 
+              className="w-full rounded-[20px] overflow-hidden border border-[#2d3732] bg-[#121815] shadow-xl"
+            >
+              {/* Card Header (Dark grey bar) */}
+              <div className="bg-[#2d3531] px-5 py-4 border-b border-white/5 flex items-center">
+                <span className="text-white text-[15px] sm:text-base font-sans font-medium tracking-wide">
                   <T>{row.feature}</T>
+                </span>
+              </div>
+              
+              {/* The Old Way Section (Light grey background) */}
+              <div className="bg-[#e4e6e5] px-5 py-5 flex flex-col gap-2">
+                <div className="flex items-center gap-1.5 text-[11px] font-sans font-semibold tracking-wider uppercase">
+                  <span className="text-[#6b7280]"><T>The Old Way</T></span>
+                  <span className="text-[#ff4d4d] font-medium"><T>(High Risk)</T></span>
                 </div>
-                
-                {/* Comparison Details */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-1">
-                  {/* Old Way Card */}
-                  <div className="flex flex-col gap-2.5 p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                    <div className="flex items-center gap-1.5 text-[11px] text-white font-sans font-medium tracking-wider uppercase">
-                      <span><T>The Old Way</T></span>
-                      <span className="text-[#ff4d4d] font-medium"><T>(High Risk)</T></span>
-                    </div>
-                    <p className="text-white text-[14px] leading-relaxed font-sans font-medium">
-                      <T>{row.oldWay}</T>
-                    </p>
-                  </div>
-                  
-                  {/* OriginBI Way Card */}
-                  <div className="flex flex-col gap-2.5 p-4 rounded-xl bg-[#1ed36a]/5 border border-[#1ed36a]/20">
-                    <div className="flex items-center gap-1.5 text-[11px] text-[#1ed36a] font-sans font-medium tracking-wider uppercase">
-                      <span><T>The OriginBI Way</T></span>
-                      <span className="text-[#1ed36a]/90 font-medium"><T>(The Strategy)</T></span>
-                    </div>
-                    <p className="text-white text-[14px] leading-relaxed font-sans font-medium">
-                      {language === "ta" ? row.newWayTa : row.newWayEn}
-                    </p>
-                  </div>
+                <p className="text-[#19211c] text-[14px] leading-relaxed font-sans font-medium">
+                  <T>{row.oldWay}</T>
+                </p>
+              </div>
+              
+              {/* The OriginBI Way Section (Dark green background) */}
+              <div className="bg-[#1b4630] px-5 py-5 flex flex-col gap-2 border-t border-white/5">
+                <div className="flex items-center gap-1.5 text-[11px] font-sans font-semibold tracking-wider uppercase text-[#1ed36a]">
+                  <span><T>The OriginBI Way</T></span>
+                  <span className="text-[#1ed36a]/90 font-medium"><T>(The Strategy)</T></span>
+                </div>
+                <div className="text-white text-[14px] leading-relaxed font-sans font-medium">
+                  {language === "ta" ? row.newWayTa : row.newWayEn}
                 </div>
               </div>
             </div>
