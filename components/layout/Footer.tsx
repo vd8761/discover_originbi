@@ -42,6 +42,7 @@ export const FooterTop: React.FC = () => {
           <h3 className="text-white text-3xl md:text-[40px] font-sans font-medium mb-4 tracking-tight leading-tight">
             <T>Clarity Starts Here</T>
           </h3>
+          {/* Description of clarity */}
           <p className="text-white text-sm md:text-base font-sans font-normal mb-8 max-w-sm leading-relaxed">
             <T>Behavioral intelligence designed to help students make smarter career decisions.</T>
           </p>

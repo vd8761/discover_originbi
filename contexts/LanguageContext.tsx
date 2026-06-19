@@ -122,8 +122,12 @@ export const T: React.FC<{ children: ReactNode }> = ({ children }) => {
     return <>{children}</>;
 };
 
+interface I18nToggleProps {
+    buttonClassName?: string;
+}
+
 // Language Toggle Component
-export const I18nToggle: React.FC = () => {
+export const I18nToggle: React.FC<I18nToggleProps> = ({ buttonClassName = "" }) => {
     const { language, setLanguage } = useLanguage();
     const [isOpen, setIsOpen] = React.useState(false);
     const containerRef = React.useRef<HTMLDivElement>(null);
@@ -152,7 +156,7 @@ export const I18nToggle: React.FC = () => {
         <div className="relative inline-block" ref={containerRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full border-2 border-[#1ed36a]/40 bg-[#1ed36a]/15 hover:border-[#1ed36a]/80 hover:bg-[#1ed36a]/25 transition-all duration-300 cursor-pointer focus:outline-none"
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full border-2 border-[#1ed36a]/40 bg-[#1ed36a]/15 hover:border-[#1ed36a]/80 hover:bg-[#1ed36a]/25 transition-all duration-300 cursor-pointer focus:outline-none ${buttonClassName}`}
             >
                 <span className="text-[13px] font-medium text-white tracking-wide uppercase leading-none mt-[1px]">{displayShort}</span>
                 <svg className={`w-3 h-3 text-white/80 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
