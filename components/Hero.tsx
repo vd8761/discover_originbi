@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Description */}
-            <h1 className="text-white text-2xl md:text-2xl xl:text-[32px] font-light leading-[1.3] mb-8 max-w-lg xl:max-w-xl tracking-normal animate-fade-in delay-100">
+            <h1 className="text-white text-xl md:text-[22px] xl:text-[32px] font-light leading-[1.3] mb-8 max-w-lg xl:max-w-xl tracking-normal animate-fade-in delay-100">
               <T>Discover careers that match your strengths, not just your marks, and get a clear roadmap from 12th to your first job.</T>
             </h1>
 
@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
                 showArrow={true}
                 variant="primary"
                 noDefaultSize={true}
-                className="pl-6 pr-3 py-2.5 text-base font-medium xl:pl-5 xl:pr-2 xl:py-1.5 xl:text-sm"
+                className="pl-5 pr-2.5 py-2 text-sm font-medium xl:pl-5 xl:pr-2 xl:py-1.5 xl:text-sm"
               >
                 <T>Find My Career Match | ₹999</T>
               </Button>
@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
           <img
             src="/assets/image.png"
             alt="OriginBI Right Career"
-            className="relative z-20 w-full h-auto xl:h-full xl:w-auto max-w-full xl:max-w-none object-contain object-bottom select-none pointer-events-none animate-fade-in duration-1000 -translate-y-20 scale-120 origin-bottom xl:translate-y-0 xl:scale-100"
+            className="relative z-20 w-full h-auto xl:h-full xl:w-auto max-w-full md:max-w-[90%] xl:max-w-none mx-auto xl:mx-0 object-contain object-bottom select-none pointer-events-none animate-fade-in duration-1000 -translate-y-12 scale-[117%] origin-bottom xl:translate-y-0 xl:scale-100"
             draggable={false}
           />
         </div>
