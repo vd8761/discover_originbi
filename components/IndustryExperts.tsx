@@ -177,13 +177,13 @@ const IndustryExperts: React.FC = () => {
 
                   {/* Left content block */}
                   <div className="flex flex-col justify-start w-[55%] sm:w-[58%] max-w-[180px] sm:max-w-[210px] lg:max-w-[230px] relative z-20 text-left">
-                    <h3 className={`text-white text-[16px] sm:text-[18px] font-sans font-semibold leading-tight transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-90"}`}>
+                    <h3 className="text-white text-[16px] sm:text-[18px] font-sans font-semibold leading-tight">
                       <T>{expert.nameKey}</T>
                     </h3>
-                    <p className={`text-[11px] sm:text-[12px] font-sans font-medium mt-1 transition-colors duration-300 ${isActive ? "text-[#1ed36a]" : "text-white/60"}`}>
+                    <p className="text-white text-[11px] sm:text-[12px] font-sans font-medium mt-1">
                       <T>{expert.titleKey}</T>
                     </p>
-                    <p className={`text-[10px] sm:text-[11px] font-sans leading-normal mt-4 transition-opacity duration-300 ${isActive ? "text-white/60" : "text-white/40"} max-w-[160px] sm:max-w-[185px]`}>
+                    <p className="text-white text-[10px] sm:text-[11px] font-sans leading-normal mt-4 max-w-[160px] sm:max-w-[185px]">
                       <T>{expert.subtitleKey}</T>
                     </p>
                   </div>

@@ -66,10 +66,10 @@ const FAQ: React.FC = () => {
       <div
         key={item.id}
         onClick={() => toggleItem(item.id)}
-        className={`border rounded-[16px] p-6 cursor-pointer transition-all duration-300 select-none shadow-sm ${
+        className={`border rounded-[16px] p-6 cursor-pointer transition-all duration-300 select-none ${
           isOpen
-            ? "bg-[#19211c] border-[#19211c] text-white"
-            : "bg-white/40 border-[#19211c]/10 hover:bg-white/60 text-[#19211c]"
+            ? "bg-[#19211c] border-[#19211c] text-white shadow-md"
+            : "bg-transparent border-black hover:border-black text-[#19211c]"
         }`}
       >
         {/* Question Row */}

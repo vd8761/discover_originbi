@@ -80,7 +80,7 @@ const WhyOriginBI: React.FC = () => {
   ];
 
   return (
-    <section id="why-originbi" className="relative w-full min-h-screen bg-[#19211c] text-white py-20 px-6 flex flex-col justify-center items-center overflow-hidden">
+    <section id="why-originbi" className="relative w-full min-h-screen bg-[#19211c] text-white py-20 flex flex-col justify-center items-center overflow-hidden">
       {/* Background Noise Texture */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div
@@ -91,7 +91,7 @@ const WhyOriginBI: React.FC = () => {
         />
       </div>
 
-      <div className="relative z-10 max-w-[1200px] mx-auto flex flex-col items-center">
+      <div className="relative z-10 max-w-[1920px] w-full mx-auto px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] flex flex-col items-center">
         {/* Title */}
         <h2 className="text-3xl md:text-[44px] font-sans font-medium text-center leading-tight mb-2 tracking-tight text-white">
           {language === "ta" ? (

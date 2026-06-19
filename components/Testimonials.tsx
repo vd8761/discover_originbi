@@ -179,7 +179,7 @@ const Testimonials: React.FC = () => {
       <div className="max-w-[1920px] mx-auto flex flex-col md:flex-row justify-between items-stretch gap-12 md:gap-16 relative z-10">
         
         {/* Quotes Watermark SVG - Positioned absolute at bottom on mobile, and bottom-left on desktop */}
-        <div className="absolute bottom-[-24px] right-[-12px] md:bottom-[-64px] md:left-[-12px] md:right-auto w-[60%] sm:w-[45%] md:w-[48%] max-w-[450px] z-0 pointer-events-none select-none opacity-[0.04] md:opacity-[0.15]">
+        <div className="absolute bottom-[-24px] right-[-12px] md:bottom-[-64px] md:left-[-12px] md:right-auto w-[60%] sm:w-[45%] md:w-[48%] max-w-[450px] z-0 pointer-events-none select-none opacity-[0.25] md:opacity-[0.45]">
           <img
             src="/assets/quotes.svg"
             alt="Quotes Watermark"
@@ -193,7 +193,7 @@ const Testimonials: React.FC = () => {
             <h2 className="text-[#1ed36a] text-[22px] md:text-[26px] font-sans font-semibold tracking-tight leading-snug">
               <T>Student Testimonials</T>
             </h2>
-            <p className="text-white/60 text-xs md:text-sm font-sans font-normal leading-relaxed mt-2 max-w-[260px]">
+            <p className="text-white text-xs md:text-sm font-sans font-normal leading-relaxed mt-2 max-w-[260px]">
               <T>Stories from students who found clarity through behavioral intelligence.</T>
             </p>
           </div>
@@ -299,7 +299,7 @@ const Testimonials: React.FC = () => {
                 <button
                   onClick={handleNext}
                   aria-label="Next Testimonial"
-                  className="group w-11 h-11 md:w-[44px] md:h-[44px] rounded-full bg-[#1ed36a] hover:bg-[#15bf5c] border border-[#1ed36a] flex items-center justify-center text-[#19211c] hover:text-white transition-all duration-300 cursor-pointer outline-none active:scale-95 relative overflow-hidden"
+                  className="group w-11 h-11 md:w-[44px] md:h-[44px] rounded-full bg-[#1ed36a] hover:bg-[#15bf5c] border border-[#1ed36a] flex items-center justify-center text-white transition-all duration-300 cursor-pointer outline-none active:scale-95 relative overflow-hidden"
                 >
                   <div className="relative w-[18px] h-[14px] overflow-hidden flex items-center justify-center">
                     {/* Arrow 1: Active, slides out to the right on hover */}

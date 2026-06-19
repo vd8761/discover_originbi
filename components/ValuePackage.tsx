@@ -107,7 +107,7 @@ const ValuePackage: React.FC = () => {
         
         {/* Left Column (Details & Philosophy) */}
         <div className="flex flex-col text-[#19211c]">
-          <h2 className="text-[36px] md:text-[50px] font-sans font-bold leading-[1.1] mb-4 tracking-tight">
+          <h2 className="text-[36px] md:text-[50px] font-sans font-medium leading-[1.1] mb-4 tracking-tight">
             <T>Your Career Value Package</T>
           </h2>
           <p className="text-base md:text-lg font-sans font-normal leading-relaxed text-[#19211c] max-w-[480px] mb-8">
@@ -121,7 +121,7 @@ const ValuePackage: React.FC = () => {
               showArrow={true}
               variant="primary"
               noDefaultSize={true}
-              className="pl-6 pr-2 py-2 text-sm md:text-base font-bold"
+              className="pl-6 pr-2 py-2 text-sm md:text-base font-medium"
             >
               <T>Get My Career Blueprint</T>
             </Button>
@@ -132,7 +132,7 @@ const ValuePackage: React.FC = () => {
 
           {/* The OriginBI Philosophy */}
           <div className="flex flex-col gap-4">
-            <h4 className="font-sans font-bold text-[13px] tracking-[0.2em] text-[#19211c] uppercase leading-none">
+            <h4 className="font-sans font-medium text-[13px] tracking-[0.2em] text-[#19211c] leading-none">
               <T>The OriginBI Philosophy</T>
             </h4>
             <p className="font-sans font-medium italic text-lg md:text-[22px] leading-snug tracking-tight max-w-[480px]">
@@ -150,7 +150,7 @@ const ValuePackage: React.FC = () => {
         <div className="relative z-10 bg-white rounded-[32px] p-6 md:p-8 lg:p-10 shadow-[0_24px_48px_-12px_rgba(25,33,28,0.08)] border border-black/5 flex flex-col justify-between w-full">
           {/* Pricing Header */}
           <div className="flex items-baseline gap-2 mb-6">
-            <span className="text-[52px] md:text-[60px] font-sans font-bold text-[#19211c] leading-none tracking-tight">
+            <span className="text-[52px] md:text-[60px] font-sans font-medium text-[#19211c] leading-none tracking-tight">
               ₹<T>999</T>
             </span>
             <span className="text-sm md:text-base font-sans font-medium text-[#19211c] tracking-wide">

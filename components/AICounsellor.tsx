@@ -50,7 +50,7 @@ const AICounsellor: React.FC = () => {
           </div>
 
           {/* Chat Mockup Image Container - Remove hardcoded aspect ratio to show image fully */}
-          <div className="relative w-full max-w-[540px] rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+          <div className="relative w-full max-w-[440px] rounded-2xl overflow-hidden border border-white/10 shadow-xl">
             <img
               src="/assets/left.png"
               alt="AI Chat Mockup"
