@@ -49,6 +49,22 @@ const JourneySection: React.FC = () => {
     };
   }, [handleScroll]);
 
+  const scrollToStep = useCallback((idx: number) => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    const sectionTop = window.scrollY + rect.top;
+    const sectionHeight = sectionRef.current.offsetHeight;
+    const totalScroll = sectionHeight - window.innerHeight;
+
+    const targetProgress = idx === 0 ? 0.15 : idx === 1 ? 0.5 : 0.85;
+    const targetY = sectionTop + targetProgress * totalScroll;
+
+    window.scrollTo({
+      top: targetY,
+      behavior: "smooth",
+    });
+  }, []);
+
   // Content for the three steps
   const steps = [
     {
@@ -62,7 +78,7 @@ const JourneySection: React.FC = () => {
       whatHappensEn: (
           <>
             Your child takes our{" "}
-            <span className="text-[#1ed36a] font-bold">
+            <span className="text-[#1ed36a] font-medium">
             Proprietary Behavioral Intelligence Assessment
           </span>
             . It is not a pass/fail school exam, but a discovery of their natural brain wiring.
@@ -71,7 +87,7 @@ const JourneySection: React.FC = () => {
       whatHappensTa: (
           <>
             உங்கள் குழந்தை எங்களது{" "}
-            <span className="text-[#1ed36a] font-bold">
+            <span className="text-[#1ed36a] font-medium">
             உரிமையுடைமை நடத்தை நுண்ணறிவு மதிப்பீட்டை
           </span>{" "}
             மேற்கொள்கிறார். இது தேர்ச்சி/தோல்வி வகை தேர்வு அல்ல; அவர்களின் இயல்பான சிந்தனை அமைப்பை கண்டறியும் ஒரு செயல்முறை.
@@ -80,13 +96,13 @@ const JourneySection: React.FC = () => {
       resultEn: (
           <>
             We identify their core strengths and decision-making style, showing you exactly what they are{" "}
-            <span className="text-[#1ed36a] font-bold">"built"</span> for before you spend a rupee on college fees.
+            <span className="text-[#1ed36a] font-medium">"built"</span> for before you spend a rupee on college fees.
           </>
       ),
       resultTa: (
           <>
             அவர்களின் முக்கிய திறன்களையும், முடிவெடுக்கும் முறையையும் நாங்கள் தெளிவாக அடையாளம் காண்கிறோம். அவர்கள் எந்த துறைக்கு இயல்பாக{" "}
-            <span className="text-[#1ed36a] font-bold">பொருந்துகிறார்கள்</span> என்பதை, கல்லூரி கட்டணத்தில் ஒரு ரூபாயும் செலவிடும் முன்பே உங்களுக்குத் தெளிவுபடுத்துகிறோம்.
+            <span className="text-[#1ed36a] font-medium">பொருந்துகிறார்கள்</span> என்பதை, கல்லூரி கட்டணத்தில் ஒரு ரூபாயும் செலவிடும் முன்பே உங்களுக்குத் தெளிவுபடுத்துகிறோம்.
           </>
       ),
     },
@@ -101,29 +117,29 @@ const JourneySection: React.FC = () => {
       whatHappensEn: (
           <>
             We take the assessment data and match it against{" "}
-            <span className="text-[#1ed36a] font-bold">thousands of real-world</span> professional roles and industry requirements.
+            <span className="text-[#1ed36a] font-medium">thousands of real-world</span> professional roles and industry requirements.
           </>
       ),
       whatHappensTa: (
           <>
             நாங்கள் மதிப்பீட்டுத் தரவை எடுத்து{" "}
-            <span className="text-[#1ed36a] font-bold">ஆயிரக்கணக்கான நிஜ உலக</span> தொழில்முறை பாத்திரங்கள் மற்றும் தொழில் தேவைகளுடன் பொருத்துகிறோம்.
+            <span className="text-[#1ed36a] font-medium">ஆயிரக்கணக்கான நிஜ உலக</span> தொழில்முறை பாத்திரங்கள் மற்றும் தொழில் தேவைகளுடன் பொருத்துகிறோம்.
           </>
       ),
       resultEn: (
           <>
             You see the perfect{" "}
-            <span className="text-[#1ed36a] font-bold">"fit"</span> between your child's personality and the modern career landscape. We show you the{" "}
-            <span className="text-[#1ed36a] font-bold">Role</span> they are meant for, which makes choosing the{" "}
-            <span className="text-[#1ed36a] font-bold">Course</span> easy.
+            <span className="text-[#1ed36a] font-medium">"fit"</span> between your child's personality and the modern career landscape. We show you the{" "}
+            <span className="text-[#1ed36a] font-medium">Role</span> they are meant for, which makes choosing the{" "}
+            <span className="text-[#1ed36a] font-medium">Course</span> easy.
           </>
       ),
       resultTa: (
           <>
             ஆளுமைக்கும் நவீன தொழில் நிலப்பரப்புக்கும்{" "}
-            <span className="text-[#1ed36a] font-bold">"சரியான பொருத்தத்தை"</span> நீங்கள் பார்க்கிறீர்கள். அவர்கள் எதற்கென உருவாக்கப்பட்ட{" "}
-            <span className="text-[#1ed36a] font-bold">தொழில் பாத்திரத்தை</span> நாங்கள் உங்களுக்குக் காட்டுகிறோம், இது{" "}
-            <span className="text-[#1ed36a] font-bold">படிப்பைத்</span> தேர்ந்தெடுப்பதை எளிதாக்குகிறது.
+            <span className="text-[#1ed36a] font-medium">"சரியான பொருத்தத்தை"</span> நீங்கள் பார்க்கிறீர்கள். அவர்கள் எதற்கென உருவாக்கப்பட்ட{" "}
+            <span className="text-[#1ed36a] font-medium">தொழில் பாத்திரத்தை</span> நாங்கள் உங்களுக்குக் காட்டுகிறோம், இது{" "}
+            <span className="text-[#1ed36a] font-medium">படிப்பைத்</span> தேர்ந்தெடுப்பதை எளிதாக்குகிறது.
           </>
       ),
     },
@@ -138,25 +154,25 @@ const JourneySection: React.FC = () => {
       whatHappensEn: (
           <>
             We provide a{" "}
-            <span className="text-[#1ed36a] font-bold">Step-by-Step Action Plan</span> designed specifically for the transition from school to college.
+            <span className="text-[#1ed36a] font-medium">Step-by-Step Action Plan</span> designed specifically for the transition from school to college.
           </>
       ),
       whatHappensTa: (
           <>
             பள்ளியிலிருந்து கல்லூரிக்கு மாறுவதற்காக வடிவமைக்கப்பட்ட{" "}
-            <span className="text-[#1ed36a] font-bold">படிப்படியான செயல் திட்டத்தை</span> நாங்கள் வழங்குகிறோம்.
+            <span className="text-[#1ed36a] font-medium">படிப்படியான செயல் திட்டத்தை</span> நாங்கள் வழங்குகிறோம்.
           </>
       ),
       resultEn: (
           <>
             You get a clear list of the degrees and specializations that will lead to long-term success, removing the stress and risk of a{" "}
-            <span className="text-[#1ed36a] font-bold">"wrong-fit"</span> choice.
+            <span className="text-[#1ed36a] font-medium">"wrong-fit"</span> choice.
           </>
       ),
       resultTa: (
           <>
             நீண்ட கால வெற்றிக்கு வழிவகுக்கும் பட்டங்கள் மற்றும் சிறப்புப் படிப்புகளின் தெளிவான பட்டியலை நீங்கள் பெறுகிறீர்கள், இது ஒரு{" "}
-            <span className="text-[#1ed36a] font-bold">"தவறான பொருத்தத்"</span> தேர்வின் மன அழுத்தம் மற்றும் அபாயத்தை நீக்குகிறது.
+            <span className="text-[#1ed36a] font-medium">"தவறான பொருத்தத்"</span> தேர்வின் மன அழுத்தம் மற்றும் அபாயத்தை நீக்குகிறது.
           </>
       ),
     },
@@ -291,7 +307,7 @@ const JourneySection: React.FC = () => {
         <div className="sticky top-0 h-screen w-full flex items-stretch">
           <div className="max-w-[1920px] mx-auto w-full flex items-stretch px-10 2xl:px-[clamp(24px,2.5vw,48px)]">
             
-            {/* ─── LEFT COLUMN: Sticky Sidebar ─── */}
+            {/* ─── LEFT COLUMN: Sticky Sidebar (Original List) ─── */}
             <div className="w-[45%] flex flex-col justify-between py-16 pr-12 relative border-r border-white/10">
               
               {/* Header */}
@@ -311,7 +327,10 @@ const JourneySection: React.FC = () => {
                   return (
                     <React.Fragment key={idx}>
                       {idx === 0 && <div className="w-full h-px bg-white/10" />}
-                      <div className="flex flex-col items-start py-6 transition-all duration-300 w-full">
+                      <div 
+                        onClick={() => scrollToStep(idx)}
+                        className="flex flex-col items-start py-6 transition-all duration-300 w-full cursor-pointer group"
+                      >
                         {/* Title Row */}
                         <div className={`flex w-full ${isActive ? "items-start" : "items-center"}`}>
                           {/* Circle Number */}
@@ -319,7 +338,7 @@ const JourneySection: React.FC = () => {
                             className={`w-10 h-10 rounded-full flex items-center justify-center text-base flex-shrink-0 transition-all duration-300 ${
                               isActive
                                 ? "bg-[#1ed36a] text-white font-medium mt-1.5 xl:mt-2.5"
-                                : "border border-white text-white font-light"
+                                : "border border-white/40 text-white/60 group-hover:text-white group-hover:border-white font-light"
                             }`}
                           >
                             {step.step}
@@ -331,17 +350,17 @@ const JourneySection: React.FC = () => {
                               className={`transition-all duration-500 origin-left ${
                                 isActive
                                   ? "text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-medium leading-tight tracking-tight text-white animate-fade-in"
-                                  : "text-xl sm:text-2xl lg:text-[24px] font-medium leading-tight tracking-tight text-white"
+                                  : "text-xl sm:text-2xl lg:text-[24px] font-medium leading-tight tracking-tight text-white/50 group-hover:text-white/80"
                               }`}
                             >
-                              <span className="text-white">
+                              <span className={isActive ? "text-white" : "text-white/50 group-hover:text-white/80"}>
                                 {isTa ? step.firstPartTa : step.firstPartEn}{" "}
                               </span>
                               <span
                                 className={`transition-all duration-500 ${
                                   isActive
                                     ? "text-[#1ed36a] block mt-1"
-                                    : "text-white"
+                                    : "text-white/50 group-hover:text-white/80"
                                 }`}
                               >
                                 {isTa ? step.secondPartTa : step.secondPartEn}
@@ -378,7 +397,7 @@ const JourneySection: React.FC = () => {
               <div className="h-6" />
             </div>
 
-            {/* ─── RIGHT COLUMN: Stacked Cards Area ─── */}
+            {/* ─── RIGHT COLUMN: Stacked Cards Area (Original text styling with slide-from-left animation) ─── */}
             <div className="w-[55%] pl-16 flex items-center justify-center relative">
               <div className="relative w-full max-w-xl h-[480px] sm:h-[450px] lg:h-[420px] flex items-center overflow-visible">
                 {steps.map((step, idx) => {
@@ -389,9 +408,7 @@ const JourneySection: React.FC = () => {
                       className={`absolute w-full flex flex-col transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${
                         isActive
                           ? "opacity-100 translate-x-0 scale-100 pointer-events-auto z-10"
-                          : activeStep > idx
-                          ? "opacity-0 -translate-x-12 scale-95 pointer-events-none z-0"
-                          : "opacity-0 translate-x-12 scale-105 pointer-events-none z-0"
+                          : "opacity-0 -translate-x-12 scale-95 pointer-events-none z-0"
                       }`}
                     >
                       {/* What Happens Block */}

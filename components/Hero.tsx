@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
             {/* Subtitle */}
             <div className="text-white text-base md:text-lg lg:text-[21px] font-light mb-3 tracking-wide flex items-center gap-1.5 animate-fade-in">
               <T>Confused After</T>{" "}
-              <span className="text-[#1ed36a] font-bold">
+              <span className="text-[#1ed36a] font-medium">
                 <T>12th?</T>
               </span>
             </div>
