@@ -16,7 +16,7 @@ interface Testimonial {
 
 const StudentAvatar: React.FC<{ src?: string; name: string; className?: string }> = ({ src, name, className = "" }) => {
   const [hasError, setHasError] = useState(false);
-  
+
   const initials = name
     .split(" ")
     .map((n) => n[0])
@@ -176,170 +176,307 @@ const Testimonials: React.FC = () => {
         />
       </div>
 
-      <div className="max-w-[1920px] mx-auto flex flex-col md:flex-row justify-between items-stretch gap-12 md:gap-16 relative z-10">
-        
-        {/* Quotes Watermark SVG - Positioned absolute at bottom on mobile, and bottom-left on desktop */}
-        <div className="absolute bottom-[-24px] right-[-12px] md:bottom-[-64px] md:left-[-12px] md:right-auto w-[60%] sm:w-[45%] md:w-[48%] max-w-[450px] z-0 pointer-events-none select-none opacity-[0.25] md:opacity-[0.45]">
-          <img
-            src="/assets/quotes.svg"
-            alt="Quotes Watermark"
-            className="w-full h-auto object-contain"
-          />
-        </div>
+      {/* Quotes Watermark SVG - Mobile and Tablet only (Right-aligned, reduced opacity) */}
+      <div className="absolute right-0 top-[15%] w-[85%] sm:w-[70%] max-w-[450px] z-0 pointer-events-none select-none opacity-[0.03] md:hidden">
+        <img
+          src="/assets/icons/bg_quotes.svg"
+          alt="Quotes Watermark Mobile"
+          className="w-full h-auto object-contain"
+        />
+      </div>
 
-        {/* Left Column (Header & Watermark) */}
-        <div className="w-full md:w-[35%] flex flex-col justify-start relative min-h-[220px] md:min-h-[340px]">
-          <div>
-            <h2 className="text-[#1ed36a] text-[22px] md:text-[26px] font-sans font-semibold tracking-tight leading-snug">
-              <T>Student Testimonials</T>
-            </h2>
-            <p className="text-white text-xs md:text-sm font-sans font-normal leading-relaxed mt-2 max-w-[260px]">
-              <T>Stories from students who found clarity through behavioral intelligence.</T>
-            </p>
+      {/* Quotes Watermark SVG - Desktop only (Left-aligned, original asset) */}
+      <div className="hidden md:block absolute bottom-[-64px] left-[-12px] w-[48%] max-w-[450px] z-0 pointer-events-none select-none opacity-[0.45]">
+        <img
+          src="/assets/quotes.svg"
+          alt="Quotes Watermark Desktop"
+          className="w-full h-auto object-contain"
+        />
+      </div>
+
+      <div className="max-w-[1920px] mx-auto relative z-10">
+
+        {/* ========================================================================= */}
+        {/* DESKTOP LAYOUT (md and above)                                             */}
+        {/* ========================================================================= */}
+        <div className="hidden md:flex flex-row justify-between items-stretch gap-12 md:gap-16 w-full">
+          {/* Left Column (Header & Watermark) */}
+          <div className="w-full md:w-[35%] flex flex-col justify-start relative min-h-[340px]">
+            <div>
+              <h2 className="text-[#1ed36a] text-[22px] md:text-[26px] font-sans font-semibold tracking-tight leading-snug">
+                <T>Student Testimonials</T>
+              </h2>
+              <p className="text-white text-xs md:text-sm font-sans font-normal leading-relaxed mt-2 max-w-[260px]">
+                <T>Stories from students who found clarity through behavioral intelligence.</T>
+              </p>
+            </div>
+          </div>
+
+          {/* Right Column (Testimonial details & slider controls) */}
+          <div className="w-full md:w-[60%] flex flex-col justify-between relative min-h-[340px] pt-1 pb-1">
+            {/* Testimonial Quote Text with Fade Transition */}
+            <div className="flex-grow flex items-center">
+              <p
+                className={`text-white text-xl sm:text-2xl md:text-[32px] lg:text-[34px] font-sans font-normal leading-snug md:leading-[1.35] tracking-tight transition-opacity duration-200 ${isTransitioning ? "opacity-0" : "opacity-100"
+                  }`}
+              >
+                {language === "ta" ? activeTestimonial.quoteTa : activeTestimonial.quoteEn}
+              </p>
+            </div>
+
+            {/* Progress Bar, Pagination, Profile & Controls */}
+            <div className="w-full mt-8">
+              {/* Horizontal Progress bar and X/7 Pagination */}
+              <div className="w-full relative mb-6">
+                <div className="flex justify-end mb-2">
+                  <span className="text-[#1ed36a] font-sans font-medium text-[13px] md:text-sm tracking-wider select-none leading-none">
+                    {currentIndex + 1}/{testimonials.length}
+                  </span>
+                </div>
+                <div className="relative w-full h-[1.5px] bg-white/10 rounded-full overflow-hidden">
+                  <div
+                    className="absolute left-0 top-0 h-full bg-[#1ed36a] transition-all duration-300 ease-out"
+                    style={{ width: `${((currentIndex + 1) / testimonials.length) * 100}%` }}
+                  />
+                </div>
+              </div>
+
+              {/* Profile Info (Avatar, Name, Details) & Navigation Arrows */}
+              <div className="flex items-center justify-between gap-4 flex-wrap">
+                {/* Profile Block with Fade Transition */}
+                <div
+                  className={`flex items-center gap-4 transition-opacity duration-200 ${isTransitioning ? "opacity-0" : "opacity-100"
+                    }`}
+                >
+                  {/* Avatar container */}
+                  <div className="w-12 h-12 md:w-[50px] md:h-[50px] rounded-full overflow-hidden shrink-0 border border-white/10 relative">
+                    <StudentAvatar src={activeTestimonial.avatar} name={activeTestimonial.authorEn} />
+                  </div>
+                  {/* Text Block */}
+                  <div className="flex flex-col">
+                    <h4 className="text-[#1ed36a] font-sans font-semibold text-sm md:text-base leading-tight">
+                      {language === "ta" ? activeTestimonial.authorTa : activeTestimonial.authorEn}
+                    </h4>
+                    <p className="text-white/60 font-sans font-normal text-xs md:text-[13px] mt-1">
+                      {language === "ta" ? activeTestimonial.roleTa : activeTestimonial.roleEn}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Navigation Arrow Controls */}
+                <div className="flex items-center gap-3 ml-auto sm:ml-0">
+                  {/* Previous Button */}
+                  <button
+                    onClick={handlePrev}
+                    aria-label="Previous Testimonial"
+                    className="group w-11 h-11 md:w-[44px] md:h-[44px] rounded-full border border-white/10 hover:border-white/30 flex items-center justify-center text-white/50 hover:text-white bg-transparent hover:bg-white/5 transition-all duration-300 cursor-pointer outline-none active:scale-95 relative overflow-hidden"
+                  >
+                    <div className="relative w-[18px] h-[14px] overflow-hidden flex items-center justify-center">
+                      <svg
+                        className="w-[18px] h-[14px] transition-transform duration-300 ease-in-out group-hover:-translate-x-[150%] absolute"
+                        viewBox="0 0 18 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M7.6187 0.256279C7.27701 -0.0854264 6.72296 -0.0854264 6.38127 0.256279L0.25626 6.3813C-0.0854282 6.72299 -0.0854282 7.27704 0.25626 7.61872L6.38127 13.7437C6.72296 14.0854 7.27701 14.0854 7.6187 13.7437C7.96039 13.402 7.96039 12.848 7.6187 12.5063L2.9874 7.87501L16.625 7.87501C17.1082 7.87501 17.5 7.48327 17.5 7.00001C17.5 6.51675 17.1082 6.12501 16.625 6.12501L2.9874 6.12501L7.6187 1.49372C7.96039 1.15201 7.96039 0.597993 7.6187 0.256279Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      <svg
+                        className="w-[18px] h-[14px] transition-transform duration-300 ease-in-out translate-x-[150%] group-hover:translate-x-0 absolute"
+                        viewBox="0 0 18 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M7.6187 0.256279C7.27701 -0.0854264 6.72296 -0.0854264 6.38127 0.256279L0.25626 6.3813C-0.0854282 6.72299 -0.0854282 7.27704 0.25626 7.61872L6.38127 13.7437C6.72296 14.0854 7.27701 14.0854 7.6187 13.7437C7.96039 13.402 7.96039 12.848 7.6187 12.5063L2.9874 7.87501L16.625 7.87501C17.1082 7.87501 17.5 7.48327 17.5 7.00001C17.5 6.51675 17.1082 6.12501 16.625 6.12501L2.9874 6.12501L7.6187 1.49372C7.96039 1.15201 7.96039 0.597993 7.6187 0.256279Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                  </button>
+
+                  {/* Next Button */}
+                  <button
+                    onClick={handleNext}
+                    aria-label="Next Testimonial"
+                    className="group w-11 h-11 md:w-[44px] md:h-[44px] rounded-full bg-[#1ed36a] hover:bg-[#15bf5c] border border-[#1ed36a] flex items-center justify-center text-white transition-all duration-300 cursor-pointer outline-none active:scale-95 relative overflow-hidden"
+                  >
+                    <div className="relative w-[18px] h-[14px] overflow-hidden flex items-center justify-center">
+                      <svg
+                        className="w-[18px] h-[14px] transition-transform duration-300 ease-in-out group-hover:translate-x-[150%] absolute"
+                        viewBox="0 0 18 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M9.8813 0.256279C10.223 -0.0854264 10.777 -0.0854264 11.1187 0.256279L17.2437 6.3813C17.5854 6.72299 17.5854 7.27704 17.2437 7.61872L11.1187 13.7437C10.777 14.0854 10.223 14.0854 9.8813 13.7437C9.53961 13.402 9.53961 12.848 9.8813 12.5063L14.5126 7.87501L0.875001 7.87501C0.391756 7.87501 0 7.48327 0 7.00001C0 6.51675 0.391756 6.12501 0.875001 6.12501L14.5126 6.12501L9.8813 1.49372C9.53961 1.15201 9.53961 0.597993 9.8813 0.256279Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      <svg
+                        className="w-[18px] h-[14px] transition-transform duration-300 ease-in-out -translate-x-[150%] group-hover:translate-x-0 absolute"
+                        viewBox="0 0 18 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M9.8813 0.256279C10.223 -0.0854264 10.777 -0.0854264 11.1187 0.256279L17.2437 6.3813C17.5854 6.72299 17.5854 7.27704 17.2437 7.61872L11.1187 13.7437C10.777 14.0854 10.223 14.0854 9.8813 13.7437C9.53961 13.402 9.53961 12.848 9.8813 12.5063L14.5126 7.87501L0.875001 7.87501C0.391756 7.87501 0 7.48327 0 7.00001C0 6.51675 0.391756 6.12501 0.875001 6.12501L14.5126 6.12501L9.8813 1.49372C9.53961 1.15201 9.53961 0.597993 9.8813 0.256279Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Right Column (Testimonial details & slider controls) */}
-        <div className="w-full md:w-[60%] flex flex-col justify-between relative min-h-[260px] md:min-h-[340px] pt-1 pb-1">
-          
+        {/* ========================================================================= */}
+        {/* MOBILE & TABLET LAYOUT (below md)                                         */}
+        {/* ========================================================================= */}
+        <div className="flex md:hidden flex-col w-full text-left gap-6">
+          {/* Header Block */}
+          <div>
+            <h2 className="text-[#1ed36a] text-[22px] font-sans font-semibold tracking-tight leading-snug">
+              <T>Student Testimonials</T>
+            </h2>
+            <p className="text-white text-xs sm:text-sm font-sans font-normal leading-relaxed mt-1.5 max-w-[280px]">
+              <T>Stories from students who found clarity through behavioral intelligence.</T>
+            </p>
+          </div>
+
           {/* Testimonial Quote Text with Fade Transition */}
-          <div className="flex-grow flex items-center">
+          <div className="min-h-[110px] flex items-center py-1">
             <p
-              className={`text-white text-xl sm:text-2xl md:text-[32px] lg:text-[34px] font-sans font-normal leading-snug md:leading-[1.35] tracking-tight transition-opacity duration-200 ${
-                isTransitioning ? "opacity-0" : "opacity-100"
-              }`}
+              className={`text-white text-base sm:text-lg font-sans font-normal leading-relaxed tracking-normal transition-opacity duration-200 ${isTransitioning ? "opacity-0" : "opacity-100"
+                }`}
             >
               {language === "ta" ? activeTestimonial.quoteTa : activeTestimonial.quoteEn}
             </p>
           </div>
 
-          {/* Progress Bar, Pagination, Profile & Controls */}
-          <div className="w-full mt-6 md:mt-8">
-            
-            {/* Horizontal Progress bar and X/7 Pagination */}
-            <div className="w-full relative mb-6">
-              <div className="flex justify-end mb-2">
-                <span className="text-[#1ed36a] font-sans font-medium text-[13px] md:text-sm tracking-wider select-none leading-none">
-                  {currentIndex + 1}/{testimonials.length}
-                </span>
-              </div>
-              <div className="relative w-full h-[1.5px] bg-white/10 rounded-full overflow-hidden">
-                <div
-                  className="absolute left-0 top-0 h-full bg-[#1ed36a] transition-all duration-300 ease-out"
-                  style={{ width: `${((currentIndex + 1) / testimonials.length) * 100}%` }}
-                />
-              </div>
-            </div>
-
-            {/* Profile Info (Avatar, Name, Details) & Navigation Arrows */}
-            <div className="flex items-center justify-between gap-4 flex-wrap">
-              
-              {/* Profile Block with Fade Transition */}
+          {/* Horizontal Progress bar and X/7 Pagination (Inline) */}
+          <div className="flex items-center justify-between gap-4 mt-2">
+            <div className="relative flex-grow h-[2px] bg-white/10 rounded-full overflow-hidden">
               <div
-                className={`flex items-center gap-4 transition-opacity duration-200 ${
-                  isTransitioning ? "opacity-0" : "opacity-100"
-                }`}
-              >
-                {/* Avatar container */}
-                <div className="w-12 h-12 md:w-[50px] md:h-[50px] rounded-full overflow-hidden shrink-0 border border-white/10 relative">
-                  <StudentAvatar src={activeTestimonial.avatar} name={activeTestimonial.authorEn} />
-                </div>
-                {/* Text Block */}
-                <div className="flex flex-col">
-                  <h4 className="text-[#1ed36a] font-sans font-semibold text-sm md:text-base leading-tight">
-                    {language === "ta" ? activeTestimonial.authorTa : activeTestimonial.authorEn}
-                  </h4>
-                  <p className="text-white/60 font-sans font-normal text-xs md:text-[13px] mt-1">
-                    {language === "ta" ? activeTestimonial.roleTa : activeTestimonial.roleEn}
-                  </p>
-                </div>
-              </div>
-
-              {/* Navigation Arrow Controls */}
-              <div className="flex items-center gap-3 ml-auto sm:ml-0">
-                {/* Previous Button */}
-                <button
-                  onClick={handlePrev}
-                  aria-label="Previous Testimonial"
-                  className="group w-11 h-11 md:w-[44px] md:h-[44px] rounded-full border border-white/10 hover:border-white/30 flex items-center justify-center text-white/50 hover:text-white bg-transparent hover:bg-white/5 transition-all duration-300 cursor-pointer outline-none active:scale-95 relative overflow-hidden"
-                >
-                  <div className="relative w-[18px] h-[14px] overflow-hidden flex items-center justify-center">
-                    {/* Arrow 1: Active, slides out to the left on hover */}
-                    <svg
-                      className="w-[18px] h-[14px] transition-transform duration-300 ease-in-out group-hover:-translate-x-[150%] absolute"
-                      viewBox="0 0 18 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M7.6187 0.256279C7.27701 -0.0854264 6.72296 -0.0854264 6.38127 0.256279L0.25626 6.3813C-0.0854282 6.72299 -0.0854282 7.27704 0.25626 7.61872L6.38127 13.7437C6.72296 14.0854 7.27701 14.0854 7.6187 13.7437C7.96039 13.402 7.96039 12.848 7.6187 12.5063L2.9874 7.87501L16.625 7.87501C17.1082 7.87501 17.5 7.48327 17.5 7.00001C17.5 6.51675 17.1082 6.12501 16.625 6.12501L2.9874 6.12501L7.6187 1.49372C7.96039 1.15201 7.96039 0.597993 7.6187 0.256279Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                    {/* Arrow 2: Hidden at the right, slides in on hover */}
-                    <svg
-                      className="w-[18px] h-[14px] transition-transform duration-300 ease-in-out translate-x-[150%] group-hover:translate-x-0 absolute"
-                      viewBox="0 0 18 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M7.6187 0.256279C7.27701 -0.0854264 6.72296 -0.0854264 6.38127 0.256279L0.25626 6.3813C-0.0854282 6.72299 -0.0854282 7.27704 0.25626 7.61872L6.38127 13.7437C6.72296 14.0854 7.27701 14.0854 7.6187 13.7437C7.96039 13.402 7.96039 12.848 7.6187 12.5063L2.9874 7.87501L16.625 7.87501C17.1082 7.87501 17.5 7.48327 17.5 7.00001C17.5 6.51675 17.1082 6.12501 16.625 6.12501L2.9874 6.12501L7.6187 1.49372C7.96039 1.15201 7.96039 0.597993 7.6187 0.256279Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </div>
-                </button>
-
-                {/* Next Button */}
-                <button
-                  onClick={handleNext}
-                  aria-label="Next Testimonial"
-                  className="group w-11 h-11 md:w-[44px] md:h-[44px] rounded-full bg-[#1ed36a] hover:bg-[#15bf5c] border border-[#1ed36a] flex items-center justify-center text-white transition-all duration-300 cursor-pointer outline-none active:scale-95 relative overflow-hidden"
-                >
-                  <div className="relative w-[18px] h-[14px] overflow-hidden flex items-center justify-center">
-                    {/* Arrow 1: Active, slides out to the right on hover */}
-                    <svg
-                      className="w-[18px] h-[14px] transition-transform duration-300 ease-in-out group-hover:translate-x-[150%] absolute"
-                      viewBox="0 0 18 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M9.8813 0.256279C10.223 -0.0854264 10.777 -0.0854264 11.1187 0.256279L17.2437 6.3813C17.5854 6.72299 17.5854 7.27704 17.2437 7.61872L11.1187 13.7437C10.777 14.0854 10.223 14.0854 9.8813 13.7437C9.53961 13.402 9.53961 12.848 9.8813 12.5063L14.5126 7.87501L0.875001 7.87501C0.391756 7.87501 0 7.48327 0 7.00001C0 6.51675 0.391756 6.12501 0.875001 6.12501L14.5126 6.12501L9.8813 1.49372C9.53961 1.15201 9.53961 0.597993 9.8813 0.256279Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                    {/* Arrow 2: Hidden at the left, slides in on hover */}
-                    <svg
-                      className="w-[18px] h-[14px] transition-transform duration-300 ease-in-out -translate-x-[150%] group-hover:translate-x-0 absolute"
-                      viewBox="0 0 18 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M9.8813 0.256279C10.223 -0.0854264 10.777 -0.0854264 11.1187 0.256279L17.2437 6.3813C17.5854 6.72299 17.5854 7.27704 17.2437 7.61872L11.1187 13.7437C10.777 14.0854 10.223 14.0854 9.8813 13.7437C9.53961 13.402 9.53961 12.848 9.8813 12.5063L14.5126 7.87501L0.875001 7.87501C0.391756 7.87501 0 7.48327 0 7.00001C0 6.51675 0.391756 6.12501 0.875001 6.12501L14.5126 6.12501L9.8813 1.49372C9.53961 1.15201 9.53961 0.597993 9.8813 0.256279Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </div>
-                </button>
-              </div>
-              
+                className="absolute left-0 top-0 h-full bg-[#1ed36a] transition-all duration-300 ease-out"
+                style={{ width: `${((currentIndex + 1) / testimonials.length) * 100}%` }}
+              />
             </div>
-
+            <span className="text-[#1ed36a] font-sans font-semibold text-xs sm:text-sm tracking-wider select-none shrink-0 leading-none">
+              {currentIndex + 1} / {testimonials.length}
+            </span>
           </div>
 
-        </div>
+          {/* Profile Info (Avatar, Name, Details) & Navigation Arrows (Inline, no wrap) */}
+          <div className="flex items-center justify-between gap-4 mt-2">
+            {/* Profile Block with Fade Transition */}
+            <div
+              className={`flex items-center gap-3 transition-opacity duration-200 min-w-0 ${isTransitioning ? "opacity-0" : "opacity-100"
+                }`}
+            >
+              {/* Avatar container */}
+              <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 border border-white/10 relative">
+                <StudentAvatar src={activeTestimonial.avatar} name={activeTestimonial.authorEn} />
+              </div>
+              {/* Text Block */}
+              <div className="flex flex-col min-w-0">
+                <h4 className="text-[#1ed36a] font-sans font-semibold text-xs sm:text-sm leading-tight truncate">
+                  {language === "ta" ? activeTestimonial.authorTa : activeTestimonial.authorEn}
+                </h4>
+                <p className="text-white/50 font-sans font-normal text-[10px] sm:text-xs mt-0.5 max-w-[150px] sm:max-w-[220px] truncate">
+                  {language === "ta" ? activeTestimonial.roleTa : activeTestimonial.roleEn}
+                </p>
+              </div>
+            </div>
 
+            {/* Navigation Arrow Controls */}
+            <div className="flex items-center gap-2.5 shrink-0">
+              {/* Previous Button */}
+              <button
+                onClick={handlePrev}
+                aria-label="Previous Testimonial"
+                className="group w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/10 hover:border-white/30 flex items-center justify-center text-white/50 hover:text-white bg-transparent hover:bg-white/5 transition-all duration-300 cursor-pointer outline-none active:scale-95 relative overflow-hidden"
+              >
+                <div className="relative w-[14px] h-[10px] overflow-hidden flex items-center justify-center">
+                  <svg
+                    className="w-[14px] h-[10px] transition-transform duration-300 ease-in-out group-hover:-translate-x-[150%] absolute"
+                    viewBox="0 0 18 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M7.6187 0.256279C7.27701 -0.0854264 6.72296 -0.0854264 6.38127 0.256279L0.25626 6.3813C-0.0854282 6.72299 -0.0854282 7.27704 0.25626 7.61872L6.38127 13.7437C6.72296 14.0854 7.27701 14.0854 7.6187 13.7437C7.96039 13.402 7.96039 12.848 7.6187 12.5063L2.9874 7.87501L16.625 7.87501C17.1082 7.87501 17.5 7.48327 17.5 7.00001C17.5 6.51675 17.1082 6.12501 16.625 6.12501L2.9874 6.12501L7.6187 1.49372C7.96039 1.15201 7.96039 0.597993 7.6187 0.256279Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <svg
+                    className="w-[14px] h-[10px] transition-transform duration-300 ease-in-out translate-x-[150%] group-hover:translate-x-0 absolute"
+                    viewBox="0 0 18 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M7.6187 0.256279C7.27701 -0.0854264 6.72296 -0.0854264 6.38127 0.256279L0.25626 6.3813C-0.0854282 6.72299 -0.0854282 7.27704 0.25626 7.61872L6.38127 13.7437C6.72296 14.0854 7.27701 14.0854 7.6187 13.7437C7.96039 13.402 7.96039 12.848 7.6187 12.5063L2.9874 7.87501L16.625 7.87501C17.1082 7.87501 17.5 7.48327 17.5 7.00001C17.5 6.51675 17.1082 6.12501 16.625 6.12501L2.9874 6.12501L7.6187 1.49372C7.96039 1.15201 7.96039 0.597993 7.6187 0.256279Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+              </button>
+
+              {/* Next Button */}
+              <button
+                onClick={handleNext}
+                aria-label="Next Testimonial"
+                className="group w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1ed36a] hover:bg-[#15bf5c] border border-[#1ed36a] flex items-center justify-center text-white transition-all duration-300 cursor-pointer outline-none active:scale-95 relative overflow-hidden"
+              >
+                <div className="relative w-[14px] h-[10px] overflow-hidden flex items-center justify-center">
+                  <svg
+                    className="w-[14px] h-[10px] transition-transform duration-300 ease-in-out group-hover:translate-x-[150%] absolute"
+                    viewBox="0 0 18 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M9.8813 0.256279C10.223 -0.0854264 10.777 -0.0854264 11.1187 0.256279L17.2437 6.3813C17.5854 6.72299 17.5854 7.27704 17.2437 7.61872L11.1187 13.7437C10.777 14.0854 10.223 14.0854 9.8813 13.7437C9.53961 13.402 9.53961 12.848 9.8813 12.5063L14.5126 7.87501L0.875001 7.87501C0.391756 7.87501 0 7.48327 0 7.00001C0 6.51675 0.391756 6.12501 0.875001 6.12501L14.5126 6.12501L9.8813 1.49372C9.53961 1.15201 9.53961 0.597993 9.8813 0.256279Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <svg
+                    className="w-[14px] h-[10px] transition-transform duration-300 ease-in-out -translate-x-[150%] group-hover:translate-x-0 absolute"
+                    viewBox="0 0 18 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M9.8813 0.256279C10.223 -0.0854264 10.777 -0.0854264 11.1187 0.256279L17.2437 6.3813C17.5854 6.72299 17.5854 7.27704 17.2437 7.61872L11.1187 13.7437C10.777 14.0854 10.223 14.0854 9.8813 13.7437C9.53961 13.402 9.53961 12.848 9.8813 12.5063L14.5126 7.87501L0.875001 7.87501C0.391756 7.87501 0 7.48327 0 7.00001C0 6.51675 0.391756 6.12501 0.875001 6.12501L14.5126 6.12501L9.8813 1.49372C9.53961 1.15201 9.53961 0.597993 9.8813 0.256279Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -103,93 +103,186 @@ const ValuePackage: React.FC = () => {
         />
       </div>
 
-      <div className="max-w-[1920px] w-full mx-auto grid grid-cols-1 lg:grid-cols-[40%_54%] justify-between gap-12 lg:gap-0 items-stretch relative z-10">
-        
-        {/* Left Column (Details & Philosophy) */}
-        <div className="flex flex-col text-[#19211c]">
-          <h2 className="text-[36px] md:text-[50px] font-sans font-medium leading-[1.1] mb-4 tracking-tight">
+      <div className="max-w-[1920px] w-full mx-auto relative z-10">
+        {/* ========================================================================= */}
+        {/* DESKTOP LAYOUT (lg and above)                                             */}
+        {/* ========================================================================= */}
+        <div className="hidden lg:grid grid-cols-[40%_54%] justify-between gap-12 lg:gap-0 items-stretch w-full">
+          {/* Left Column (Details & Philosophy) */}
+          <div className="flex flex-col text-[#19211c]">
+            <h2 className="text-[36px] md:text-[50px] font-sans font-medium leading-[1.1] mb-4 tracking-tight">
+              <T>Your Career Value Package</T>
+            </h2>
+            <p className="text-base md:text-lg font-sans font-normal leading-relaxed text-[#19211c] max-w-[480px] mb-8">
+              <T>Everything your child needs to choose the right degree, career path, and future with confidence.</T>
+            </p>
+
+            {/* Action Button */}
+            <div className="mb-14">
+              <Button
+                href={getRegisterUrl()}
+                showArrow={true}
+                variant="primary"
+                noDefaultSize={true}
+                className="pl-6 pr-2 py-2 text-sm md:text-base font-medium"
+              >
+                <T>Get My Career Blueprint</T>
+              </Button>
+            </div>
+
+            {/* Separation line */}
+            <div className="w-full h-px bg-[#19211c] mb-10" />
+
+            {/* The OriginBI Philosophy */}
+            <div className="flex flex-col gap-4">
+              <h4 className="font-sans font-medium text-[13px] tracking-[0.2em] text-[#19211c] leading-none">
+                <T>The OriginBI Philosophy</T>
+              </h4>
+              <p className="font-sans font-medium italic text-lg md:text-[22px] leading-snug tracking-tight max-w-[480px]">
+                “<T>Choose the Role first, then pick the Specialization. Stop investing years in paths that do not fit.</T>”
+              </p>
+            </div>
+
+            {/* Social Proof (AvatarCircles) */}
+            <div className="mt-12">
+              <AvatarCircles />
+            </div>
+          </div>
+
+          {/* Right Column (Pure Clean Card) */}
+          <div className="relative z-10 bg-white rounded-[32px] p-6 md:p-8 lg:p-10 shadow-[0_24px_48px_-12px_rgba(25,33,28,0.08)] border border-black/5 flex flex-col justify-between w-full">
+            {/* Pricing Header */}
+            <div className="flex items-baseline gap-2 mb-6">
+              <span className="text-[52px] md:text-[60px] font-sans font-medium text-[#19211c] leading-none tracking-tight">
+                ₹<T>999</T>
+              </span>
+              <span className="text-sm md:text-base font-sans font-medium text-[#19211c] tracking-wide">
+                / <T>one-time</T>
+              </span>
+            </div>
+
+            {/* Separation line */}
+            <div className="w-full h-px bg-black/10 mb-6" />
+
+            {/* Feature List */}
+            <div className="flex flex-col justify-between flex-grow">
+              {features.map((feature, idx) => {
+                const IconComp = feature.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="group flex items-start gap-5 py-3.5 border-b border-black/5 last:border-b-0 last:pb-0 transition-colors duration-300"
+                  >
+                    {/* Icon Circle Container */}
+                    <div className="w-11 h-11 md:w-[48px] md:h-[48px] rounded-full border border-black/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 text-[#19211c] group-hover:bg-[#19211c] group-hover:border-[#19211c] group-hover:text-white group-hover:shadow-[0_8px_16px_rgba(25,33,28,0.15)]">
+                      <IconComp />
+                    </div>
+
+                    {/* Text Container */}
+                    <div className="flex flex-col pt-0.5">
+                      <h3 className="font-sans font-semibold text-[15px] md:text-[17px] text-[#19211c] transition-colors duration-300 leading-snug">
+                        <T>{feature.title}</T>
+                      </h3>
+                      <p className="font-sans font-normal text-[13px] md:text-[14px] text-[#19211c] mt-1 leading-relaxed">
+                        <T>{feature.description}</T>
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* ========================================================================= */}
+        {/* MOBILE & TABLET LAYOUT (below lg)                                         */}
+        {/* ========================================================================= */}
+        <div className="flex lg:hidden flex-col w-full text-left text-[#19211c]">
+          {/* 1. Title */}
+          <h2 className="text-[32px] sm:text-[36px] font-sans font-medium leading-[1.1] mb-3 tracking-tight">
             <T>Your Career Value Package</T>
           </h2>
-          <p className="text-base md:text-lg font-sans font-normal leading-relaxed text-[#19211c] max-w-[480px] mb-8">
+
+          {/* 2. Description */}
+          <p className="text-[15px] sm:text-base font-sans font-normal leading-relaxed text-[#19211c]/80 mb-6">
             <T>Everything your child needs to choose the right degree, career path, and future with confidence.</T>
           </p>
 
-          {/* Action Button */}
-          <div className="mb-14">
+          {/* 3. Action Button (Kept at the top on mobile) */}
+          <div className="mb-8">
             <Button
               href={getRegisterUrl()}
               showArrow={true}
               variant="primary"
               noDefaultSize={true}
-              className="pl-6 pr-2 py-2 text-sm md:text-base font-medium"
+              className="pl-6 pr-2 py-2 text-sm sm:text-base font-medium"
             >
               <T>Get My Career Blueprint</T>
             </Button>
           </div>
 
-          {/* Separation line */}
-          <div className="w-full h-px bg-[#19211c] mb-10" />
+          {/* 4. Pricing Card (Below the action button) */}
+          <div className="relative z-10 bg-white rounded-[24px] p-5 sm:p-6 shadow-[0_16px_32px_-8px_rgba(25,33,28,0.06)] border border-black/5 flex flex-col w-full mb-6">
+            {/* Pricing Header */}
+            <div className="flex items-baseline gap-2 mb-4">
+              <span className="text-[40px] sm:text-[48px] font-sans font-medium text-[#19211c] leading-none tracking-tight">
+                ₹<T>999</T>
+              </span>
+              <span className="text-xs sm:text-sm font-sans font-medium text-[#19211c]/80 tracking-wide">
+                / <T>one-time</T>
+              </span>
+            </div>
 
-          {/* The OriginBI Philosophy */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-sans font-medium text-[13px] tracking-[0.2em] text-[#19211c] leading-none">
+            {/* Separation line */}
+            <div className="w-full h-px bg-black/10 mb-4" />
+
+            {/* Feature List */}
+            <div className="flex flex-col gap-4">
+              {features.map((feature, idx) => {
+                const IconComp = feature.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="group flex items-start gap-4 py-2 border-b border-black/5 last:border-b-0 last:pb-0 transition-colors duration-300"
+                  >
+                    {/* Icon Circle Container */}
+                    <div className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 text-[#19211c] group-hover:bg-[#19211c] group-hover:border-[#19211c] group-hover:text-white">
+                      <IconComp />
+                    </div>
+
+                    {/* Text Container */}
+                    <div className="flex flex-col pt-0.5">
+                      <h3 className="font-sans font-semibold text-[14px] sm:text-[15px] text-[#19211c] transition-colors duration-300 leading-snug">
+                        <T>{feature.title}</T>
+                      </h3>
+                      <p className="font-sans font-normal text-[12px] sm:text-[13px] text-[#19211c]/80 mt-1 leading-relaxed">
+                        <T>{feature.description}</T>
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Separation line */}
+          <div className="w-full h-px bg-[#19211c]/15 mb-8" />
+
+          {/* 5. The OriginBI Philosophy */}
+          <div className="flex flex-col gap-3 mb-8">
+            <h4 className="font-sans font-medium text-[12px] tracking-[0.2em] text-[#19211c] leading-none">
               <T>The OriginBI Philosophy</T>
             </h4>
-            <p className="font-sans font-medium italic text-lg md:text-[22px] leading-snug tracking-tight max-w-[480px]">
+            <p className="font-sans font-medium italic text-base sm:text-lg leading-snug tracking-tight">
               “<T>Choose the Role first, then pick the Specialization. Stop investing years in paths that do not fit.</T>”
             </p>
           </div>
 
-          {/* Social Proof (AvatarCircles) */}
-          <div className="mt-12">
+          {/* 6. Social Proof (AvatarCircles) */}
+          <div>
             <AvatarCircles />
           </div>
         </div>
-
-        {/* Right Column (Pure Clean Card - no noise texture overlay inside the card because it's a higher z-index) */}
-        <div className="relative z-10 bg-white rounded-[32px] p-6 md:p-8 lg:p-10 shadow-[0_24px_48px_-12px_rgba(25,33,28,0.08)] border border-black/5 flex flex-col justify-between w-full">
-          {/* Pricing Header */}
-          <div className="flex items-baseline gap-2 mb-6">
-            <span className="text-[52px] md:text-[60px] font-sans font-medium text-[#19211c] leading-none tracking-tight">
-              ₹<T>999</T>
-            </span>
-            <span className="text-sm md:text-base font-sans font-medium text-[#19211c] tracking-wide">
-              / <T>one-time</T>
-            </span>
-          </div>
-
-          {/* Separation line */}
-          <div className="w-full h-px bg-black/10 mb-6" />
-
-          {/* Feature List */}
-          <div className="flex flex-col justify-between flex-grow">
-            {features.map((feature, idx) => {
-              const IconComp = feature.icon;
-              return (
-                <div
-                  key={idx}
-                  className="group flex items-start gap-5 py-3.5 border-b border-black/5 last:border-b-0 last:pb-0 transition-colors duration-300"
-                >
-                  {/* Icon Circle Container */}
-                  <div className="w-11 h-11 md:w-[48px] md:h-[48px] rounded-full border border-black/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 text-[#19211c] group-hover:bg-[#19211c] group-hover:border-[#19211c] group-hover:text-white group-hover:shadow-[0_8px_16px_rgba(25,33,28,0.15)]">
-                    <IconComp />
-                  </div>
-
-                  {/* Text Container */}
-                  <div className="flex flex-col pt-0.5">
-                    <h3 className="font-sans font-semibold text-[15px] md:text-[17px] text-[#19211c] transition-colors duration-300 leading-snug">
-                      <T>{feature.title}</T>
-                    </h3>
-                    <p className="font-sans font-normal text-[13px] md:text-[14px] text-[#19211c] mt-1 leading-relaxed">
-                      <T>{feature.description}</T>
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
       </div>
     </section>
   );
