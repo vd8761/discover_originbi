@@ -13,7 +13,13 @@ interface Step {
 
 const HowItWorks: React.FC = () => {
   const { language } = useLanguage();
-  const isTa = language === "ta";
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isTa = mounted && language === "ta";
 
   const steps: Step[] = [
     {

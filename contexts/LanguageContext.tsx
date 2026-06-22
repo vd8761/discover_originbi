@@ -110,7 +110,7 @@ export const T: React.FC<{ children: ReactNode }> = ({ children }) => {
 
     if (typeof children === "string") {
         if (!mounted) {
-            return <>{t(children)}</>;
+            return <>{children}</>;
         }
 
         const trimmed = children.trim();
@@ -165,44 +165,46 @@ export const I18nToggle: React.FC<I18nToggleProps> = ({ buttonClassName = "" }) 
             </button>
 
             {/* Animated dropdown - always in DOM, visibility toggled via CSS transitions */}
-            <div
-                className="absolute top-full mt-2 right-0 w-28 bg-[#19211c] rounded-xl shadow-2xl border border-white/10 overflow-hidden z-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top-right"
-                style={{
-                    opacity: isOpen ? 1 : 0,
-                    transform: isOpen ? 'scale(1) translateY(0)' : 'scale(0.92) translateY(-8px)',
-                    pointerEvents: isOpen ? 'auto' : 'none',
-                }}
-            >
-                <div className="py-0.5">
-                    {languages.map((lang, idx) => (
-                        <button
-                            key={lang.code}
-                            onClick={() => {
-                                setLanguage(lang.code as Language);
-                                setIsOpen(false);
-                            }}
-                            className={`w-full text-left px-3 py-2 text-[12px] font-bold flex items-center justify-between cursor-pointer transition-all duration-200 ${language === lang.code
-                                ? 'bg-brand-green text-white'
-                                : 'text-gray-700 dark:text-gray-300 hover:bg-brand-green/10 hover:text-brand-green dark:hover:bg-brand-green/20'
-                                }`}
-                            style={{
-                                transitionDelay: isOpen ? `${idx * 50}ms` : '0ms',
-                                opacity: isOpen ? 1 : 0,
-                                transform: isOpen ? 'translateX(0)' : 'translateX(8px)',
-                            }}
-                        >
-                            <span className="flex items-center gap-3">
-                                {lang.label}
-                            </span>
-                            {language === lang.code && (
-                                <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>
-                            )}
-                        </button>
-                    ))}
+            {mounted && (
+                <div
+                    className="absolute top-full mt-2 right-0 w-28 bg-[#19211c] rounded-xl shadow-2xl border border-white/10 overflow-hidden z-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top-right"
+                    style={{
+                        opacity: isOpen ? 1 : 0,
+                        transform: isOpen ? 'scale(1) translateY(0)' : 'scale(0.92) translateY(-8px)',
+                        pointerEvents: isOpen ? 'auto' : 'none',
+                    }}
+                >
+                    <div className="py-0.5">
+                        {languages.map((lang, idx) => (
+                            <button
+                                key={lang.code}
+                                onClick={() => {
+                                    setLanguage(lang.code as Language);
+                                    setIsOpen(false);
+                                }}
+                                className={`w-full text-left px-3 py-2 text-[12px] font-bold flex items-center justify-between cursor-pointer transition-all duration-200 ${language === lang.code
+                                    ? 'bg-brand-green text-white'
+                                    : 'text-gray-700 dark:text-gray-300 hover:bg-brand-green/10 hover:text-brand-green dark:hover:bg-brand-green/20'
+                                    }`}
+                                style={{
+                                    transitionDelay: isOpen ? `${idx * 50}ms` : '0ms',
+                                    opacity: isOpen ? 1 : 0,
+                                    transform: isOpen ? 'translateX(0)' : 'translateX(8px)',
+                                }}
+                            >
+                                <span className="flex items-center gap-3">
+                                    {lang.label}
+                                </span>
+                                {language === lang.code && (
+                                    <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                    </svg>
+                                )}
+                            </button>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 };

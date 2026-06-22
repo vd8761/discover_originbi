@@ -1,10 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { T, useLanguage } from "@/contexts/LanguageContext";
 
 const WhyOriginBI: React.FC = () => {
   const { language } = useLanguage();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isTa = mounted && language === "ta";
 
   const comparisonData = [
     {
@@ -94,7 +101,7 @@ const WhyOriginBI: React.FC = () => {
       <div className="relative z-10 max-w-[1920px] w-full mx-auto px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] flex flex-col items-center">
         {/* Title */}
         <h2 className="text-3xl md:text-[44px] font-sans font-medium text-center leading-tight mb-2 tracking-tight text-white">
-          {language === "ta" ? (
+          {isTa ? (
             <>
               <span className="text-[#1ed36a] font-medium">ஆரிஜின் பி.ஐ</span> ஏன்?
             </>
@@ -172,7 +179,7 @@ const WhyOriginBI: React.FC = () => {
                   className={`h-[130px] px-8 flex items-center justify-center text-center text-[15px] leading-relaxed font-sans font-medium text-white ${!isLast ? 'border-b border-[#1ed36a]/20' : ''} ${isEvenRow ? 'bg-[#1ed36a]/10' : 'bg-[#1ed36a]/5'}`}
                 >
                   <div>
-                    {language === "ta" ? row.newWayTa : row.newWayEn}
+                    {isTa ? row.newWayTa : row.newWayEn}
                   </div>
                 </div>
               );
@@ -212,7 +219,7 @@ const WhyOriginBI: React.FC = () => {
                   <span className="text-[#1ed36a]/90 font-medium"><T>(The Strategy)</T></span>
                 </div>
                 <div className="text-white text-[14px] leading-relaxed font-sans font-medium">
-                  {language === "ta" ? row.newWayTa : row.newWayEn}
+                  {isTa ? row.newWayTa : row.newWayEn}
                 </div>
               </div>
             </div>

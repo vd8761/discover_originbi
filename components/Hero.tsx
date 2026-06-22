@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Description */}
-            <h1 className="text-white text-xl md:text-[22px] xl:text-[32px] font-light leading-[1.3] mb-8 max-w-lg xl:max-w-xl tracking-normal animate-fade-in delay-100">
+            <h1 className="hero-description text-white text-xl md:text-[22px] xl:text-[32px] font-light leading-[1.3] mb-8 max-w-lg xl:max-w-xl tracking-normal animate-fade-in delay-100">
               <T>Discover careers that match your strengths, not just your marks, and get a clear roadmap from 12th to your first job.</T>
             </h1>
 

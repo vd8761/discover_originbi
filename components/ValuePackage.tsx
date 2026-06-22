@@ -92,7 +92,7 @@ const ValuePackage: React.FC = () => {
   ];
 
   return (
-    <section id="career-package" className="w-full bg-[#F4F4F4] py-16 lg:py-0 px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] relative overflow-hidden lg:min-h-screen lg:flex lg:items-center">
+    <section id="career-package" className="w-full bg-[#F4F4F4] py-16 lg:py-24 px-6 lg:px-10 2xl:px-[clamp(24px,2.5vw,48px)] relative overflow-hidden">
       {/* Background Noise Texture (Moister overlay) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div
@@ -110,7 +110,7 @@ const ValuePackage: React.FC = () => {
         <div className="hidden lg:grid grid-cols-[40%_54%] justify-between gap-12 lg:gap-0 items-stretch w-full">
           {/* Left Column (Details & Philosophy) */}
           <div className="flex flex-col text-[#19211c]">
-            <h2 className="text-[36px] md:text-[50px] font-sans font-medium leading-[1.1] mb-4 tracking-tight">
+            <h2 className="value-package-heading text-[36px] md:text-[50px] font-sans font-medium leading-[1.1] mb-4 tracking-tight">
               <T>Your Career Value Package</T>
             </h2>
             <p className="text-base md:text-lg font-sans font-normal leading-relaxed text-[#19211c] max-w-[480px] mb-8">
@@ -199,7 +199,7 @@ const ValuePackage: React.FC = () => {
         {/* ========================================================================= */}
         <div className="flex lg:hidden flex-col w-full text-left text-[#19211c]">
           {/* 1. Title */}
-          <h2 className="text-[32px] sm:text-[36px] font-sans font-medium leading-[1.1] mb-3 tracking-tight">
+          <h2 className="value-package-heading text-[32px] sm:text-[36px] font-sans font-medium leading-[1.1] mb-3 tracking-tight">
             <T>Your Career Value Package</T>
           </h2>
 

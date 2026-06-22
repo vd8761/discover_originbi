@@ -178,7 +178,7 @@ const JourneySection: React.FC = () => {
     },
   ];
 
-  const isTa = language === "ta";
+  const isTa = mounted && language === "ta";
 
   return (
     <section

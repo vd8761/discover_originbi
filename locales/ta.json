@@ -361,11 +361,13 @@
   "12th?": "12ஆம் வகுப்பு?",
   "999": "999",
   "Confused After": "குழப்பமா",
-  "Discover careers that match your strengths, not just your marks, and get a clear roadmap from 12th to your first job.": "உங்கள் மதிப்பெண்களுக்கு அல்ல, உங்கள் திறமைக்கு பொருத்தமான தொழில்களைக் கண்டறியுங்கள், 12ஆம் வகுப்பிலிருந்து முதல் வேலை வரை தெளிவான பாதையைப் பெறுங்கள்.",
+  "Discover careers that match your strengths, not just your marks, and get a clear roadmap from 12th to your first job.": "மதிப்பெண் அல்ல, உங்கள் திறமைக்கேற்ற தொழிலைக் கண்டறியுங்கள். 12ஆம் வகுப்பு முதல் வேலை வரை தெளிவான பாதை.",
   "Find My Career Match": "எனக்கான தொழிலைக் கண்டறி",
   "Find My Career Match | ₹999": "எனக்கான தொழிலைக் கண்டறி | ₹999",
   "FIND THE": "கண்டறியுங்கள்",
   "RIGHT CAREER": "சரியான தொழில்",
+  "RIGHT": "சரியான",
+  "CAREER": "தொழில்",
   "Current Situation ?": "தற்போதைய நிலைமையா?",
   "Check if you or your child are facing one of these critical career crossroads": "நீங்கள் அல்லது உங்கள் குழந்தை இந்த முக்கிய தொழில் திருப்புமுனையில் உள்ளீர்களா எனப் பாருங்கள்",
   "Choosing a degree based on trends, popular courses, or others' choices can lead to the wrong future path.": "பிரபலமான படிப்புகள் அல்லது மற்றவர்களின் தேர்வின் அடிப்படையில் பட்டம் தேர்வு செய்வது தவறான எதிர்கால பாதைக்கு வழிவகுக்கும்.",
@@ -387,5 +389,6 @@
   "Why OriginBi": "ஏன் ஆரிஜின் பி.ஐ?",
   "Career Package": "தொழில் தொகுப்பு",
   "Testimonials": "சான்றுகள்",
-  "FAQ": "கேள்வி பதில்"
+  "FAQ": "கேள்வி பதில்",
+  "Journey": "வளர்ச்சி பயணம்"
 }

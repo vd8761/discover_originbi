@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { T, useLanguage } from "@/contexts/LanguageContext";
 import { useReferral } from "@/contexts/ReferralContext";
 import Button from "@/components/ui/Button";
@@ -8,6 +8,13 @@ import Button from "@/components/ui/Button";
 const AICounsellor: React.FC = () => {
   const { getRegisterUrl } = useReferral();
   const { language } = useLanguage();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isTa = mounted && language === "ta";
 
   return (
     <section
@@ -36,7 +43,7 @@ const AICounsellor: React.FC = () => {
               <T>Meet Your Personal</T>
               <div className="mt-1 flex items-center flex-wrap gap-x-2">
                 <span className="bg-[linear-gradient(to_right,#ED2F34,#EF5921,#FDC00C,#1ED36A)] bg-clip-text text-transparent font-medium">
-                  AI {language === "ta" ? "ஆலோசகர்" : "Counsellor"}
+                  AI {isTa ? "ஆலோசகர்" : "Counsellor"}
                 </span>
               </div>
             </h2>
@@ -116,7 +123,7 @@ const AICounsellor: React.FC = () => {
             <T>Meet Your Personal</T>
             <div className="mt-1 flex items-center flex-wrap gap-x-2">
               <span className="bg-[linear-gradient(to_right,#ED2F34,#EF5921,#FDC00C,#1ED36A)] bg-clip-text text-transparent font-medium">
-                AI {language === "ta" ? "ஆலோசகர்" : "Counsellor"}
+                AI {isTa ? "ஆலோசகர்" : "Counsellor"}
               </span>
             </div>
           </h2>

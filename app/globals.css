@@ -205,8 +205,42 @@ body {
 .lang-ta .sm\:text-\[18vw\] {
   font-size: 14vw !important;
 }
-.lang-ta .lg\:text-\[12vw\] {
-  font-size: 10vw !important;
+.lang-ta .md\:text-\[15vw\] {
+  font-size: 11vw !important;
+}
+.lang-ta .text-\[12vw\] {
+  font-size: 8.5vw !important;
+}
+
+/* Hero Description Text Size (Reduce bulkiness in Tamil) */
+.lang-ta .hero-description {
+  font-size: 1.05rem !important; /* Reduced from text-xl */
+}
+@media (min-width: 768px) {
+  .lang-ta .hero-description {
+    font-size: 19px !important; /* Reduced from md:text-[22px] */
+  }
+}
+@media (min-width: 1280px) {
+  .lang-ta .hero-description {
+    font-size: 26px !important; /* Reduced from xl:text-[32px] */
+    line-height: 1.45 !important;
+  }
+}
+
+/* ValuePackage Heading adjustments for Tamil (-4px) */
+.lang-ta .value-package-heading {
+  font-size: 28px !important;
+}
+@media (min-width: 640px) {
+  .lang-ta .value-package-heading {
+    font-size: 32px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .lang-ta .value-package-heading {
+    font-size: 46px !important;
+  }
 }
 
 /* Hide scrollbar utility */

@@ -67,6 +67,13 @@ const Testimonials: React.FC = () => {
   const { language } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isTa = mounted && language === "ta";
 
   const testimonials: Testimonial[] = [
     {
@@ -220,7 +227,7 @@ const Testimonials: React.FC = () => {
                 className={`text-white text-xl sm:text-2xl md:text-[32px] lg:text-[34px] font-sans font-normal leading-snug md:leading-[1.35] tracking-tight transition-opacity duration-200 ${isTransitioning ? "opacity-0" : "opacity-100"
                   }`}
               >
-                {language === "ta" ? activeTestimonial.quoteTa : activeTestimonial.quoteEn}
+                {isTa ? activeTestimonial.quoteTa : activeTestimonial.quoteEn}
               </p>
             </div>
 
@@ -255,10 +262,10 @@ const Testimonials: React.FC = () => {
                   {/* Text Block */}
                   <div className="flex flex-col">
                     <h4 className="text-[#1ed36a] font-sans font-semibold text-sm md:text-base leading-tight">
-                      {language === "ta" ? activeTestimonial.authorTa : activeTestimonial.authorEn}
+                      {isTa ? activeTestimonial.authorTa : activeTestimonial.authorEn}
                     </h4>
                     <p className="text-white/60 font-sans font-normal text-xs md:text-[13px] mt-1">
-                      {language === "ta" ? activeTestimonial.roleTa : activeTestimonial.roleEn}
+                      {isTa ? activeTestimonial.roleTa : activeTestimonial.roleEn}
                     </p>
                   </div>
                 </div>
@@ -362,7 +369,7 @@ const Testimonials: React.FC = () => {
               className={`text-white text-base sm:text-lg font-sans font-normal leading-relaxed tracking-normal transition-opacity duration-200 ${isTransitioning ? "opacity-0" : "opacity-100"
                 }`}
             >
-              {language === "ta" ? activeTestimonial.quoteTa : activeTestimonial.quoteEn}
+              {isTa ? activeTestimonial.quoteTa : activeTestimonial.quoteEn}
             </p>
           </div>
 
@@ -393,10 +400,10 @@ const Testimonials: React.FC = () => {
               {/* Text Block */}
               <div className="flex flex-col min-w-0">
                 <h4 className="text-[#1ed36a] font-sans font-semibold text-xs sm:text-sm leading-tight truncate">
-                  {language === "ta" ? activeTestimonial.authorTa : activeTestimonial.authorEn}
+                  {isTa ? activeTestimonial.authorTa : activeTestimonial.authorEn}
                 </h4>
                 <p className="text-white/50 font-sans font-normal text-[10px] sm:text-xs mt-0.5 max-w-[150px] sm:max-w-[220px] truncate">
-                  {language === "ta" ? activeTestimonial.roleTa : activeTestimonial.roleEn}
+                  {isTa ? activeTestimonial.roleTa : activeTestimonial.roleEn}
                 </p>
               </div>
             </div>
