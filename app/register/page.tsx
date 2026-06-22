@@ -334,12 +334,11 @@ function RegisterPageContent() {
 
   React.useEffect(() => {
     if (isSuccess) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       const timer = setTimeout(() => {
         const loginUrl = process.env.NEXT_PUBLIC_LOGIN_URL;
         if (loginUrl) {
-          window.open(loginUrl, '_blank');
-          // Optionally redirect current tab to home after opening new one
-          router.push('/');
+          window.location.href = loginUrl;
         } else {
           router.push('/');
         }
@@ -573,9 +572,12 @@ function RegisterPageContent() {
                         <h2 className="text-3xl font-bold text-white mb-4">{/* @ts-ignore */} <T>Registration Successful!</T> </h2>
                         <p className="text-gray-400 mb-8 max-w-sm">
                           {/* @ts-ignore */} <T> Your account has been created. You can take your assessment immediately. Redirecting you to the login page... </T> </p>
-                        <div className="w-full max-w-xs bg-brand-dark-tertiary h-1.5 rounded-full overflow-hidden">
+                        <div className="w-full max-w-xs bg-brand-dark-tertiary h-1.5 rounded-full overflow-hidden mb-6">
                           <div className="h-full bg-brand-green animate-progress origin-left w-full"></div>
                         </div>
+                        <a href={process.env.NEXT_PUBLIC_LOGIN_URL || "#"} className="text-brand-green font-bold hover:underline transition-all text-sm">
+                          {/* @ts-ignore */} <T>Click here if you are not redirected automatically</T>
+                        </a>
                       </div>
                     ) : (
                       <>
