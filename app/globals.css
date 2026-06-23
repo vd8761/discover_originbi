@@ -65,6 +65,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Galderglynn Titling";
+  src: url("/fonts/Galderglynn-Titling.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg-color: #19211c;
   --background: var(--bg-color);
@@ -109,6 +117,7 @@ body {
     "Haskoy", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   --font-caveat: var(--font-caveat), cursive;
+  --font-galderglynn: "Galderglynn Titling", sans-serif;
 
   --color-brand-dark-primary: #19211c;
   --color-brand-dark-secondary: #24272b;

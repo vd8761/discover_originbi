@@ -7,6 +7,7 @@ import { T } from "@/contexts/LanguageContext";
 import SituationSection from "@/components/SituationSection";
 import WhyOriginBI from "@/components/WhyOriginBI";
 import JourneySection from "@/components/JourneySection";
+import StatsSection from "@/components/StatsSection";
 import AICounsellor from "@/components/AICounsellor";
 import Testimonials from "@/components/Testimonials";
 import IndustryExperts from "@/components/IndustryExperts";
@@ -58,6 +59,7 @@ export default function Home() {
           </section>
           <SituationSection />
           <JourneySection />
+          <StatsSection />
           <WhyOriginBI />
           <IndustryExperts />
           <AICounsellor />

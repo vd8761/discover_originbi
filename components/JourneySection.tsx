@@ -182,10 +182,10 @@ const JourneySection: React.FC = () => {
 
   return (
     <section
-      id="journey"
-      ref={sectionRef}
-      className="relative w-full bg-[#19211c] text-white"
-    >
+        id="journey"
+        ref={sectionRef}
+        className="relative w-full bg-[#19211c] text-white"
+      >
       {/* Background Noise Texture ("moisture") */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div
