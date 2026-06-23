@@ -61,7 +61,7 @@ const StatsSection: React.FC = () => {
 
       <div className="relative z-10 max-w-5xl mx-auto px-6">
         {/* Section Title */}
-        <div className="text-center mb-8 md:mb-10 lg:mb-12">
+        <div className="text-center mb-5 md:mb-10 lg:mb-12">
           <h2 className="text-lg sm:text-xl lg:text-[24px] font-normal tracking-[0.35em] text-[#19211c] opacity-95 uppercase">
             <T>FROM INSIGHT TO IMPACT</T>
           </h2>
@@ -91,17 +91,17 @@ const StatsSection: React.FC = () => {
           ].map((stat, idx) => (
             <div
               key={idx}
-              className={`relative group flex flex-col justify-between py-10 px-8 min-h-[300px] transition-all duration-300 hover:-translate-y-2 hover:z-20 ${
+              className={`relative group flex flex-col justify-between py-6 px-6 md:py-10 md:px-8 min-h-[200px] md:min-h-[300px] transition-all duration-300 ${
                 stat.isMiddle
-                  ? "md:scale-105 md:-translate-y-1 md:hover:-translate-y-3 z-10"
-                  : "z-0"
+                  ? "md:scale-105 md:-translate-y-1 z-10"
+                  : "hidden md:flex z-0"
               }`}
             >
               {/* Card Shape background */}
               <svg
-                className={`absolute inset-0 w-full h-full ${
-                  stat.isMiddle ? "text-[#1ed36a]" : "text-[#19211c]"
-                } filter drop-shadow-[0_12px_24px_rgba(25,33,28,0.12)]`}
+                className={`absolute inset-0 w-full h-full filter drop-shadow-[0_12px_24px_rgba(25,33,28,0.12)] transition-colors duration-300 ${
+                  stat.isMiddle ? "text-[#19211c] md:text-[#1ed36a]" : "text-[#19211c]"
+                }`}
                 viewBox="0 0 100 100"
                 preserveAspectRatio="none"
                 fill="currentColor"
@@ -109,23 +109,21 @@ const StatsSection: React.FC = () => {
                 <path
                   d={stat.path}
                   vectorEffect="non-scaling-stroke"
-                  className={stat.isMiddle ? "stroke-transparent" : "stroke-white/10"}
+                  className="stroke-white/10"
                   strokeWidth="1.5"
                 />
               </svg>
 
               {/* Content */}
-              <div className="relative z-10 flex flex-col items-center justify-start text-center h-full pt-2 pb-6">
+              <div className="relative z-10 flex flex-col items-center justify-start text-center h-full pt-1 pb-6 md:pt-2">
                 <span
-                  className={`text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase mb-4 transition-colors duration-300 ${
-                    stat.isMiddle ? "text-white/90" : "text-white/60"
-                  }`}
+                  className="text-xs sm:text-sm md:text-xs font-semibold tracking-[0.25em] uppercase mb-2 md:mb-4 text-white/90 transition-colors duration-300"
                 >
                   <T>{stat.label}</T>
                 </span>
                 <span
-                  className={`text-6xl sm:text-7xl lg:text-[76px] xl:text-[84px] font-bold font-galderglynn tracking-tight transition-transform duration-300 group-hover:scale-105 ${
-                    stat.isMiddle ? "text-white" : "text-[#1ed36a]"
+                  className={`text-7xl sm:text-8xl md:text-7xl lg:text-[76px] xl:text-[84px] font-bold font-galderglynn tracking-tight transition-transform duration-300 ${
+                    stat.isMiddle ? "text-[#1ed36a] md:text-white" : "text-[#1ed36a]"
                   }`}
                 >
                   {stat.value}
@@ -143,7 +141,7 @@ const StatsSection: React.FC = () => {
         onMouseLeave={handleDragLeave}
         onMouseUp={handleDragEnd}
         onMouseMove={handleDragMove}
-        className={`relative w-full h-[290px] sm:h-[370px] md:h-[450px] lg:h-[510px] xl:h-[550px] overflow-x-auto overflow-y-hidden scrollbar-none -mt-16 md:-mt-28 lg:-mt-36 z-20 select-none ${
+        className={`relative w-full h-[290px] sm:h-[370px] md:h-[450px] lg:h-[510px] xl:h-[550px] overflow-x-auto overflow-y-hidden scrollbar-none -mt-16 sm:-mt-20 md:-mt-28 lg:-mt-36 z-20 select-none ${
           isDragging ? "cursor-grabbing" : "cursor-grab"
         }`}
         style={{ scrollBehavior: isDragging ? "auto" : "smooth" }}
@@ -151,7 +149,7 @@ const StatsSection: React.FC = () => {
         <img
           src="/assets/group.png"
           alt="OriginBI Students Group"
-          className="w-[140vw] sm:w-[120vw] lg:w-full h-full object-cover object-top block pointer-events-none transform scale-115 origin-top"
+          className="w-[140vw] sm:w-[120vw] lg:w-full h-full object-cover object-top block pointer-events-none transform scale-115 origin-top grayscale lg:grayscale-0"
         />
       </div>
     </section>
