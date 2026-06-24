@@ -147,7 +147,7 @@ const StatsSection: React.FC = () => {
         style={{ scrollBehavior: isDragging ? "auto" : "smooth" }}
       >
         <img
-          src="/assets/group.png"
+          src="/assets/group.webp"
           alt="OriginBI Students Group"
           className="w-[140vw] sm:w-[120vw] lg:w-full h-full object-cover object-top block pointer-events-none transform scale-115 origin-top grayscale lg:grayscale-0"
         />

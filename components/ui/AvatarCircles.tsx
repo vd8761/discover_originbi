@@ -13,10 +13,10 @@ interface AvatarCirclesProps {
 const AvatarCircles: React.FC<AvatarCirclesProps> = ({
   className = "",
   avatarUrls = [
-    "/assets/testimonials/karthik.png",
-    "/assets/experts/pratap.png",
-    "/assets/testimonials/student_female.png",
-    "/assets/experts/bharathiraja.png"
+    "/assets/testimonials/karthik.webp",
+    "/assets/experts/pratap.webp",
+    "/assets/testimonials/student_female.webp",
+    "/assets/experts/bharathiraja.webp"
   ],
   numPeople = "10k+",
   text = "Students Guided"

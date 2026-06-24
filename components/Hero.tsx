@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
         {/* ── Right Column: Hero Portrait ── */}
         <div className="relative w-full xl:absolute xl:right-0 xl:top-[72px] xl:bottom-0 xl:w-[50%] xl:h-auto flex-1 xl:flex-none flex items-end justify-center xl:justify-end z-20 order-2 m-0 xl:m-0 overflow-visible xl:overflow-visible">
           <img
-            src="/assets/image.png"
+            src="/assets/image.webp"
             alt="OriginBI Right Career"
             className="relative z-20 w-full h-auto xl:h-full xl:w-auto max-w-full md:max-w-[90%] xl:max-w-none mx-auto xl:mx-0 object-contain object-bottom select-none pointer-events-none animate-fade-in duration-1000 -translate-y-12 scale-[117%] origin-bottom xl:translate-y-0 xl:scale-100"
             draggable={false}

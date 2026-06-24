@@ -84,7 +84,7 @@ const Testimonials: React.FC = () => {
       authorTa: "கார்த்திக் எம்",
       roleEn: "B.E. Mechanical - 3rd Year • Bangalore",
       roleTa: "B.E. மெக்கானிக்கல் - 3 ஆம் ஆண்டு • பெங்களூரு",
-      avatar: "/assets/testimonials/karthik.png",
+      avatar: "/assets/testimonials/karthik.webp",
     },
     {
       id: 2,

@@ -25,7 +25,7 @@ const EXPERTS_DATA: ExpertData[] = [
     nameKey: "Bharathiraja Thangappalam",
     titleKey: "Chief Consultant, OriginBI",
     subtitleKey: "Expert in Behavioral Analytics & Career Strategy",
-    imgSrc: "/assets/experts/bharathiraja.png",
+    imgSrc: "/assets/experts/bharathiraja.webp",
     videos: {
       ta: "https://www.youtube.com/embed/4luQSZLsZUk",
       en: "https://www.youtube.com/embed/Z2ZkryASFi0",
@@ -33,14 +33,14 @@ const EXPERTS_DATA: ExpertData[] = [
     quoteKey: "Every student is unique. Our role is to help them discover what makes them, them.",
     subtextKey: "At OriginBI, we blend science, psychology, and technology to help students understand their natural strengths and make career decisions that truly fit who they are.",
     signatureType: "image",
-    signatureSrc: "/assets/experts/sign-bharathiraja.png",
+    signatureSrc: "/assets/experts/sign-bharathiraja.webp",
   },
   {
     id: "pratap",
     nameKey: "Dr Shree PrataP",
     titleKey: "Advisory Board Member - OriginBI",
     subtitleKey: "Medical Director, Shadithya Psychiatric Hospital, Chennai",
-    imgSrc: "/assets/experts/pratap.png",
+    imgSrc: "/assets/experts/pratap.webp",
     videos: {
       ta: "https://www.youtube.com/embed/ZEHYqAiwDUQ",
       en: "https://www.youtube.com/embed/ZEHYqAiwDUQ",
@@ -48,7 +48,7 @@ const EXPERTS_DATA: ExpertData[] = [
     quoteKey: "Career planning is about aligning a student's unique cognitive strengths to their long-term path with science-backed clarity.",
     subtextKey: "At OriginBI, we bridge the gap between academic pressure and natural capability, helping families make informed, stress-free career decisions.",
     signatureType: "image",
-    signatureSrc: "/assets/experts/sign-bharathiraja.png",
+    signatureSrc: "/assets/experts/sign-bharathiraja.webp",
   },
 ];
 

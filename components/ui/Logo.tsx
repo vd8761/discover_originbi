@@ -22,7 +22,7 @@ const Logo: React.FC<{ className?: string, forceWhite?: boolean, forceDark?: boo
         <div className="relative flex items-center">
             {/* Primary Blue Logo */}
             <img
-                src="/Origin-BI-Logo-01.png"
+                src="/Origin-BI-Logo-01.webp"
                 alt="OriginBI Logo"
                 className={`select-none ${showWhite ? 'hidden' : 'block'} transition-opacity duration-500 ${className}`}
                 style={outlineStyle}
@@ -30,7 +30,7 @@ const Logo: React.FC<{ className?: string, forceWhite?: boolean, forceDark?: boo
             />
             {/* White variant only for dark mode if strictly needed, but defaulted to blue */}
             <img
-                src="/Origin-BI-white-logo.png"
+                src="/Origin-BI-white-logo.webp"
                 alt="OriginBI Logo"
                 className={`select-none ${showWhite ? 'block' : 'hidden'} transition-opacity duration-500 ${className}`}
                 style={outlineStyle}

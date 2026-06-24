@@ -63,7 +63,7 @@ const AICounsellor: React.FC = () => {
             {/* Chat Mockup Image Container */}
             <div className="relative w-full max-w-[440px] rounded-2xl overflow-hidden border border-white/10 shadow-xl">
               <img
-                src="/assets/left.png"
+                src="/assets/left.webp"
                 alt="AI Chat Mockup"
                 className="w-full h-auto block select-none pointer-events-none"
                 draggable={false}
@@ -184,7 +184,7 @@ const AICounsellor: React.FC = () => {
           {/* 5. Chat Mockup */}
           <div className="relative w-full max-w-[440px] rounded-2xl overflow-hidden border border-white/10 shadow-xl mx-auto">
             <img
-              src="/assets/left.png"
+              src="/assets/left.webp"
               alt="AI Chat Mockup"
               className="w-full h-auto block select-none pointer-events-none"
               draggable={false}

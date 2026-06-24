@@ -16,28 +16,28 @@ const testimonials: TestimonialData[] = [
       'An invaluable tool for any student feeling lost about their career. The insights are practical and immediately actionable.',
     name: 'Amit',
     title: 'B.Com, Delhi',
-    image: '/Slider.png',
+    image: '/Slider.webp',
   },
   {
     quote:
       "Origin BI's test gave me clarity on my strengths, and the roadmap guided me step-by-step toward UI/UX design.",
     name: 'Sneha',
     title: 'B.Sc. Computer Science, Chennai',
-    image: '/Slider.png',
+    image: '/Slider.webp',
   },
   {
     quote:
       'The personalized feedback was a game-changer. I finally understood where to focus my learning efforts for a career in data science.',
     name: 'Rajesh',
     title: 'B.Tech IT, Bangalore',
-    image: '/Slider.png',
+    image: '/Slider.webp',
   },
   {
     quote:
       'I never thought I could pivot into product management, but OriginBI provided the exact guidance I needed to start my journey.',
     name: 'Priya',
     title: 'MBA, Mumbai',
-    image: '/Slider.png',
+    image: '/Slider.webp',
   },
 ];
 
@@ -69,7 +69,7 @@ const Testimonial: React.FC = () => {
       />
       <div className="absolute inset-0 z-0">
         <img
-          src="/Slider.png"
+          src="/Slider.webp"
           alt="Testimonial background"
           className="absolute inset-0 w-full h-full object-cover object-top select-none pointer-events-none"
         />
